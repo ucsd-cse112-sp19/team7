@@ -5,7 +5,7 @@ Name | Role
 ---- | ---
 Etsu Nakahara   |Lead / Comms  |
 Li-An Yang      |Co-lead/Comms  |
-Chunana Huang   |Quality Assurance  |
+Chuna Huang   |Quality Assurance  |
 Christian Schroeder    |Quality Assurance  |
 Eric Shaoan Liu | DevOps |
 Dan Nguyen      | DevOps |

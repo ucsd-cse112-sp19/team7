@@ -3,13 +3,13 @@
 
 Name | Role
 ---- | ---
-Etsu Nakahara   |Lead / Comms  |
-Li-An Yang      |Co-lead/Comms  |
-Chuna Huang   |Quality Assurance  |
-Christian Schroeder    |Quality Assurance  |
+Etsu Nakahara   | Lead/Comms  |
+Li-An Yang      | Co-lead/Comms  |
+Chuna Huang   | Quality Assurance |
+Christian Schroeder    | Quality Assurance |
 Eric Shaoan Liu | DevOps |
 Dan Nguyen      | DevOps |
-Chenghao Tsai   | Tools & Uility  |
-Cortez Page         |  Tools & Uility|
-Yiming Wang       |Coders  |
-Ryan Murase      |Coders  |
+Chenghao Tsai   | Tool&Utility |
+Cortez Page         |  Tool&Utility |
+Yiming Wang       | Coders  |
+Ryan Murase      | Coders  |

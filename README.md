@@ -1,6 +1,8 @@
 # Team7: The Seven Deadly Sins
-# All Members:
+<img src="./img/devilbus1.jpg" alt="drawing" width="500"/>
+<br>
 
+# All Members:
 Name | Role
 ---- | ---
 Etsu Nakahara   | Lead/Comms  |

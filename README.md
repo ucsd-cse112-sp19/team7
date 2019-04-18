@@ -12,5 +12,6 @@ Christian Schroeder    | Quality Assurance |
 Eric Shaoan Liu | DevOps |
 Dan Nguyen      | DevOps |
 Cortez Page         |  Tool&Utility |
+Ethan Brand         |  Tool&Utility |
 Yiming Wang       | Coders  |
 Ryan Murase      | Coders  |

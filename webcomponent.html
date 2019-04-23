@@ -8,10 +8,34 @@
     <!--
     <link rel="shortcut icon" href="path to logo" />
     -->
+    <script type="module" src="script/CECoreHello.js"></script>
 </head>
 
 <body>
-  <h1>Put your shitty first draft web component below here along with your names:</h1>
+  <!--Put your shitty first draft web component below here along with your names:-->
 
+  <h1>Cortez and Ethan</h1>
+  <ce-core-hello>Thomas</ce-core-hello>
+  <ce-core-hello rainbow>Gary</ce-core-hello>
+  <ce-core-hello lang="en" rainbow>1234567890</ce-core-hello>
+  <ce-core-hello lang="es">Gary</ce-core-hello>
+  <ce-core-hello lang="pt" rainbow><b>Cortez</b> Page</ce-core-hello>
+
+  <!--Custom Element Templates-->
+  <template id="CECoreHelloT">
+    <style>
+			:host {
+				all: initial;
+				display: block;
+				contain: content;
+			}
+
+      p {
+        font-size: 24px;
+        font-family: "Comic Sans MS", "Arial";
+      }
+    </style>
+    <p></p>
+  </template>
 </body>
 </html>

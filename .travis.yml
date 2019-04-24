@@ -1,4 +1,4 @@
-language: 
+language: node_js
 deploy:
   provider: pages
   skip_cleanup: true

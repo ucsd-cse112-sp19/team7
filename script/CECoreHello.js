@@ -1,7 +1,7 @@
 export class CECoreHello extends HTMLElement {
-	constructor() {
-		super();
-		let shadow = this.attachShadow({ mode: "closed" });
+  constructor() {
+    super();
+    let shadow = this.attachShadow({ mode: "closed" });
 
     // clone the template to create a fragment
     let coreHelloFrag = document.getElementById("CECoreHelloT").content.cloneNode(true);
@@ -10,7 +10,7 @@ export class CECoreHello extends HTMLElement {
     let langVal = lang === null ? "en" : lang.valueOf();
     let greeting = langVal === "es" ? "Hola Mundo" : 
       langVal === "pt" ? "Olá Mundo" : 
-      "Hello World";
+        "Hello World";
     // set paragraph text to the greeting and whatever HTML was originally inside the <ce-core-hello> tag
     coreHelloFrag.querySelector("p").innerHTML = `${greeting} ${this.innerHTML}`;
     // this isn't necessary, but it gets rid of the original HTML because it is now in the p element
@@ -26,7 +26,7 @@ export class CECoreHello extends HTMLElement {
       }, 200);
     }
     
-		shadow.appendChild(coreHelloFrag);
-	}
+    shadow.appendChild(coreHelloFrag);
+  }
 }
 customElements.define("ce-core-hello", CECoreHello);

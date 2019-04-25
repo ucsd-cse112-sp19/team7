@@ -14,35 +14,30 @@ root.appendChild(document.importNode(tmpl.content, true));
 */
 
 class AddMajorElement extends HTMLElement {
-    constructor() {
-        super();
- 
+  constructor() {
+    super();
+    const shadowRoot = this.attachShadow({mode: "open"});
+    this.major = this.innerHTML; // string variable storing the major
+    if (this.major.length == 0) {
+      this.major = "Computer Science";
+    }
+    var template = document.getElementById("major-template");
+    var clone = document.importNode(template.content, true);
+    var td = clone.querySelector("p");
+    td.textContent = "Major: " + this.major;
+    shadowRoot.appendChild(clone);
         
-        const shadowRoot = this.attachShadow({mode: 'open'});
-
-   
-     		this.major = this.innerHTML; // string variable storing the major
-    		if (this.major.length == 0) {
-            	this.major = "Computer Science";
-        }
-
-    		var template = document.getElementById("major-template");
-        var clone = document.importNode(template.content, true);
-        var td = clone.querySelector("p");
-        td.textContent = "Major: " + this.major;
-    		shadowRoot.appendChild(clone);
-        
-        // if not using template
-        /*
+    // if not using template
+    /*
             shadowRoot.innerHTML = `
                 <p>Major: ${this.major}</p>
             `;
         */
             
-    }
+  }
 }
 
-customElements.define('test-major', AddMajorElement);
+customElements.define("test-major", AddMajorElement);
 
 
 // for ES6 module

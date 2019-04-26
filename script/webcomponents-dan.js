@@ -1,6 +1,7 @@
 import { LitElement, html } from 'lit-element';
 
 class WebcomponentsDan extends LitElement { 
+    
     render() {
         var lang = this.getAttribute('language');
         if (lang == 'eng'){

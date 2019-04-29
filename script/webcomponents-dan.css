@@ -1,0 +1,44 @@
+webcomponents-dan{
+    display: inline-block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 50px;
+    /*background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);*/
+    /*background: green*/
+}
+
+/*core-hello[rainbow]{
+    background-image: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+    -webkit-background-clip: text;
+    color: transparent
+}*/
+
+webcomponents-dan[rainbow2] {
+
+    animation: textAnimate 5s linear infinite alternate;
+    background: linear-gradient( 92deg, #95d7e3, #eb76ff );
+    background: -webkit-linear-gradient( 92deg, #95d7e3, #eb76ff );
+    background-size:600vw 600vw;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /*&::after {
+      position: absolute;
+      content: attr(data-text);
+      left: 0;
+      right: 0;
+      background: none;
+      box-shadow: 2px 4px 2px rgba(0,0,0,0.50);
+      z-index: -1;
+    }*/
+}
+  
+@keyframes textAnimate {
+    from {
+      filter: hue-rotate(0deg);
+      background-position-x: 0%;
+      
+    }
+    to {
+      filter: hue-rotate(360deg);
+      background-position-x: 600vw;
+    }
+}

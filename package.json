@@ -23,7 +23,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "./bash_scripts/lint.sh"
+      "pre-commit": "bash ./bash_scripts/lint.sh"
     }
   },
   "dependencies": {

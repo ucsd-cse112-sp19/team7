@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+  <template id="major-template">
+    <style></style>
+    <p></p>
+  </template>
+
+  <div class = "fullscreen-bg">
+      <video autoplay muted loop id="myVideo"><source src="background.mp4" type="video/mp4"></video>
+  </div>
+
+  <head>
+    <title></title>
+    <script type="module" src="script/core-hello.js"></script>
+    <script type="module" src="script/webcomponents_er.js"></script>
+    <script type="module" src="script/webcomponents_christianetsu.js"></script>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+    
+  <body>
+    <div class = "wrapper">
+      <body>Select Your language: </body>
+        <select id = "langselect" onchange="changelang(this.value)">
+          <option value="English">English</option>
+          <option value="Spanish">Spanish</option>
+          <option value="Chinese">Chinese</option>
+        </select>
+  
+      <body>Enter Your Major Here: </body>
+      <input type = "text" onchange = "changemajor(this.value)"></input>
+    </div>
+
+    <p id= "helloworld"><core-hello rainbow lang = "English">Francis</core-hello></p>
+
+    <div class = "wrapper">
+      <button onclick="show()"><test-er></test-er></button>
+    </div>
+    
+    <p id="major"><test-major rainbow></test-major></p>
+      
+    <script>
+      function show() {
+        var x = document.getElementById("major");
+        if (x.style.display === "none") {
+          x.style.display = "block";
+        } else {
+          x.style.display = "none";
+        }
+      }
+      function changemajor(newmajor) {
+        var x = document.getElementById("major");
+        x.innerHTML = `<test-major rainbow>${newmajor}</test-major>`;
+      }
+      function changelang(language) {
+        var x = document.getElementById("helloworld");
+        x.innerHTML = `<core-hello rainbow lang = ${language}>Francis</core-hello>`;
+      }
+    </script>
+  </body>
+</html>
+

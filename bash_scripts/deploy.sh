@@ -1,7 +1,7 @@
 npm install
 echo "Running linters..."
-nvm eslint script/*
-nvm htmlhint *.html
+eslint script/*
+htmlhint *.html
 echo "Linters Passed!"
 
 echo "Running tests..."

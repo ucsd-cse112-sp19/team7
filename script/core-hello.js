@@ -46,7 +46,7 @@ class corehello extends HTMLElement {
     else if(lan == "Chinese") {
       td.textContent = "你好,世界 - "+name;
     }
-    else if(lan == "Chinese") {
+    else if(lan == "Team7") {
       td.textContent = "T*$@%E#*%A@*%M)@#*%7 - "+name;
     }
     shadowRoot.appendChild(clone);

@@ -1,0 +1,83 @@
+core-hello[rainbow]{
+    width:400px;
+    height:400px;
+    font-size:6em;
+    float:center;
+    text-align:center;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    animation: rainbow 2.5s linear;
+    animation-iteration-count: infinite;
+  }
+
+.wrapper{
+    float:center;
+    text-align:center;
+}
+
+  test-major[rainbow]{
+    width:400px;
+    height:400px;
+    font-size:4em;
+    font-family: Arial, Helvetica, sans-serif;
+    float:center;
+    text-align:center;
+    animation: rainbow 2.5s linear;
+    animation-iteration-count: infinite;
+  }
+  
+  .fullscreen-bg {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    overflow: hidden;
+    z-index: -100;
+}
+
+.fullscreen-bg__video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+  @keyframes rainbow{
+          100%,0%{
+              color: rgb(255,0,0);
+          }
+          8%{
+              color: rgb(255,127,0);
+          }
+          16%{
+              color: rgb(255,255,0);
+          }
+          25%{
+              color: rgb(127,255,0);
+          }
+          33%{
+              color: rgb(0,255,0);
+          }
+          41%{
+              color: rgb(0,255,127);
+          }
+          50%{
+              color: rgb(0,255,255);
+          }
+          58%{
+              color: rgb(0,127,255);
+          }
+          66%{
+              color: rgb(0,0,255);
+          }
+          75%{
+              color: rgb(127,0,255);
+          }
+          83%{
+              color: rgb(255,0,255);
+          }
+          91%{
+              color: rgb(255,0,127);
+          }
+  }

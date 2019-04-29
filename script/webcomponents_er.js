@@ -1,26 +1,25 @@
 class TestWebComponent extends HTMLElement {
-    constructor() {
-        super();
+  constructor() {
+    super();
 
-        var clicked = false;
+    var clicked = false;
 
-        var body = document.createElement('body');
+    var body = document.createElement("body");
 
-        this.appendChild(body);
+    this.appendChild(body);
 
-        body.innerHTML = 'Click Me!';
+    body.innerHTML = "Click to Hide Major";
 
-        document.querySelector('test-er').addEventListener('click', function() {
-            if (!clicked) {
-                body.innerHTML = 'Clicked';
-            }
-            else {
-                body.innerHTML = 'Unclicked';
-            }
-
-            clicked = !clicked;
-        });
-    }
+    document.querySelector("test-er").addEventListener("click", function() {
+      clicked = !clicked;
+      if (!clicked) {
+        body.innerHTML = "Click to Hide Major";
+      }
+      else {
+        body.innerHTML = "Click to Display Major";
+      }
+    });
+  }
 }
 
-window.customElements.define('test-er', TestWebComponent)
+window.customElements.define("test-er", TestWebComponent);

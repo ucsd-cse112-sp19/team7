@@ -1,0 +1,39 @@
+{
+  "name": "team7",
+  "version": "1.0.0",
+  "description": "[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&branch=dev)](https://travis-ci.com/ucsd-cse112/team7)",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha ./test --timeout 15000 --exit",
+    "start": "owc-dev-server -o"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ucsd-cse112/team7.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ucsd-cse112/team7/issues"
+  },
+  "homepage": "https://github.com/ucsd-cse112/team7#readme",
+  "devDependencies": {
+    "esdoc": "^1.1.0",
+    "esdoc-standard-plugin": "^1.0.0",
+    "eslint": "^5.16.0",
+    "htmlhint": "^0.11.0",
+    "husky": "^2.1.0",
+    "lit-element": "^2.1.0",
+    "mocha": "^6.1.4",
+    "owc-dev-server": "^0.3.0",
+    "showroom": "^0.9.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "bash ./bash_scripts/lint.sh && bash ./bash_scripts/document.sh"
+    }
+  },
+  "dependencies": {
+    "csslint": "^1.0.5"
+  }
+}

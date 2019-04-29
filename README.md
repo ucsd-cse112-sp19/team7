@@ -1,6 +1,10 @@
 # Team7: The Seven Deadly Sins
+
+[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&branch=dev)](https://travis-ci.com/ucsd-cse112/team7)
+
 <img src="./img/devilbus1.jpg" alt="drawing" width="500"/>
 <br>
+
 
 # All Members:
 Name | Role

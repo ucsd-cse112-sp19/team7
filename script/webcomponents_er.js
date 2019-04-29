@@ -8,17 +8,16 @@ class TestWebComponent extends HTMLElement {
 
     this.appendChild(body);
 
-    body.innerHTML = "Click Me!";
+    body.innerHTML = "Click to Hide Major";
 
     document.querySelector("test-er").addEventListener("click", function() {
+      clicked = !clicked;
       if (!clicked) {
-        body.innerHTML = "Clicked";
+        body.innerHTML = "Click to Hide Major";
       }
       else {
-        body.innerHTML = "Unclicked";
+        body.innerHTML = "Click to Display Major";
       }
-
-      clicked = !clicked;
     });
   }
 }

@@ -4,7 +4,8 @@
   "description": "[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&branch=dev)](https://travis-ci.com/ucsd-cse112/team7)",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "owc-dev-server -o"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "devDependencies": {
     "eslint": "^5.16.0",
     "htmlhint": "^0.11.0",
-    "husky": "^2.1.0"
+    "husky": "^2.1.0",
+    "lit-element": "^2.1.0",
+    "owc-dev-server": "^0.3.0"
   },
   "husky": {
     "hooks": {

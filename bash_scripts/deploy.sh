@@ -1,8 +1,7 @@
-npm install eslint
-npm install htmlhint
+npm install
 echo "Running linters..."
-npm eslint script/*
-npm htmlhint *.html
+nvm eslint script/*
+nvm htmlhint *.html
 echo "Linters Passed!"
 
 echo "Running tests..."

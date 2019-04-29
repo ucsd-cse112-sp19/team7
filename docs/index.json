@@ -718,7 +718,7 @@
     "__docId__": 58,
     "kind": "file",
     "name": "script/webcomponents-dan.js",
-    "content": "import { LitElement, html } from \"lit-element\";\n\nclass WebcomponentsDan extends LitElement { \n    \n  render() {\n    var lang = this.getAttribute(\"lang\");\n    if (lang == \"eng\"){\n      return html`\n            <p>Hello World ${this.textContent}</p>\n            `;\n    }\n    if (lang == \"spa\"){\n      return html`\n            <p>Hola Mundo ${this.textContent}</p>\n            `;\n    }\n    if (lang == \"ger\"){\n      return html`\n            <p>Hallo Welt ${this.textContent}</p>\n        `;\n    }\n    return html`\n        <p>Hello World ${this.textContent}</p>\n        `;\n  }\n}\n\ncustomElements.define(\"webcomponents-dan\", WebcomponentsDan);",
+    "content": "import { LitElement, html } from \"lit-element\";\n\nclass WebcomponentsDan extends LitElement { \n    \n  render() {\n    var lang = this.getAttribute(\"lang\");\n    if (lang == \"eng\"){\n      return html`\n            <p>Hello World ${this.textContent}</p>\n            `;\n    }\n    if (lang == \"spa\"){\n      return html`\n            <p>Hola Mundo ${this.textContent}</p>\n            `;\n    }\n    if (lang == \"ger\"){\n      return html`\n            <p>Hallo Welt ${this.textContent}</p>\n        `;\n    }\n    return html`\n        <p>Hello World ${this.textContent}</p>\n        `;\n  }\n}\n\ncustomElements.define(\"webcomponents-dan\", WebcomponentsDan);\n",
     "static": true,
     "longname": "/Users/ericliu/Documents/CSE112/team7/script/webcomponents-dan.js",
     "access": "public",

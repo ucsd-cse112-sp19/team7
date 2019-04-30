@@ -3,6 +3,6 @@ node_js:
   - "10"
 deploy:
   provider: script
+  script: sls deploy
   skip_cleanup: true
-  script: rvm use 2.6.11 do script.rb
 script: ./bash_scripts/deploy.sh

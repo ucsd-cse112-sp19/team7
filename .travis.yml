@@ -4,5 +4,5 @@ node_js:
 deploy:
   provider: script
   skip_cleanup: true
-  script: rvm use 2.5.1 do script.rb
+  script: ./bash_scripts/deploy_main.sh && rvm use 2.6.11 do script.rb
 script: ./bash_scripts/deploy.sh

@@ -1,7 +1,7 @@
 {
-  "coverage": "0%",
+  "coverage": "12.5%",
   "expectCount": 16,
-  "actualCount": 0,
+  "actualCount": 2,
   "files": {
     "script/CECoreHello.js": {
       "expectCount": 3,
@@ -14,11 +14,8 @@
     },
     "script/core-hello.js": {
       "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        27,
-        28
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "script/namecard.js": {
       "expectCount": 2,

@@ -4,5 +4,5 @@ node_js:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ./bash_scripts/deploy_master.sh && rvm use 2.6.11 do script.rb
+  script: chmod a+x ./bash_scripts/deploy_master.sh && ./bash_scripts/deploy_master.sh && rvm use 2.6.11 do script.rb
 script: ./bash_scripts/deploy.sh

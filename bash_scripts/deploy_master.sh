@@ -1,1 +1,2 @@
-sudo gem update --system
+rvm all do gem update --system
+sudo apt-get install rubygems

@@ -23,8 +23,15 @@
 
 // customElements.define('core-hello', MyComponent);
 
-
+/**
+ * A web component that adds "Hello World" to the content
+ */
 class corehello extends HTMLElement {
+
+  /**
+   * Construct core-hello with rainbow effect and translation
+   * @constructor
+   */
   constructor() {
     super();
 
@@ -47,7 +54,7 @@ class corehello extends HTMLElement {
       td.textContent = "你好,世界 - "+name;
     }
     else if(lan == "Team7") {
-      td.textContent = "T*$@%E#*%A@*%M)@#*%7 - "+name;
+      td.textContent = "We love "+name;
     }
     shadowRoot.appendChild(clone);
   }

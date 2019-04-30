@@ -4,5 +4,7 @@ node_js:
 deploy:
   provider: script
   skip_cleanup: true
-  script: chmod a+x ./bash_scripts/deploy_master.sh && ./bash_scripts/deploy_master.sh && rvm use 2.7.8 do script.rb
+  script: bash scripts/deploy.sh production
+    on:
+      branch: master
 script: ./bash_scripts/deploy.sh

@@ -23,8 +23,15 @@
 
 // customElements.define('core-hello', MyComponent);
 
-
+/**
+ * A web component that adds "Hello World" to the content
+ */
 class corehello extends HTMLElement {
+
+  /**
+   * Construct core-hello with rainbow effect and translation
+   * @constructor
+   */
   constructor() {
     super();
 

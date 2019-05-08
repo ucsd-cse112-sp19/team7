@@ -1,28 +1,3 @@
-// import { LitElement, html } from 'lit-element';
-
-// class MyComponent extends LitElement {
-//   render() {
-//     var lan = this.getAttribute("lang");
-//     var hws = "Hello World -";
-
-//     if(lan == "English") {
-
-//     }
-//     else if(lan == "Spanish") {
-//         hws = "Hola Mundo -";
-//     }
-//     else if(lan == "Chinese") {
-//         hws = "你好,世界 -";
-//     }
-
-//     return html`
-//       <p>${hws} ${this.textContent} !</p>
-//     `;
-//   }
-// }
-
-// customElements.define('core-hello', MyComponent);
-
 /**
  * A web component that adds "Hello World" to the content
  */
@@ -35,15 +10,16 @@ class corehello extends HTMLElement {
   constructor() {
     super();
 
-    var lan = this.getAttribute("lang");
-    var name = this.innerHTML;
-    const shadowRoot = this.attachShadow({mode: "open"});
+    var lan = this.getAttribute("lang"); //Get lang Attribute
+    var name = this.innerHTML; //Get the name after text "Hello World - "
+    const shadowRoot = this.attachShadow({mode: "open"}); //shadow DOM
 
 
     var template = document.getElementById("major-template");
     var clone = document.importNode(template.content, true);
     var td = clone.querySelector("p");
       
+    //Language texts cases
     if(lan == "English") {
       td.textContent = "Hello World - "+name;
     }
@@ -59,5 +35,5 @@ class corehello extends HTMLElement {
     shadowRoot.appendChild(clone);
   }
 }
-
+//Define Component
 window.customElements.define("core-hello", corehello);

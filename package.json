@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/ucsd-cse112/team7#readme",
   "devDependencies": {
+    "babel-plugin-component": "^1.1.1",
     "esdoc": "^1.1.0",
     "esdoc-standard-plugin": "^1.0.0",
     "eslint": "^5.16.0",
@@ -34,6 +35,8 @@
     }
   },
   "dependencies": {
-    "csslint": "^1.0.5"
+    "csslint": "^1.0.5",
+    "element-ui": "^2.8.2",
+    "vue": "^2.6.10"
   }
 }

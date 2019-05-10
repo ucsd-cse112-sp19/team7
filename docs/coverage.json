@@ -1,6 +1,6 @@
 {
-  "coverage": "12.5%",
-  "expectCount": 16,
+  "coverage": "10.52%",
+  "expectCount": 19,
   "actualCount": 2,
   "files": {
     "script/CECoreHello.js": {
@@ -16,6 +16,15 @@
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
+    },
+    "script/DayCounter.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        14,
+        29
+      ]
     },
     "script/namecard.js": {
       "expectCount": 2,

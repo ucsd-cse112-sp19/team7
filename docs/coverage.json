@@ -1,15 +1,13 @@
 {
-  "coverage": "12.5%",
+  "coverage": "37.5%",
   "expectCount": 16,
-  "actualCount": 2,
+  "actualCount": 6,
   "files": {
     "script/CECoreHello.js": {
       "expectCount": 3,
-      "actualCount": 0,
+      "actualCount": 2,
       "undocumentLines": [
-        1,
-        2,
-        17
+        23
       ]
     },
     "script/core-hello.js": {
@@ -27,11 +25,8 @@
     },
     "script/webcomponents-dan.js": {
       "expectCount": 2,
-      "actualCount": 0,
-      "undocumentLines": [
-        3,
-        5
-      ]
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "script/webcomponents_christianetsu.js": {
       "expectCount": 3,

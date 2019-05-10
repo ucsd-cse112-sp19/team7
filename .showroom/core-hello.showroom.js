@@ -4,5 +4,6 @@ export default {
   events: ['Something'],
   attributes: {
     lang: 'English'
-  }
+  },
+  innerHTML: 'Name'
 }

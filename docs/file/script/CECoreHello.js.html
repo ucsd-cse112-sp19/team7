@@ -30,12 +30,19 @@
   <ul>
     
   <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
 </ul>
 </div>
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">script/CECoreHello.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">export class CECoreHello extends HTMLElement {
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * CECoreHello class @extends {HTMLElement}
+ */
+export class CECoreHello extends HTMLElement {
+  /**
+   * constructor that creates the CECoreHello component
+   */
   constructor() {
     super();
     let shadow = this.attachShadow({ mode: &quot;closed&quot; });

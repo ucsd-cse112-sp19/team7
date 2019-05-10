@@ -1,6 +1,7 @@
 {
     "source": "./script",
     "destination": "./docs",
+    "unexportIdentifier": true,
     "plugins": [
       {"name": "esdoc-standard-plugin"}
     ]

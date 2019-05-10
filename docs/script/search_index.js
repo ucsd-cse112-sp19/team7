@@ -6,6 +6,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "team7/script/webcomponents-dan.js~webcomponentsdan",
+    "class/script/webcomponents-dan.js~WebcomponentsDan.html",
+    "<span>WebcomponentsDan</span> <span class=\"search-result-import-path\">team7/script/webcomponents-dan.js</span>",
+    "class"
+  ],
+  [
     "script/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "script/.external-ecmascript.js~Array",
@@ -322,6 +328,12 @@ window.esdocSearchIndex = [
     "file/script/webcomponents-dan.js.html",
     "script/webcomponents-dan.js",
     "file"
+  ],
+  [
+    "script/webcomponents-dan.js~webcomponentsdan#render",
+    "class/script/webcomponents-dan.js~WebcomponentsDan.html#instance-method-render",
+    "script/webcomponents-dan.js~WebcomponentsDan#render",
+    "method"
   ],
   [
     "script/webcomponents_christianetsu.js",

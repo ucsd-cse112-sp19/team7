@@ -110,8 +110,11 @@ class Rater extends HTMLElement {
     shadow.appendChild(wrapper);
     wrapper.appendChild(img);
     wrapper.appendChild(author);
+    author.setAttribute("id","author");
     wrapper.appendChild(info);
+    info.setAttribute("id","info");
     wrapper.appendChild(slider);
+
   }
 }
   

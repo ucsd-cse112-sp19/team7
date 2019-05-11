@@ -5,5 +5,5 @@ htmlhint *.html
 echo "Linters Passed!"
 
 echo "Running tests..."
-#insert tests here
+npm tests
 echo "All tests passed!"

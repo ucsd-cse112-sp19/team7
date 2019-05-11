@@ -649,8 +649,7 @@
     "interface": false,
     "extends": [
       "HTMLElement"
-    ],
-    "ignore": true
+    ]
   },
   {
     "__docId__": 54,
@@ -699,8 +698,7 @@
     "interface": false,
     "extends": [
       "HTMLElement"
-    ],
-    "ignore": true
+    ]
   },
   {
     "__docId__": 57,
@@ -720,7 +718,7 @@
     "__docId__": 58,
     "kind": "file",
     "name": "script/webcomponents-dan.js",
-    "content": "import { LitElement, html } from \"lit-element\";\n\n/**\n * class WebcomponentsDan\n * @extends {LitElement}\n */\nexport class WebcomponentsDan extends LitElement { \n  /**\n   * render function renders the component\n   */\n  render() {\n    var lang = this.getAttribute(\"lang\");\n    if (lang == \"eng\"){\n      return html`\n            <p>Hello World ${this.textContent}</p>\n            `;\n    }\n    if (lang == \"spa\"){\n      return html`\n            <p>Hola Mundo ${this.textContent}</p>\n            `;\n    }\n    if (lang == \"ger\"){\n      return html`\n            <p>Hallo Welt ${this.textContent}</p>\n        `;\n    }\n    return html`\n        <p>Hello World ${this.textContent}</p>\n        `;\n  }\n}\n\ncustomElements.define(\"webcomponents-dan\", WebcomponentsDan);\n",
+    "content": "import { LitElement, html } from \"lit-element\";\n\n/**\n * class WebcomponentsDan\n * @extends {LitElement}\n */\nclass WebcomponentsDan extends LitElement { \n  /**\n   * render function renders the component\n   */\n  render() {\n    var lang = this.getAttribute(\"lang\");\n    if (lang == \"eng\"){\n      return html`\n            <p>Hello World ${this.textContent}</p>\n            `;\n    }\n    if (lang == \"spa\"){\n      return html`\n            <p>Hola Mundo ${this.textContent}</p>\n            `;\n    }\n    if (lang == \"ger\"){\n      return html`\n            <p>Hallo Welt ${this.textContent}</p>\n        `;\n    }\n    return html`\n        <p>Hello World ${this.textContent}</p>\n        `;\n  }\n}\n\ncustomElements.define(\"webcomponents-dan\", WebcomponentsDan);\n",
     "static": true,
     "longname": "C:/Users/DanXa/Documents/cse112/team7/script/webcomponents-dan.js",
     "access": "public",
@@ -735,9 +733,9 @@
     "static": true,
     "longname": "script/webcomponents-dan.js~WebcomponentsDan",
     "access": "public",
-    "export": true,
+    "export": false,
     "importPath": "team7/script/webcomponents-dan.js",
-    "importStyle": "{WebcomponentsDan}",
+    "importStyle": null,
     "description": "class WebcomponentsDan",
     "lineNumber": 7,
     "interface": false,
@@ -792,8 +790,7 @@
     "interface": false,
     "extends": [
       "HTMLElement"
-    ],
-    "ignore": true
+    ]
   },
   {
     "__docId__": 63,
@@ -854,8 +851,7 @@
     "interface": false,
     "extends": [
       "HTMLElement"
-    ],
-    "ignore": true
+    ]
   },
   {
     "__docId__": 68,
@@ -899,8 +895,7 @@
     "interface": false,
     "extends": [
       "HTMLElement"
-    ],
-    "ignore": true
+    ]
   },
   {
     "__docId__": 71,

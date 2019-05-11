@@ -676,67 +676,6 @@
   {
     "__docId__": 55,
     "kind": "file",
-    "name": "script/DayCounter.js",
-    "content": "import Vue from \"vue\";\nimport ElementUI from \"element-ui\";\nimport \"element-ui/lib/theme-chalk/index.css\";\nimport App from \"./App.vue\";\n\nVue.use(ElementUI);\n\nnew Vue({\n  el: \"#app\",\n  render: h => h(App)\n});\n\nexport class CECoreHello extends HTMLElement {\n  constructor() {\n    super();\n    let shadow = this.attachShadow({ mode: \"closed\" });\n  \n    // clone the template to create a fragment\n    let coreHelloFrag = document.getElementById(\"CECoreHelloT\").content.cloneNode(true);\n    let lang = this.getAttribute(\"lang\");\n    // default to English\n    let langVal = lang === null ? \"en\" : lang.valueOf();\n    let greeting = langVal === \"es\" ? \"Hola Mundo\" : \n      langVal === \"pt\" ? \"Olá Mundo\" : \n        \"Hello World\";\n      // set paragraph text to the greeting and whatever HTML was originally inside the <ce-core-hello> tag\n    coreHelloFrag.querySelector(\"p\").innerHTML = `${greeting} ${this.innerHTML}`;\n    // this isn't necessary, but it gets rid of the original HTML because it is now in the p element\n    this.innerHTML = \"\";\n  \n    // cycle through colors of rainbow every 200 ms\n    let colorI = 0;\n    let colors = [\"red\", \"orange\", \"yellow\", \"green\", \"blue\", \"indigo\", \"violet\"];\n    if(this.getAttribute(\"rainbow\") !== null) {\n      setInterval(() => {\n        this.style.color = colors[colorI];\n        colorI = (colorI + 1) % colors.length;\n      }, 200);\n    }\n      \n    shadow.appendChild(coreHelloFrag);\n  }\n}\ncustomElements.define(\"ce-core-hello\", CECoreHello);\n  ",
-    "static": true,
-    "longname": "C:/Users/Francis/cse112/dev/team7/script/DayCounter.js",
-    "access": "public",
-    "description": null,
-    "lineNumber": 1
-  },
-  {
-    "__docId__": 56,
-    "kind": "class",
-    "name": "CECoreHello",
-    "memberof": "script/DayCounter.js",
-    "static": true,
-    "longname": "script/DayCounter.js~CECoreHello",
-    "access": "public",
-    "export": true,
-    "importPath": "team7/script/DayCounter.js",
-    "importStyle": "{CECoreHello}",
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
-    "interface": false,
-    "extends": [
-      "HTMLElement"
-    ]
-  },
-  {
-    "__docId__": 57,
-    "kind": "constructor",
-    "name": "constructor",
-    "memberof": "script/DayCounter.js~CECoreHello",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "script/DayCounter.js~CECoreHello#constructor",
-    "access": "public",
-    "description": null,
-    "lineNumber": 14,
-    "undocument": true
-  },
-  {
-    "__docId__": 58,
-    "kind": "member",
-    "name": "innerHTML",
-    "memberof": "script/DayCounter.js~CECoreHello",
-    "static": false,
-    "longname": "script/DayCounter.js~CECoreHello#innerHTML",
-    "access": "public",
-    "description": null,
-    "lineNumber": 29,
-    "undocument": true,
-    "type": {
-      "types": [
-        "string"
-      ]
-    }
-  },
-  {
-    "__docId__": 59,
-    "kind": "file",
     "name": "script/namecard.js",
     "content": "// by Oscar Huang \n// demo simple web component for cse112\n// implements a simple name card compenent\n// takes attribute: name, position, email, major, color\n//  ex: <name-card name=\"Chunan (Oscar) Huang\" img=\"./img.jpg\" position=\"Quality Assurance\" email=\"chh179@ucsd.edu\" major=\"BS: Computer Engineering\" ></name-card>\nclass nameCard extends HTMLElement {\n  constructor() {\n    super();\n\n    /* ---- header part ---- */\n    var header = document.createElement(\"div\");\n    header.insertAdjacentHTML(\"afterbegin\", \n      `<head>\n                <meta charset=\"utf-8\">\n                <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\n                <link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css\">\n                <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js\"></script>\n                <script src=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js\"></script>\n            </head>`);\n\n    /* ---- body part ---- */\n    var body = document.createElement(\"body\");\n\n    // whole name card\n    var card = document.createElement(\"div\");\n    card.style.width = \"570px\";\n    card.style.minWidth = \"500px\";\n    // color of card\n    if(!this.getAttribute(\"color\") ){\n      card.style.background = \"#cbe1ef\"; //default color\n    }\n    else{\n      card.style.background = this.getAttribute(\"color\") ;\n    }\n    card.style.borderStyle = \"double\";\n    card.style.borderWidth = \"5px\";\n\n    // container of name card\n    var container = document.createElement(\"div\");\n    container.className = \"container\";\n    container.style.marginBottom = \"15px\";\n    \n    // name \n    var h1 = document.createElement(\"h1\");\n    if(!this.getAttribute(\"name\") ){\n      h1.textContent = \"YOUR NAME\";\n    }\n    else{\n      h1.textContent = this.getAttribute(\"name\") ;\n    }\n        \n    // row under name; it has two part\n    var row = document.createElement(\"div\");\n    row.className = \"row\";\n    // left part\n    var col1 = document.createElement(\"figure\");\n    col1.className = \"col-sm-3\";\n    col1.style.minWidth = \"300px\";\n    const img = document.createElement(\"img\");\n    img.src = this.getAttribute(\"img\"); \n    //img.style.width = \"230px\";\n    img.style.height = \"280px\";\n    img.style.borderStyle = \"dashed\";\n    img.style.borderWidth = \"3px\";\n    col1.appendChild(img);\n    // right part\n    var col2 = document.createElement(\"figure\");\n    col2.className = \"col-sm-3\";\n    // text in the right-part\n    var pos = document.createElement(\"h3\");\n    pos.textContent = \"POSITION:\";\n    var pos_info = document.createElement(\"h4\");\n    pos_info.textContent = this.getAttribute(\"position\");\n    var email = document.createElement(\"h3\");\n    email.textContent = \"EMAIL:\";\n    var email_info = document.createElement(\"h4\");\n    email_info.textContent = this.getAttribute(\"email\");\n    var major = document.createElement(\"h3\");\n    major.textContent = \"MAJOR:\";\n    var major_info = document.createElement(\"h4\");\n    major_info.textContent = this.getAttribute(\"major\");\n    // append to right-part\n    col2.appendChild(pos);\n    col2.appendChild(pos_info);\n    col2.appendChild(email);\n    col2.appendChild(email_info);\n    col2.appendChild(major);\n    col2.appendChild(major_info);\n\n    // append left/right parts to row\n    row.appendChild(col1);\n    row.appendChild(col2);\n    // assemble\n    container.appendChild(h1);\n    container.appendChild(document.createElement(\"br\"));\n    container.appendChild(row);\n    card.appendChild(container);\n    body.appendChild(card);\n\n    // combine header and body\n    var file = document.createElement(\"div\");\n    file.appendChild(header);\n    file.appendChild(body);\n\n        \n    //file.appendChild(p);\n\n    // to shadow DOM\n    const shadowRoot = this.attachShadow({mode: \"open\"});\n    shadowRoot.appendChild(file);\n    shadowRoot.appendChild(document.createElement(\"br\"));\n        \n  }\n}\n\ncustomElements.define(\"name-card\", nameCard);\n",
     "static": true,
@@ -746,7 +685,7 @@
     "lineNumber": 1
   },
   {
-    "__docId__": 60,
+    "__docId__": 56,
     "kind": "class",
     "name": "nameCard",
     "memberof": "script/namecard.js",
@@ -766,7 +705,7 @@
     "ignore": true
   },
   {
-    "__docId__": 61,
+    "__docId__": 57,
     "kind": "constructor",
     "name": "constructor",
     "memberof": "script/namecard.js~nameCard",
@@ -778,6 +717,67 @@
     "description": null,
     "lineNumber": 7,
     "undocument": true
+  },
+  {
+    "__docId__": 58,
+    "kind": "file",
+    "name": "script/Rater.js",
+    "content": "class Rater extends HTMLElement {\n  constructor() {\n    super();\n  }\n  connectedCallback() {\n    const shadow = this.attachShadow({mode: \"open\"});\n    const wrapper = document.createElement(\"span\");\n    wrapper.setAttribute(\"class\", \"wrapper\");\n    var author = document.createElement(\"p\");\n    var info = document.createElement(\"p\");\n\n    var authortext = \"Author: \" + this.getAttribute(\"author\");\n    var text = \"Description: \" + this.getAttribute(\"des\");\n    info.textContent = text;\n    author.textContent = authortext;\n    var imgUrl;\n    if(this.hasAttribute(\"img\")) {\n      imgUrl = this.getAttribute(\"img\");\n    } else {\n      imgUrl = \"background.jpg\";\n    }\n    var img = document.createElement(\"img\");\n    img.src = imgUrl;\n    img.height=\"300\";\n\n    const slider = document.createElement(\"div\");\n    const item1 = document.createElement(\"span\");\n    const star1 = document.createElement(\"img\");\n    const item2 = document.createElement(\"span\");\n    const star2 = document.createElement(\"img\");\n    const item3 = document.createElement(\"span\");\n    const star3 = document.createElement(\"img\");\n    const item4 = document.createElement(\"span\");\n    const star4 = document.createElement(\"img\");\n    const item5 = document.createElement(\"span\");\n    const star5 = document.createElement(\"img\");\n    star1.src=\"star.png\";\n    star1.height=\"20\";\n    star2.src=\"star.png\";\n    star2.height=\"20\";\n    star3.src=\"star.png\";\n    star3.height=\"20\";\n    star4.src=\"star.png\";\n    star4.height=\"20\";\n    star5.src=\"star.png\";\n    star5.height=\"20\";\n    const ratertext = document.createElement(\"p\");\n    var ratetext = \"\";\n    ratertext.textContent = ratetext;\n\n    item1.appendChild(star1);\n    slider.appendChild(item1);\n    item2.appendChild(star2);\n    slider.appendChild(item2);\n    item3.appendChild(star3);\n    slider.appendChild(item3);\n    item4.appendChild(star4);\n    slider.appendChild(item4);\n    item5.appendChild(star5);\n    slider.appendChild(item5);\n    slider.appendChild(ratertext);\n\n    star1.addEventListener(\"click\", function() {\n      star1.src=\"starclicked.png\";\n      star2.src=\"star.png\";\n      star3.src=\"star.png\";\n      star4.src=\"star.png\";\n      star5.src=\"star.png\";\n      ratetext = \"Nah\";\n      ratertext.textContent = ratetext;\n    });\n    star2.addEventListener(\"click\", function() {\n      star1.src=\"starclicked.png\";\n      star2.src=\"starclicked.png\";\n      star3.src=\"star.png\";\n      star4.src=\"star.png\";\n      star5.src=\"star.png\";\n      ratetext = \"Hmm\";\n      ratertext.textContent = ratetext;\n    });\n    star3.addEventListener(\"click\", function() {\n      star1.src=\"starclicked.png\";\n      star2.src=\"starclicked.png\";\n      star3.src=\"starclicked.png\";\n      star4.src=\"star.png\";\n      star5.src=\"star.png\";\n      ratetext = \"OK\";\n      ratertext.textContent = ratetext;\n    });\n    star4.addEventListener(\"click\", function() {\n      star1.src=\"starclicked.png\";\n      star2.src=\"starclicked.png\";\n      star3.src=\"starclicked.png\";\n      star4.src=\"starclicked.png\";\n      star5.src=\"star.png\";\n      ratetext = \"Wow!\";\n      ratertext.textContent = ratetext;\n    });\n    star5.addEventListener(\"click\", function() {\n      star1.src=\"starclicked.png\";\n      star2.src=\"starclicked.png\";\n      star3.src=\"starclicked.png\";\n      star4.src=\"starclicked.png\";\n      star5.src=\"starclicked.png\";\n      ratetext = \"Bang!\";\n      ratertext.textContent = ratetext;\n    });\n\n\n    shadow.appendChild(wrapper);\n    wrapper.appendChild(img);\n    wrapper.appendChild(author);\n    wrapper.appendChild(info);\n    wrapper.appendChild(slider);\n  }\n}\n  \ncustomElements.define(\"rater-r\", Rater);\n",
+    "static": true,
+    "longname": "C:/Users/Francis/cse112/dev/team7/script/Rater.js",
+    "access": "public",
+    "description": null,
+    "lineNumber": 1
+  },
+  {
+    "__docId__": 59,
+    "kind": "class",
+    "name": "Rater",
+    "memberof": "script/Rater.js",
+    "static": true,
+    "longname": "script/Rater.js~Rater",
+    "access": "public",
+    "export": false,
+    "importPath": "team7/script/Rater.js",
+    "importStyle": null,
+    "description": null,
+    "lineNumber": 1,
+    "undocument": true,
+    "interface": false,
+    "extends": [
+      "HTMLElement"
+    ],
+    "ignore": true
+  },
+  {
+    "__docId__": 60,
+    "kind": "constructor",
+    "name": "constructor",
+    "memberof": "script/Rater.js~Rater",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "script/Rater.js~Rater#constructor",
+    "access": "public",
+    "description": null,
+    "lineNumber": 2,
+    "undocument": true
+  },
+  {
+    "__docId__": 61,
+    "kind": "method",
+    "name": "connectedCallback",
+    "memberof": "script/Rater.js~Rater",
+    "generator": false,
+    "async": false,
+    "static": false,
+    "longname": "script/Rater.js~Rater#connectedCallback",
+    "access": "public",
+    "description": null,
+    "lineNumber": 5,
+    "undocument": true,
+    "params": [],
+    "return": null
   },
   {
     "__docId__": 62,

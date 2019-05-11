@@ -23,90 +23,64 @@ class Rater extends HTMLElement {
     img.src = imgUrl;
     img.height="300";
 
+    var value = this.getAttribute("valuemodel");
+    var max = this.getAttribute("max");
+    var disabled = this.getAttribute("disabled");
+    //var showtext = this.getAttribute("show-text");
+    //var showscore = this.getAttribute("show-score");
+    //var texts = this.getAttribute("texts");
+
+    var items = [];
+    var stars = [];
+    //var texts = [];
+
+    //Default Values setter
+    if(max == null || max <= 0) max = 5;
+    if(value == null || value <= 0) value = 0;
+    
+    //Element Creating
     const slider = document.createElement("div");
-    const item1 = document.createElement("span");
-    const star1 = document.createElement("img");
-    const item2 = document.createElement("span");
-    const star2 = document.createElement("img");
-    const item3 = document.createElement("span");
-    const star3 = document.createElement("img");
-    const item4 = document.createElement("span");
-    const star4 = document.createElement("img");
-    const item5 = document.createElement("span");
-    const star5 = document.createElement("img");
-    star1.src="star.png";
-    star1.height="20";
-    star2.src="star.png";
-    star2.height="20";
-    star3.src="star.png";
-    star3.height="20";
-    star4.src="star.png";
-    star4.height="20";
-    star5.src="star.png";
-    star5.height="20";
+    var i;
+    for(i = 0; i < max; i++) {
+      items.push(document.createElement("span"));
+      stars.push(document.createElement("img"));
+      if(i < value)
+        stars[i].src = "starclicked.png";
+      else
+        stars[i].src = "star.png";
+      stars[i].id = i+1;
+      stars[i].height = "20";
+    }
+
     const ratertext = document.createElement("p");
     var ratetext = "";
     ratertext.textContent = ratetext;
 
-    item1.appendChild(star1);
-    slider.appendChild(item1);
-    item2.appendChild(star2);
-    slider.appendChild(item2);
-    item3.appendChild(star3);
-    slider.appendChild(item3);
-    item4.appendChild(star4);
-    slider.appendChild(item4);
-    item5.appendChild(star5);
-    slider.appendChild(item5);
+    //Shadow DOM appending
+    for(i = 0; i < max; i ++) {
+      items[i].appendChild(stars[i]);
+      slider.appendChild(items[i]);
+    }
+
     slider.appendChild(ratertext);
 
-    star1.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="star.png";
-      star3.src="star.png";
-      star4.src="star.png";
-      star5.src="star.png";
-      ratetext = "Nah";
-      ratertext.textContent = ratetext;
-    });
-    star2.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="starclicked.png";
-      star3.src="star.png";
-      star4.src="star.png";
-      star5.src="star.png";
-      ratetext = "Hmm";
-      ratertext.textContent = ratetext;
-    });
-    star3.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="starclicked.png";
-      star3.src="starclicked.png";
-      star4.src="star.png";
-      star5.src="star.png";
-      ratetext = "OK";
-      ratertext.textContent = ratetext;
-    });
-    star4.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="starclicked.png";
-      star3.src="starclicked.png";
-      star4.src="starclicked.png";
-      star5.src="star.png";
-      ratetext = "Wow!";
-      ratertext.textContent = ratetext;
-    });
-    star5.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="starclicked.png";
-      star3.src="starclicked.png";
-      star4.src="starclicked.png";
-      star5.src="starclicked.png";
-      ratetext = "Bang!";
-      ratertext.textContent = ratetext;
-    });
+    //Handle Click Events
+    if(disabled == null || disabled == 0) {
+      var j;
+      for(i = 0; i < max; i ++) {
+        const id = stars[i].id;
+        stars[i].addEventListener("click", function() {
+          for(j = 0; j < max; j++) {
+            if(j < id)
+              stars[j].src="starclicked.png";
+            else
+              stars[j].src="star.png";
+          }
+        });
+      }
+    }
 
-
+    //Final Append
     shadow.appendChild(wrapper);
     wrapper.appendChild(img);
     wrapper.appendChild(author);

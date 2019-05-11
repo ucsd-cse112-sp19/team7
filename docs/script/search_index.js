@@ -6,12 +6,6 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
-    "team7/script/daycounter.js~cecorehello",
-    "class/script/DayCounter.js~CECoreHello.html",
-    "<span>CECoreHello</span> <span class=\"search-result-import-path\">team7/script/DayCounter.js</span>",
-    "class"
-  ],
-  [
     "script/.external-ecmascript.js~array",
     "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array",
     "script/.external-ecmascript.js~Array",
@@ -312,22 +306,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "script/daycounter.js",
-    "file/script/DayCounter.js.html",
-    "script/DayCounter.js",
+    "script/rater.js",
+    "file/script/Rater.js.html",
+    "script/Rater.js",
     "file"
-  ],
-  [
-    "script/daycounter.js~cecorehello#constructor",
-    "class/script/DayCounter.js~CECoreHello.html#instance-constructor-constructor",
-    "script/DayCounter.js~CECoreHello#constructor",
-    "method"
-  ],
-  [
-    "script/daycounter.js~cecorehello#innerhtml",
-    "class/script/DayCounter.js~CECoreHello.html#instance-member-innerHTML",
-    "script/DayCounter.js~CECoreHello#innerHTML",
-    "member"
   ],
   [
     "script/core-hello.js",

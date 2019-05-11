@@ -17,21 +17,21 @@
       "actualCount": 2,
       "undocumentLines": []
     },
-    "script/DayCounter.js": {
-      "expectCount": 3,
-      "actualCount": 0,
-      "undocumentLines": [
-        13,
-        14,
-        29
-      ]
-    },
     "script/namecard.js": {
       "expectCount": 2,
       "actualCount": 0,
       "undocumentLines": [
         6,
         7
+      ]
+    },
+    "script/Rater.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        5
       ]
     },
     "script/webcomponents-dan.js": {

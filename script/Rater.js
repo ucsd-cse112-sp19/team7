@@ -35,16 +35,19 @@ class Rater extends HTMLElement {
     //Default Values setter
     var items = [];
     var stars = [];
+    var textArray = [];
 
     var i;
     if(max == null || max <= 0) max = 5;
     if(value == null || value <= 0) value = 0;
     if(showtext == 1) {
       if(texts == null || texts.length == 0) {
-        texts = [];
         for(i = 0; i < max; i++) {
-          texts.push(i+1);
+          textArray.push(i+1);
         }
+      }
+      else {
+        textArray = texts.split(",");
       }
     }
     //Element Creating
@@ -84,7 +87,7 @@ class Rater extends HTMLElement {
             else
               stars[j].src="star.png";
           }
-          ratetext = texts[id-1];
+          ratetext = textArray[id-1];
           ratertext.textContent = ratetext;
         });
       }

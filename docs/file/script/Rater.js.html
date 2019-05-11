@@ -63,21 +63,29 @@
     var value = this.getAttribute(&quot;valuemodel&quot;);
     var max = this.getAttribute(&quot;max&quot;);
     var disabled = this.getAttribute(&quot;disabled&quot;);
-    //var showtext = this.getAttribute(&quot;show-text&quot;);
+    var showtext = this.getAttribute(&quot;show-text&quot;);
     //var showscore = this.getAttribute(&quot;show-score&quot;);
-    //var texts = this.getAttribute(&quot;texts&quot;);
+    var texts = this.getAttribute(&quot;texts&quot;);
 
-    var items = [];
-    var stars = [];
-    //var texts = [];
+
 
     //Default Values setter
+    var items = [];
+    var stars = [];
+
+    var i;
     if(max == null || max &lt;= 0) max = 5;
     if(value == null || value &lt;= 0) value = 0;
-    
+    if(showtext == 1) {
+      if(texts == null || texts.length == 0) {
+        texts = [];
+        for(i = 0; i &lt; max; i++) {
+          texts.push(i+1);
+        }
+      }
+    }
     //Element Creating
     const slider = document.createElement(&quot;div&quot;);
-    var i;
     for(i = 0; i &lt; max; i++) {
       items.push(document.createElement(&quot;span&quot;));
       stars.push(document.createElement(&quot;img&quot;));
@@ -102,7 +110,7 @@
     slider.appendChild(ratertext);
 
     //Handle Click Events
-    if(disabled == null || disabled == 0) {
+    if(disabled == null) {
       var j;
       for(i = 0; i &lt; max; i ++) {
         const id = stars[i].id;
@@ -113,6 +121,8 @@
             else
               stars[j].src=&quot;star.png&quot;;
           }
+          ratetext = texts[id-1];
+          ratertext.textContent = ratetext;
         });
       }
     }

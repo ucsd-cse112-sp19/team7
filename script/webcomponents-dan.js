@@ -1,7 +1,13 @@
 import { LitElement, html } from "lit-element";
 
+/**
+ * class WebcomponentsDan
+ * @extends {LitElement}
+ */
 class WebcomponentsDan extends LitElement { 
-    
+  /**
+   * render function renders the component
+   */
   render() {
     var lang = this.getAttribute("lang");
     if (lang == "eng"){

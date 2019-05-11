@@ -1,9 +1,13 @@
 class Rater extends HTMLElement {
   constructor() {
     super();
+    this.attachShadow({mode: "open"});
+  }
+  static get observedAttributes() {
+    return ["valuemodel", "max", "disabled", "show-text", "texts"];
   }
   connectedCallback() {
-    const shadow = this.attachShadow({mode: "open"});
+    const shadow = this.shadowRoot;
     const wrapper = document.createElement("span");
     wrapper.setAttribute("class", "wrapper");
     var author = document.createElement("p");
@@ -100,6 +104,31 @@ class Rater extends HTMLElement {
     wrapper.appendChild(info);
     wrapper.appendChild(slider);
   }
+
+  set max(value) {
+    const isChecked = Boolean(value);
+    if (isChecked)
+      this.setAttribute("checked", "");
+    else
+      this.removeAttribute("checked");
+  }
+
+  get max() {
+    return this.hasAttribute("checked");
+  }
+
+  set disabled(value) {
+    const isDisabled = Boolean(value);
+    if (isDisabled)
+      this.setAttribute("disabled", "");
+    else
+      this.removeAttribute("disabled");
+  }
+
+  get disabled() {
+    return this.hasAttribute("disabled");
+  }
+
 }
   
 customElements.define("rater-r", Rater);

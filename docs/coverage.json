@@ -1,0 +1,71 @@
+{
+  "coverage": "10.52%",
+  "expectCount": 19,
+  "actualCount": 2,
+  "files": {
+    "script/CECoreHello.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2,
+        17
+      ]
+    },
+    "script/core-hello.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "script/DayCounter.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        13,
+        14,
+        29
+      ]
+    },
+    "script/namecard.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        7
+      ]
+    },
+    "script/webcomponents-dan.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        5
+      ]
+    },
+    "script/webcomponents_christianetsu.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        16,
+        17,
+        20
+      ]
+    },
+    "script/webcomponents_er.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2
+      ]
+    },
+    "script/webcomponents_leon.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3
+      ]
+    }
+  }
+}

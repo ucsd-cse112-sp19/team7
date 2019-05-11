@@ -60,90 +60,64 @@
     img.src = imgUrl;
     img.height=&quot;300&quot;;
 
+    var value = this.getAttribute(&quot;valuemodel&quot;);
+    var max = this.getAttribute(&quot;max&quot;);
+    var disabled = this.getAttribute(&quot;disabled&quot;);
+    //var showtext = this.getAttribute(&quot;show-text&quot;);
+    //var showscore = this.getAttribute(&quot;show-score&quot;);
+    //var texts = this.getAttribute(&quot;texts&quot;);
+
+    var items = [];
+    var stars = [];
+    //var texts = [];
+
+    //Default Values setter
+    if(max == null || max &lt;= 0) max = 5;
+    if(value == null || value &lt;= 0) value = 0;
+    
+    //Element Creating
     const slider = document.createElement(&quot;div&quot;);
-    const item1 = document.createElement(&quot;span&quot;);
-    const star1 = document.createElement(&quot;img&quot;);
-    const item2 = document.createElement(&quot;span&quot;);
-    const star2 = document.createElement(&quot;img&quot;);
-    const item3 = document.createElement(&quot;span&quot;);
-    const star3 = document.createElement(&quot;img&quot;);
-    const item4 = document.createElement(&quot;span&quot;);
-    const star4 = document.createElement(&quot;img&quot;);
-    const item5 = document.createElement(&quot;span&quot;);
-    const star5 = document.createElement(&quot;img&quot;);
-    star1.src=&quot;star.png&quot;;
-    star1.height=&quot;20&quot;;
-    star2.src=&quot;star.png&quot;;
-    star2.height=&quot;20&quot;;
-    star3.src=&quot;star.png&quot;;
-    star3.height=&quot;20&quot;;
-    star4.src=&quot;star.png&quot;;
-    star4.height=&quot;20&quot;;
-    star5.src=&quot;star.png&quot;;
-    star5.height=&quot;20&quot;;
+    var i;
+    for(i = 0; i &lt; max; i++) {
+      items.push(document.createElement(&quot;span&quot;));
+      stars.push(document.createElement(&quot;img&quot;));
+      if(i &lt; value)
+        stars[i].src = &quot;starclicked.png&quot;;
+      else
+        stars[i].src = &quot;star.png&quot;;
+      stars[i].id = i+1;
+      stars[i].height = &quot;20&quot;;
+    }
+
     const ratertext = document.createElement(&quot;p&quot;);
     var ratetext = &quot;&quot;;
     ratertext.textContent = ratetext;
 
-    item1.appendChild(star1);
-    slider.appendChild(item1);
-    item2.appendChild(star2);
-    slider.appendChild(item2);
-    item3.appendChild(star3);
-    slider.appendChild(item3);
-    item4.appendChild(star4);
-    slider.appendChild(item4);
-    item5.appendChild(star5);
-    slider.appendChild(item5);
+    //Shadow DOM appending
+    for(i = 0; i &lt; max; i ++) {
+      items[i].appendChild(stars[i]);
+      slider.appendChild(items[i]);
+    }
+
     slider.appendChild(ratertext);
 
-    star1.addEventListener(&quot;click&quot;, function() {
-      star1.src=&quot;starclicked.png&quot;;
-      star2.src=&quot;star.png&quot;;
-      star3.src=&quot;star.png&quot;;
-      star4.src=&quot;star.png&quot;;
-      star5.src=&quot;star.png&quot;;
-      ratetext = &quot;Nah&quot;;
-      ratertext.textContent = ratetext;
-    });
-    star2.addEventListener(&quot;click&quot;, function() {
-      star1.src=&quot;starclicked.png&quot;;
-      star2.src=&quot;starclicked.png&quot;;
-      star3.src=&quot;star.png&quot;;
-      star4.src=&quot;star.png&quot;;
-      star5.src=&quot;star.png&quot;;
-      ratetext = &quot;Hmm&quot;;
-      ratertext.textContent = ratetext;
-    });
-    star3.addEventListener(&quot;click&quot;, function() {
-      star1.src=&quot;starclicked.png&quot;;
-      star2.src=&quot;starclicked.png&quot;;
-      star3.src=&quot;starclicked.png&quot;;
-      star4.src=&quot;star.png&quot;;
-      star5.src=&quot;star.png&quot;;
-      ratetext = &quot;OK&quot;;
-      ratertext.textContent = ratetext;
-    });
-    star4.addEventListener(&quot;click&quot;, function() {
-      star1.src=&quot;starclicked.png&quot;;
-      star2.src=&quot;starclicked.png&quot;;
-      star3.src=&quot;starclicked.png&quot;;
-      star4.src=&quot;starclicked.png&quot;;
-      star5.src=&quot;star.png&quot;;
-      ratetext = &quot;Wow!&quot;;
-      ratertext.textContent = ratetext;
-    });
-    star5.addEventListener(&quot;click&quot;, function() {
-      star1.src=&quot;starclicked.png&quot;;
-      star2.src=&quot;starclicked.png&quot;;
-      star3.src=&quot;starclicked.png&quot;;
-      star4.src=&quot;starclicked.png&quot;;
-      star5.src=&quot;starclicked.png&quot;;
-      ratetext = &quot;Bang!&quot;;
-      ratertext.textContent = ratetext;
-    });
+    //Handle Click Events
+    if(disabled == null || disabled == 0) {
+      var j;
+      for(i = 0; i &lt; max; i ++) {
+        const id = stars[i].id;
+        stars[i].addEventListener(&quot;click&quot;, function() {
+          for(j = 0; j &lt; max; j++) {
+            if(j &lt; id)
+              stars[j].src=&quot;starclicked.png&quot;;
+            else
+              stars[j].src=&quot;star.png&quot;;
+          }
+        });
+      }
+    }
 
-
+    //Final Append
     shadow.appendChild(wrapper);
     wrapper.appendChild(img);
     wrapper.appendChild(author);

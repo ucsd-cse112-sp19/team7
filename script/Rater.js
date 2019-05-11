@@ -26,21 +26,29 @@ class Rater extends HTMLElement {
     var value = this.getAttribute("valuemodel");
     var max = this.getAttribute("max");
     var disabled = this.getAttribute("disabled");
-    //var showtext = this.getAttribute("show-text");
+    var showtext = this.getAttribute("show-text");
     //var showscore = this.getAttribute("show-score");
-    //var texts = this.getAttribute("texts");
+    var texts = this.getAttribute("texts");
 
-    var items = [];
-    var stars = [];
-    //var texts = [];
+
 
     //Default Values setter
+    var items = [];
+    var stars = [];
+
+    var i;
     if(max == null || max <= 0) max = 5;
     if(value == null || value <= 0) value = 0;
-    
+    if(showtext == 1) {
+      if(texts == null || texts.length == 0) {
+        texts = [];
+        for(i = 0; i < max; i++) {
+          texts.push(i+1);
+        }
+      }
+    }
     //Element Creating
     const slider = document.createElement("div");
-    var i;
     for(i = 0; i < max; i++) {
       items.push(document.createElement("span"));
       stars.push(document.createElement("img"));
@@ -65,7 +73,7 @@ class Rater extends HTMLElement {
     slider.appendChild(ratertext);
 
     //Handle Click Events
-    if(disabled == null || disabled == 0) {
+    if(disabled == null) {
       var j;
       for(i = 0; i < max; i ++) {
         const id = stars[i].id;
@@ -76,6 +84,8 @@ class Rater extends HTMLElement {
             else
               stars[j].src="star.png";
           }
+          ratetext = texts[id-1];
+          ratertext.textContent = ratetext;
         });
       }
     }

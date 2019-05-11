@@ -1,14 +1,50 @@
 window.esdocSearchIndex = [
   [
+    "team7/script/webcomponents_christianetsu.js~addmajorelement",
+    "class/script/webcomponents_christianetsu.js~AddMajorElement.html",
+    "<span>AddMajorElement</span> <span class=\"search-result-import-path\">team7/script/webcomponents_christianetsu.js</span>",
+    "class"
+  ],
+  [
     "team7/script/cecorehello.js~cecorehello",
     "class/script/CECoreHello.js~CECoreHello.html",
     "<span>CECoreHello</span> <span class=\"search-result-import-path\">team7/script/CECoreHello.js</span>",
     "class"
   ],
   [
-    "team7/script/daycounter.js~cecorehello",
-    "class/script/DayCounter.js~CECoreHello.html",
-    "<span>CECoreHello</span> <span class=\"search-result-import-path\">team7/script/DayCounter.js</span>",
+    "team7/script/rater.js~rater",
+    "class/script/Rater.js~Rater.html",
+    "<span>Rater</span> <span class=\"search-result-import-path\">team7/script/Rater.js</span>",
+    "class"
+  ],
+  [
+    "team7/script/webcomponents_leon.js~shittydraft",
+    "class/script/webcomponents_leon.js~ShittyDraft.html",
+    "<span>ShittyDraft</span> <span class=\"search-result-import-path\">team7/script/webcomponents_leon.js</span>",
+    "class"
+  ],
+  [
+    "team7/script/webcomponents_er.js~testwebcomponent",
+    "class/script/webcomponents_er.js~TestWebComponent.html",
+    "<span>TestWebComponent</span> <span class=\"search-result-import-path\">team7/script/webcomponents_er.js</span>",
+    "class"
+  ],
+  [
+    "team7/script/webcomponents-dan.js~webcomponentsdan",
+    "class/script/webcomponents-dan.js~WebcomponentsDan.html",
+    "<span>WebcomponentsDan</span> <span class=\"search-result-import-path\">team7/script/webcomponents-dan.js</span>",
+    "class"
+  ],
+  [
+    "team7/script/core-hello.js~corehello",
+    "class/script/core-hello.js~corehello.html",
+    "<span>corehello</span> <span class=\"search-result-import-path\">team7/script/core-hello.js</span>",
+    "class"
+  ],
+  [
+    "team7/script/namecard.js~namecard",
+    "class/script/namecard.js~nameCard.html",
+    "<span>nameCard</span> <span class=\"search-result-import-path\">team7/script/namecard.js</span>",
     "class"
   ],
   [
@@ -312,22 +348,22 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "script/daycounter.js",
-    "file/script/DayCounter.js.html",
-    "script/DayCounter.js",
+    "script/rater.js",
+    "file/script/Rater.js.html",
+    "script/Rater.js",
     "file"
   ],
   [
-    "script/daycounter.js~cecorehello#constructor",
-    "class/script/DayCounter.js~CECoreHello.html#instance-constructor-constructor",
-    "script/DayCounter.js~CECoreHello#constructor",
+    "script/rater.js~rater#connectedcallback",
+    "class/script/Rater.js~Rater.html#instance-method-connectedCallback",
+    "script/Rater.js~Rater#connectedCallback",
     "method"
   ],
   [
-    "script/daycounter.js~cecorehello#innerhtml",
-    "class/script/DayCounter.js~CECoreHello.html#instance-member-innerHTML",
-    "script/DayCounter.js~CECoreHello#innerHTML",
-    "member"
+    "script/rater.js~rater#constructor",
+    "class/script/Rater.js~Rater.html#instance-constructor-constructor",
+    "script/Rater.js~Rater#constructor",
+    "method"
   ],
   [
     "script/core-hello.js",
@@ -336,10 +372,22 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "script/core-hello.js~corehello#constructor",
+    "class/script/core-hello.js~corehello.html#instance-constructor-constructor",
+    "script/core-hello.js~corehello#constructor",
+    "method"
+  ],
+  [
     "script/namecard.js",
     "file/script/namecard.js.html",
     "script/namecard.js",
     "file"
+  ],
+  [
+    "script/namecard.js~namecard#constructor",
+    "class/script/namecard.js~nameCard.html#instance-constructor-constructor",
+    "script/namecard.js~nameCard#constructor",
+    "method"
   ],
   [
     "script/webcomponents-dan.js",
@@ -348,10 +396,28 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "script/webcomponents-dan.js~webcomponentsdan#render",
+    "class/script/webcomponents-dan.js~WebcomponentsDan.html#instance-method-render",
+    "script/webcomponents-dan.js~WebcomponentsDan#render",
+    "method"
+  ],
+  [
     "script/webcomponents_christianetsu.js",
     "file/script/webcomponents_christianetsu.js.html",
     "script/webcomponents_christianetsu.js",
     "file"
+  ],
+  [
+    "script/webcomponents_christianetsu.js~addmajorelement#constructor",
+    "class/script/webcomponents_christianetsu.js~AddMajorElement.html#instance-constructor-constructor",
+    "script/webcomponents_christianetsu.js~AddMajorElement#constructor",
+    "method"
+  ],
+  [
+    "script/webcomponents_christianetsu.js~addmajorelement#major",
+    "class/script/webcomponents_christianetsu.js~AddMajorElement.html#instance-member-major",
+    "script/webcomponents_christianetsu.js~AddMajorElement#major",
+    "member"
   ],
   [
     "script/webcomponents_er.js",
@@ -360,9 +426,21 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "script/webcomponents_er.js~testwebcomponent#constructor",
+    "class/script/webcomponents_er.js~TestWebComponent.html#instance-constructor-constructor",
+    "script/webcomponents_er.js~TestWebComponent#constructor",
+    "method"
+  ],
+  [
     "script/webcomponents_leon.js",
     "file/script/webcomponents_leon.js.html",
     "script/webcomponents_leon.js",
     "file"
+  ],
+  [
+    "script/webcomponents_leon.js~shittydraft#constructor",
+    "class/script/webcomponents_leon.js~ShittyDraft.html#instance-constructor-constructor",
+    "script/webcomponents_leon.js~ShittyDraft#constructor",
+    "method"
   ]
 ]

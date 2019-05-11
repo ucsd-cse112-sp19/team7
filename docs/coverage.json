@@ -1,30 +1,19 @@
 {
-  "coverage": "10.52%",
+  "coverage": "31.57%",
   "expectCount": 19,
-  "actualCount": 2,
+  "actualCount": 6,
   "files": {
     "script/CECoreHello.js": {
       "expectCount": 3,
-      "actualCount": 0,
+      "actualCount": 2,
       "undocumentLines": [
-        1,
-        2,
-        17
+        23
       ]
     },
     "script/core-hello.js": {
       "expectCount": 2,
       "actualCount": 2,
       "undocumentLines": []
-    },
-    "script/DayCounter.js": {
-      "expectCount": 3,
-      "actualCount": 0,
-      "undocumentLines": [
-        13,
-        14,
-        29
-      ]
     },
     "script/namecard.js": {
       "expectCount": 2,
@@ -34,13 +23,19 @@
         7
       ]
     },
-    "script/webcomponents-dan.js": {
-      "expectCount": 2,
+    "script/Rater.js": {
+      "expectCount": 3,
       "actualCount": 0,
       "undocumentLines": [
-        3,
+        1,
+        2,
         5
       ]
+    },
+    "script/webcomponents-dan.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
     },
     "script/webcomponents_christianetsu.js": {
       "expectCount": 3,

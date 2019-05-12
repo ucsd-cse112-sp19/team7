@@ -67,6 +67,8 @@ class Rater extends HTMLElement {
 
     //initialize the star value
     this.handleValueModel(this.valueModel);
+
+    //TODO4
   }
 
   onStarClick(event) {
@@ -88,7 +90,7 @@ class Rater extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["v-model", "max", "disabled", "show-score", "show-text", "texts", "score-template"];
+    return ["v-model", "max", "disabled", "show-score", "show-text", "texts", "score-template"]; //TODO1
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
@@ -116,6 +118,7 @@ class Rater extends HTMLElement {
     case "score-template":
       // no need to handle since "get texts" is updated
       break;
+    //TODO3
     }
   }
 
@@ -266,6 +269,8 @@ class Rater extends HTMLElement {
   get scoreTemplate() {
     return this.getAttribute("score-template") || "{value}";
   }
+
+  //TODO2
 }
   
 customElements.define("rater-r", Rater);

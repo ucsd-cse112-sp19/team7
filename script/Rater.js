@@ -3,9 +3,7 @@ class Rater extends HTMLElement {
     super();
     this.attachShadow({mode: "open"});
   }
-  static get observedAttributes() {
-    return ["valuemodel", "max", "disabled", "show-text", "texts"];
-  }
+
   connectedCallback() {
     const shadow = this.shadowRoot;
     const wrapper = document.createElement("span");
@@ -105,16 +103,16 @@ class Rater extends HTMLElement {
     wrapper.appendChild(slider);
   }
 
+  static get observedAttributes() {
+    return ["valuemodel", "max", "disabled", "show-text", "texts"];
+  }
+
   set max(value) {
-    const isChecked = Boolean(value);
-    if (isChecked)
-      this.setAttribute("checked", "");
-    else
-      this.removeAttribute("checked");
+    this.setAttribute("max", value);
   }
 
   get max() {
-    return this.hasAttribute("checked");
+    return this.hasAttribute("max");
   }
 
   set disabled(value) {

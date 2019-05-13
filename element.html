@@ -14,31 +14,32 @@
     <script src="https://unpkg.com/element-ui@2.8.2/lib/index.js"></script>
     <div id="app">
       <el-carousel :interval="4000" type="card" height="800px">
-          <el-carousel-item>
-            <rater-r author = "Francis" des="Cool Car 1" img="1.jpg" max = "10" show-text="1"
+        <el-carousel-item>
+          <rater-r author = "Francis" des="Cool Car 1" img="1.jpg" max = "10" show-text="1"
             texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></rater-r>
-          </el-carousel-item>
-          <el-carousel-item>
-              <rater-r author = "Francis" des="Cool Car 2" img="2.jpg" valuemodel = "2"></rater-r>
-          </el-carousel-item>
-          <el-carousel-item>
-              <rater-r author = "Francis" des="Cool Car 3" img="3.jpg" max = "6" disabled></rater-r>
-          </el-carousel-item>
-        </el-carousel>
-      </div>
-      <script>
-        function handle1(value) {
-          console.log(value);
-        }
-      </script>
+        </el-carousel-item>
+        <el-carousel-item>
+          <rater-r author = "Francis" des="Cool Car 2" score-template="super{value}!!" show-score img="2.jpg" v-model = "2"></rater-r>
+        </el-carousel-item>
+        <el-carousel-item>
+          <rater-r author = "Francis" des="Cool Car 3" img="3.jpg" max = "6" disabled></rater-r>
+        </el-carousel-item>
+      </el-carousel>
+    </div>
+    <script>
+      function handle1(value) {
+        console.log(value);
+      }
+    </script>
   </body>
-<script>
-new Vue({
-    el: '#app',
-    data: function() {
-    return { visible: false }
-    }
-})
-</script>
+    
+  <script>
+  new Vue({
+      //el: '#app',
+      data: function() {
+      return { visible: false }
+      }
+  })
+  </script>
 
 </html>

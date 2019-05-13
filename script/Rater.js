@@ -1,110 +1,198 @@
+const template = document.createElement("template");
+template.innerHTML = `
+  <style>
+    :host {
+      cursor: default;
+    }
+    img {
+      height: 300px;
+    }
+    div img {
+      height: 20px;
+    }
+  </style>
+  <span>
+    <img>
+    <p id="author"></p>
+    <p id="des"></p>
+    <div>
+    
+    </div>
+  </span>
+`;
+
+
 class Rater extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({mode: "open"});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
   connectedCallback() {
     const shadow = this.shadowRoot;
-    const wrapper = document.createElement("span");
-    wrapper.setAttribute("class", "wrapper");
-    var author = document.createElement("p");
-    var info = document.createElement("p");
 
-    var authortext = "Author: " + this.getAttribute("author");
-    var text = "Description: " + this.getAttribute("des");
-    info.textContent = text;
-    author.textContent = authortext;
+    var author = shadow.querySelector("p#author");
+    var info = shadow.querySelector("p#des");
+    author.textContent = "Author: " + this.getAttribute("author");
+    info.textContent = "Description: " + this.getAttribute("des");
+
     var imgUrl;
     if(this.hasAttribute("img")) {
       imgUrl = this.getAttribute("img");
     } else {
       imgUrl = "background.jpg";
     }
-    var img = document.createElement("img");
+    var img = shadow.querySelector("img");
     img.src = imgUrl;
-    img.height="300";
 
-    var value = this.getAttribute("valuemodel");
-    var max = this.getAttribute("max");
-    var disabled = this.getAttribute("disabled");
-    var showtext = this.getAttribute("show-text");
-    //var showscore = this.getAttribute("show-score");
-    var texts = this.getAttribute("texts");
+    const slider = shadow.querySelector("div");
 
-
-
-    //Default Values setter
-    var items = [];
-    var stars = [];
-    var textArray = [];
-
-    var i;
-    if(max == null || max <= 0) max = 5;
-    if(value == null || value <= 0) value = 0;
-    if(showtext == 1) {
-      if(texts == null || texts.length == 0) {
-        for(i = 0; i < max; i++) {
-          textArray.push(i+1);
-        }
-      }
-      else {
-        textArray = texts.split(",");
-      }
-    }
-    //Element Creating
-    const slider = document.createElement("div");
-    for(i = 0; i < max; i++) {
-      items.push(document.createElement("span"));
-      stars.push(document.createElement("img"));
-      if(i < value)
-        stars[i].src = "starclicked.png";
-      else
-        stars[i].src = "star.png";
-      stars[i].id = i+1;
-      stars[i].height = "20";
-    }
-
+    // set up the rating bar
+    if (slider.querySelectorAll("img"))
+      this.handleMax(slider.querySelectorAll("img").length, this.max); //add the stars
+    else
+      this.handleMax(0, this.max);
+ 
+    // append the text field for the rating bar
     const ratertext = document.createElement("p");
-    var ratetext = "";
-    ratertext.textContent = ratetext;
-
-    //Shadow DOM appending
-    for(i = 0; i < max; i ++) {
-      items[i].appendChild(stars[i]);
-      slider.appendChild(items[i]);
-    }
-
+    ratertext.textContent = "";
     slider.appendChild(ratertext);
 
-    //Handle Click Events
-    if(disabled == null) {
-      var j;
-      for(i = 0; i < max; i ++) {
-        const id = stars[i].id;
-        stars[i].addEventListener("click", function() {
-          for(j = 0; j < max; j++) {
-            if(j < id)
-              stars[j].src="starclicked.png";
-            else
-              stars[j].src="star.png";
-          }
-          ratetext = textArray[id-1];
-          ratertext.textContent = ratetext;
-        });
-      }
-    }
+    // add click events to the rating stars
+    this.handleDisabled(false);
+    
+    // set up the text content, either number or the chinese characters
+    this.handleShowScoreAndText(this.showScore, this.showText);
 
-    //Final Append
-    shadow.appendChild(wrapper);
-    wrapper.appendChild(img);
-    wrapper.appendChild(author);
-    wrapper.appendChild(info);
-    wrapper.appendChild(slider);
+    //initialize the star value
+    this.handleValueModel(this.valueModel);
+
+    //TODO4
+  }
+
+  onStarClick(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      var stars = rater.shadowRoot.querySelectorAll("div img");
+      var id = event.target.id;
+      var i;
+      for(i = 0; i < rater.max; i++) {
+        if(i < id)
+          stars[i].src="starclicked.png";
+        else
+          stars[i].src="star.png";
+      }
+      if (rater.texts[id-1])
+        rater.shadowRoot.querySelector("div p").textContent = rater.texts[id-1];
+    }
   }
 
   static get observedAttributes() {
-    return ["valuemodel", "max", "disabled", "show-text", "texts"];
+    return ["v-model", "max", "disabled", "show-score", "show-text", "texts", "score-template"]; //TODO1
+  }
+
+  attributeChangedCallback(name, oldValue, newValue) {
+    // this is called also when loading the page initially, based on the initial attributes
+  
+    switch (name) {
+    case "v-model":
+      this.handleValueModel(newValue);
+      break;
+    case "max":
+      this.handleMax(oldValue, newValue);
+      break;
+    case "disabled":
+      this.handleDisabled(newValue);
+      break;
+    case "show-score":
+      this.handleShowScoreAndText(this.showScore, this.showText);
+      break;
+    case "show-text":
+      this.handleShowScoreAndText(this.showScore, this.showText);
+      break;
+    case "texts":
+      // no need to handle since "get texts" is updated
+      break;
+    case "score-template":
+      // no need to handle since "get texts" is updated
+      break;
+    //TODO3
+    }
+  }
+
+  handleValueModel(newValue) {
+    var stars = this.shadowRoot.querySelectorAll("div img");
+    var i;
+    for(i = 0; i < stars.length; i++) {
+      if(i < newValue)
+        stars[i].src = "starclicked.png";
+      else
+        stars[i].src = "star.png";
+    }
+    if (this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
+      this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
+  }
+
+  handleMax(oldValue, newValue) {
+    const slider = this.shadowRoot.querySelector("div");
+    var i;
+    if (oldValue < newValue) {
+      for (i = oldValue; i < newValue; i++) {
+        var newItem = document.createElement("span");
+        var newStar = document.createElement("img");
+        newStar.src = "star.png";
+        newStar.id = i+1;
+        
+        if(!this.disabled) {
+          newStar.addEventListener("click", this.onStarClick);
+        }
+
+        newItem.appendChild(newStar);
+        slider.appendChild(newItem);
+      }
+    }
+    else {
+      var items = this.shadowRoot.querySelectorAll("div span");
+      for (i = oldValue; i > newValue; i--) {
+        slider.removeChild(items[i]);  
+      }
+    }
+  }
+  
+  handleDisabled(newValue) {
+    var stars = this.shadowRoot.querySelectorAll("div img");
+    var i;
+    if (newValue) {
+      for(i = 0; i < this.max; i++) {
+        stars[i].removeEventListener("click", this.onStarClick);
+      }
+    }
+    else {
+      for(i = 0; i < this.max; i++) {
+        stars[i].addEventListener("click", this.onStarClick);
+      }
+    }
+  }
+
+  handleShowScoreAndText(scoreVal, textVal) {
+    if (!this.shadowRoot.querySelector("div p"))
+      return;
+    if (Boolean(scoreVal) || Boolean(textVal)) {
+      this.shadowRoot.querySelector("div p").style.display = "block";
+    }
+    else {
+      this.shadowRoot.querySelector("div p").style.display = "none";
+    }
+  } 
+
+  set valueModel(value) {
+    this.setAttribute("v-model", value);
+  }
+
+  get valueModel() {
+    return this.getAttribute("v-model") || 0;
   }
 
   set max(value) {
@@ -112,7 +200,7 @@ class Rater extends HTMLElement {
   }
 
   get max() {
-    return this.hasAttribute("max");
+    return this.getAttribute("max") || 5;
   }
 
   set disabled(value) {
@@ -127,6 +215,62 @@ class Rater extends HTMLElement {
     return this.hasAttribute("disabled");
   }
 
+  set showScore(value) {
+    const scoreShown = Boolean(value);
+    if (scoreShown)
+      this.setAttribute("show-score", "");
+    else
+      this.removeAttribute("show-score");
+  }
+
+  get showScore() {
+    return this.hasAttribute("show-score");
+  }
+
+  set showText(value) {
+    const testShown = Boolean(value);
+    if (testShown)
+      this.setAttribute("show-text", "");
+    else
+      this.removeAttribute("show-text");
+  }
+
+  get showText() {
+    return this.hasAttribute("show-text");
+  }
+  
+  set texts(value) {
+    this.setAttribute("texts", value);
+  }
+
+  get texts() {
+    if (this.showScore) {
+      var textArray = [];
+      var correctTemplate = this.scoreTemplate.includes("{value}");
+      var i;
+      for (i = 1; i <= this.max; i++) {
+        if (correctTemplate)
+          textArray.push(this.scoreTemplate.replace("{value}", i));
+        else 
+          textArray.push(i);
+      }
+      return textArray;
+    }
+    else if (this.getAttribute("texts"))
+      return this.getAttribute("texts").split(",");
+    else 
+      return ["极差", "失望", "一般", "满意", "惊喜"];
+  }
+
+  set scoreTemplate(value) {
+    this.setAttribute("score-template", value);
+  }
+
+  get scoreTemplate() {
+    return this.getAttribute("score-template") || "{value}";
+  }
+
+  //TODO2
 }
   
 customElements.define("rater-r", Rater);

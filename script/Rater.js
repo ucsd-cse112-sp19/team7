@@ -103,7 +103,45 @@ class Rater extends HTMLElement {
   }
 
   /**
-   * `onStarClick()` is called when any rating star is clicked
+   * `onStarClicked()` is called when any rating star is clicked
+   * It will correctly set the current rate value
+   */
+  onStarClicked(event) {
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      var stars = rater.shadowRoot.querySelectorAll("div img");
+      var i;
+      for(i = 0; i < rater.max; i++) {
+        stars[i].currentRate = event.target.id;
+      }
+      if (rater.texts[this.currentRate - 1])
+        rater.shadowRoot.querySelector("div p").textContent = rater.texts[this.currentRate - 1];
+    }
+  }
+
+  /**
+   * `onStarLeave()` is called when cursor moves awayy
+   * It will correctly set the value back to current Rate Value
+   */
+  onStarLeave(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      var stars = rater.shadowRoot.querySelectorAll("div img");
+      var i;
+      for(i = 0; i < rater.max; i++) {
+        if(i < this.currentRate)
+          stars[i].src="starclicked.png";
+        else
+          stars[i].src="star.png";
+      }
+      if (rater.texts[this.currentRate - 1])
+        rater.shadowRoot.querySelector("div p").textContent = rater.texts[this.currentRate - 1];
+    }
+  }
+
+  /**
+   * `onStarClick()` is called when any rating star is hovered
    * It will correctly set the start img and text contents
    */
   onStarClick(event) {
@@ -180,36 +218,6 @@ class Rater extends HTMLElement {
       this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
   }
 
-  onStarClicked(event) {
-    var rater = event.target.getRootNode().host;
-    if(!rater.disabled) {
-      var stars = rater.shadowRoot.querySelectorAll("div img");
-      var i;
-      for(i = 0; i < rater.max; i++) {
-        stars[i].currentRate = event.target.id;
-      }
-      if (rater.texts[this.currentRate - 1])
-        rater.shadowRoot.querySelector("div p").textContent = rater.texts[this.currentRate - 1];
-    }
-  }
-
-  onStarLeave(event) {
-    // cannot use this as the this in event listener is the target
-    var rater = event.target.getRootNode().host;
-    if(!rater.disabled) {
-      var stars = rater.shadowRoot.querySelectorAll("div img");
-      var i;
-      for(i = 0; i < rater.max; i++) {
-        if(i < this.currentRate)
-          stars[i].src="starclicked.png";
-        else
-          stars[i].src="star.png";
-      }
-      if (rater.texts[this.currentRate - 1])
-        rater.shadowRoot.querySelector("div p").textContent = rater.texts[this.currentRate - 1];
-    }
-  }
-
   /**
    * `handleMax()` is called when the `max` attribute of
    * rater-r is changed
@@ -252,11 +260,15 @@ class Rater extends HTMLElement {
     if (newValue) {
       for(i = 0; i < this.max; i++) {
         stars[i].removeEventListener("mouseover", this.onStarClick);
+        stars[i].removeEventListener("click",this.onStarClicked);
+        stars[i].removeEventListener("mouseleave",this.onStarLeave);
       }
     }
     else {
       for(i = 0; i < this.max; i++) {
         stars[i].addEventListener("mouseover", this.onStarClick);
+        stars[i].addEventListener("click",this.onStarClicked);
+        stars[i].addEventListener("mouseleave",this.onStarLeave);
       }
     }
   }

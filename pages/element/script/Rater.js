@@ -17,7 +17,7 @@ class Rater extends HTMLElement {
     if(this.hasAttribute("img")) {
       imgUrl = this.getAttribute("img");
     } else {
-      imgUrl = "background.jpg";
+      imgUrl = "img/background.jpg";
     }
     var img = document.createElement("img");
     img.src = imgUrl;
@@ -34,15 +34,15 @@ class Rater extends HTMLElement {
     const star4 = document.createElement("img");
     const item5 = document.createElement("span");
     const star5 = document.createElement("img");
-    star1.src="star.png";
+    star1.src="img/star.png";
     star1.height="20";
-    star2.src="star.png";
+    star2.src="img/star.png";
     star2.height="20";
-    star3.src="star.png";
+    star3.src="img/star.png";
     star3.height="20";
-    star4.src="star.png";
+    star4.src="img/star.png";
     star4.height="20";
-    star5.src="star.png";
+    star5.src="img/star.png";
     star5.height="20";
     const ratertext = document.createElement("p");
     var ratetext = "";
@@ -61,47 +61,47 @@ class Rater extends HTMLElement {
     slider.appendChild(ratertext);
 
     star1.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="star.png";
-      star3.src="star.png";
-      star4.src="star.png";
-      star5.src="star.png";
+      star1.src="img/starclicked.png";
+      star2.src="img/star.png";
+      star3.src="img/star.png";
+      star4.src="img/star.png";
+      star5.src="img/star.png";
       ratetext = "Nah";
       ratertext.textContent = ratetext;
     });
     star2.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="starclicked.png";
-      star3.src="star.png";
-      star4.src="star.png";
-      star5.src="star.png";
+      star1.src="img/starclicked.png";
+      star2.src="img/starclicked.png";
+      star3.src="img/star.png";
+      star4.src="img/star.png";
+      star5.src="img/star.png";
       ratetext = "Hmm";
       ratertext.textContent = ratetext;
     });
     star3.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="starclicked.png";
-      star3.src="starclicked.png";
-      star4.src="star.png";
-      star5.src="star.png";
+      star1.src="img/starclicked.png";
+      star2.src="img/starclicked.png";
+      star3.src="img/starclicked.png";
+      star4.src="img/star.png";
+      star5.src="img/star.png";
       ratetext = "OK";
       ratertext.textContent = ratetext;
     });
     star4.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="starclicked.png";
-      star3.src="starclicked.png";
-      star4.src="starclicked.png";
-      star5.src="star.png";
+      star1.src="img/starclicked.png";
+      star2.src="img/starclicked.png";
+      star3.src="img/starclicked.png";
+      star4.src="img/starclicked.png";
+      star5.src="img/star.png";
       ratetext = "Wow!";
       ratertext.textContent = ratetext;
     });
     star5.addEventListener("click", function() {
-      star1.src="starclicked.png";
-      star2.src="starclicked.png";
-      star3.src="starclicked.png";
-      star4.src="starclicked.png";
-      star5.src="starclicked.png";
+      star1.src="img/starclicked.png";
+      star2.src="img/starclicked.png";
+      star3.src="img/starclicked.png";
+      star4.src="img/starclicked.png";
+      star5.src="img/starclicked.png";
       ratetext = "Bang!";
       ratertext.textContent = ratetext;
     });

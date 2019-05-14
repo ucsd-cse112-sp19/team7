@@ -42,7 +42,7 @@ template.innerHTML = `
 `;
 
 
-export class Rater extends HTMLElement {
+class Rater extends HTMLElement {
   /**
    * The element's constructor is run anytime a new instance is created.
    * Instances are created by parsing HTML, or calling
@@ -77,7 +77,6 @@ export class Rater extends HTMLElement {
     }
     var img = shadow.querySelector("img");
     img.src = imgUrl;
-
     const slider = shadow.querySelector("div");
 
     // set up the rating bar
@@ -176,8 +175,39 @@ export class Rater extends HTMLElement {
       else
         stars[i].src = "star.png";
     }
+    this.currentRate = newValue;
     if (this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
+  }
+
+  onStarClicked(event) {
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      var stars = rater.shadowRoot.querySelectorAll("div img");
+      var i;
+      for(i = 0; i < rater.max; i++) {
+        stars[i].currentRate = event.target.id;
+      }
+      if (rater.texts[this.currentRate - 1])
+        rater.shadowRoot.querySelector("div p").textContent = rater.texts[this.currentRate - 1];
+    }
+  }
+
+  onStarLeave(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      var stars = rater.shadowRoot.querySelectorAll("div img");
+      var i;
+      for(i = 0; i < rater.max; i++) {
+        if(i < this.currentRate)
+          stars[i].src="starclicked.png";
+        else
+          stars[i].src="star.png";
+      }
+      if (rater.texts[this.currentRate - 1])
+        rater.shadowRoot.querySelector("div p").textContent = rater.texts[this.currentRate - 1];
+    }
   }
 
   /**
@@ -195,7 +225,9 @@ export class Rater extends HTMLElement {
         newStar.id = i+1;
         
         if(!this.disabled) {
-          newStar.addEventListener("click", this.onStarClick);
+          newStar.addEventListener("mouseover", this.onStarClick);
+          newStar.addEventListener("click",this.onStarClicked);
+          newStar.addEventListener("mouseleave",this.onStarLeave);
         }
 
         newItem.appendChild(newStar);
@@ -219,12 +251,12 @@ export class Rater extends HTMLElement {
     var i;
     if (newValue) {
       for(i = 0; i < this.max; i++) {
-        stars[i].removeEventListener("click", this.onStarClick);
+        stars[i].removeEventListener("mouseover", this.onStarClick);
       }
     }
     else {
       for(i = 0; i < this.max; i++) {
-        stars[i].addEventListener("click", this.onStarClick);
+        stars[i].addEventListener("mouseover", this.onStarClick);
       }
     }
   }
@@ -258,6 +290,14 @@ export class Rater extends HTMLElement {
 
   get max() {
     return this.getAttribute("max") || 5;
+  }
+
+  get currentRate() {
+    return this.getAttribute("currate") || 5;
+  }
+
+  set currentRate(value) {
+    this.setAttribute("currate",value);
   }
 
   set disabled(value) {

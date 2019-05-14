@@ -1,3 +1,23 @@
+/**
+ * Author: Team7, CSE112 Spring 2019
+ * 
+ * Description: This is a ported version of rater originally from: 
+ * 
+ * https://element.eleme.io/#/en-US/component/rate
+ * 
+ * Orinal Code written in Vue.js:
+ * 
+ * https://github.com/ElemeFE/element/blob/dev/packages/rate/src/main.vue
+ * 
+ * Parts of comments copied and modified from:
+ * 
+ * https://github.com/GoogleChromeLabs/howto-components/blob/master/elements/howto-checkbox/howto-checkbox.js
+ */
+
+/**
+ * Cloning contents from a &lt;template&gt; element is more performant
+ * than using innerHTML because it avoids addtional HTML parse costs.
+ */
 const template = document.createElement("template");
 template.innerHTML = `
   <style>
@@ -23,12 +43,24 @@ template.innerHTML = `
 
 
 class Rater extends HTMLElement {
+  /**
+   * The element's constructor is run anytime a new instance is created.
+   * Instances are created by parsing HTML, or calling
+   * document.createElement("rater-r")
+   * The construtor is a good place to create shadow DOM, though you should
+   * avoid touching any attributes or light DOM children as they may not
+   * be available yet.
+   */
   constructor() {
     super();
     this.attachShadow({mode: "open"});
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
+  /**
+   * `connectedCallback()` is called when the element is inserted into the DOM.
+   * It's a good place to set the initial attribute values and install event listeners.
+   */
   connectedCallback() {
     const shadow = this.shadowRoot;
 
@@ -71,6 +103,10 @@ class Rater extends HTMLElement {
     //TODO4
   }
 
+  /**
+   * `onStarClick()` is called when any rating star is clicked
+   * It will correctly set the start img and text contents
+   */
   onStarClick(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
@@ -93,6 +129,11 @@ class Rater extends HTMLElement {
     return ["v-model", "max", "disabled", "show-score", "show-text", "texts", "score-template"]; //TODO1
   }
 
+  /**
+   * `attributeChangedCallback()` is called when any of the attributes in the
+   * `observedAttributes` array are changed. It's a good place to handle
+   * side effects, like setting ARIA attributes.
+   */
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
   
@@ -122,6 +163,10 @@ class Rater extends HTMLElement {
     }
   }
 
+  /**
+   * `handleValueModel()` is called when the `v-model` attribute of
+   * rater-r is changed
+   */
   handleValueModel(newValue) {
     var stars = this.shadowRoot.querySelectorAll("div img");
     var i;
@@ -135,6 +180,10 @@ class Rater extends HTMLElement {
       this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
   }
 
+  /**
+   * `handleMax()` is called when the `max` attribute of
+   * rater-r is changed
+   */
   handleMax(oldValue, newValue) {
     const slider = this.shadowRoot.querySelector("div");
     var i;
@@ -161,6 +210,10 @@ class Rater extends HTMLElement {
     }
   }
   
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute of
+   * rater-r is changed
+   */
   handleDisabled(newValue) {
     var stars = this.shadowRoot.querySelectorAll("div img");
     var i;
@@ -176,6 +229,10 @@ class Rater extends HTMLElement {
     }
   }
 
+  /**
+   * `handleShowScoreAndText()` is called when the `show-text` attribute 
+   * or `show-score` attribute of rater-r is changed
+   */
   handleShowScoreAndText(scoreVal, textVal) {
     if (!this.shadowRoot.querySelector("div p"))
       return;

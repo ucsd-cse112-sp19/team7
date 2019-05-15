@@ -112,7 +112,7 @@ which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-ch
 */
 
 
-class Rater extends HTMLElement {
+export class Rater extends HTMLElement {
   /**
    * The element's constructor is run anytime a new instance is created.
    * Instances are created by parsing HTML, or calling

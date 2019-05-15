@@ -2,7 +2,6 @@ const template = document.createElement("template");
 template.innerHTML = `
   <style>
     :host {
-      cursor: default;
     }
     img {
       height: 300px;
@@ -33,25 +32,38 @@ template.innerHTML = `
       display: inline-block;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
- 
+    }
     i {
       font-style: italic;
     }
-    
-  .el-rate__item {
-      font-size: 0;
-      vertical-align: middle;
-  }
-  .el-rate {
-      height: 20px;
-      line-height: 1;
-  }
+    .el-rate__item {
+        font-size: 0;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .el-rate {
+        height: 20px;
+        line-height: 1;
+    }
+    .el-icon-star-off:before {
+      content: "\\e717";
+    }
+    .el-icon-star-on:before {
+      content: "\\e797";
+    }
+    .el-rate__item:not(.disabled) .el-rate__icon:hover {
+      transform: scale(1.15);
+    }
+    .el-rate__item.disabled {
+        cursor: default;
+    }
+
   </style>
   <span>
     <img>
     <p id="author"></p>
     <p id="des"></p>
-    <div>
+    <div class="el-rate">
     
     </div>
   </span>
@@ -85,8 +97,8 @@ class Rater extends HTMLElement {
     const slider = shadow.querySelector("div");
 
     // set up the rating bar
-    if (slider.querySelectorAll("img"))
-      this.handleMax(slider.querySelectorAll("img").length, this.max); //add the stars
+    if (slider.querySelectorAll("span"))
+      this.handleMax(slider.querySelectorAll("span").length, this.max); //add the stars
     else
       this.handleMax(0, this.max);
  
@@ -95,8 +107,8 @@ class Rater extends HTMLElement {
     ratertext.textContent = "";
     slider.appendChild(ratertext);
 
-    // add click events to the rating stars
-    this.handleDisabled(false);
+    // disable the rate buttons if necessary
+    this.handleDisabled();
     
     // set up the text content, either number or the chinese characters
     this.handleShowScoreAndText(this.showScore, this.showText);
@@ -111,14 +123,20 @@ class Rater extends HTMLElement {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
-      var stars = rater.shadowRoot.querySelectorAll("div img");
+      var stars = rater.shadowRoot.querySelectorAll("div i");
       var id = event.target.id;
       var i;
       for(i = 0; i < rater.max; i++) {
-        if(i < id)
-          stars[i].src="starclicked.png";
-        else
-          stars[i].src="star.png";
+        if(i < id) {
+          stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+          stars[i].className += " el-icon-star-on";
+          stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+        }
+        else {
+          stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+          stars[i].className += " el-icon-star-off";
+          stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+        }
       }
       if (rater.texts[id-1])
         rater.shadowRoot.querySelector("div p").textContent = rater.texts[id-1];
@@ -140,7 +158,7 @@ class Rater extends HTMLElement {
       this.handleMax(oldValue, newValue);
       break;
     case "disabled":
-      this.handleDisabled(newValue);
+      this.handleDisabled();
       break;
     case "show-score":
       this.handleShowScoreAndText(this.showScore, this.showText);
@@ -159,13 +177,19 @@ class Rater extends HTMLElement {
   }
 
   handleValueModel(newValue) {
-    var stars = this.shadowRoot.querySelectorAll("div img");
+    var stars = this.shadowRoot.querySelectorAll("div i");
     var i;
     for(i = 0; i < stars.length; i++) {
-      if(i < newValue)
-        stars[i].src = "starclicked.png";
-      else
-        stars[i].src = "star.png";
+      if(i < newValue) {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+        stars[i].className += " el-icon-star-on";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+        stars[i].className += " el-icon-star-off";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+      }
     }
     if (this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
@@ -177,14 +201,16 @@ class Rater extends HTMLElement {
     if (oldValue < newValue) {
       for (i = oldValue; i < newValue; i++) {
         var newItem = document.createElement("span");
+        newItem.className += " el-rate__item";
+
         var newStar = document.createElement("i");
-        newStar.className += "el-rate__icon el-icon-star-off";
-        newStar.src = "star.png";
+        newStar.className += " el-rate__icon";
+        newStar.className += " el-icon-star-off";
         newStar.id = i+1;
         
-        if(!this.disabled) {
-          newStar.addEventListener("click", this.onStarClick);
-        }
+        //if(!this.disabled) {
+        newStar.addEventListener("click", this.onStarClick);
+        //}
 
         newItem.appendChild(newStar);
         slider.appendChild(newItem);
@@ -198,17 +224,18 @@ class Rater extends HTMLElement {
     }
   }
   
-  handleDisabled(newValue) {
-    var stars = this.shadowRoot.querySelectorAll("div img");
+  handleDisabled() {
+    var items = this.shadowRoot.querySelectorAll("div span");
     var i;
-    if (newValue) {
+    if (this.disabled) {
       for(i = 0; i < this.max; i++) {
-        stars[i].removeEventListener("click", this.onStarClick);
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
+        items[i].className += " disabled";
       }
     }
     else {
       for(i = 0; i < this.max; i++) {
-        stars[i].addEventListener("click", this.onStarClick);
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
       }
     }
   }

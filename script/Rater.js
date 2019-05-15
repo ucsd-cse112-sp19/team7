@@ -10,6 +10,42 @@ template.innerHTML = `
     div img {
       height: 20px;
     }
+
+    .el-rate__icon {
+      font-size: 18px;
+      margin-right: 6px;
+      color: #c0c4cc;
+      transition: .3s;
+    }
+    .el-rate__icon, .el-rate__item {
+      display: inline-block;
+      position: relative;
+    }
+    [class*=" el-icon-"], [class^=el-icon-] {
+      font-family: element-icons!important;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: baseline;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+ 
+    i {
+      font-style: italic;
+    }
+    
+  .el-rate__item {
+      font-size: 0;
+      vertical-align: middle;
+  }
+  .el-rate {
+      height: 20px;
+      line-height: 1;
+  }
   </style>
   <span>
     <img>
@@ -141,7 +177,8 @@ class Rater extends HTMLElement {
     if (oldValue < newValue) {
       for (i = oldValue; i < newValue; i++) {
         var newItem = document.createElement("span");
-        var newStar = document.createElement("img");
+        var newStar = document.createElement("i");
+        newStar.className += "el-rate__icon el-icon-star-off";
         newStar.src = "star.png";
         newStar.id = i+1;
         

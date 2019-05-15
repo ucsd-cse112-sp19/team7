@@ -98,6 +98,8 @@ class Rater extends HTMLElement {
 
     // add click events to the rating stars
     this.handleDisabled(false);
+
+    this.handleTextColor(this.textColor);
     
     // set up the text content, either number or the chinese characters
     this.handleShowScoreAndText(this.showScore, this.showText);
@@ -193,6 +195,9 @@ class Rater extends HTMLElement {
     case "show-score":
       this.handleShowScoreAndText(this.showScore, this.showText);
       break;
+    case "text-color":
+      this.handleTextColor(newValue);
+      break;
     case "show-text":
       this.handleShowScoreAndText(this.showScore, this.showText);
       break;
@@ -205,7 +210,12 @@ class Rater extends HTMLElement {
     //TODO3
     }
   }
-
+  handleTextColor(newValue) {
+    if(newValue == null) {
+      newValue = "black";
+    }
+    this.shadowRoot.querySelector("div p").style.color = newValue;
+  }
   /**
    * `handleValueModel()` is called when the `v-model` attribute of
    * rater-r is changed
@@ -311,7 +321,7 @@ class Rater extends HTMLElement {
   }
 
   get currentRate() {
-    return this.getAttribute("currate") || 5;
+    return this.hasAttribute("currate") || 5;
   }
 
   set currentRate(value) {
@@ -348,6 +358,14 @@ class Rater extends HTMLElement {
       this.setAttribute("show-text", "");
     else
       this.removeAttribute("show-text");
+  }
+
+  get textColor() {
+    return this.getAttribute("text-color");
+  }
+
+  set textColor(value) {
+    this.setAttribute("text-color", value);
   }
 
   get showText() {

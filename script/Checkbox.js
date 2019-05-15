@@ -80,7 +80,8 @@ class Checkbox extends HTMLElement {
 
     this.handleValueModel(this.valueModel);
 
-    this.handleDisabled(false);
+    this.handleDisabled();
+    this.handleChecked();
   }
 
   /**
@@ -102,16 +103,16 @@ class Checkbox extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["v-model", "true-label", "false-label"]; //TODO1
+    return ["v-model", "disabled", "checked", "true-label", "false-label"]; //TODO1
   }
 
   /**
    * `handleDisabled()` is called when the `disabled` attribute of
    * checbox-r is changed
    */
-  handleDisabled(newValue) {
+  handleDisabled() {
     var box = this.shadowRoot.querySelector("img");
-    if (newValue) {
+    if (this.disabled) {
       box.removeEventListener("click", this.onBoxClick);
     }
     else {
@@ -121,6 +122,14 @@ class Checkbox extends HTMLElement {
 
   updateValueModel() {
     this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
+  }
+
+  /**
+   * `handleDisabled()` is called when the `checked` attribute of
+   * rater-r is changed
+   */
+  handleChecked() {
+    //TODO ryan add the clicking behavior code here so that the checkbox get checked when this attribute is added
   }
 
   /**
@@ -140,6 +149,9 @@ class Checkbox extends HTMLElement {
       break;
     case "false-label":
       this.updateValueModel();
+      break;
+    case "disabled":
+      this.handleDisabled(newValue);
       break;
     }
   }
@@ -186,6 +198,18 @@ class Checkbox extends HTMLElement {
 
   get disabled() {
     return this.hasAttribute("disabled");
+  }
+
+  set checked(value) {
+    const isChecked = Boolean(value);
+    if (isChecked)
+      this.setAttribute("checked", "");
+    else
+      this.removeAttribute("checked");
+  }
+
+  get checked() {
+    return this.hasAttribute("checked");
   }
 
   get showText() {

@@ -79,7 +79,8 @@ class Checkbox extends HTMLElement {
     
     this.handleValueModel(this.valueModel);
 
-    this.handleDisabled(false);
+    this.handleDisabled();
+    this.handleChecked();
   }
 
   /**
@@ -101,7 +102,7 @@ class Checkbox extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["v-model","disabled"]; //TODO1
+    return ["v-model", "disabled", "checked"]; //TODO1
   }
 
   /**
@@ -116,6 +117,14 @@ class Checkbox extends HTMLElement {
     else {
       box.addEventListener("click", this.onBoxClick);
     }
+  }
+
+  /**
+   * `handleDisabled()` is called when the `checked` attribute of
+   * rater-r is changed
+   */
+  handleChecked() {
+    //TODO ryan add the clicking behavior code here so that the checkbox get checked when this attribute is added
   }
 
   /**
@@ -166,6 +175,18 @@ class Checkbox extends HTMLElement {
 
   get disabled() {
     return this.hasAttribute("disabled");
+  }
+
+  set checked(value) {
+    const isChecked = Boolean(value);
+    if (isChecked)
+      this.setAttribute("checked", "");
+    else
+      this.removeAttribute("checked");
+  }
+
+  get checked() {
+    return this.hasAttribute("checked");
   }
 
   get showText() {

@@ -76,7 +76,8 @@ class Checkbox extends HTMLElement {
     wrapper.appendChild(text);
     shadow.appendChild(wrapper);
 
-    
+    this.updateValueModel();
+
     this.handleValueModel(this.valueModel);
 
     this.handleDisabled();
@@ -102,12 +103,12 @@ class Checkbox extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["v-model", "disabled", "checked"]; //TODO1
+    return ["v-model", "disabled", "checked", "true-label", "false-label"]; //TODO1
   }
 
   /**
    * `handleDisabled()` is called when the `disabled` attribute of
-   * rater-r is changed
+   * checbox-r is changed
    */
   handleDisabled() {
     var box = this.shadowRoot.querySelector("img");
@@ -117,6 +118,10 @@ class Checkbox extends HTMLElement {
     else {
       box.addEventListener("click", this.onBoxClick);
     }
+  }
+
+  updateValueModel() {
+    this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
   }
 
   /**
@@ -139,6 +144,12 @@ class Checkbox extends HTMLElement {
     case "v-model":
       this.handleValueModel(newValue);
       break;
+    case "true-label":
+      this.updateValueModel();
+      break;
+    case "false-label":
+      this.updateValueModel();
+      break;
     case "disabled":
       this.handleDisabled(newValue);
       break;
@@ -147,14 +158,10 @@ class Checkbox extends HTMLElement {
 
   /**
    * `handleValueModel()` is called when the `v-model` attribute of
-   * rater-r is changed
+   * checkbox-r is changed
    */
   handleValueModel(newValue) {
-    var box = this.shadowRoot.querySelector("img");
-    if(newValue == "true")
-      box.src = "checked.png";
-    else
-      box.src = "unchecked.png";
+    
   }
 
   set valueModel(value) {
@@ -165,6 +172,22 @@ class Checkbox extends HTMLElement {
     return this.getAttribute("v-model");
   }
   
+  set trueLabel(value) {
+    this.setAttribute("true-label", value);
+  }
+
+  get trueLabel() {
+    return this.getAttribute("true-label") || "";
+  }
+
+  set falseLabel(value) {
+    this.setAttribute("false-label", value);
+  }
+
+  get falseLabel() {
+    return this.getAttribute("false-label") || "";
+  }
+
   set disabled(value) {
     const isDisabled = Boolean(value);
     if (isDisabled)

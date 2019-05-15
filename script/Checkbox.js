@@ -101,16 +101,16 @@ class Checkbox extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["v-model"]; //TODO1
+    return ["v-model","disabled"]; //TODO1
   }
 
   /**
    * `handleDisabled()` is called when the `disabled` attribute of
    * rater-r is changed
    */
-  handleDisabled(newValue) {
+  handleDisabled() {
     var box = this.shadowRoot.querySelector("img");
-    if (newValue) {
+    if (this.disabled) {
       box.removeEventListener("click", this.onBoxClick);
     }
     else {
@@ -129,6 +129,9 @@ class Checkbox extends HTMLElement {
     switch (name) {
     case "v-model":
       this.handleValueModel(newValue);
+      break;
+    case "disabled":
+      this.handleDisabled(newValue);
       break;
     }
   }

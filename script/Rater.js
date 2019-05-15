@@ -1,3 +1,23 @@
+/**
+ * Author: Team7, CSE112 Spring 2019
+ * 
+ * Description: This is a ported version of rater originally from: 
+ * 
+ * https://element.eleme.io/#/en-US/component/rate
+ * 
+ * Orinal Code written in Vue.js:
+ * 
+ * https://github.com/ElemeFE/element/blob/dev/packages/rate/src/main.vue
+ * 
+ * Parts of comments copied and modified from:
+ * 
+ * https://github.com/GoogleChromeLabs/howto-components/blob/master/elements/howto-checkbox/howto-checkbox.js
+ */
+
+/**
+ * Cloning contents from a &lt;template&gt; element is more performant
+ * than using innerHTML because it avoids addtional HTML parse costs.
+ */
 const template = document.createElement("template");
 template.innerHTML = `
   <style>
@@ -6,13 +26,18 @@ template.innerHTML = `
     img {
       height: 300px;
     }
+    div p {
+      display: inline !important;
+      margin-left: 10px;
+      font: bold 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
     div img {
       height: 20px;
     }
 
     .el-rate__icon {
       font-size: 18px;
-      margin-right: 6px;
+      margin-right: 4px;
       color: #c0c4cc;
       transition: .3s;
     }
@@ -46,13 +71,13 @@ template.innerHTML = `
         line-height: 1;
     }
     .el-icon-star-off:before {
-      content: "\\e717";
+      content: "\\2606";
     }
     .el-icon-star-on:before {
-      content: "\\e797";
+      content: "\\2605";
     }
     .el-rate__item:not(.disabled) .el-rate__icon:hover {
-      transform: scale(1.15);
+      transform: scale(1.2);
     }
     .el-rate__item.disabled {
         cursor: default;
@@ -69,14 +94,43 @@ template.innerHTML = `
   </span>
 `;
 
+/*
+The following can be used but might get sued by element since they will use elemet's icon,
+which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-chalk/fonts/
+    @font-face {
+      font-family: element-icons;
+      src: url(fonts/element-icons.woff) format("woff"),
+           url(fonts/element-icons.ttf) format("truetype");
+      font-weight: 400;font-style:normal}
+      
+    .el-icon-star-off:before {
+      content: "\\e717";
+    }
+    .el-icon-star-on:before {
+      content: "\\e797";
+    }
+*/
+
 
 class Rater extends HTMLElement {
+  /**
+   * The element's constructor is run anytime a new instance is created.
+   * Instances are created by parsing HTML, or calling
+   * document.createElement("rater-r")
+   * The construtor is a good place to create shadow DOM, though you should
+   * avoid touching any attributes or light DOM children as they may not
+   * be available yet.
+   */
   constructor() {
     super();
     this.attachShadow({mode: "open"});
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
+  /**
+   * `connectedCallback()` is called when the element is inserted into the DOM.
+   * It's a good place to set the initial attribute values and install event listeners.
+   */
   connectedCallback() {
     const shadow = this.shadowRoot;
 
@@ -93,7 +147,6 @@ class Rater extends HTMLElement {
     }
     var img = shadow.querySelector("img");
     img.src = imgUrl;
-
     const slider = shadow.querySelector("div");
 
     // set up the rating bar
@@ -109,44 +162,87 @@ class Rater extends HTMLElement {
 
     // disable the rate buttons if necessary
     this.handleDisabled();
+
+    this.handleTextColor(this.textColor);
     
     // set up the text content, either number or the chinese characters
     this.handleShowScoreAndText(this.showScore, this.showText);
 
     //initialize the star value
-    this.handleValueModel(this.valueModel);
+    this.updateStars(this.valueModel);
 
     //TODO4
   }
 
+  /**
+   * `onStarClick()` is called when any rating star is clicked
+   * It will correctly set the current rate value, or the value model
+   */
   onStarClick(event) {
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      rater.valueModel = event.target.id;
+    }
+  }
+
+  /**
+   * `onStarLeave()` is called when cursor moves awayy
+   * It will correctly set the value back to current Rate Value
+   */
+  onStarLeave(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
-      var stars = rater.shadowRoot.querySelectorAll("div i");
-      var id = event.target.id;
-      var i;
-      for(i = 0; i < rater.max; i++) {
-        if(i < id) {
-          stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
-          stars[i].className += " el-icon-star-on";
-          stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
-        }
-        else {
-          stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
-          stars[i].className += " el-icon-star-off";
-          stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
-        }
-      }
-      if (rater.texts[id-1])
-        rater.shadowRoot.querySelector("div p").textContent = rater.texts[id-1];
+      rater.updateStars(rater.valueModel);
     }
+  }
+
+  /**
+   * `onStarOver()` is called when any rating star is hovered
+   * It will correctly set the start img and text contents
+   */
+  onStarOver(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      rater.updateStars(event.target.id);
+    }
+  }
+
+  /**
+   * `updateStars()` is a helper method to update the stars based on the mouse action
+   * @param {CurrentStar} curr - this is the star that has been clicked or hovered
+   */
+  updateStars(curr) {
+    var stars = this.shadowRoot.querySelectorAll("div i");
+    
+    //console.log(stars);
+    var i;
+    for(i = 0; i < this.max; i++) {
+      if(i < curr) {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+        stars[i].className += " el-icon-star-on";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+        stars[i].className += " el-icon-star-off";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+      }
+    }
+    if (this.texts[curr-1])
+      this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
   }
 
   static get observedAttributes() {
     return ["v-model", "max", "disabled", "show-score", "show-text", "texts", "score-template"]; //TODO1
   }
 
+  /**
+   * `attributeChangedCallback()` is called when any of the attributes in the
+   * `observedAttributes` array are changed. It's a good place to handle
+   * side effects, like setting ARIA attributes.
+   */
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
   
@@ -163,6 +259,9 @@ class Rater extends HTMLElement {
     case "show-score":
       this.handleShowScoreAndText(this.showScore, this.showText);
       break;
+    case "text-color":
+      this.handleTextColor(newValue);
+      break;
     case "show-text":
       this.handleShowScoreAndText(this.showScore, this.showText);
       break;
@@ -175,8 +274,19 @@ class Rater extends HTMLElement {
     //TODO3
     }
   }
-
+  handleTextColor(newValue) {
+    if(newValue == null) {
+      newValue = "black";
+    }
+    this.shadowRoot.querySelector("div p").style.color = newValue;
+  }
+  /**
+   * `handleValueModel()` is called when the `v-model` attribute of
+   * rater-r is changed
+   */
   handleValueModel(newValue) {
+    //this.updateStars(newValue);
+    // I don't know why but the above statement will return an error
     var stars = this.shadowRoot.querySelectorAll("div i");
     var i;
     for(i = 0; i < stars.length; i++) {
@@ -195,6 +305,10 @@ class Rater extends HTMLElement {
       this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
   }
 
+  /**
+   * `handleMax()` is called when the `max` attribute of
+   * rater-r is changed
+   */
   handleMax(oldValue, newValue) {
     const slider = this.shadowRoot.querySelector("div");
     var i;
@@ -208,9 +322,9 @@ class Rater extends HTMLElement {
         newStar.className += " el-icon-star-off";
         newStar.id = i+1;
         
-        //if(!this.disabled) {
-        newStar.addEventListener("click", this.onStarClick);
-        //}
+        newStar.addEventListener("mouseover", this.onStarOver);
+        newStar.addEventListener("click",this.onStarClick);
+        newStar.addEventListener("mouseleave",this.onStarLeave);
 
         newItem.appendChild(newStar);
         slider.appendChild(newItem);
@@ -224,6 +338,10 @@ class Rater extends HTMLElement {
     }
   }
   
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute of
+   * rater-r is changed
+   */
   handleDisabled() {
     var items = this.shadowRoot.querySelectorAll("div span");
     var i;
@@ -240,6 +358,10 @@ class Rater extends HTMLElement {
     }
   }
 
+  /**
+   * `handleShowScoreAndText()` is called when the `show-text` attribute 
+   * or `show-score` attribute of rater-r is changed
+   */
   handleShowScoreAndText(scoreVal, textVal) {
     if (!this.shadowRoot.querySelector("div p"))
       return;
@@ -265,6 +387,14 @@ class Rater extends HTMLElement {
 
   get max() {
     return this.getAttribute("max") || 5;
+  }
+
+  get currentRate() {
+    return this.hasAttribute("currate") || 5;
+  }
+
+  set currentRate(value) {
+    this.setAttribute("currate",value);
   }
 
   set disabled(value) {
@@ -297,6 +427,14 @@ class Rater extends HTMLElement {
       this.setAttribute("show-text", "");
     else
       this.removeAttribute("show-text");
+  }
+
+  get textColor() {
+    return this.getAttribute("text-color");
+  }
+
+  set textColor(value) {
+    this.setAttribute("text-color", value);
   }
 
   get showText() {

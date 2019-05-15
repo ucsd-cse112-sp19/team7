@@ -27,9 +27,15 @@ template.innerHTML = `
     img {
       height: 300px;
     }
+    div p {
+      display: inline !important;
+      margin-left: 10px;
+      font: bold 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
     div img {
       height: 20px;
     }
+
   </style>
   <span>
     <img>

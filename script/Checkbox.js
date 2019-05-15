@@ -80,7 +80,7 @@ class Checkbox extends HTMLElement {
 
     this.handleValueModel(this.valueModel);
 
-    this.handleDisabled();
+    this.handleDisabled(false);
     this.handleChecked();
   }
 
@@ -120,6 +120,13 @@ class Checkbox extends HTMLElement {
     }
   }
 
+  handleBorder() {
+    var box = this.shadowRoot.querySelector("img");
+    if (this.disabled) {
+      box.removeEventListener("click", this.onBoxClick);
+    }
+  }
+
   updateValueModel() {
     this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
   }
@@ -153,7 +160,9 @@ class Checkbox extends HTMLElement {
     case "disabled":
       this.handleDisabled(newValue);
       break;
-    }
+    case "border":
+      this.handleBorder(newValue);
+      break;}
   }
 
   /**
@@ -237,6 +246,13 @@ class Checkbox extends HTMLElement {
       return this.getAttribute("texts").split(",");
     else 
       return ["极差", "失望", "一般", "满意", "惊喜"];
+  }
+
+  set border(bSelect) {
+    if (bSelect)
+      this.setAttribute("border", "");
+    else
+      this.removeAttribute("border");
   }
 
 }

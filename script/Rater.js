@@ -22,7 +22,6 @@ const template = document.createElement("template");
 template.innerHTML = `
   <style>
     :host {
-      cursor: default;
     }
     img {
       height: 300px;
@@ -37,19 +36,84 @@ template.innerHTML = `
       background-color: white;
     }
 
+    .el-rate__icon {
+      font-size: 18px;
+      margin-right: 4px;
+      color: #c0c4cc;
+      transition: .3s;
+    }
+    .el-rate__icon, .el-rate__item {
+      display: inline-block;
+      position: relative;
+    }
+    [class*=" el-icon-"], [class^=el-icon-] {
+      font-family: element-icons!important;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: baseline;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    i {
+      font-style: italic;
+    }
+    .el-rate__item {
+        font-size: 0;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .el-rate {
+        height: 20px;
+        line-height: 1;
+    }
+    .el-icon-star-off:before {
+      content: "\\2606";
+    }
+    .el-icon-star-on:before {
+      content: "\\2605";
+    }
+    .el-rate__item:not(.disabled) .el-rate__icon:hover {
+      transform: scale(1.2);
+    }
+    .el-rate__item.disabled {
+        cursor: default;
+    }
+
   </style>
   <span>
     <img>
     <p id="author"></p>
     <p id="des"></p>
-    <div>
+    <div class="el-rate">
     
     </div>
   </span>
 `;
 
+/*
+The following can be used but might get sued by element since they will use elemet's icon,
+which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-chalk/fonts/
+    @font-face {
+      font-family: element-icons;
+      src: url(fonts/element-icons.woff) format("woff"),
+           url(fonts/element-icons.ttf) format("truetype");
+      font-weight: 400;font-style:normal}
+      
+    .el-icon-star-off:before {
+      content: "\\e717";
+    }
+    .el-icon-star-on:before {
+      content: "\\e797";
+    }
+*/
 
-class Rater extends HTMLElement {
+
+export class Rater extends HTMLElement {
   /**
    * The element's constructor is run anytime a new instance is created.
    * Instances are created by parsing HTML, or calling
@@ -87,8 +151,8 @@ class Rater extends HTMLElement {
     const slider = shadow.querySelector("div");
 
     // set up the rating bar
-    if (slider.querySelectorAll("img"))
-      this.handleMax(slider.querySelectorAll("img").length, this.max); //add the stars
+    if (slider.querySelectorAll("span"))
+      this.handleMax(slider.querySelectorAll("span").length, this.max); //add the stars
     else
       this.handleMax(0, this.max);
  
@@ -97,8 +161,8 @@ class Rater extends HTMLElement {
     ratertext.textContent = "";
     slider.appendChild(ratertext);
 
-    // add click events to the rating stars
-    this.handleDisabled(false);
+    // disable the rate buttons if necessary
+    this.handleDisabled();
 
     this.handleTextColor(this.textColor);
     
@@ -106,25 +170,19 @@ class Rater extends HTMLElement {
     this.handleShowScoreAndText(this.showScore, this.showText);
 
     //initialize the star value
-    this.handleValueModel(this.valueModel);
+    this.updateStars(this.valueModel);
 
     //TODO4
   }
 
   /**
-   * `onStarClicked()` is called when any rating star is clicked
-   * It will correctly set the current rate value
+   * `onStarClick()` is called when any rating star is clicked
+   * It will correctly set the current rate value, or the value model
    */
-  onStarClicked(event) {
+  onStarClick(event) {
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
-      var stars = rater.shadowRoot.querySelectorAll("div img");
-      var i;
-      for(i = 0; i < rater.max; i++) {
-        stars[i].currentRate = event.target.id;
-      }
-      if (rater.texts[this.currentRate - 1])
-        rater.shadowRoot.querySelector("div p").textContent = rater.texts[this.currentRate - 1];
+      rater.valueModel = event.target.id;
     }
   }
 
@@ -136,39 +194,45 @@ class Rater extends HTMLElement {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
-      var stars = rater.shadowRoot.querySelectorAll("div img");
-      var i;
-      for(i = 0; i < rater.max; i++) {
-        if(i < this.currentRate)
-          stars[i].src="starclicked.png";
-        else
-          stars[i].src="star.png";
-      }
-      if (rater.texts[this.currentRate - 1])
-        rater.shadowRoot.querySelector("div p").textContent = rater.texts[this.currentRate - 1];
+      rater.updateStars(rater.valueModel);
     }
   }
 
   /**
-   * `onStarClick()` is called when any rating star is hovered
+   * `onStarOver()` is called when any rating star is hovered
    * It will correctly set the start img and text contents
    */
-  onStarClick(event) {
+  onStarOver(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
-      var stars = rater.shadowRoot.querySelectorAll("div img");
-      var id = event.target.id;
-      var i;
-      for(i = 0; i < rater.max; i++) {
-        if(i < id)
-          stars[i].src="starclicked.png";
-        else
-          stars[i].src="star.png";
-      }
-      if (rater.texts[id-1])
-        rater.shadowRoot.querySelector("div p").textContent = rater.texts[id-1];
+      rater.updateStars(event.target.id);
     }
+  }
+
+  /**
+   * `updateStars()` is a helper method to update the stars based on the mouse action
+   * @param {CurrentStar} curr - this is the star that has been clicked or hovered
+   */
+  updateStars(curr) {
+    var stars = this.shadowRoot.querySelectorAll("div i");
+    
+    //console.log(stars);
+    var i;
+    for(i = 0; i < this.max; i++) {
+      if(i < curr) {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+        stars[i].className += " el-icon-star-on";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+        stars[i].className += " el-icon-star-off";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+      }
+    }
+    if (this.texts[curr-1])
+      this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
   }
 
   static get observedAttributes() {
@@ -191,7 +255,7 @@ class Rater extends HTMLElement {
       this.handleMax(oldValue, newValue);
       break;
     case "disabled":
-      this.handleDisabled(newValue);
+      this.handleDisabled();
       break;
     case "show-score":
       this.handleShowScoreAndText(this.showScore, this.showText);
@@ -222,15 +286,22 @@ class Rater extends HTMLElement {
    * rater-r is changed
    */
   handleValueModel(newValue) {
-    var stars = this.shadowRoot.querySelectorAll("div img");
+    //this.updateStars(newValue);
+    // I don't know why but the above statement will return an error
+    var stars = this.shadowRoot.querySelectorAll("div i");
     var i;
     for(i = 0; i < stars.length; i++) {
-      if(i < newValue)
-        stars[i].src = "starclicked.png";
-      else
-        stars[i].src = "star.png";
+      if(i < newValue) {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+        stars[i].className += " el-icon-star-on";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+        stars[i].className += " el-icon-star-off";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+      }
     }
-    this.currentRate = newValue;
     if (this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
   }
@@ -245,15 +316,16 @@ class Rater extends HTMLElement {
     if (oldValue < newValue) {
       for (i = oldValue; i < newValue; i++) {
         var newItem = document.createElement("span");
-        var newStar = document.createElement("img");
-        newStar.src = "star.png";
+        newItem.className += " el-rate__item";
+
+        var newStar = document.createElement("i");
+        newStar.className += " el-rate__icon";
+        newStar.className += " el-icon-star-off";
         newStar.id = i+1;
         
-        if(!this.disabled) {
-          newStar.addEventListener("mouseover", this.onStarClick);
-          newStar.addEventListener("click",this.onStarClicked);
-          newStar.addEventListener("mouseleave",this.onStarLeave);
-        }
+        newStar.addEventListener("mouseover", this.onStarOver);
+        newStar.addEventListener("click",this.onStarClick);
+        newStar.addEventListener("mouseleave",this.onStarLeave);
 
         newItem.appendChild(newStar);
         slider.appendChild(newItem);
@@ -271,21 +343,18 @@ class Rater extends HTMLElement {
    * `handleDisabled()` is called when the `disabled` attribute of
    * rater-r is changed
    */
-  handleDisabled(newValue) {
-    var stars = this.shadowRoot.querySelectorAll("div img");
+  handleDisabled() {
+    var items = this.shadowRoot.querySelectorAll("div span");
     var i;
-    if (newValue) {
+    if (this.disabled) {
       for(i = 0; i < this.max; i++) {
-        stars[i].removeEventListener("mouseover", this.onStarClick);
-        stars[i].removeEventListener("click",this.onStarClicked);
-        stars[i].removeEventListener("mouseleave",this.onStarLeave);
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
+        items[i].className += " disabled";
       }
     }
     else {
       for(i = 0; i < this.max; i++) {
-        stars[i].addEventListener("mouseover", this.onStarClick);
-        stars[i].addEventListener("click",this.onStarClicked);
-        stars[i].addEventListener("mouseleave",this.onStarLeave);
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
       }
     }
   }

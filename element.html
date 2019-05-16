@@ -3,15 +3,18 @@
   <head>
     <title>Team7</title>
     <meta charset="UTF-8">
+    <script type="module" src="script/Rater.js"></script>
   </head>
   <body>
-    <script type="module" src="script/Rater.js"></script>
+    <h2>Rater <br>Team7 Present</h2>
     <div>
-      <rater-r author = "Team7" des="Cool Car 1" img="1.jpg" max = "10" show-text="1" text-color="blue"
+      <rater-r author = "Team7" des="Rater Demo 1 -- Max of 10 stars with show customized blue colored texts" img="1.jpg" 
+        max = "10" show-text="1" text-color="blue"
         texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></rater-r>
-      <rater-r author = "Team7" des="Cool Car 2" score-template="super{value}!!" show-score img="2.jpg" v-model = "2"></rater-r>
-      <rater-r author = "Team7" des="Cool Car 3" img="3.jpg" max = "6" disabled v-model = "3" show-score></rater-r>
-      <rater-r></rater-r>
+      <rater-r author = "Team7" des="Rater Demo 2 -- Starting value of 2 stars with score template of 'super score !'" 
+        score-template="super{value}!!" show-score img="2.jpg" v-model = "2"></rater-r>
+      <rater-r author = "Team7" des="Rater Demo 3 -- Starting value of 3 stars, showing score, and disabled" img="3.jpg" 
+        max = "6" disabled v-model = "3" show-score></rater-r>
     </div>
   </body>
 </html>

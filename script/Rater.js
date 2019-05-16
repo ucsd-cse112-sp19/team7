@@ -28,7 +28,7 @@ template.innerHTML = `
     }
     div p {
       display: inline !important;
-      margin-left: 10px;
+      margin-left: 5px;
       font: bold 20px "Helvetica Neue", Helvetica, Arial, sans-serif;
     }
     div img {
@@ -76,13 +76,19 @@ template.innerHTML = `
     .el-icon-star-on:before {
       content: "\\2605";
     }
+    .el-icon-star-on {
+      color: rgb(247, 186, 42);
+    }
     .el-rate__item:not(.disabled) .el-rate__icon:hover {
       transform: scale(1.2);
     }
     .el-rate__item.disabled {
         cursor: default;
     }
-
+    .el-rate__text {
+      font-size: 14px;
+      vertical-align: middle;
+    }
   </style>
   <span>
     <img>
@@ -136,17 +142,30 @@ export class Rater extends HTMLElement {
 
     var author = shadow.querySelector("p#author");
     var info = shadow.querySelector("p#des");
-    author.textContent = "Author: " + this.getAttribute("author");
-    info.textContent = "Description: " + this.getAttribute("des");
+    var span = shadow.querySelector("span");
+    if (this.getAttribute("author")) {
+      author.textContent = "Author: " + this.getAttribute("author");
+    }
+    else { 
+      span.removeChild(author);
+    }
+    if (this.getAttribute("des")) {
+      info.textContent = "Description: " + this.getAttribute("des");
+    }
+    else { 
+      span.removeChild(info);
+    }
 
     var imgUrl;
+    var img = shadow.querySelector("img");
     if(this.hasAttribute("img")) {
       imgUrl = this.getAttribute("img");
+      img.src = imgUrl;
     } else {
-      imgUrl = "background.jpg";
+      //imgUrl = "background.jpg";
+      span.removeChild(img);
     }
-    var img = shadow.querySelector("img");
-    img.src = imgUrl;
+
     const slider = shadow.querySelector("div");
 
     // set up the rating bar
@@ -158,6 +177,7 @@ export class Rater extends HTMLElement {
     // append the text field for the rating bar
     const ratertext = document.createElement("p");
     ratertext.textContent = "";
+    ratertext.className += " el-rate__text";
     slider.appendChild(ratertext);
 
     // disable the rate buttons if necessary
@@ -276,10 +296,11 @@ export class Rater extends HTMLElement {
   }
   handleTextColor(newValue) {
     if(newValue == null) {
-      newValue = "black";
+      newValue = "rgb(247, 186, 42)";
     }
     this.shadowRoot.querySelector("div p").style.color = newValue;
   }
+
   /**
    * `handleValueModel()` is called when the `v-model` attribute of
    * rater-r is changed

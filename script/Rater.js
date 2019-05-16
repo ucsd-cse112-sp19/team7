@@ -34,6 +34,7 @@ template.innerHTML = `
     }
     div img {
       height: 20px;
+      background-color: white;
     }
 
   </style>

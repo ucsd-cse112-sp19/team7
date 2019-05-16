@@ -149,17 +149,12 @@ template.innerHTML = `
     }
     .el-checkbox__label {
       display: inline-block;
-      padding-left: 10px;
+      padding-left: 5px;
       line-height: 19px;
       font-size: 14px;
     }
   </style>
   <span>
-    <img>
-    <p id="author"></p>
-    <p id="des"></p>
-    <div>
-
     <div>
       <label class="el-checkbox">
         <span class="el-checkbox__input is-focus">
@@ -197,13 +192,8 @@ class Checkbox extends HTMLElement {
     const shadow = this.shadowRoot;
 
     var wrapper = shadow.querySelector("div");
-    var img = shadow.querySelector("label");
 
-    var text = document.createElement("p");
-    text.textContent = this.innerHTML;
 
-    wrapper.appendChild(img);
-    wrapper.appendChild(text);
     shadow.appendChild(wrapper);
 
     

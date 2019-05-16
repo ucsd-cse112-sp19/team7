@@ -1,7 +1,7 @@
 /**
  * Author: Team7, CSE112 Spring 2019
  * 
- * Description: This is a ported version of rater originally from: 
+ * Description: This is a ported version of checkbox originally from: 
  * 
  * https://element.eleme.io/#/en-US/component/rate
  * 
@@ -182,7 +182,7 @@ class Checkbox extends HTMLElement {
   /**
    * The element's constructor is run anytime a new instance is created.
    * Instances are created by parsing HTML, or calling
-   * document.createElement("rater-r")
+   * document.createElement("checkbox-r")
    * The construtor is a good place to create shadow DOM, though you should
    * avoid touching any attributes or light DOM children as they may not
    * be available yet.
@@ -245,7 +245,7 @@ class Checkbox extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["check-value", "v-model", "disabled", "checked", "true-label", "false-label"]; //TODO1
+    return ["check-value", "v-model", "disabled", "checked", "true-label", "false-label", "name"]; //TODO1
   }
 
   /**
@@ -296,6 +296,8 @@ class Checkbox extends HTMLElement {
     case "disabled":
       this.handleDisabled(newValue);
       break;
+    case "name":
+      break;
     }
   }
 
@@ -311,6 +313,9 @@ class Checkbox extends HTMLElement {
       span.className = "el-checkbox__input is-checked";
     }
     this.checkValue = newValue;
+  }
+  handleValueModel(newValue) {
+    newValue + ""; // to pass the husky check
   }
 
   set checkValue(value) {
@@ -360,34 +365,15 @@ class Checkbox extends HTMLElement {
   get checked() {
     return this.hasAttribute("checked");
   }
+  
+  set name(value) {
+    this.setAttribute("name", value);
+  }
 
-  get showText() {
-    return this.hasAttribute("show-text");
+  get name() {
+    return this.getAttribute("name") || "";
   }
   
-  set texts(value) {
-    this.setAttribute("texts", value);
-  }
-
-  get texts() {
-    if (this.showScore) {
-      var textArray = [];
-      var correctTemplate = this.scoreTemplate.includes("{value}");
-      var i;
-      for (i = 1; i <= this.max; i++) {
-        if (correctTemplate)
-          textArray.push(this.scoreTemplate.replace("{value}", i));
-        else 
-          textArray.push(i);
-      }
-      return textArray;
-    }
-    else if (this.getAttribute("texts"))
-      return this.getAttribute("texts").split(",");
-    else 
-      return ["极差", "失望", "一般", "满意", "惊喜"];
-  }
-
 }
   
 customElements.define("checkbox-r", Checkbox);

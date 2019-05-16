@@ -214,8 +214,10 @@ class Checkbox extends HTMLElement {
 
     
     this.handleCheckValue(this.checkValue);
+    this.updateValueModel();
 
-    this.handleDisabled(false);
+    this.handleDisabled();
+    this.handleChecked();
   }
 
   /**
@@ -243,21 +245,34 @@ class Checkbox extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["check-value"]; //TODO1
+    return ["check-value", "v-model", "disabled", "checked", "true-label", "false-label"]; //TODO1
   }
 
   /**
    * `handleDisabled()` is called when the `disabled` attribute of
-   * rater-r is changed
+   * checbox-r is changed
    */
   handleDisabled(newValue) {
     var box = this.shadowRoot.querySelector("input");
     if (newValue) {
+    //if (this.disabled) {
       box.removeEventListener("click", this.onBoxClick);
     }
     else {
       box.addEventListener("click", this.onBoxClick);
     }
+  }
+
+  updateValueModel() {
+    this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
+  }
+
+  /**
+   * `handleDisabled()` is called when the `checked` attribute of
+   * rater-r is changed
+   */
+  handleChecked() {
+    //TODO ryan add the clicking behavior code here so that the checkbox get checked when this attribute is added
   }
 
   /**
@@ -271,6 +286,15 @@ class Checkbox extends HTMLElement {
     switch (name) {
     case "check":
       this.handleCheckValue(newValue);
+      break;
+    case "true-label":
+      this.updateValueModel();
+      break;
+    case "false-label":
+      this.updateValueModel();
+      break;
+    case "disabled":
+      this.handleDisabled(newValue);
       break;
     }
   }
@@ -297,6 +321,22 @@ class Checkbox extends HTMLElement {
     return this.getAttribute("check-value");
   }
   
+  set trueLabel(value) {
+    this.setAttribute("true-label", value);
+  }
+
+  get trueLabel() {
+    return this.getAttribute("true-label") || "";
+  }
+
+  set falseLabel(value) {
+    this.setAttribute("false-label", value);
+  }
+
+  get falseLabel() {
+    return this.getAttribute("false-label") || "";
+  }
+
   set disabled(value) {
     const isDisabled = Boolean(value);
     if (isDisabled)
@@ -307,6 +347,45 @@ class Checkbox extends HTMLElement {
 
   get disabled() {
     return this.hasAttribute("disabled");
+  }
+
+  set checked(value) {
+    const isChecked = Boolean(value);
+    if (isChecked)
+      this.setAttribute("checked", "");
+    else
+      this.removeAttribute("checked");
+  }
+
+  get checked() {
+    return this.hasAttribute("checked");
+  }
+
+  get showText() {
+    return this.hasAttribute("show-text");
+  }
+  
+  set texts(value) {
+    this.setAttribute("texts", value);
+  }
+
+  get texts() {
+    if (this.showScore) {
+      var textArray = [];
+      var correctTemplate = this.scoreTemplate.includes("{value}");
+      var i;
+      for (i = 1; i <= this.max; i++) {
+        if (correctTemplate)
+          textArray.push(this.scoreTemplate.replace("{value}", i));
+        else 
+          textArray.push(i);
+      }
+      return textArray;
+    }
+    else if (this.getAttribute("texts"))
+      return this.getAttribute("texts").split(",");
+    else 
+      return ["极差", "失望", "一般", "满意", "惊喜"];
   }
 
 }

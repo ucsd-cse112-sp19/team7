@@ -22,7 +22,7 @@ const template = document.createElement("template");
 template.innerHTML = `
   <style>
     :host {
-      cursor: default;
+      font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
     }
     img {
       height: 300px;
@@ -153,6 +153,68 @@ template.innerHTML = `
       line-height: 19px;
       font-size: 14px;
     }
+    .el-checkbox.is-bordered {
+      padding: 9px 20px 9px 10px;
+      border-radius: 4px;
+      border: 1px solid #dcdfe6;
+      box-sizing: border-box;
+      line-height: normal;
+      height: 40px;
+    }
+    .el-checkbox.is-bordered.is-checked {
+      border-color: #409eff;
+    }
+    .el-checkbox.is-bordered.el-checkbox--small {
+      padding: 5px 15px 5px 10px;
+      border-radius: 3px;
+      height: 32px;
+    }
+    .el-checkbox.is-bordered.el-checkbox--small .el-checkbox__label {
+      line-height: 15px;
+      font-size: 12px;
+    }
+    .el-checkbox.is-bordered.el-checkbox--mini {
+      padding: 3px 15px 3px 10px;
+      border-radius: 3px;
+      height: 28px;
+    }
+    .el-checkbox.is-bordered.el-checkbox--small .el-checkbox__inner, 
+    .el-checkbox.is-bordered.el-checkbox--mini .el-checkbox__inner {
+      height: 12px;
+      width: 12px;
+    }
+    .el-checkbox.is-bordered.el-checkbox--mini .el-checkbox__label {
+      line-height: 12px;
+      font-size: 12px;
+    }
+    .el-checkbox.is-bordered.is-disabled {
+      border-color: #ebeef5;
+      cursor: not-allowed;
+    }
+    .el-checkbox__input.is-disabled+span.el-checkbox__label {
+      color: #c0c4cc;
+      cursor: not-allowed;
+    }
+    .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+      background-color: #f2f6fc;
+      border-color: #dcdfe6;
+    }
+    .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner:after {
+      /* border-color: #c0c4cc; */
+    }
+    .el-checkbox__input.is-checked .el-checkbox__inner:after {
+      transform: rotate(45deg) scaleY(1);
+    }
+    .el-checkbox__input.is-disabled .el-checkbox__inner:after {
+      cursor: not-allowed;
+      border-color: #c0c4cc;
+    }
+    .el-checkbox__input.is-disabled {
+      cursor: not-allowed;
+    }
+    .el-checkbox:last-child {
+      margin-right: 0;
+    }
   </style>
   <span>
     <div>
@@ -165,7 +227,6 @@ template.innerHTML = `
       </label>
       </div>
     </div>
-
   </span>
 `;
 
@@ -193,15 +254,22 @@ class Checkbox extends HTMLElement {
 
     var wrapper = shadow.querySelector("div");
 
-
     shadow.appendChild(wrapper);
 
+    // add click event listener
+    var input = this.shadowRoot.querySelector("input");
+    input.addEventListener("click", this.onBoxClick);
     
-    this.handleCheckValue(this.checkValue);
+    this.handleChecked();
     this.updateValueModel();
 
-    this.handleDisabled();
+    this.handleValueModel(this.valueModel);
+
     this.handleChecked();
+    this.handleDisabled();
+
+    this.handleSize();
+    this.handleBorder();
   }
 
   /**
@@ -211,52 +279,26 @@ class Checkbox extends HTMLElement {
   onBoxClick(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
+
+    if (rater.disabled)
+      return;
+
     var label = rater.shadowRoot.querySelector("label");
     var span = rater.shadowRoot.querySelector("label span");
 
-    if(this.checkValue){
-      label.className = "el-checkbox is-checked";
-
-      span.className = "el-checkbox__input is-checked";
-
-      this.checkValue = false;
-    }else{
-      label.className = "el-checkbox";
-
-      span.className = "el-checkbox__input is-focus";
-      this.checkValue = true;
+    label.className = label.className.replace(/\bis-checked\b/g, "");
+    span.className = span.className.replace(/\bis-checked\b/g, "");
+    if(rater.checked) { 
+      label.className += " is-checked";
+      span.className += " is-checked";
+      rater.checked = false;
+    } else {
+      rater.checked = true;
     }
   }
 
   static get observedAttributes() {
-    return ["check-value", "v-model", "disabled", "checked", "true-label", "false-label", "name"]; //TODO1
-  }
-
-  /**
-   * `handleDisabled()` is called when the `disabled` attribute of
-   * checbox-r is changed
-   */
-  handleDisabled(newValue) {
-    var box = this.shadowRoot.querySelector("input");
-    if (newValue) {
-    //if (this.disabled) {
-      box.removeEventListener("click", this.onBoxClick);
-    }
-    else {
-      box.addEventListener("click", this.onBoxClick);
-    }
-  }
-
-  updateValueModel() {
-    this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
-  }
-
-  /**
-   * `handleChecked()` is called when the `checked` attribute of
-   * checkbox-r is changed
-   */
-  handleChecked() {
-    //TODO ryan add the clicking behavior code here so that the checkbox get checked when this attribute is added
+    return ["v-model", "disabled", "checked", "true-label", "false-label", "name", "border", "size"]; //TODO1
   }
 
   /**
@@ -268,8 +310,8 @@ class Checkbox extends HTMLElement {
     // this is called also when loading the page initially, based on the initial attributes
   
     switch (name) {
-    case "check":
-      this.handleCheckValue(newValue);
+    case "checked":
+      this.handleChecked();
       break;
     case "true-label":
       this.updateValueModel();
@@ -282,35 +324,79 @@ class Checkbox extends HTMLElement {
       break;
     case "name":
       break;
+    case "size":
+      this.handleSize();
+      break;
+    case "border":
+      this.handleBorder();
+      break;
     }
   }
 
   /**
-   * `handleCheckValue()` is called when the `check-value` attribute of
-   * checkbox-r is changed
+   * `handleDisabled()` is called when the `disabled` attribute of
+   * checbox-r is changed
    */
-  handleCheckValue(newValue) {
+  handleDisabled() {
+    var label = this.shadowRoot.querySelector("label.el-checkbox");
+    var span = this.shadowRoot.querySelector("span.el-checkbox__input");
+    if (this.disabled) {
+      label.className = label.className.replace(/\bis-disabled\b/g, "");
+      label.className += " is-disabled";
+      span.className = span.className.replace(/\bis-disabled\b/g, "");
+      span.className += " is-disabled";
+    }
+    else {
+      label.className = label.className.replace(/\bis-disabled\b/g, "");
+      span.className = span.className.replace(/\bis-disabled\b/g, "");
+    }
+  }
+
+  handleBorder() {
+    var label = this.shadowRoot.querySelector("label.el-checkbox");
+    if (this.border) {
+      label.className = label.className.replace(/\bis-bordered\b/g, "");
+      label.className += " is-bordered";
+    }
+    else {
+      label.className = label.className.replace(/\bis-bordered\b/g, "");
+    }
+  }
+
+  updateValueModel() {
+    this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
+  }
+  /**
+   * `handleChecked()` is called when the check value changes
+   */
+  handleChecked() {
     var label = this.shadowRoot.querySelector("label");
     var span = this.shadowRoot.querySelector("label span");
-    if(newValue == "true"){
-      label.className = "el-checkbox is-checked";
-      span.className = "el-checkbox__input is-checked";
+    label.className = label.className.replace(/\bis-checked\b/g, "");
+    span.className = span.className.replace(/\bis-checked\b/g, "");
+    if(this.checked) { 
+      label.className += " is-checked";
+      span.className += " is-checked";
     }
-    this.checkValue = newValue;
   }
 
   handleValueModel(newValue) {
     newValue + ""; // to pass the husky check
   }
-
-  set checkValue(value) {
-    this.setAttribute("check-value", value);
-  }
-
-  get checkValue() {
-    return this.getAttribute("check-value");
-  }
   
+  handleSize() {
+    //console.log(this.size);
+    var label = this.shadowRoot.querySelector("label.el-checkbox");
+    label.className = label.className.replace(/\bel-checkbox--small\b/g, "");
+    label.className = label.className.replace(/\bel-checkbox--mini\b/g, "");
+    if (this.size == "small") {
+      label.className += " el-checkbox--small";
+    }
+    else if (this.size == "mini") {
+      label.className += " el-checkbox--mini";
+    }
+  }
+
   set trueLabel(value) {
     this.setAttribute("true-label", value);
   }
@@ -359,6 +445,31 @@ class Checkbox extends HTMLElement {
     return this.getAttribute("name") || "";
   }
   
+  set border(bSelect) {
+    const isSelect = Boolean(bSelect);
+    if (isSelect)
+      this.setAttribute("border", "");
+    else
+      this.removeAttribute("border");
+  }
+
+  get border() {
+    return this.hasAttribute("border");
+  }
+  
+  set size(newValue) {
+    if (newValue == "small")
+      this.setAttribute("size", "small");
+    else if (newValue == "mini")
+      this.setAttribute("size", "mini");
+    else
+      this.setAttribute("size", "medium");
+  }
+
+  get size() {
+    return this.getAttribute("size") || "medium";
+  }
+
 }
   
 customElements.define("checkbox-r", Checkbox);

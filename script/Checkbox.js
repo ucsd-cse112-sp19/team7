@@ -231,7 +231,7 @@ template.innerHTML = `
         <span class="el-checkbox__inner"></span>
           <input type="checkbox" class="el-checkbox__original" value="">
         </span>
-        <span class="el-checkbox__label" style="">Option<!----></span>
+        <span class="el-checkbox__label" style=""><!----></span>
       </label>
       </div>
     </div>
@@ -270,11 +270,13 @@ export class Checkbox extends HTMLElement {
     var wrapper = shadow.querySelector("div");
     var img = shadow.querySelector("label");
 
-    var text = document.createElement("p");
-    text.textContent = this.innerHTML;
+    var text = "Option";
+    if(this.innerHTML != "") {
+      text = this.innerHTML;
+    }
+    this.shadowRoot.querySelector("span.el-checkbox__label").textContent = text;
 
     wrapper.appendChild(img);
-    wrapper.appendChild(text);
     shadow.appendChild(wrapper);
 
     // add click event listener

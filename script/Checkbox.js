@@ -24,12 +24,6 @@ template.innerHTML = `
     :host {
       font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
     }
-    img {
-      height: 300px;
-    }
-    div img {
-      height: 20px;
-    }
     .el-checkbox:last-child {
       margin-right: 0;
     }
@@ -43,6 +37,7 @@ template.innerHTML = `
       white-space: nowrap;
       user-select: none;
       margin-right: 30px;
+      padding: 5px 0px 5px 0px;
     }
     .el-checkbox__input {
       white-space: nowrap;

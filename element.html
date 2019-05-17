@@ -4,9 +4,11 @@
     <title>Team7</title>
     <meta charset="UTF-8">
     <script type="module" src="script/Rater.js"></script>
+    <script type="module" src="script/Checkbox.js"></script>
   </head>
   <body>
-    <h2>Rater <br>Team7 Present</h2>
+    <h1>Rate</h1>
+    <h2>Team 7 Present</h2>
     <div>
       <rater-r author = "Team7" des="Rater Demo 1 -- Max of 10 stars with show customized blue colored texts" img="1.jpg" 
         max = "10" show-text="1" text-color="blue"
@@ -15,6 +17,24 @@
         score-template="super{value}!!" show-score img="2.jpg" v-model = "2"></rater-r>
       <rater-r author = "Team7" des="Rater Demo 3 -- Starting value of 3 stars, showing score, and disabled" img="3.jpg" 
         max = "6" disabled v-model = "3" show-score></rater-r>
+
+      <p><br><br><br><br></p>
+      <h1>Checkbox</h1>
+      <h2>Team 7 Present</h2>
+      <span><br><br>Checkbox Demo 1 -- Regular</span>
+      <checkbox-r></checkbox-r>
+      <span><br><br>Checkbox Demo 2 -- Start with checked</span>
+      <checkbox-r checked></checkbox-r>
+      <span><br><br>Checkbox Demo 3 -- Disabled</span>
+      <checkbox-r disabled></checkbox-r>
+      <span><br><br>Checkbox Demo 4 -- Start with checked and Disabled</span>
+      <checkbox-r checked disabled></checkbox-r>
+      <span><br><br>Checkbox Demo 5 -- Has border and disabled</span>
+      <checkbox-r border disabled></checkbox-r>
+      <span><br><br>Checkbox Demo 6 -- Has border and small box</span>
+      <checkbox-r border size="small"></checkbox-r>
+      <span><br><br>Checkbox Demo 7 -- Has border and mini box</span>
+      <checkbox-r border size="mini"></checkbox-r>
     </div>
   </body>
 </html>

@@ -251,12 +251,14 @@ export class Rater extends HTMLElement {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
       }
     }
-    if (this.texts[curr-1])
+    if (curr-1 >= 0 && this.texts[curr-1])
       this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
+    else
+      this.shadowRoot.querySelector("div p").textContent = "";
   }
 
   static get observedAttributes() {
-    return ["v-model", "max", "disabled", "show-score", "show-text", "texts", "score-template"]; //TODO1
+    return ["v-model", "max", "disabled", "show-score", "text-color", "show-text", "texts", "score-template"]; //TODO1
   }
 
   /**
@@ -295,6 +297,11 @@ export class Rater extends HTMLElement {
     //TODO3
     }
   }
+
+  /**
+   * `handleTextColor()` is called when the `text-color` attribute of
+   * rater-r is changed
+   */
   handleTextColor(newValue) {
     if(newValue == null) {
       newValue = "rgb(247, 186, 42)";
@@ -323,7 +330,7 @@ export class Rater extends HTMLElement {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
       }
     }
-    if (this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
+    if (newValue-1 >= 0 && this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
   }
 

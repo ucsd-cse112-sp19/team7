@@ -251,8 +251,10 @@ export class Rater extends HTMLElement {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
       }
     }
-    if (this.texts[curr-1])
+    if (curr-1 >= 0 && this.texts[curr-1])
       this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
+    else
+      this.shadowRoot.querySelector("div p").textContent = "";
   }
 
   static get observedAttributes() {
@@ -323,7 +325,7 @@ export class Rater extends HTMLElement {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
       }
     }
-    if (this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
+    if (newValue-1 >= 0 && this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
   }
 

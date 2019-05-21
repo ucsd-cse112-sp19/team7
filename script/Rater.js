@@ -258,7 +258,7 @@ export class Rater extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["v-model", "max", "disabled", "show-score", "show-text", "texts", "score-template"]; //TODO1
+    return ["v-model", "max", "disabled", "show-score", "text-color", "show-text", "texts", "score-template"]; //TODO1
   }
 
   /**
@@ -297,6 +297,11 @@ export class Rater extends HTMLElement {
     //TODO3
     }
   }
+
+  /**
+   * `handleTextColor()` is called when the `text-color` attribute of
+   * rater-r is changed
+   */
   handleTextColor(newValue) {
     if(newValue == null) {
       newValue = "rgb(247, 186, 42)";

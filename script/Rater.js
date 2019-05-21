@@ -141,9 +141,10 @@ export class Rater extends HTMLElement {
   connectedCallback() {
     const shadow = this.shadowRoot;
 
-    var author = shadow.querySelector("p#author");
-    var info = shadow.querySelector("p#des");
-    var span = shadow.querySelector("span");
+
+    var author = shadow.querySelector("p#author");  //Author text
+    var info = shadow.querySelector("p#des"); //Description text
+    var span = shadow.querySelector("span");  
     if (this.getAttribute("author")) {
       author.textContent = "Author: " + this.getAttribute("author");
     }
@@ -156,7 +157,7 @@ export class Rater extends HTMLElement {
     else { 
       span.removeChild(info);
     }
-
+    //Handle image
     var imgUrl;
     var img = shadow.querySelector("img");
     if(this.hasAttribute("img")) {
@@ -167,6 +168,7 @@ export class Rater extends HTMLElement {
       span.removeChild(img);
     }
 
+    //Wrapper for rater
     const slider = shadow.querySelector("div");
 
     // set up the rating bar
@@ -236,8 +238,6 @@ export class Rater extends HTMLElement {
    */
   updateStars(curr) {
     var stars = this.shadowRoot.querySelectorAll("div i");
-    
-    //console.log(stars);
     var i;
     for(i = 0; i < this.max; i++) {
       if(i < curr) {

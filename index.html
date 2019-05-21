@@ -4,20 +4,47 @@
   <title>Team 7</title>
   <link rel="icon" href="img/devilbus1.jpg">
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="script/namecard.js" defer></script>
-    <!--
-    <link rel="shortcut icon" href="path to logo" />
-    -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
 </head>
 
 <body>
-  <a href="webcomponent.html">Test the webcomponents</a>
-  <a href="core-hello.html">Test CoreHello</a>
-  <a href="element.html">Test Element</a>
-  <h1>Team Name: The Seven Deadly Sins</h1>
-  <img src="img/devilbus1.jpg" style="height: 200px;">
-  <h1>Team Members: </h1>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="12.jpg" width="30" height="30" alt="">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="webcomponent.html">Webcomponents</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="core-hello.html">CoreHello</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="element.html">Element-Sprint1</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  <div style="background: coral;margin:0 0 0 0;">
+      <video autoplay muted loop id="myVideo" style="  width: 100%    !important;
+      height: auto   !important;"><source src="Render.mp4" type="video/mp4"></video>
+  </div>
+  <div style="display: block;background: coral;margin:0 0 30px 0;height:180px;">
+      <h1 style="text-align:center;color:white;font-size: 50px"><br>Team Members</h1>
+  </div>
   <div>
     <name-card img="img/Etsu.jpg" name="Etzu Nakahana" position="Team Leader" email="etnakaha@ucsd.edu" major="BS: Computer Science" color="pink"></name-card>
   </div>
@@ -31,45 +58,31 @@
   </div>
   <br/>
   <div>
-    <img src="img/ChristianS.jpg" style="height: 80px;">
-    <p>Christian Schroeder (Quality Assurance)</p>
-    <p>cmschroe@ucsd.edu</p>
+    <name-card img="img/ChristianS.jpg" name="Christian Schroeder" position="Quality Assurance" email="cmschroe@ucsd.edu" major="BS: Computer Engineering" ></name-card>
   </div>
   <br/>
   <div>
-    <img src="img/Eric.jpg" style="height: 80px;">
-    <p>Eric Shaoan Liu (DevOps)</p>
-    <p>esl036@ucsd.edu</p>
+    <name-card img="img/Eric.jpg" name="Eric Shaoan Liu" position="DevOps" email="esl036@ucsd.edu" major="BS: Computer Engineering" ></name-card>
   </div>
   <br/>
   <div>
-    <img src="img/Dan.jpg" style="height: 80px;">
-    <p>Dan Nguyen (DevOps)</p>
-    <p>dan001@ucsd.edu</p>
+    <name-card img="img/Dan.jpg" name="Dan Nguyen" position="DevOps" email="dan001@ucsd.edu" major="BS: Computer Engineering" ></name-card>
   </div>
   <br/>
   <div>
-    <img src="img/Cortez.jpg" style="height: 80px;">
-    <p>Cortez Page (Tool & Utility)</p>
-    <p>cvpage@ucsd.edu</p>
+    <name-card img="img/Cortez.jpg" name="Cortez Page" position="Tool & Utility" email="cvpage@ucsd.edu" major="BS: Computer Engineering" ></name-card>
   </div>
   <br/>
   <div>
-    <img src="img/Ethan.jpg" style="height: 80px;">
-    <p>Ethan Brand (Tool & Utility)</p>
-    <p>edbrand@ucsd.edu</p>
+    <name-card img="img/Ethan.jpg" name="Ethan Brand" position="Tool & Utility" email="edbrand@ucsd.edu" major="BS: Computer Engineering" ></name-card>
   </div>
   <br/>
   <div>
-    <img src="img/Yiming.jpg" style="height: 80px;">
-    <p>Yiming Wang (Coders)</p>
-    <p>yiw679@ucsd.edu</p>
+    <name-card img="img/Yiming.jpg" name="Yiming Wang" position="Coder" email="yiw679@ucsd.edu" major="BS: Computer Engineering" ></name-card>
   </div>
   <br/>
   <div>
-    <img src="img/Ryan.jpg" style="height: 80px;">
-    <p>Ryan Murase (Coders)</p>
-    <p>rtmurase@ucsd.edu</p>
+    <name-card img="img/Ryan.jpg" name="Ryan Murase" position="Coder" email="rtmurase@ucsd.edu" major="BS: Computer Engineering" ></name-card>
   </div>
   <br/>
 </body>

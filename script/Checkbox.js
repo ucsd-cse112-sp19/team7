@@ -7,7 +7,7 @@
  * 
  * Orinal Code written in Vue.js:
  * 
- * https://github.com/ElemeFE/element/blob/dev/packages/rate/src/main.vue
+ * https://github.com/ElemeFE/element/blob/dev/packages/checkbox/src/checkbox.vue
  * 
  * Parts of comments copied and modified from:
  * 
@@ -23,12 +23,6 @@ template.innerHTML = `
   <style>
     :host {
       font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
-    }
-    img {
-      height: 300px;
-    }
-    div img {
-      height: 20px;
     }
     .el-checkbox:last-child {
         margin-right: 0;
@@ -178,7 +172,6 @@ template.innerHTML = `
       border-radius: 3px;
       height: 28px;
     }
-
     .el-checkbox.is-bordered.el-checkbox--small .el-checkbox__inner, 
     .el-checkbox.is-bordered.el-checkbox--mini .el-checkbox__inner {
       height: 12px;
@@ -188,7 +181,6 @@ template.innerHTML = `
       line-height: 12px;
       font-size: 12px;
     }
-
     .el-checkbox.is-bordered.is-disabled {
       border-color: #ebeef5;
       cursor: not-allowed;
@@ -214,32 +206,24 @@ template.innerHTML = `
     .el-checkbox__input.is-disabled {
       cursor: not-allowed;
     }
-
     .el-checkbox:last-child {
       margin-right: 0;
     }
   </style>
   <span>
-    <img>
-    <p id="author"></p>
-    <p id="des"></p>
-    <div>
-
     <div>
       <label class="el-checkbox">
         <span class="el-checkbox__input is-focus">
         <span class="el-checkbox__inner"></span>
           <input type="checkbox" class="el-checkbox__original" value="">
         </span>
-        <span class="el-checkbox__label" style=""><!----></span>
+        <span class="el-checkbox__label" style=""></span>
       </label>
-      </div>
     </div>
-
   </span>
 `;
 
-/*<div><label role="checkbox" class="el-checkbox"><span aria-checked="mixed" class="el-checkbox__input is-focus"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="true" class="el-checkbox__original" value=""></span><span class="el-checkbox__label" style="
+/*<div><div><label role="checkbox" class="el-checkbox"><span aria-checked="mixed" class="el-checkbox__input is-focus"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="true" class="el-checkbox__original" value=""></span><span class="el-checkbox__label" style="
 ">Option<!----></span></label></div>
     </div>*/
 
@@ -265,10 +249,9 @@ export class Checkbox extends HTMLElement {
   connectedCallback() {
     const shadow = this.shadowRoot;
 
-    //var wrapper = document.createElement("div");
-    //var img = document.createElement("img");
+
     var wrapper = shadow.querySelector("div");
-    var img = shadow.querySelector("label");
+    //var img = shadow.querySelector("label");
 
     var text = "Option";
     if(this.innerHTML != "") {
@@ -276,7 +259,7 @@ export class Checkbox extends HTMLElement {
     }
     this.shadowRoot.querySelector("span.el-checkbox__label").textContent = text;
 
-    wrapper.appendChild(img);
+    //wrapper.appendChild(img);
     shadow.appendChild(wrapper);
 
     // add click event listener
@@ -296,8 +279,8 @@ export class Checkbox extends HTMLElement {
   }
 
   /**
-   * `onBoxClick()` is called when box is clicked
-   * It will correctly set the start img and text contents
+   * `onBoxClick()` is called when any checkbox is clicked
+   * It will correctly toggle the checkbox
    */
   onBoxClick(event) {
     // cannot use this as the this in event listener is the target
@@ -308,7 +291,7 @@ export class Checkbox extends HTMLElement {
 
     var label = rater.shadowRoot.querySelector("label");
     var span = rater.shadowRoot.querySelector("label span");
-    //var bool = label.getAttribute("aria-checked");
+
     label.className = label.className.replace(/\bis-checked\b/g, "");
     span.className = span.className.replace(/\bis-checked\b/g, "");
     if(rater.checked) { 
@@ -468,7 +451,8 @@ export class Checkbox extends HTMLElement {
   }
   
   set border(bSelect) {
-    if (bSelect)
+    const isSelect = Boolean(bSelect);
+    if (isSelect)
       this.setAttribute("border", "");
     else
       this.removeAttribute("border");

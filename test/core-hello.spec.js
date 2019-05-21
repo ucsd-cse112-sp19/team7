@@ -9,7 +9,7 @@ describe('core-hello', () => {
     await showroom.stop();
   });
   beforeEach( async () => {
-    await showroom.setTestSubject('my-component');
+    await showroom.setTestSubject('core-hello');
   });
   /*
   it('Check for english hello world', async () => {

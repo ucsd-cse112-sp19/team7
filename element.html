@@ -1,19 +1,109 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Team7</title>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
   </head>
   <body>
-    <script src="script/Checkbox.js"></script>
-    <div>
-      <checkbox-r></checkbox-r>
-      <checkbox-r checked></checkbox-r>
-      <checkbox-r disabled></checkbox-r>
-      <checkbox-r checked disabled></checkbox-r>
-      <checkbox-r border disabled></checkbox-r>
-      <checkbox-r border size="small"></checkbox-r>
-      <checkbox-r border size="mini"></checkbox-r>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="module" src="script/Rater.js"></script>
+    <script type="module" src="script/Checkbox.js"></script>
+    <script type="module" src="script/CECoreHello.js"></script>
+    <!--Custom Element Templates-->
+    <template id="CECoreHelloT">
+      <style>
+        :host {
+          all: initial;
+          display: block;
+          contain: content;
+          text-align:center;
+        }
+  
+        p {
+          display: inline !important;
+          font-weight: bold;
+          font-size: 34px;
+          font-family: "Comic Sans MS", "Arial";
+        }
+      </style>
+      <p></p>
+    </template>
+    
+    <div id="header">
+    <br>
+      <img src="12.jpg" class="center" style="display: block; margin-left: auto; margin-right: auto; width: 10%;">
+      <ce-core-hello lang="en" rainbow>Rate & Checkbox -- in Bootstrap Carousel</ce-core-hello>
+      <ce-core-hello lang="en" rainbow>Team 7 Present</ce-core-hello>
+      <br>
     </div>
+
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" 
+    style="background-color: lightgoldenrodyellow;border: 10px solid coral;">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+          <div class="container">
+              <div class="row">
+                <div class="col" style="margin-left:100px">
+                  <h2><br>Rate & Checkbox Demo 1</h2>
+                  <checkbox-r border>Did you rate it?</checkbox-r>
+                  <checkbox-r border>Did you notice the texts and color?</checkbox-r>
+                  <checkbox-r border>Did you notice that the rate value is "saved"</checkbox-r>
+                </div>
+                <div class="col">
+                    <rater-r author = "Team7" des="Max 10 stars with blue colored custom texts" img="1.jpg" 
+                    max = "10" show-text="1" text-color="blue"
+                    texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></rater-r>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row">
+                <div class="col" style="margin-left:100px">
+                  <h2><br>Rate & Checkbox Demo 2</h2>
+                  <checkbox-r border>Did you notice the score template?</checkbox-r>
+                  <checkbox-r border checked >You Gotta have noticed the starting value right?</checkbox-r>
+                </div>
+                <div class="col">
+                    <rater-r author = "Team7" des="Start with 2 stars with score template 'super+score+!!'" 
+                    score-template="super{value}!!" show-score img="2.jpg" v-model = "2"></rater-r>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="container">
+              <div class="row">
+                <div class="col" style="margin-left:100px">
+                  <h2><br>Rate & Checkbox Demo 3</h2>
+                  <checkbox-r checked disabled>You Dont Get To Rate This!</checkbox-r>
+                  <checkbox-r border disabled>OK, but WHY!</checkbox-r>
+                  <checkbox-r checked disabled>Because my checkboxes has no border!</checkbox-r>
+                </div>
+                <div class="col">
+                    <rater-r author = "Team7" des="Start with 5 stars, show score, and disabled" img="3.jpg" 
+                    max = "5" disabled v-model = "5" show-score></rater-r>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
   </body>
 </html>

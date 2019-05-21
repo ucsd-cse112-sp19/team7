@@ -306,7 +306,8 @@ export class Rater extends HTMLElement {
     if(newValue == null) {
       newValue = "rgb(247, 186, 42)";
     }
-    this.shadowRoot.querySelector("div p").style.color = newValue;
+    if (this.shadowRoot.querySelector("div p"))
+      this.shadowRoot.querySelector("div p").style.color = newValue;
   }
 
   /**

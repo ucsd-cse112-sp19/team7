@@ -22,7 +22,7 @@ const template = document.createElement("template");
 template.innerHTML = `
   <style>
     :host {
-      font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif;
+      font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif; 
     }
     .el-checkbox:last-child {
         margin-right: 0;
@@ -37,6 +37,8 @@ template.innerHTML = `
         white-space: nowrap;
         user-select: none;
         margin-right: 30px;
+        //padding: 5px 0px 5px 0px;
+        margin: 5px 0px 5px 0px;
     }
     .el-checkbox__input {
         white-space: nowrap;
@@ -210,17 +212,15 @@ template.innerHTML = `
       margin-right: 0;
     }
   </style>
-  <span>
-    <div>
-      <label class="el-checkbox">
-        <span class="el-checkbox__input is-focus">
+  <div>
+    <label class="el-checkbox">
+      <span class="el-checkbox__input is-focus">
         <span class="el-checkbox__inner"></span>
-          <input type="checkbox" class="el-checkbox__original" value="">
-        </span>
-        <span class="el-checkbox__label" style=""></span>
-      </label>
-    </div>
-  </span>
+        <input type="checkbox" class="el-checkbox__original" value="">
+      </span>
+      <span class="el-checkbox__label" style=""></span>
+    </label>
+  </div>
 `;
 
 /*<div><div><label role="checkbox" class="el-checkbox"><span aria-checked="mixed" class="el-checkbox__input is-focus"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="true" class="el-checkbox__original" value=""></span><span class="el-checkbox__label" style="

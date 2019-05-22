@@ -1,4 +1,3 @@
-exit 0
 echo "Generating JS docs"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then

@@ -1,8 +1,7 @@
-exit 0
 npm install
 echo "Running linters..."
-eslint script/*
-htmlhint *.html
+eslint pages/
+htmlhint pages/ index.html
 echo "Linters Passed!"
 
 echo "Running tests..."

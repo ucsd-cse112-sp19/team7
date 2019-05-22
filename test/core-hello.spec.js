@@ -30,5 +30,4 @@ describe('core-hello', () => {
     assert.equal(ctext, '你好,世界 -  Name');
   });
   */
-  
 });

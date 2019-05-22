@@ -1,4 +1,10 @@
+/**
+ * CECoreHello class @extends {HTMLElement}
+ */
 export class CECoreHello extends HTMLElement {
+  /**
+   * constructor that creates the CECoreHello component
+   */
   constructor() {
     super();
     let shadow = this.attachShadow({ mode: "closed" });

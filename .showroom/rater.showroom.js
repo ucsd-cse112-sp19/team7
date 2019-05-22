@@ -1,6 +1,6 @@
 export default {
   component: 'rater-r',
-  path: '/script/Rater.js',
+  path: '/pages/element/script/Rater.js',
   events: ['clicked'],
   attributes: {
     'author': 'stupidEtsu',

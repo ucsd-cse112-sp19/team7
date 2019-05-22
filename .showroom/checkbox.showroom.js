@@ -1,6 +1,6 @@
 export default {
     component: 'checkbox-r',
-    path: '/script/Checkbox.js',
+    path: '/pages/element/script/Checkbox.js',
     events: ['Something'],
     attributes: {
         'name': 'something'

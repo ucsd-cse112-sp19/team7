@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <title>Team7</title>
+    <link rel="icon" href="../index/img/devilbus1.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,7 +16,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="module" src="script/Rater.js"></script>
     <script type="module" src="script/Checkbox.js"></script>
-    <script type="module" src="script/CECoreHello.js"></script>
+    <script type="module" src="../webcomponent/script/CECoreHello.js"></script>
     <!--Custom Element Templates-->
     <template id="CECoreHelloT">
       <style>
@@ -37,7 +38,7 @@
     </template>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">
-          <img src="12.jpg" width="30" height="30" alt="">
+          <img src="../index/img/devilbus_blue.jpg" width="30" height="30" alt="">
         </a>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
@@ -58,7 +59,7 @@
       </nav>
     <div id="header">
     <br>
-      <img src="12.jpg" class="center" style="display: block; margin-left: auto; margin-right: auto; width: 10%;">
+      <img src="../index/img/devilbus_blue.jpg" class="center" style="display: block; margin-left: auto; margin-right: auto; width: 10%;">
       <ce-core-hello lang="en" rainbow>Rate & Checkbox -- in Bootstrap Carousel</ce-core-hello>
       <ce-core-hello lang="en" rainbow>Team 7 Present</ce-core-hello>
       <br>
@@ -77,7 +78,7 @@
                   <checkbox-r>Did you notice that the rate value is "saved"</checkbox-r>
                 </div>
                 <div class="col">
-                    <rater-r author = "Team7" des="Max 10 stars with blue colored custom texts" img="1.jpg" 
+                    <rater-r author = "Team7" des="Max 10 stars with blue colored custom texts" img="img/1.jpg" 
                     max = "10" show-text="1" text-color="blue"
                     texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></rater-r>
                 </div>
@@ -94,7 +95,7 @@
                 </div>
                 <div class="col">
                     <rater-r author = "Team7" des="Start with 2 stars with score template 'super+score+!!'" 
-                    score-template="super{value}!!" show-score img="2.jpg" v-model = "2"></rater-r>
+                    score-template="super{value}!!" show-score img="img/2.jpg" v-model = "2"></rater-r>
                 </div>
               </div>
             </div>
@@ -109,7 +110,7 @@
                   <checkbox-r checked disabled>Because my checkboxes has no border!</checkbox-r>
                 </div>
                 <div class="col">
-                    <rater-r author = "Team7" des="Start with 5 stars, show score, and disabled" img="3.jpg" 
+                    <rater-r author = "Team7" des="Start with 5 stars, show score, and disabled" img="img/3.jpg" 
                     max = "5" disabled v-model = "5" show-score></rater-r>
                 </div>
               </div>

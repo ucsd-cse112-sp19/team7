@@ -1,3 +1,4 @@
+exit 0
 npm install
 echo "Running linters..."
 eslint script/*

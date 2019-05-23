@@ -193,8 +193,9 @@ export class Rater extends HTMLElement {
 
     //initialize the star value
     this.updateStars(this.valueModel);
-
     //TODO4
+
+    //var event = new CustomEvent("onchange", { "detail": this.valueModel });
   }
 
   /**
@@ -306,8 +307,7 @@ export class Rater extends HTMLElement {
     if(newValue == null) {
       newValue = "rgb(247, 186, 42)";
     }
-    if (this.shadowRoot.querySelector("div p"))
-      this.shadowRoot.querySelector("div p").style.color = newValue;
+    this.shadowRoot.querySelector("div p").style.color = newValue;
   }
 
   /**

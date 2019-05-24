@@ -71,12 +71,6 @@ template.innerHTML = `
         height: 20px;
         line-height: 1;
     }
-    .el-icon-star-off:before {
-      content: "\\2606";
-    }
-    .el-icon-star-on:before {
-      content: "\\2605";
-    }
     .el-icon-star-on {
       color: rgb(247, 186, 42);
     }
@@ -90,6 +84,29 @@ template.innerHTML = `
       font-size: 14px;
       vertical-align: middle;
     }
+    
+    .el-icon-star-on.low-level {
+    }
+    .el-icon-star-on.medium-level {
+    }
+    .el-icon-star-on.high-level {
+    }
+    .el-icon-star-off {
+    }
+    .disabled .el-icon-star-off {
+    }
+    
+    .el-icon-star-on.low-level::before {
+    }
+    .el-icon-star-on.medium-level::before { 
+    }
+    .el-icon-star-on.high-level::before {
+    }
+    .el-icon-star-off::before{
+    }
+    .disabled .el-icon-star-off::before {
+    }
+    
   </style>
   <span>
     <img>
@@ -100,7 +117,14 @@ template.innerHTML = `
     </div>
   </span>
 `;
+/*
 
+    .el-icon-star-off:before {
+      content: "\\2606";
+    }
+    .el-icon-star-on:before {
+      content: "\\2605";
+    } */
 /*
 The following can be used but might get sued by element since they will use elemet's icon,
 which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-chalk/fonts/
@@ -140,7 +164,6 @@ export class Rater extends HTMLElement {
    */
   connectedCallback() {
     const shadow = this.shadowRoot;
-
 
     var author = shadow.querySelector("p#author");  //Author text
     var info = shadow.querySelector("p#des"); //Description text
@@ -191,6 +214,10 @@ export class Rater extends HTMLElement {
     // set up the text content, either number or the chinese characters
     this.handleShowScoreAndText(this.showScore, this.showText);
 
+    // set the colors & icons
+    this.updateColors();
+    this.updateIcons();
+
     //initialize the star value
     this.updateStars(this.valueModel);
     //TODO4
@@ -239,9 +266,25 @@ export class Rater extends HTMLElement {
    */
   updateStars(curr) {
     var stars = this.shadowRoot.querySelectorAll("div i");
+    var level;
+    if (curr <= this.lowThreshold) {
+      level = " low-level";
+    }
+    else if (curr < this.highThreshold) {
+      level = " medium-level";
+    }
+    else {
+      level = " high-level";
+    }
+    
     var i;
     for(i = 0; i < this.max; i++) {
+      stars[i].className = stars[i].className.replace(/\blow-level\b/g, "");
+      stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, "");
+      stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, "");
+      
       if(i < curr) {
+        stars[i].className += level;
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
         stars[i].className += " el-icon-star-on";
         stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
@@ -259,7 +302,12 @@ export class Rater extends HTMLElement {
   }
 
   static get observedAttributes() {
-    return ["v-model", "max", "disabled", "show-score", "text-color", "show-text", "texts", "score-template"]; //TODO1
+    return [
+      "v-model", "max", "disabled", "show-score", "text-color", 
+      "show-text", "texts", "score-template", "low-threshold", 
+      "high-threshold", "colors", "void-color", "disabled-void-color",
+      "icons", "void-icon", "disabled-void-icon"
+    ]; //TODO1
   }
 
   /**
@@ -295,6 +343,30 @@ export class Rater extends HTMLElement {
     case "score-template":
       // no need to handle since "get texts" is updated
       break;
+    case "low-threshold":
+      this.updateStars();
+      break;
+    case "high-threshold":
+      this.updateStars();
+      break;
+    case "colors":
+      this.updateColors();
+      break;
+    case "void-color":
+      this.updateColors();
+      break;
+    case "disabled-void-color":
+      this.updateColors();
+      break;
+    case "icons":
+      this.updateIcons();
+      break;
+    case "void-icon":
+      this.updateIcons();
+      break;
+    case "disabled-void-icon":
+      this.updateIcons();
+      break;
     //TODO3
     }
   }
@@ -307,7 +379,8 @@ export class Rater extends HTMLElement {
     if(newValue == null) {
       newValue = "rgb(247, 186, 42)";
     }
-    this.shadowRoot.querySelector("div p").style.color = newValue;
+    if (this.shadowRoot.querySelector("div p"))
+      this.shadowRoot.querySelector("div p").style.color = newValue;
   }
 
   /**
@@ -402,6 +475,94 @@ export class Rater extends HTMLElement {
       this.shadowRoot.querySelector("div p").style.display = "none";
     }
   } 
+
+  /**
+   * `updateColors()` is called when the `colors` `void-color` `disabled-void-color`
+   * attribute of rater-r is changed
+   */
+  updateColors() {
+    var styleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i;
+    for (i = 0; i < styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      switch (rule.selectorText) {
+      case ".el-icon-star-on.low-level":
+        rule.style.color = this.colors[0];
+        break;
+      case ".el-icon-star-on.medium-level":
+        rule.style.color = this.colors[1];
+        break;
+      case ".el-icon-star-on.high-level":
+        rule.style.color = this.colors[2];
+        break;
+      case ".el-icon-star-off":
+        rule.style.color = this.voidColor;
+        break;
+      case ".disabled .el-icon-star-off":
+        rule.style.color = this.disabledVoidColor;
+        break;
+      }
+    }
+    /*
+    styleSheet.deleteRule(".el-icon-star-on.low-level", 0);
+    styleSheet.deleteRule(".el-icon-star-on.medium-level", 0);
+    styleSheet.deleteRule(".el-icon-star-on.high-level", 0);
+    //use insertRule(".eg{}", index) instead if less browser is supporting
+    styleSheet.addRule(".el-icon-star-on.low-level", "color: " + this.colors[0] + ";", 0);
+    styleSheet.addRule(".el-icon-star-on.medium-level",  "color: " + this.colors[1] + ";", 0);
+    styleSheet.addRule(".el-icon-star-on.high-level", "color: " + this.colors[2] + ";", 0);
+  */
+  }
+  
+  /**
+   * `updateIcons()` is called when the `icons` `void-icon` `disabled-void-icon`
+   * attribute of rater-r is changed
+   */
+  updateIcons() {
+    var styleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i;
+    
+    for (i = 0; i < styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      switch (rule.selectorText) {
+      case ".el-icon-star-on.low-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.low-level::before {
+          content: "` + this.icons[0] + `";
+        }`, i);
+        break;
+      case ".el-icon-star-on.medium-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.medium-level::before {
+          content: "` + this.icons[1] + `";
+        }`, i);
+        break;
+      case ".el-icon-star-on.high-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.high-level::before {
+          content: "` + this.icons[2] + `";
+        }`, i);
+        break;
+      case ".el-icon-star-off::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-off::before {
+          content: "` + this.voidIcon + `";
+        }`, i);
+        break;
+      case ".disabled .el-icon-star-off::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .disabled .el-icon-star-off::before {
+          content: "` + this.disabledVoidIcon + `";
+        }`, i);
+        break;
+      }
+    }
+  }
 
   set valueModel(value) {
     this.setAttribute("v-model", value);
@@ -501,6 +662,82 @@ export class Rater extends HTMLElement {
   get scoreTemplate() {
     return this.getAttribute("score-template") || "{value}";
   }
+  
+  set lowThreshold(value) {
+    this.setAttribute("low-threshold", value);
+  }
+
+  get lowThreshold() {
+    return this.getAttribute("low-threshold") || 2;
+  }
+
+  set highThreshold(value) {
+    this.setAttribute("high-threshold", value);
+  }
+
+  get highThreshold() {
+    return this.getAttribute("high-threshold") || 4;
+  }
+
+  set colors(value) {
+    this.setAttribute("colors", value);
+  }
+
+  get colors() {
+    if (this.getAttribute("colors")) {
+      if (this.getAttribute("colors").split(",").length > 3)
+        return this.getAttribute("colors").split(";"); 
+      return this.getAttribute("colors").split(",");
+    }
+    else 
+      return ["#F7BA2A", "#F7BA2A", "#F7BA2A"];
+  }
+
+  set voidColor(value) {
+    this.setAttribute("void-color", value);
+  }
+
+  get voidColor() {
+    return this.getAttribute("void-color") || "#C6D1DE";
+  }
+  
+  set disabledVoidColor(value) {
+    this.setAttribute("disabled-void-color", value);
+  }
+
+  get disabledVoidColor() {
+    return this.getAttribute("disabled-void-color") || "#EFF2F7";
+  }
+
+  set icons(value) {
+    this.setAttribute("icons", value);
+  }
+
+  get icons() {
+    if (this.getAttribute("icons")) {
+      return this.getAttribute("icons").split(",");
+    }
+    else 
+      return ["\\2605", "\\2605", "\\2605"];
+  }
+
+  set voidIcon(value) {
+    this.setAttribute("void-icon", value);
+  }
+
+  get voidIcon() {
+    return this.getAttribute("void-icon") || "\\2606";
+  }
+  
+  set disabledVoidIcon(value) {
+    this.setAttribute("disabled-void-icon", value);
+  }
+
+  get disabledVoidIcon() {
+    return this.getAttribute("disabled-void-icon") || "\\2605";
+  }
+
+
 
   //TODO2
 }

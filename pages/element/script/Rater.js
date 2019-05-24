@@ -96,12 +96,15 @@ template.innerHTML = `
     .disabled .el-icon-star-off {
     }
     
-    
-    .el-icon-star-off:before {
-      content: "\\2606";
+    .el-icon-star-on.low-level::before {
     }
-    .el-icon-star-on:before {
-      content: "\\2605";
+    .el-icon-star-on.medium-level::before { 
+    }
+    .el-icon-star-on.high-level::before {
+    }
+    .el-icon-star-off::before{
+    }
+    .disabled .el-icon-star-off::before {
     }
     
   </style>
@@ -115,17 +118,6 @@ template.innerHTML = `
   </span>
 `;
 /*
-.el-icon-star-on.low-level:before{
-    }
-    .el-icon-star-on.medium-level:before { 
-    }
-    .el-icon-star-on.high-level:before {
-    }
-    .el-icon-star-off:before{
-    }
-    .disabled .el-icon-star-off:before {
-      content: "\\2605";
-    }
 
     .el-icon-star-off:before {
       content: "\\2606";
@@ -172,7 +164,6 @@ export class Rater extends HTMLElement {
    */
   connectedCallback() {
     const shadow = this.shadowRoot;
-
 
     var author = shadow.querySelector("p#author");  //Author text
     var info = shadow.querySelector("p#des"); //Description text
@@ -222,9 +213,6 @@ export class Rater extends HTMLElement {
     
     // set up the text content, either number or the chinese characters
     this.handleShowScoreAndText(this.showScore, this.showText);
-
-    // set the thresholds
-    this.updateThresholds();
 
     // set the colors & icons
     this.updateColors();
@@ -278,9 +266,25 @@ export class Rater extends HTMLElement {
    */
   updateStars(curr) {
     var stars = this.shadowRoot.querySelectorAll("div i");
+    var level;
+    if (curr <= this.lowThreshold) {
+      level = " low-level";
+    }
+    else if (curr < this.highThreshold) {
+      level = " medium-level";
+    }
+    else {
+      level = " high-level";
+    }
+    
     var i;
     for(i = 0; i < this.max; i++) {
+      stars[i].className = stars[i].className.replace(/\blow-level\b/g, "");
+      stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, "");
+      stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, "");
+      
       if(i < curr) {
+        stars[i].className += level;
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
         stars[i].className += " el-icon-star-on";
         stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
@@ -295,28 +299,6 @@ export class Rater extends HTMLElement {
       this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
     else
       this.shadowRoot.querySelector("div p").textContent = "";
-  }
-
-  /**
-   * `updateThresholds()` is a helper method to update the starts based on the new thresholds
-   */
-  updateThresholds() {
-    var stars = this.shadowRoot.querySelectorAll("div i");
-    var i;
-    for(i = 0; i < this.max; i++) {
-      stars[i].className = stars[i].className.replace(/\blow-level\b/g, "");
-      stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, "");
-      stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, "");
-      if (i+1 <= this.lowThreshold) {
-        stars[i].className += " low-level";
-      }
-      else if (i+1 < this.highThreshold) {
-        stars[i].className += " medium-level";
-      }
-      else {
-        stars[i].className += " high-level";
-      }
-    }
   }
 
   static get observedAttributes() {
@@ -362,10 +344,10 @@ export class Rater extends HTMLElement {
       // no need to handle since "get texts" is updated
       break;
     case "low-threshold":
-      this.updateThresholds();
+      this.updateStars();
       break;
     case "high-threshold":
-      this.updateThresholds();
+      this.updateStars();
       break;
     case "colors":
       this.updateColors();
@@ -540,25 +522,43 @@ export class Rater extends HTMLElement {
     var styleSheet = this.shadowRoot.querySelector("style").sheet;
     var i;
     
-    console.log("this.disabledVoidIcon");
     for (i = 0; i < styleSheet.cssRules.length; i++) {
       var rule = styleSheet.cssRules[i];
       switch (rule.selectorText) {
-      case ".el-icon-star-on.low-level:before":
-        rule.style.content = this.icons[0];
+      case ".el-icon-star-on.low-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.low-level::before {
+          content: "` + this.icons[0] + `";
+        }`, i);
         break;
-      case ".el-icon-star-on.medium-level:before":
-        rule.style.content = this.icons[1];
+      case ".el-icon-star-on.medium-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.medium-level::before {
+          content: "` + this.icons[1] + `";
+        }`, i);
         break;
-      case ".el-icon-star-on.high-level:before":
-        rule.style.content = this.icons[2];
+      case ".el-icon-star-on.high-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.high-level::before {
+          content: "` + this.icons[2] + `";
+        }`, i);
         break;
-      case ".el-icon-star-off:before":
-        rule.style.content = this.voidIcon;
+      case ".el-icon-star-off::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-off::before {
+          content: "` + this.voidIcon + `";
+        }`, i);
         break;
-      case ".disabled .el-icon-star-off:before":
-        rule.style.content = this.disabledVoidIcon;
-        console.log(this.disabledVoidIcon);
+      case ".disabled .el-icon-star-off::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .disabled .el-icon-star-off::before {
+          content: "` + this.disabledVoidIcon + `";
+        }`, i);
         break;
       }
     }
@@ -690,7 +690,7 @@ export class Rater extends HTMLElement {
       return this.getAttribute("colors").split(",");
     }
     else 
-      return ['#F7BA2A', '#F7BA2A', '#F7BA2A'];
+      return ["#F7BA2A", "#F7BA2A", "#F7BA2A"];
   }
 
   set voidColor(value) {
@@ -718,7 +718,7 @@ export class Rater extends HTMLElement {
       return this.getAttribute("icons").split(",");
     }
     else 
-      return ['\\2605', '\\2605', '\\2605'];
+      return ["\\2605", "\\2605", "\\2605"];
   }
 
   set voidIcon(value) {

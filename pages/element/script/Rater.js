@@ -266,10 +266,11 @@ export class Rater extends HTMLElement {
   updateStars(curr) {
     var stars = this.shadowRoot.querySelectorAll("div i");
     var level;
-    if (curr <= this.lowThreshold) {
+    // + sign is used to convert curr to int so that comparison is done correctly
+    if (+curr <= +this.lowThreshold) {
       level = " low-level";
     }
-    else if (curr < this.highThreshold) {
+    else if (+curr < +this.highThreshold) {
       level = " medium-level";
     }
     else {
@@ -296,7 +297,7 @@ export class Rater extends HTMLElement {
     }
     if (curr-1 >= 0 && this.texts[curr-1])
       this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
-    else
+    else if (this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = "";
   }
 

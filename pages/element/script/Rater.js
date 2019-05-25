@@ -47,7 +47,7 @@ template.innerHTML = `
       position: relative;
     }
     [class*=" el-icon-"], [class^=el-icon-] {
-      font-family: element-icons!important;
+      //font-family: element-icons!important;
       speak: none;
       font-style: normal;
       font-weight: 400;
@@ -255,7 +255,8 @@ export class Rater extends HTMLElement {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
-      rater.updateStars(event.target.id);
+      var id = event.target.id ? event.target.id : event.target.querySelector(".el-rate__icon").id;
+      rater.updateStars(id);
     }
   }
 
@@ -425,7 +426,7 @@ export class Rater extends HTMLElement {
         newStar.className += " el-icon-star-off";
         newStar.id = i+1;
         
-        newStar.addEventListener("mouseover", this.onStarOver);
+        newItem.addEventListener("mouseover", this.onStarOver);
         newStar.addEventListener("click",this.onStarClick);
         newStar.addEventListener("mouseleave",this.onStarLeave);
 

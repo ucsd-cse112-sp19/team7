@@ -8,7 +8,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <!-- CSS for icons from Element -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link href="https://element.eleme.io/docs.b8e65c4.css" rel="stylesheet">
   </head>
   <body>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -87,10 +89,12 @@
                   <div class="card" style="margin-top: 10px; margin-bottom: 10px">
                       <video autoplay muted loop style="  width: 90%    !important;
                       height: auto   !important; align-self: center;margin-top: 10px" source src="../index/video/Render.mp4" type="video/mp4"></video>
-                      <div class="card-body">
+                      <div class="card-body">     
                           <h5 class="card-title">Bootstrap Card 1</h5>
                           <sds-rate class= "card-text" author = "Team7" des="Max 10 stars with blue colored custom texts" img="img/1.jpg" 
                           max = "10" show-text="1" text-color="blue" low-threshold="3" high-threshold="8"
+                          icons="\e901,\e902,\e903" void-icon="\e900" 
+                          style="font-family: icomoon!important;"
                           colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"
                           texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></sds-rate>
                       </div>
@@ -117,7 +121,7 @@
                           <div class="card-body">
                               <h5 class="card-title">Bootstrap Card 2</h5>
                               <sds-rate class = "card-text" author = "Team7" des="Start with 2 stars with score template 'super+score+!!'" 
-                              icons="\25A2, \25A8, \25A9" void-icon="\25A1"
+                              icons="\25A2,\25A8,\25A9" void-icon="\25A1"
                               score-template="super{value}!!" show-score img="img/2.jpg" v-model = "2"></sds-rate>
                           </div>
                         </div>
@@ -145,6 +149,8 @@
                         <div class="card-body">
                             <h5 class="card-title">Bootstrap Card 3</h5>
                             <sds-rate class = "card-text" author = "Team7" des="Start with 5 stars, show score, and disabled" img="img/3.jpg" 
+                            icons="\e797,\e797,\e797" disabled-void-icon="\e717"
+                            style="font-family: element-icons!important;"
                             max = "5" disabled v-model = "4" show-score></sds-rate>
                         </div>
                       </div>

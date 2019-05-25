@@ -477,4 +477,4 @@ export class Checkbox extends HTMLElement {
 
 }
   
-customElements.define("checkbox-r", Checkbox);
+customElements.define("sds-checkbox", Checkbox);

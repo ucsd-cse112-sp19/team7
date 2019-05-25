@@ -75,11 +75,11 @@
                   <h2><br>Rate & Checkbox Demo 1</h2>
                     <div class="card">
                         <div class="card-body">
-                            <checkbox-r class="card-text" border>Did you rate it?</checkbox-r>
+                            <sds-checkbox class="card-text" border>Did you rate it?</sds-checkbox>
                             <br>
-                            <checkbox-r class="card-text" border>Did you notice the texts and color?</checkbox-r>
+                            <sds-checkbox class="card-text" border>Did you notice the texts and color?</sds-checkbox>
                             <br>
-                            <checkbox-r class="card-text" border>Did you notice that the rate value is "saved"</checkbox-r>
+                            <sds-checkbox class="card-text" border>Did you notice that the rate value is "saved"</sds-checkbox>
                         </div>
                       </div>
                 </div>
@@ -89,9 +89,9 @@
                       height: auto   !important; align-self: center;margin-top: 10px" source src="../index/video/Render.mp4" type="video/mp4"></video>
                       <div class="card-body">
                           <h5 class="card-title">Bootstrap Card 1</h5>
-                          <rater-r class= "card-text" author = "Team7" des="Max 10 stars with blue colored custom texts" img="img/1.jpg" 
+                          <sds-rate class= "card-text" author = "Team7" des="Max 10 stars with blue colored custom texts" img="img/1.jpg" 
                           max = "10" show-text="1" text-color="blue"
-                          texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></rater-r>
+                          texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></sds-rate>
                       </div>
                     </div>
                 </div>
@@ -104,9 +104,9 @@
                 <div class="col" style="margin-left:100px">
                   <h2><br>Rate & Checkbox Demo 2</h2>
                   <br>
-                  <checkbox-r border>Did you notice the score template?</checkbox-r>
+                  <sds-checkbox border>Did you notice the score template?</sds-checkbox>
                   <br>
-                  <checkbox-r border checked >You Gotta have noticed the starting value right?</checkbox-r>
+                  <sds-checkbox border checked >You Gotta have noticed the starting value right?</sds-checkbox>
                 </div>
                 <div class="col">
                     <div class="col">
@@ -115,8 +115,8 @@
                           height: auto   !important; align-self: center;margin-top: 10px" source src="../index/video/Render.mp4" type="video/mp4"></video>
                           <div class="card-body">
                               <h5 class="card-title">Bootstrap Card 2</h5>
-                              <rater-r class = "card-text" author = "Team7" des="Start with 2 stars with score template 'super+score+!!'" 
-                              score-template="super{value}!!" show-score img="img/2.jpg" v-model = "2"></rater-r>
+                              <sds-rate class = "card-text" author = "Team7" des="Start with 2 stars with score template 'super+score+!!'" 
+                              score-template="super{value}!!" show-score img="img/2.jpg" v-model = "2"></sds-rate>
                           </div>
                         </div>
                     </div>
@@ -130,11 +130,11 @@
                 <div class="col" style="margin-left:100px">
                   <h2><br>Rate & Checkbox Demo 3</h2>
                   <br>
-                  <checkbox-r checked disabled>You Dont Get To Rate This!</checkbox-r>
+                  <sds-checkbox checked disabled>You Dont Get To Rate This!</sds-checkbox>
                   <br>
-                  <checkbox-r border disabled>OK, but why though</checkbox-r>
+                  <sds-checkbox border disabled>OK, but why though</sds-checkbox>
                   <br>
-                  <checkbox-r checked disabled>Because my checkboxes have no border!</checkbox-r>
+                  <sds-checkbox checked disabled>Because my checkboxes have no border!</sds-checkbox>
                 </div>
                 <div class="col">
                     <div class="card" style="margin-top: 10px; margin-bottom: 10px">
@@ -142,9 +142,9 @@
                         height: auto   !important; align-self: center;margin-top: 10px" source src="../index/video/Render.mp4" type="video/mp4"></video>
                         <div class="card-body">
                             <h5 class="card-title">Bootstrap Card 3</h5>
-                            <rater-r class = "card-text" author = "Team7" des="Start with 5 stars, show score, and disabled" img="img/3.jpg" 
+                            <sds-rate class = "card-text" author = "Team7" des="Start with 5 stars, show score, and disabled" img="img/3.jpg" 
                             max = "5" disabled v-model = "4" show-score 
-                            colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"></rater-r>
+                            colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"></sds-rate>
                         </div>
                       </div>
                   </div>

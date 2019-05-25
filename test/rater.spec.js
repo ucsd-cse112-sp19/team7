@@ -3,7 +3,7 @@ const assert = require('assert');
 
 //let root;
 
-describe('rater-r', () => {
+describe('sds-rate', () => {
   before( async () => {
     await showroom.start();
   });
@@ -11,7 +11,7 @@ describe('rater-r', () => {
     await showroom.stop();
   });
   beforeEach( async () => {
-    await showroom.setTestSubject('rater-r');
+    await showroom.setTestSubject('sds-rate');
     //root = await showroom.page.$('showroom-app');
     //await showroom.page.waitFor(300);
   });

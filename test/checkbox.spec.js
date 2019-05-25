@@ -1,7 +1,7 @@
 const showroom = require('showroom/puppeteer')();
 const assert = require('assert');
 
-describe('checkbox-r', () => {
+describe('sds-checkbox', () => {
 
   before( async() => {
       await showroom.start();
@@ -12,7 +12,7 @@ describe('checkbox-r', () => {
   });
 
   beforeEach( async () => {
-      await showroom.setTestSubject('checkbox-r');
+      await showroom.setTestSubject('sds-checkbox');
   });
 
   it('Unit test 1: check clicking', async () => {

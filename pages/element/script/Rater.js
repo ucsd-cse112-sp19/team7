@@ -118,13 +118,12 @@ template.innerHTML = `
   </span>
 `;
 /*
-
     .el-icon-star-off:before {
       content: "\\2606";
     }
     .el-icon-star-on:before {
       content: "\\2605";
-    } */
+    }
 /*
 The following can be used but might get sued by element since they will use elemet's icon,
 which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-chalk/fonts/
@@ -147,7 +146,7 @@ export class Rater extends HTMLElement {
   /**
    * The element's constructor is run anytime a new instance is created.
    * Instances are created by parsing HTML, or calling
-   * document.createElement("rater-r")
+   * document.createElement("7ds-rate")
    * The construtor is a good place to create shadow DOM, though you should
    * avoid touching any attributes or light DOM children as they may not
    * be available yet.
@@ -742,4 +741,4 @@ export class Rater extends HTMLElement {
   //TODO2
 }
   
-customElements.define("rater-r", Rater);
+customElements.define("sds-rate", Rater);

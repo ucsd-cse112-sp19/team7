@@ -1,5 +1,5 @@
 export default {
-    component: 'checkbox-r',
+    component: 'sds-checkbox',
     path: '/pages/element/script/Checkbox.js',
     events: ['Something'],
     attributes: {

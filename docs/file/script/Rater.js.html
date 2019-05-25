@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">script/Rater.js | team7</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="team7"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">script/Rater.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Author: Team7, CSE112 Spring 2019
+ * 
+ * Description: This is a ported version of rater originally from: 
+ * 
+ * https://element.eleme.io/#/en-US/component/rate
+ * 
+ * Orinal Code written in Vue.js:
+ * 
+ * https://github.com/ElemeFE/element/blob/dev/packages/rate/src/main.vue
+ * 
+ * Parts of comments copied and modified from:
+ * 
+ * https://github.com/GoogleChromeLabs/howto-components/blob/master/elements/howto-checkbox/howto-checkbox.js
+ */
+
+/**
+ * Cloning contents from a &amp;lt;template&amp;gt; element is more performant
+ * than using innerHTML because it avoids addtional HTML parse costs.
+ */
+const template = document.createElement(&quot;template&quot;);
+template.innerHTML = `
+  &lt;style&gt;
+    :host {
+    }
+    img {
+      height: 300px;
+    }
+    div p {
+      display: inline !important;
+      margin-left: 5px;
+      font: bold 20px &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+    }
+    div img {
+      height: 20px;
+      background-color: white;
+    }
+
+    .el-rate__icon {
+      font-size: 18px;
+      margin-right: 4px;
+      color: #c0c4cc;
+      transition: .3s;
+    }
+    .el-rate__icon, .el-rate__item {
+      display: inline-block;
+      position: relative;
+    }
+    [class*=&quot; el-icon-&quot;], [class^=el-icon-] {
+      font-family: element-icons!important;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: baseline;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    i {
+      font-style: italic;
+    }
+    .el-rate__item {
+        font-size: 0;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .el-rate {
+        height: 20px;
+        line-height: 1;
+    }
+    .el-icon-star-off:before {
+      content: &quot;\\2606&quot;;
+    }
+    .el-icon-star-on:before {
+      content: &quot;\\2605&quot;;
+    }
+    .el-icon-star-on {
+      color: rgb(247, 186, 42);
+    }
+    .el-rate__item:not(.disabled) .el-rate__icon:hover {
+      transform: scale(1.2);
+    }
+    .el-rate__item.disabled {
+        cursor: default;
+    }
+    .el-rate__text {
+      font-size: 14px;
+      vertical-align: middle;
+    }
+  &lt;/style&gt;
+  &lt;span&gt;
+    &lt;img&gt;
+    &lt;p id=&quot;author&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;des&quot;&gt;&lt;/p&gt;
+    &lt;div class=&quot;el-rate&quot;&gt;
+    
+    &lt;/div&gt;
+  &lt;/span&gt;
+`;
+
+/*
+The following can be used but might get sued by element since they will use elemet&apos;s icon,
+which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-chalk/fonts/
+    @font-face {
+      font-family: element-icons;
+      src: url(fonts/element-icons.woff) format(&quot;woff&quot;),
+           url(fonts/element-icons.ttf) format(&quot;truetype&quot;);
+      font-weight: 400;font-style:normal}
+      
+    .el-icon-star-off:before {
+      content: &quot;\\e717&quot;;
+    }
+    .el-icon-star-on:before {
+      content: &quot;\\e797&quot;;
+    }
+*/
+
+
+export class Rater extends HTMLElement {
+  /**
+   * The element&apos;s constructor is run anytime a new instance is created.
+   * Instances are created by parsing HTML, or calling
+   * document.createElement(&quot;rater-r&quot;)
+   * The construtor is a good place to create shadow DOM, though you should
+   * avoid touching any attributes or light DOM children as they may not
+   * be available yet.
+   */
+  constructor() {
+    super();
+    this.attachShadow({mode: &quot;open&quot;});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  /**
+   * `connectedCallback()` is called when the element is inserted into the DOM.
+   * It&apos;s a good place to set the initial attribute values and install event listeners.
+   */
+  connectedCallback() {
+    const shadow = this.shadowRoot;
+
+
+    var author = shadow.querySelector(&quot;p#author&quot;);  //Author text
+    var info = shadow.querySelector(&quot;p#des&quot;); //Description text
+    var span = shadow.querySelector(&quot;span&quot;);  
+    if (this.getAttribute(&quot;author&quot;)) {
+      author.textContent = &quot;Author: &quot; + this.getAttribute(&quot;author&quot;);
+    }
+    else { 
+      span.removeChild(author);
+    }
+    if (this.getAttribute(&quot;des&quot;)) {
+      info.textContent = &quot;Description: &quot; + this.getAttribute(&quot;des&quot;);
+    }
+    else { 
+      span.removeChild(info);
+    }
+    //Handle image
+    var imgUrl;
+    var img = shadow.querySelector(&quot;img&quot;);
+    if(this.hasAttribute(&quot;img&quot;)) {
+      imgUrl = this.getAttribute(&quot;img&quot;);
+      img.src = imgUrl;
+    } else {
+      //imgUrl = &quot;background.jpg&quot;;
+      span.removeChild(img);
+    }
+
+    //Wrapper for rater
+    const slider = shadow.querySelector(&quot;div&quot;);
+
+    // set up the rating bar
+    if (slider.querySelectorAll(&quot;span&quot;))
+      this.handleMax(slider.querySelectorAll(&quot;span&quot;).length, this.max); //add the stars
+    else
+      this.handleMax(0, this.max);
+ 
+    // append the text field for the rating bar
+    const ratertext = document.createElement(&quot;p&quot;);
+    ratertext.textContent = &quot;&quot;;
+    ratertext.className += &quot; el-rate__text&quot;;
+    slider.appendChild(ratertext);
+
+    // disable the rate buttons if necessary
+    this.handleDisabled();
+
+    this.handleTextColor(this.textColor);
+    
+    // set up the text content, either number or the chinese characters
+    this.handleShowScoreAndText(this.showScore, this.showText);
+
+    //initialize the star value
+    this.updateStars(this.valueModel);
+
+    //TODO4
+  }
+
+  /**
+   * `onStarClick()` is called when any rating star is clicked
+   * It will correctly set the current rate value, or the value model
+   */
+  onStarClick(event) {
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      rater.valueModel = event.target.id;
+    }
+  }
+
+  /**
+   * `onStarLeave()` is called when cursor moves awayy
+   * It will correctly set the value back to current Rate Value
+   */
+  onStarLeave(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      rater.updateStars(rater.valueModel);
+    }
+  }
+
+  /**
+   * `onStarOver()` is called when any rating star is hovered
+   * It will correctly set the start img and text contents
+   */
+  onStarOver(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+    if(!rater.disabled) {
+      rater.updateStars(event.target.id);
+    }
+  }
+
+  /**
+   * `updateStars()` is a helper method to update the stars based on the mouse action
+   * @param {CurrentStar} curr - this is the star that has been clicked or hovered
+   */
+  updateStars(curr) {
+    var stars = this.shadowRoot.querySelectorAll(&quot;div i&quot;);
+    var i;
+    for(i = 0; i &lt; this.max; i++) {
+      if(i &lt; curr) {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, &quot;&quot;);
+        stars[i].className += &quot; el-icon-star-on&quot;;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, &quot;&quot;);
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, &quot;&quot;);
+        stars[i].className += &quot; el-icon-star-off&quot;;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, &quot;&quot;);
+      }
+    }
+    if (curr-1 &gt;= 0 &amp;&amp; this.texts[curr-1])
+      this.shadowRoot.querySelector(&quot;div p&quot;).textContent = this.texts[curr-1];
+    else
+      this.shadowRoot.querySelector(&quot;div p&quot;).textContent = &quot;&quot;;
+  }
+
+  static get observedAttributes() {
+    return [&quot;v-model&quot;, &quot;max&quot;, &quot;disabled&quot;, &quot;show-score&quot;, &quot;text-color&quot;, &quot;show-text&quot;, &quot;texts&quot;, &quot;score-template&quot;]; //TODO1
+  }
+
+  /**
+   * `attributeChangedCallback()` is called when any of the attributes in the
+   * `observedAttributes` array are changed. It&apos;s a good place to handle
+   * side effects, like setting ARIA attributes.
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    // this is called also when loading the page initially, based on the initial attributes
+  
+    switch (name) {
+    case &quot;v-model&quot;:
+      this.handleValueModel(newValue);
+      break;
+    case &quot;max&quot;:
+      this.handleMax(oldValue, newValue);
+      break;
+    case &quot;disabled&quot;:
+      this.handleDisabled();
+      break;
+    case &quot;show-score&quot;:
+      this.handleShowScoreAndText(this.showScore, this.showText);
+      break;
+    case &quot;text-color&quot;:
+      this.handleTextColor(newValue);
+      break;
+    case &quot;show-text&quot;:
+      this.handleShowScoreAndText(this.showScore, this.showText);
+      break;
+    case &quot;texts&quot;:
+      // no need to handle since &quot;get texts&quot; is updated
+      break;
+    case &quot;score-template&quot;:
+      // no need to handle since &quot;get texts&quot; is updated
+      break;
+    //TODO3
+    }
+  }
+
+  /**
+   * `handleTextColor()` is called when the `text-color` attribute of
+   * rater-r is changed
+   */
+  handleTextColor(newValue) {
+    if(newValue == null) {
+      newValue = &quot;rgb(247, 186, 42)&quot;;
+    }
+    if (this.shadowRoot.querySelector(&quot;div p&quot;))
+      this.shadowRoot.querySelector(&quot;div p&quot;).style.color = newValue;
+  }
+
+  /**
+   * `handleValueModel()` is called when the `v-model` attribute of
+   * rater-r is changed
+   */
+  handleValueModel(newValue) {
+    //this.updateStars(newValue);
+    // I don&apos;t know why but the above statement will return an error
+    var stars = this.shadowRoot.querySelectorAll(&quot;div i&quot;);
+    var i;
+    for(i = 0; i &lt; stars.length; i++) {
+      if(i &lt; newValue) {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, &quot;&quot;);
+        stars[i].className += &quot; el-icon-star-on&quot;;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, &quot;&quot;);
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, &quot;&quot;);
+        stars[i].className += &quot; el-icon-star-off&quot;;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, &quot;&quot;);
+      }
+    }
+    if (newValue-1 &gt;= 0 &amp;&amp; this.texts[newValue-1] &amp;&amp; this.shadowRoot.querySelector(&quot;div p&quot;))
+      this.shadowRoot.querySelector(&quot;div p&quot;).textContent = this.texts[newValue-1];
+  }
+
+  /**
+   * `handleMax()` is called when the `max` attribute of
+   * rater-r is changed
+   */
+  handleMax(oldValue, newValue) {
+    const slider = this.shadowRoot.querySelector(&quot;div&quot;);
+    var i;
+    if (oldValue &lt; newValue) {
+      for (i = oldValue; i &lt; newValue; i++) {
+        var newItem = document.createElement(&quot;span&quot;);
+        newItem.className += &quot; el-rate__item&quot;;
+
+        var newStar = document.createElement(&quot;i&quot;);
+        newStar.className += &quot; el-rate__icon&quot;;
+        newStar.className += &quot; el-icon-star-off&quot;;
+        newStar.id = i+1;
+        
+        newStar.addEventListener(&quot;mouseover&quot;, this.onStarOver);
+        newStar.addEventListener(&quot;click&quot;,this.onStarClick);
+        newStar.addEventListener(&quot;mouseleave&quot;,this.onStarLeave);
+
+        newItem.appendChild(newStar);
+        slider.appendChild(newItem);
+      }
+    }
+    else {
+      var items = this.shadowRoot.querySelectorAll(&quot;div span&quot;);
+      for (i = oldValue; i &gt; newValue; i--) {
+        slider.removeChild(items[i]);  
+      }
+    }
+  }
+  
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute of
+   * rater-r is changed
+   */
+  handleDisabled() {
+    var items = this.shadowRoot.querySelectorAll(&quot;div span&quot;);
+    var i;
+    if (this.disabled) {
+      for(i = 0; i &lt; this.max; i++) {
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, &quot;&quot;);
+        items[i].className += &quot; disabled&quot;;
+      }
+    }
+    else {
+      for(i = 0; i &lt; this.max; i++) {
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, &quot;&quot;);
+      }
+    }
+  }
+
+  /**
+   * `handleShowScoreAndText()` is called when the `show-text` attribute 
+   * or `show-score` attribute of rater-r is changed
+   */
+  handleShowScoreAndText(scoreVal, textVal) {
+    if (!this.shadowRoot.querySelector(&quot;div p&quot;))
+      return;
+    if (Boolean(scoreVal) || Boolean(textVal)) {
+      this.shadowRoot.querySelector(&quot;div p&quot;).style.display = &quot;block&quot;;
+    }
+    else {
+      this.shadowRoot.querySelector(&quot;div p&quot;).style.display = &quot;none&quot;;
+    }
+  } 
+
+  set valueModel(value) {
+    this.setAttribute(&quot;v-model&quot;, value);
+  }
+
+  get valueModel() {
+    return this.getAttribute(&quot;v-model&quot;) || 0;
+  }
+
+  set max(value) {
+    this.setAttribute(&quot;max&quot;, value);
+  }
+
+  get max() {
+    return this.getAttribute(&quot;max&quot;) || 5;
+  }
+
+  get currentRate() {
+    return this.hasAttribute(&quot;currate&quot;) || 5;
+  }
+
+  set currentRate(value) {
+    this.setAttribute(&quot;currate&quot;,value);
+  }
+
+  set disabled(value) {
+    const isDisabled = Boolean(value);
+    if (isDisabled)
+      this.setAttribute(&quot;disabled&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;disabled&quot;);
+  }
+
+  get disabled() {
+    return this.hasAttribute(&quot;disabled&quot;);
+  }
+
+  set showScore(value) {
+    const scoreShown = Boolean(value);
+    if (scoreShown)
+      this.setAttribute(&quot;show-score&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;show-score&quot;);
+  }
+
+  get showScore() {
+    return this.hasAttribute(&quot;show-score&quot;);
+  }
+
+  set showText(value) {
+    const testShown = Boolean(value);
+    if (testShown)
+      this.setAttribute(&quot;show-text&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;show-text&quot;);
+  }
+
+  get textColor() {
+    return this.getAttribute(&quot;text-color&quot;);
+  }
+
+  set textColor(value) {
+    this.setAttribute(&quot;text-color&quot;, value);
+  }
+
+  get showText() {
+    return this.hasAttribute(&quot;show-text&quot;);
+  }
+  
+  set texts(value) {
+    this.setAttribute(&quot;texts&quot;, value);
+  }
+
+  get texts() {
+    if (this.showScore) {
+      var textArray = [];
+      var correctTemplate = this.scoreTemplate.includes(&quot;{value}&quot;);
+      var i;
+      for (i = 1; i &lt;= this.max; i++) {
+        if (correctTemplate)
+          textArray.push(this.scoreTemplate.replace(&quot;{value}&quot;, i));
+        else 
+          textArray.push(i);
+      }
+      return textArray;
+    }
+    else if (this.getAttribute(&quot;texts&quot;))
+      return this.getAttribute(&quot;texts&quot;).split(&quot;,&quot;);
+    else 
+      return [&quot;&#x6781;&#x5DEE;&quot;, &quot;&#x5931;&#x671B;&quot;, &quot;&#x4E00;&#x822C;&quot;, &quot;&#x6EE1;&#x610F;&quot;, &quot;&#x60CA;&#x559C;&quot;];
+  }
+
+  set scoreTemplate(value) {
+    this.setAttribute(&quot;score-template&quot;, value);
+  }
+
+  get scoreTemplate() {
+    return this.getAttribute(&quot;score-template&quot;) || &quot;{value}&quot;;
+  }
+
+  //TODO2
+}
+  
+customElements.define(&quot;rater-r&quot;, Rater);
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

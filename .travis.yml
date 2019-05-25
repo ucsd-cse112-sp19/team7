@@ -2,9 +2,10 @@ language: node_js
 node_js:
   - "10"
 deploy:
-  provider: script
+  provider: pages
   skip_cleanup: true
-  script: bash ./bash_scripts/deploy.sh
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
   on:
     branch: master
 script: ./bash_scripts/deploy.sh

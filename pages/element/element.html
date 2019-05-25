@@ -90,7 +90,8 @@
                       <div class="card-body">
                           <h5 class="card-title">Bootstrap Card 1</h5>
                           <sds-rate class= "card-text" author = "Team7" des="Max 10 stars with blue colored custom texts" img="img/1.jpg" 
-                          max = "10" show-text="1" text-color="blue"
+                          max = "10" show-text="1" text-color="blue" low-threshold="3" high-threshold="8"
+                          colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"
                           texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></sds-rate>
                       </div>
                     </div>
@@ -116,6 +117,7 @@
                           <div class="card-body">
                               <h5 class="card-title">Bootstrap Card 2</h5>
                               <sds-rate class = "card-text" author = "Team7" des="Start with 2 stars with score template 'super+score+!!'" 
+                              icons="\25A2, \25A8, \25A9" void-icon="\25A1"
                               score-template="super{value}!!" show-score img="img/2.jpg" v-model = "2"></sds-rate>
                           </div>
                         </div>
@@ -143,8 +145,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Bootstrap Card 3</h5>
                             <sds-rate class = "card-text" author = "Team7" des="Start with 5 stars, show score, and disabled" img="img/3.jpg" 
-                            max = "5" disabled v-model = "4" show-score 
-                            colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"></sds-rate>
+                            max = "5" disabled v-model = "4" show-score></sds-rate>
                         </div>
                       </div>
                   </div>

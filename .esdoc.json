@@ -7,6 +7,17 @@
       "option": {
         "unexportedIdentifier": {"enable": true}
       }
-    }
+    },
+    {
+      "name": "esdoc-integrate-manual-plugin",
+		  "option": {
+        "index": "./manual/index.md",
+        "asset": "./manual/asset",
+        "files": [
+          "./manual/installation.md",
+          "./manual/changelog.md"
+        ]
+		  }
+	  }
   ]
 }

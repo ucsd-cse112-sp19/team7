@@ -223,10 +223,10 @@ template.innerHTML = `
   </div>
 `;
 
-/*<div><div><label role="checkbox" class="el-checkbox"><span aria-checked="mixed" class="el-checkbox__input is-focus"><span class="el-checkbox__inner"></span><input type="checkbox" aria-hidden="true" class="el-checkbox__original" value=""></span><span class="el-checkbox__label" style="
-">Option<!----></span></label></div>
-    </div>*/
-
+/**
+ * Checkbox is a custom element that creates a web component.
+ * It can be used by the tag <sds-checkbox>
+ */
 export class Checkbox extends HTMLElement {
   /**
    * The element's constructor is run anytime a new instance is created.
@@ -269,8 +269,6 @@ export class Checkbox extends HTMLElement {
     this.handleChecked();
     this.updateValueModel();
 
-    this.handleValueModel(this.valueModel);
-
     this.handleChecked();
     this.handleDisabled();
 
@@ -278,9 +276,14 @@ export class Checkbox extends HTMLElement {
     this.handleBorder();
   }
 
+
+
+
+
   /**
    * `onBoxClick()` is called when any checkbox is clicked
    * It will correctly toggle the checkbox
+   * @param {Event} event - the click event
    */
   onBoxClick(event) {
     // cannot use this as the this in event listener is the target
@@ -303,6 +306,92 @@ export class Checkbox extends HTMLElement {
     }
   }
 
+
+
+
+
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute of
+   * checbox-r is changed
+   */
+  handleDisabled() {
+    var label = this.shadowRoot.querySelector("label.el-checkbox");
+    var span = this.shadowRoot.querySelector("span.el-checkbox__input");
+    if (this.disabled) {
+      label.className = label.className.replace(/\bis-disabled\b/g, "");
+      label.className += " is-disabled";
+      span.className = span.className.replace(/\bis-disabled\b/g, "");
+      span.className += " is-disabled";
+    }
+    else {
+      label.className = label.className.replace(/\bis-disabled\b/g, "");
+      span.className = span.className.replace(/\bis-disabled\b/g, "");
+    }
+  }
+
+  /**
+   * `handleBorder()` is called when the `border` attribute is changed
+   * and will show or remove the border around the checkbox
+   */
+  handleBorder() {
+    var label = this.shadowRoot.querySelector("label.el-checkbox");
+    if (this.border) {
+      label.className = label.className.replace(/\bis-bordered\b/g, "");
+      label.className += " is-bordered";
+    }
+    else {
+      label.className = label.className.replace(/\bis-bordered\b/g, "");
+    }
+  }
+
+  /**
+   * `updateValueModel()` is called when the `true-label` `false-label`
+   * attributes are changed and will update `v-model`
+   */
+  updateValueModel() {
+    this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
+  }
+
+  /**
+   * `handleChecked()` is called when the `checked` attribute changes and will
+   * update the class of the checkbox
+   */
+  handleChecked() {
+    var label = this.shadowRoot.querySelector("label");
+    var span = this.shadowRoot.querySelector("label span");
+    label.className = label.className.replace(/\bis-checked\b/g, "");
+    span.className = span.className.replace(/\bis-checked\b/g, "");
+    if(this.checked) { 
+      label.className += " is-checked";
+      span.className += " is-checked";
+    }
+  }
+  
+  /**
+   * `handleSize()` is called when the `size` changes and will
+   * update the size of the border
+   */
+  handleSize() {
+    var label = this.shadowRoot.querySelector("label.el-checkbox");
+    label.className = label.className.replace(/\bel-checkbox--small\b/g, "");
+    label.className = label.className.replace(/\bel-checkbox--mini\b/g, "");
+    if (this.size == "small") {
+      label.className += " el-checkbox--small";
+    }
+    else if (this.size == "mini") {
+      label.className += " el-checkbox--mini";
+    }
+  }
+
+
+
+
+  
+  /**
+   * `observedAttributes()` returns an array of attributes whose changes will
+   * be handled in `attributeChangedCallback()`
+   * @return {string[]} array of attributes whose changes will be handled 
+   */
   static get observedAttributes() {
     return ["v-model", "disabled", "checked", "true-label", "false-label", "name", "border", "size"]; //TODO1
   }
@@ -311,11 +400,15 @@ export class Checkbox extends HTMLElement {
    * `attributeChangedCallback()` is called when any of the attributes in the
    * `observedAttributes` array are changed. It's a good place to handle
    * side effects, like setting ARIA attributes.
+   * @param {string} name - the name of the changed attribute
+   * @param {string} oldValue - the old value of the attribute
+   * @param {string} newValue - the new value of the attribute
    */
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
   
     switch (name) {
+    //case "v-model": no process needed for v-model
     case "checked":
       this.handleChecked();
       break;
@@ -339,85 +432,27 @@ export class Checkbox extends HTMLElement {
     }
   }
 
-  /**
-   * `handleDisabled()` is called when the `disabled` attribute of
-   * checbox-r is changed
-   */
-  handleDisabled() {
-    var label = this.shadowRoot.querySelector("label.el-checkbox");
-    var span = this.shadowRoot.querySelector("span.el-checkbox__input");
-    if (this.disabled) {
-      label.className = label.className.replace(/\bis-disabled\b/g, "");
-      label.className += " is-disabled";
-      span.className = span.className.replace(/\bis-disabled\b/g, "");
-      span.className += " is-disabled";
-    }
-    else {
-      label.className = label.className.replace(/\bis-disabled\b/g, "");
-      span.className = span.className.replace(/\bis-disabled\b/g, "");
-    }
-  }
-
-  handleBorder() {
-    var label = this.shadowRoot.querySelector("label.el-checkbox");
-    if (this.border) {
-      label.className = label.className.replace(/\bis-bordered\b/g, "");
-      label.className += " is-bordered";
-    }
-    else {
-      label.className = label.className.replace(/\bis-bordered\b/g, "");
-    }
-  }
-
-  updateValueModel() {
-    this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
-  }
-  /**
-   * `handleChecked()` is called when the check value changes
-   */
-  handleChecked() {
-    var label = this.shadowRoot.querySelector("label");
-    var span = this.shadowRoot.querySelector("label span");
-    label.className = label.className.replace(/\bis-checked\b/g, "");
-    span.className = span.className.replace(/\bis-checked\b/g, "");
-    if(this.checked) { 
-      label.className += " is-checked";
-      span.className += " is-checked";
-    }
-  }
-
-  handleValueModel(newValue) {
-    newValue + ""; // to pass the husky check
-  }
-  
-  handleSize() {
-    var label = this.shadowRoot.querySelector("label.el-checkbox");
-    label.className = label.className.replace(/\bel-checkbox--small\b/g, "");
-    label.className = label.className.replace(/\bel-checkbox--mini\b/g, "");
-    if (this.size == "small") {
-      label.className += " el-checkbox--small";
-    }
-    else if (this.size == "mini") {
-      label.className += " el-checkbox--mini";
-    }
-  }
-
+  /** @type {string} */
   set trueLabel(value) {
     this.setAttribute("true-label", value);
   }
 
+  /** @type {string} */
   get trueLabel() {
     return this.getAttribute("true-label") || "";
   }
 
+  /** @type {string} */
   set falseLabel(value) {
     this.setAttribute("false-label", value);
   }
 
+  /** @type {string} */
   get falseLabel() {
     return this.getAttribute("false-label") || "";
   }
 
+  /** @type {boolean} */
   set disabled(value) {
     const isDisabled = Boolean(value);
     if (isDisabled)
@@ -426,10 +461,12 @@ export class Checkbox extends HTMLElement {
       this.removeAttribute("disabled");
   }
 
+  /** @type {boolean} */
   get disabled() {
     return this.hasAttribute("disabled");
   }
 
+  /** @type {boolean} */
   set checked(value) {
     const isChecked = Boolean(value);
     if (isChecked)
@@ -438,18 +475,22 @@ export class Checkbox extends HTMLElement {
       this.removeAttribute("checked");
   }
 
+  /** @type {boolean} */
   get checked() {
     return this.hasAttribute("checked");
   }
   
+  /** @type {string} */
   set name(value) {
     this.setAttribute("name", value);
   }
 
+  /** @type {string} */
   get name() {
     return this.getAttribute("name") || "";
   }
   
+  /** @type {boolean} */
   set border(bSelect) {
     const isSelect = Boolean(bSelect);
     if (isSelect)
@@ -458,10 +499,12 @@ export class Checkbox extends HTMLElement {
       this.removeAttribute("border");
   }
 
+  /** @type {boolean} */
   get border() {
     return this.hasAttribute("border");
   }
   
+  /** @type {string} */
   set size(newValue) {
     if (newValue == "small")
       this.setAttribute("size", "small");
@@ -471,6 +514,7 @@ export class Checkbox extends HTMLElement {
       this.setAttribute("size", "medium");
   }
 
+  /** @type {string} */
   get size() {
     return this.getAttribute("size") || "medium";
   }

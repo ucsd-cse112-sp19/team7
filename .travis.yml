@@ -2,7 +2,10 @@ language: node_js
 node_js:
   - "10"
 deploy:
-  provider: script
+  provider: pages
   skip_cleanup: true
-  script: rvm use 2.6.11 do script.rb
+  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+  keep_history: true
+  on:
+    branch: master
 script: ./bash_scripts/deploy.sh

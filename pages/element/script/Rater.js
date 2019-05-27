@@ -117,13 +117,7 @@ template.innerHTML = `
     </div>
   </span>
 `;
-/*
-    .el-icon-star-off:before {
-      content: "\\2606";
-    }
-    .el-icon-star-on:before {
-      content: "\\2605";
-    }
+
 /*
 The following can be used but might get sued by element since they will use elemet's icon,
 which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-chalk/fonts/
@@ -144,7 +138,6 @@ which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-ch
 /**
  * Rater is a custom element that creates a web component.
  * It can be used by the tag <sds-rate>
- * 
  */
 export class Rater extends HTMLElement {
   /**

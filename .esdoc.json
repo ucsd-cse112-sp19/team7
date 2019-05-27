@@ -5,7 +5,13 @@
     {
       "name": "esdoc-standard-plugin",
       "option": {
-        "unexportedIdentifier": {"enable": true}
+        "unexportedIdentifier": {"enable": true},
+        "test": {
+          "source": "./test/",
+          "interfaces": ["describe", "it", "context", "suite", "test"],
+          "includes": ["(spec|Spec|test|Test)\\.js$"],
+          "excludes": ["\\.config\\.js$"]
+        }
       }
     },
     {

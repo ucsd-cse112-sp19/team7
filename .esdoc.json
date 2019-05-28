@@ -24,6 +24,15 @@
           "./manual/changelog.md"
         ]
 		  }
-	  }
+    },
+    {
+      "name": "esdoc-inject-script-plugin", 
+      "option": {
+        "enable": true, 
+        "scripts": [
+          "./pages/core-hello/script/core-hello.js"
+        ]
+      }
+    }
   ]
 }

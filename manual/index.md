@@ -1,0 +1,1 @@
+<core-hello>Peter</core-hello>

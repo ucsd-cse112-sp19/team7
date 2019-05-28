@@ -30,7 +30,7 @@
       "option": {
         "enable": true, 
         "scripts": [
-          "./pages/core-hello/script/core-hello.js"
+          "./pages/webcomponent/script/webcomponents-dan.js"
         ]
       }
     },

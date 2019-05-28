@@ -1,2 +1,2 @@
-<link rel="stylesheet" type="text/css" media="all" href="./manual/style.css"/>
+<link rel="stylesheet" type="text/css" media="all" href="style.css"></link>
 # Installation

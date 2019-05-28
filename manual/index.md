@@ -1,2 +1,2 @@
-<webcomponents-dan rainbow2 language = "spa">David Villa</webcomponents-dan>
+<core-hello>David Villa</core-hello>
 <h2>HEY</h2>

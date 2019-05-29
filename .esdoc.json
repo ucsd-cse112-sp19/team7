@@ -1,12 +1,29 @@
 {
-  "source": "./script",
+  "source": "./pages/",
   "destination": "./docs",
   "plugins": [
     {
       "name": "esdoc-standard-plugin",
       "option": {
-        "unexportedIdentifier": {"enable": true}
+        "unexportedIdentifier": {"enable": true},
+        "test": {
+          "source": "./test/",
+          "interfaces": ["describe", "it", "context", "suite", "test"],
+          "includes": ["(spec|Spec|test|Test)\\.js$"],
+          "excludes": ["\\.config\\.js$"]
+        }
       }
-    }
+    },
+    {
+      "name": "esdoc-integrate-manual-plugin",
+		  "option": {
+        "index": "./manual/index.md",
+        "asset": "./manual/asset",
+        "files": [
+          "./manual/installation.md",
+          "./manual/changelog.md"
+        ]
+		  }
+	  }
   ]
 }

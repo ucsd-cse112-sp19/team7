@@ -47,7 +47,7 @@ template.innerHTML = `
       position: relative;
     }
     [class*=" el-icon-"], [class^=el-icon-] {
-      font-family: element-icons!important;
+      //font-family: element-icons!important;
       speak: none;
       font-style: normal;
       font-weight: 400;
@@ -117,14 +117,7 @@ template.innerHTML = `
     </div>
   </span>
 `;
-/*
 
-    .el-icon-star-off:before {
-      content: "\\2606";
-    }
-    .el-icon-star-on:before {
-      content: "\\2605";
-    } */
 /*
 The following can be used but might get sued by element since they will use elemet's icon,
 which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-chalk/fonts/
@@ -142,12 +135,15 @@ which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-ch
     }
 */
 
-
+/**
+ * Rater is a custom element that creates a web component.
+ * It can be used by the tag <sds-rate>
+ */
 export class Rater extends HTMLElement {
   /**
    * The element's constructor is run anytime a new instance is created.
    * Instances are created by parsing HTML, or calling
-   * document.createElement("rater-r")
+   * document.createElement("7ds-rate")
    * The construtor is a good place to create shadow DOM, though you should
    * avoid touching any attributes or light DOM children as they may not
    * be available yet.
@@ -225,9 +221,14 @@ export class Rater extends HTMLElement {
     //var event = new CustomEvent("onchange", { "detail": this.valueModel });
   }
 
+
+
+
+
   /**
-   * `onStarClick()` is called when any rating star is clicked
-   * It will correctly set the current rate value, or the value model
+   * `onStarClick()` is called when any rating star is clicked and will correctly
+   * set the current rate value, or the value model
+   * @param {Event} event - the click event
    */
   onStarClick(event) {
     var rater = event.target.getRootNode().host;
@@ -237,8 +238,9 @@ export class Rater extends HTMLElement {
   }
 
   /**
-   * `onStarLeave()` is called when cursor moves awayy
-   * It will correctly set the value back to current Rate Value
+   * `onStarLeave()` is called when cursor moves away and will correctly set
+   * the value back to current rate value
+   * @param {Event} event - the leave event
    */
   onStarLeave(event) {
     // cannot use this as the this in event listener is the target
@@ -249,16 +251,22 @@ export class Rater extends HTMLElement {
   }
 
   /**
-   * `onStarOver()` is called when any rating star is hovered
-   * It will correctly set the start img and text contents
+   * `onStarOver()` is called when any rating star is hovered and will correctly 
+   * set the start img and text contents
+   * @param {Event} event - the hover event
    */
   onStarOver(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
-      rater.updateStars(event.target.id);
+      var id = event.target.id ? event.target.id : event.target.querySelector(".el-rate__icon").id;
+      rater.updateStars(id);
     }
   }
+
+
+
+
 
   /**
    * `updateStars()` is a helper method to update the stars based on the mouse action
@@ -267,10 +275,11 @@ export class Rater extends HTMLElement {
   updateStars(curr) {
     var stars = this.shadowRoot.querySelectorAll("div i");
     var level;
-    if (curr <= this.lowThreshold) {
+    // + sign is used to convert curr to int so that comparison is done correctly
+    if (+curr <= +this.lowThreshold) {
       level = " low-level";
     }
-    else if (curr < this.highThreshold) {
+    else if (+curr < +this.highThreshold) {
       level = " medium-level";
     }
     else {
@@ -297,10 +306,212 @@ export class Rater extends HTMLElement {
     }
     if (curr-1 >= 0 && this.texts[curr-1])
       this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
-    else
+    else if (this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = "";
   }
 
+  /**
+   * `handleTextColor()` is called when the `text-color` attribute is changed
+   * and will update the text color
+   */
+  handleTextColor(newValue) {
+    if(newValue == null) {
+      newValue = "rgb(247, 186, 42)";
+    }
+    if (this.shadowRoot.querySelector("div p"))
+      this.shadowRoot.querySelector("div p").style.color = newValue;
+  }
+
+  /**
+   * `handleValueModel()` is called when the `v-model` attribute is changed
+   * and will update the number of selected icons accordingly
+   */
+  handleValueModel(newValue) {
+    //this.updateStars(newValue);
+    // I don't know why but the above statement will return an error
+    var stars = this.shadowRoot.querySelectorAll("div i");
+    var i;
+    for(i = 0; i < stars.length; i++) {
+      if(i < newValue) {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+        stars[i].className += " el-icon-star-on";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
+        stars[i].className += " el-icon-star-off";
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
+      }
+    }
+    if (newValue-1 >= 0 && this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
+      this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
+  }
+
+  /**
+   * `handleMax()` is called when the `max` attribute is changed and will
+   * update the number of icons accordingly
+   */
+  handleMax(oldValue, newValue) {
+    const slider = this.shadowRoot.querySelector("div");
+    var i;
+    if (oldValue < newValue) {
+      for (i = oldValue; i < newValue; i++) {
+        var newItem = document.createElement("span");
+        newItem.className += " el-rate__item";
+
+        var newStar = document.createElement("i");
+        newStar.className += " el-rate__icon";
+        newStar.className += " el-icon-star-off";
+        newStar.id = i+1;
+        
+        newItem.addEventListener("mouseover", this.onStarOver);
+        newStar.addEventListener("click",this.onStarClick);
+        newStar.addEventListener("mouseleave",this.onStarLeave);
+
+        newItem.appendChild(newStar);
+        slider.appendChild(newItem);
+      }
+    }
+    else {
+      var items = this.shadowRoot.querySelectorAll("div span");
+      for (i = oldValue; i > newValue; i--) {
+        slider.removeChild(items[i]);  
+      }
+    }
+  }
+  
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute is changed
+   * and will disable the rater accordingly
+   */
+  handleDisabled() {
+    var items = this.shadowRoot.querySelectorAll("div span");
+    var i;
+    if (this.disabled) {
+      for(i = 0; i < this.max; i++) {
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
+        items[i].className += " disabled";
+      }
+    }
+    else {
+      for(i = 0; i < this.max; i++) {
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
+      }
+    }
+  }
+
+  /**
+   * `handleShowScoreAndText()` is called when the `show-text` attribute 
+   * or `show-score` attribute is changed and will update the display of the text
+   */
+  handleShowScoreAndText(scoreVal, textVal) {
+    if (!this.shadowRoot.querySelector("div p"))
+      return;
+    if (Boolean(scoreVal) || Boolean(textVal)) {
+      this.shadowRoot.querySelector("div p").style.display = "block";
+    }
+    else {
+      this.shadowRoot.querySelector("div p").style.display = "none";
+    }
+  } 
+
+  /**
+   * `updateColors()` is called when the `colors` `void-color` `disabled-void-color`
+   * attributes are changed and will update the color of the icons accordingly
+   */
+  updateColors() {
+    var styleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i;
+    for (i = 0; i < styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      switch (rule.selectorText) {
+      case ".el-icon-star-on.low-level":
+        rule.style.color = this.colors[0];
+        break;
+      case ".el-icon-star-on.medium-level":
+        rule.style.color = this.colors[1];
+        break;
+      case ".el-icon-star-on.high-level":
+        rule.style.color = this.colors[2];
+        break;
+      case ".el-icon-star-off":
+        rule.style.color = this.voidColor;
+        break;
+      case ".disabled .el-icon-star-off":
+        rule.style.color = this.disabledVoidColor;
+        break;
+      }
+    }
+    /*
+    styleSheet.deleteRule(".el-icon-star-on.low-level", 0);
+    styleSheet.deleteRule(".el-icon-star-on.medium-level", 0);
+    styleSheet.deleteRule(".el-icon-star-on.high-level", 0);
+    //use insertRule(".eg{}", index) instead if less browser is supporting
+    styleSheet.addRule(".el-icon-star-on.low-level", "color: " + this.colors[0] + ";", 0);
+    styleSheet.addRule(".el-icon-star-on.medium-level",  "color: " + this.colors[1] + ";", 0);
+    styleSheet.addRule(".el-icon-star-on.high-level", "color: " + this.colors[2] + ";", 0);
+  */
+  }
+  
+  /**
+   * `updateIcons()` is called when the `icons` `void-icon` `disabled-void-icon`
+   * attributes are changed and it will update the icons accordingly
+   */
+  updateIcons() {
+    var styleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i;
+    
+    for (i = 0; i < styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      switch (rule.selectorText) {
+      case ".el-icon-star-on.low-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.low-level::before {
+          content: "` + this.icons[0] + `";
+        }`, i);
+        break;
+      case ".el-icon-star-on.medium-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.medium-level::before {
+          content: "` + this.icons[1] + `";
+        }`, i);
+        break;
+      case ".el-icon-star-on.high-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.high-level::before {
+          content: "` + this.icons[2] + `";
+        }`, i);
+        break;
+      case ".el-icon-star-off::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-off::before {
+          content: "` + this.voidIcon + `";
+        }`, i);
+        break;
+      case ".disabled .el-icon-star-off::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .disabled .el-icon-star-off::before {
+          content: "` + this.disabledVoidIcon + `";
+        }`, i);
+        break;
+      }
+    }
+  }
+
+
+
+
+
+  /**
+   * `observedAttributes()` returns an array of attributes whose changes will
+   * be handled in `attributeChangedCallback()`
+   * @return {string[]} array of attributes whose changes will be handled 
+   */
   static get observedAttributes() {
     return [
       "v-model", "max", "disabled", "show-score", "text-color", 
@@ -312,12 +523,14 @@ export class Rater extends HTMLElement {
 
   /**
    * `attributeChangedCallback()` is called when any of the attributes in the
-   * `observedAttributes` array are changed. It's a good place to handle
-   * side effects, like setting ARIA attributes.
+   * returned array of `observedAttributes()` are changed. It's a good place to 
+   * handle side effects
+   * @param {string} name - the name of the changed attribute
+   * @param {string} oldValue - the old value of the attribute
+   * @param {string} newValue - the new value of the attribute
    */
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
-  
     switch (name) {
     case "v-model":
       this.handleValueModel(newValue);
@@ -371,223 +584,37 @@ export class Rater extends HTMLElement {
     }
   }
 
-  /**
-   * `handleTextColor()` is called when the `text-color` attribute of
-   * rater-r is changed
-   */
-  handleTextColor(newValue) {
-    if(newValue == null) {
-      newValue = "rgb(247, 186, 42)";
-    }
-    if (this.shadowRoot.querySelector("div p"))
-      this.shadowRoot.querySelector("div p").style.color = newValue;
-  }
-
-  /**
-   * `handleValueModel()` is called when the `v-model` attribute of
-   * rater-r is changed
-   */
-  handleValueModel(newValue) {
-    //this.updateStars(newValue);
-    // I don't know why but the above statement will return an error
-    var stars = this.shadowRoot.querySelectorAll("div i");
-    var i;
-    for(i = 0; i < stars.length; i++) {
-      if(i < newValue) {
-        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
-        stars[i].className += " el-icon-star-on";
-        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
-      }
-      else {
-        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
-        stars[i].className += " el-icon-star-off";
-        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
-      }
-    }
-    if (newValue-1 >= 0 && this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
-      this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
-  }
-
-  /**
-   * `handleMax()` is called when the `max` attribute of
-   * rater-r is changed
-   */
-  handleMax(oldValue, newValue) {
-    const slider = this.shadowRoot.querySelector("div");
-    var i;
-    if (oldValue < newValue) {
-      for (i = oldValue; i < newValue; i++) {
-        var newItem = document.createElement("span");
-        newItem.className += " el-rate__item";
-
-        var newStar = document.createElement("i");
-        newStar.className += " el-rate__icon";
-        newStar.className += " el-icon-star-off";
-        newStar.id = i+1;
-        
-        newStar.addEventListener("mouseover", this.onStarOver);
-        newStar.addEventListener("click",this.onStarClick);
-        newStar.addEventListener("mouseleave",this.onStarLeave);
-
-        newItem.appendChild(newStar);
-        slider.appendChild(newItem);
-      }
-    }
-    else {
-      var items = this.shadowRoot.querySelectorAll("div span");
-      for (i = oldValue; i > newValue; i--) {
-        slider.removeChild(items[i]);  
-      }
-    }
-  }
-  
-  /**
-   * `handleDisabled()` is called when the `disabled` attribute of
-   * rater-r is changed
-   */
-  handleDisabled() {
-    var items = this.shadowRoot.querySelectorAll("div span");
-    var i;
-    if (this.disabled) {
-      for(i = 0; i < this.max; i++) {
-        items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
-        items[i].className += " disabled";
-      }
-    }
-    else {
-      for(i = 0; i < this.max; i++) {
-        items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
-      }
-    }
-  }
-
-  /**
-   * `handleShowScoreAndText()` is called when the `show-text` attribute 
-   * or `show-score` attribute of rater-r is changed
-   */
-  handleShowScoreAndText(scoreVal, textVal) {
-    if (!this.shadowRoot.querySelector("div p"))
-      return;
-    if (Boolean(scoreVal) || Boolean(textVal)) {
-      this.shadowRoot.querySelector("div p").style.display = "block";
-    }
-    else {
-      this.shadowRoot.querySelector("div p").style.display = "none";
-    }
-  } 
-
-  /**
-   * `updateColors()` is called when the `colors` `void-color` `disabled-void-color`
-   * attribute of rater-r is changed
-   */
-  updateColors() {
-    var styleSheet = this.shadowRoot.querySelector("style").sheet;
-    var i;
-    for (i = 0; i < styleSheet.cssRules.length; i++) {
-      var rule = styleSheet.cssRules[i];
-      switch (rule.selectorText) {
-      case ".el-icon-star-on.low-level":
-        rule.style.color = this.colors[0];
-        break;
-      case ".el-icon-star-on.medium-level":
-        rule.style.color = this.colors[1];
-        break;
-      case ".el-icon-star-on.high-level":
-        rule.style.color = this.colors[2];
-        break;
-      case ".el-icon-star-off":
-        rule.style.color = this.voidColor;
-        break;
-      case ".disabled .el-icon-star-off":
-        rule.style.color = this.disabledVoidColor;
-        break;
-      }
-    }
-    /*
-    styleSheet.deleteRule(".el-icon-star-on.low-level", 0);
-    styleSheet.deleteRule(".el-icon-star-on.medium-level", 0);
-    styleSheet.deleteRule(".el-icon-star-on.high-level", 0);
-    //use insertRule(".eg{}", index) instead if less browser is supporting
-    styleSheet.addRule(".el-icon-star-on.low-level", "color: " + this.colors[0] + ";", 0);
-    styleSheet.addRule(".el-icon-star-on.medium-level",  "color: " + this.colors[1] + ";", 0);
-    styleSheet.addRule(".el-icon-star-on.high-level", "color: " + this.colors[2] + ";", 0);
-  */
-  }
-  
-  /**
-   * `updateIcons()` is called when the `icons` `void-icon` `disabled-void-icon`
-   * attribute of rater-r is changed
-   */
-  updateIcons() {
-    var styleSheet = this.shadowRoot.querySelector("style").sheet;
-    var i;
-    
-    for (i = 0; i < styleSheet.cssRules.length; i++) {
-      var rule = styleSheet.cssRules[i];
-      switch (rule.selectorText) {
-      case ".el-icon-star-on.low-level::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
-        .el-icon-star-on.low-level::before {
-          content: "` + this.icons[0] + `";
-        }`, i);
-        break;
-      case ".el-icon-star-on.medium-level::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
-        .el-icon-star-on.medium-level::before {
-          content: "` + this.icons[1] + `";
-        }`, i);
-        break;
-      case ".el-icon-star-on.high-level::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
-        .el-icon-star-on.high-level::before {
-          content: "` + this.icons[2] + `";
-        }`, i);
-        break;
-      case ".el-icon-star-off::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
-        .el-icon-star-off::before {
-          content: "` + this.voidIcon + `";
-        }`, i);
-        break;
-      case ".disabled .el-icon-star-off::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
-        .disabled .el-icon-star-off::before {
-          content: "` + this.disabledVoidIcon + `";
-        }`, i);
-        break;
-      }
-    }
-  }
-
+  /** @type {number} */
   set valueModel(value) {
     this.setAttribute("v-model", value);
   }
 
+  /** @type {number} */
   get valueModel() {
     return this.getAttribute("v-model") || 0;
   }
 
+  /** @type {number} */
   set max(value) {
     this.setAttribute("max", value);
   }
 
+  /** @type {number} */
   get max() {
     return this.getAttribute("max") || 5;
   }
 
+  /** @type {number} */
   get currentRate() {
     return this.hasAttribute("currate") || 5;
   }
 
+  /** @type {number} */
   set currentRate(value) {
     this.setAttribute("currate",value);
   }
 
+  /** @type {boolean} */
   set disabled(value) {
     const isDisabled = Boolean(value);
     if (isDisabled)
@@ -596,10 +623,12 @@ export class Rater extends HTMLElement {
       this.removeAttribute("disabled");
   }
 
+  /** @type {boolean} */
   get disabled() {
     return this.hasAttribute("disabled");
   }
 
+  /** @type {boolean} */
   set showScore(value) {
     const scoreShown = Boolean(value);
     if (scoreShown)
@@ -608,10 +637,22 @@ export class Rater extends HTMLElement {
       this.removeAttribute("show-score");
   }
 
+  /** @type {boolean} */
   get showScore() {
     return this.hasAttribute("show-score");
   }
 
+  /** @type {string} */
+  get textColor() {
+    return this.getAttribute("text-color");
+  }
+
+  /** @type {string} */
+  set textColor(value) {
+    this.setAttribute("text-color", value);
+  }
+ 
+  /** @type {boolean} */
   set showText(value) {
     const testShown = Boolean(value);
     if (testShown)
@@ -620,22 +661,17 @@ export class Rater extends HTMLElement {
       this.removeAttribute("show-text");
   }
 
-  get textColor() {
-    return this.getAttribute("text-color");
-  }
-
-  set textColor(value) {
-    this.setAttribute("text-color", value);
-  }
-
+  /** @type {boolean} */
   get showText() {
     return this.hasAttribute("show-text");
   }
-  
+   
+  /** @type {string[]} */
   set texts(value) {
     this.setAttribute("texts", value);
   }
-
+ 
+  /** @type {string[]} */
   get texts() {
     if (this.showScore) {
       var textArray = [];
@@ -652,37 +688,45 @@ export class Rater extends HTMLElement {
     else if (this.getAttribute("texts"))
       return this.getAttribute("texts").split(",");
     else 
-      return ["极差", "失望", "一般", "满意", "惊喜"];
+      return ["Worst", "Disappointing", "So-So", "Glad", "Surprised"];
   }
-
+ 
+  /** @type {string} */
   set scoreTemplate(value) {
     this.setAttribute("score-template", value);
   }
-
+ 
+  /** @type {string} */
   get scoreTemplate() {
     return this.getAttribute("score-template") || "{value}";
   }
-  
+ 
+  /** @type {number} */
   set lowThreshold(value) {
     this.setAttribute("low-threshold", value);
   }
-
+ 
+  /** @type {number} */
   get lowThreshold() {
     return this.getAttribute("low-threshold") || 2;
   }
 
+  /** @type {number} */
   set highThreshold(value) {
     this.setAttribute("high-threshold", value);
   }
 
+  /** @type {number} */
   get highThreshold() {
     return this.getAttribute("high-threshold") || 4;
   }
 
+  /** @type {string[]} */
   set colors(value) {
     this.setAttribute("colors", value);
   }
 
+  /** @type {string[]} */
   get colors() {
     if (this.getAttribute("colors")) {
       if (this.getAttribute("colors").split(",").length > 3)
@@ -693,26 +737,32 @@ export class Rater extends HTMLElement {
       return ["#F7BA2A", "#F7BA2A", "#F7BA2A"];
   }
 
+  /** @type {string} */
   set voidColor(value) {
     this.setAttribute("void-color", value);
   }
 
+  /** @type {string} */
   get voidColor() {
     return this.getAttribute("void-color") || "#C6D1DE";
   }
-  
+
+  /** @type {string} */
   set disabledVoidColor(value) {
     this.setAttribute("disabled-void-color", value);
   }
 
+  /** @type {string} */
   get disabledVoidColor() {
     return this.getAttribute("disabled-void-color") || "#EFF2F7";
   }
 
+  /** @type {string[]} */
   set icons(value) {
     this.setAttribute("icons", value);
   }
 
+  /** @type {string[]} */
   get icons() {
     if (this.getAttribute("icons")) {
       return this.getAttribute("icons").split(",");
@@ -721,18 +771,22 @@ export class Rater extends HTMLElement {
       return ["\\2605", "\\2605", "\\2605"];
   }
 
+  /** @type {string} */
   set voidIcon(value) {
     this.setAttribute("void-icon", value);
   }
 
+  /** @type {string} - void icon */
   get voidIcon() {
     return this.getAttribute("void-icon") || "\\2606";
   }
-  
+
+  /** @type {string} */
   set disabledVoidIcon(value) {
     this.setAttribute("disabled-void-icon", value);
   }
 
+  /** @type {string} */
   get disabledVoidIcon() {
     return this.getAttribute("disabled-void-icon") || "\\2605";
   }
@@ -742,4 +796,4 @@ export class Rater extends HTMLElement {
   //TODO2
 }
   
-customElements.define("rater-r", Rater);
+customElements.define("sds-rate", Rater);

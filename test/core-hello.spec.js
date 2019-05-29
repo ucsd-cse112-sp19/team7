@@ -1,7 +1,7 @@
-const showroom = require('showroom/puppeteer')();
-const assert = require('assert');
+const showroom = require("showroom/puppeteer")();
+const assert = require("assert");
 
-describe('core-hello', () => {
+describe("core-hello", () => {
   before( async () => {
     await showroom.start();
   });
@@ -9,7 +9,7 @@ describe('core-hello', () => {
     await showroom.stop();
   });
   beforeEach( async () => {
-    await showroom.setTestSubject('core-hello');
+    await showroom.setTestSubject("core-hello");
   });
   /*
   it('Check for english hello world', async () => {

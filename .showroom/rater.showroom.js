@@ -1,5 +1,5 @@
 export default {
-  component: 'rater-r',
+  component: 'sds-rate',
   path: '/pages/element/script/Rater.js',
   events: ['clicked'],
   attributes: {

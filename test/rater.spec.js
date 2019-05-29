@@ -3,7 +3,7 @@ const assert = require("assert");
 
 //let root;
 
-describe("rater-r", () => {
+describe("sds-rate", () => {
   before( async () => {
     await showroom.start();
   });
@@ -11,7 +11,7 @@ describe("rater-r", () => {
     await showroom.stop();
   });
   beforeEach( async () => {
-    await showroom.setTestSubject("rater-r");
+    await showroom.setTestSubject("sds-rate");
     //root = await showroom.page.$('showroom-app');
     //await showroom.page.waitFor(300);
   });
@@ -28,11 +28,11 @@ describe("rater-r", () => {
     assert.equal("Description: Etsu is dumb", text);
   });
 
-  // it("Unit test 3: check default rater has no img", async () => {
-  //   //const intex = await showroom.find('// img' );
-  //   //const text = await showroom.getProperty('src',intex);
-  //   assert.fail("Please implement test that checks for null object");
-  // });
+  it("Unit test 3: check default rater has no img", async () => {
+    //const intex = await showroom.find('// img' );
+    //const text = await showroom.getProperty('src',intex);
+    assert.fail("Please implement test that checks for null object");
+  });
 
   it("Unit test 4: check img can be set via attribute", async () => {
     await showroom.setAttribute("img","lol.png");

@@ -8,15 +8,38 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    <!-- CSS for icons from Element -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link href="https://element.eleme.io/docs.b8e65c4.css" rel="stylesheet">
   </head>
   <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAWQ3Vi-7CTKYVgS1yQ7WHA7S0vShJCgZs",
+      authDomain: "team7-element.firebaseapp.com",
+      databaseURL: "https://team7-element.firebaseio.com",
+      projectId: "team7-element",
+      storageBucket: "team7-element.appspot.com",
+      messagingSenderId: "860166313157",
+      appId: "1:860166313157:web:59ab005177ad2f01"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="module" src="script/Rater.js"></script>
     <script type="module" src="script/Checkbox.js"></script>
     <script type="module" src="../webcomponent/script/CECoreHello.js"></script>
+    <script type="module" src="script/Comment.js"></script>
     <!--Custom Element Templates-->
     <template id="CECoreHelloT">
       <style>
@@ -75,11 +98,11 @@
                   <h2><br>Rate & Checkbox Demo 1</h2>
                     <div class="card">
                         <div class="card-body">
-                            <checkbox-r class="card-text" border>Did you rate it?</checkbox-r>
+                            <sds-checkbox class="card-text" border>Did you rate it?</sds-checkbox>
                             <br>
-                            <checkbox-r class="card-text" border>Did you notice the texts and color?</checkbox-r>
+                            <sds-checkbox class="card-text" border>Did you notice the texts and color?</sds-checkbox>
                             <br>
-                            <checkbox-r class="card-text" border>Did you notice that the rate value is "saved"</checkbox-r>
+                            <sds-checkbox class="card-text" border>Did you notice that the rate value is "saved"</sds-checkbox>
                         </div>
                       </div>
                 </div>
@@ -87,11 +110,14 @@
                   <div class="card" style="margin-top: 10px; margin-bottom: 10px">
                       <video autoplay muted loop style="  width: 90%    !important;
                       height: auto   !important; align-self: center;margin-top: 10px" source src="../index/video/Render.mp4" type="video/mp4"></video>
-                      <div class="card-body">
+                      <div class="card-body">     
                           <h5 class="card-title">Bootstrap Card 1</h5>
-                          <rater-r class= "card-text" author = "Team7" des="Max 10 stars with blue colored custom texts" img="img/1.jpg" 
-                          max = "10" show-text="1" text-color="blue"
-                          texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></rater-r>
+                          <sds-rate class= "card-text" author = "Team7" des="Max 10 stars with blue colored custom texts" img="img/1.jpg" 
+                          max = "10" show-text="1" text-color="blue" low-threshold="3" high-threshold="8"
+                          icons="\e901,\e902,\e903" void-icon="\e900" 
+                          style="font-family: icomoon!important;"
+                          colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"
+                          texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></sds-rate>
                       </div>
                     </div>
                 </div>
@@ -104,9 +130,9 @@
                 <div class="col" style="margin-left:100px">
                   <h2><br>Rate & Checkbox Demo 2</h2>
                   <br>
-                  <checkbox-r border>Did you notice the score template?</checkbox-r>
+                  <sds-checkbox border>Did you notice the score template?</sds-checkbox>
                   <br>
-                  <checkbox-r border checked >You Gotta have noticed the starting value right?</checkbox-r>
+                  <sds-checkbox border checked >You Gotta have noticed the starting value right?</sds-checkbox>
                 </div>
                 <div class="col">
                     <div class="col">
@@ -115,8 +141,9 @@
                           height: auto   !important; align-self: center;margin-top: 10px" source src="../index/video/Render.mp4" type="video/mp4"></video>
                           <div class="card-body">
                               <h5 class="card-title">Bootstrap Card 2</h5>
-                              <rater-r class = "card-text" author = "Team7" des="Start with 2 stars with score template 'super+score+!!'" 
-                              score-template="super{value}!!" show-score img="img/2.jpg" v-model = "2"></rater-r>
+                              <sds-rate class = "card-text" author = "Team7" des="Start with 2 stars with score template 'super+score+!!'" 
+                              icons="\25A2,\25A8,\25A9" void-icon="\25A1"
+                              score-template="super{value}!!" show-score img="img/2.jpg" v-model = "2"></sds-rate>
                           </div>
                         </div>
                     </div>
@@ -130,11 +157,11 @@
                 <div class="col" style="margin-left:100px">
                   <h2><br>Rate & Checkbox Demo 3</h2>
                   <br>
-                  <checkbox-r checked disabled>You Dont Get To Rate This!</checkbox-r>
+                  <sds-checkbox checked disabled>You Dont Get To Rate This!</sds-checkbox>
                   <br>
-                  <checkbox-r border disabled>OK, but why though</checkbox-r>
+                  <sds-checkbox border disabled>OK, but why though</sds-checkbox>
                   <br>
-                  <checkbox-r checked disabled>Because my checkboxes have no border!</checkbox-r>
+                  <sds-checkbox checked disabled>Because my checkboxes have no border!</sds-checkbox>
                 </div>
                 <div class="col">
                     <div class="card" style="margin-top: 10px; margin-bottom: 10px">
@@ -142,9 +169,10 @@
                         height: auto   !important; align-self: center;margin-top: 10px" source src="../index/video/Render.mp4" type="video/mp4"></video>
                         <div class="card-body">
                             <h5 class="card-title">Bootstrap Card 3</h5>
-                            <rater-r class = "card-text" author = "Team7" des="Start with 5 stars, show score, and disabled" img="img/3.jpg" 
-                            max = "5" disabled v-model = "4" show-score 
-                            colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"></rater-r>
+                            <sds-rate class = "card-text" author = "Team7" des="Start with 5 stars, show score, and disabled" img="img/3.jpg" 
+                            icons="\e797,\e797,\e797" disabled-void-icon="\e717"
+                            style="font-family: element-icons!important;"
+                            max = "5" disabled v-model = "4" show-score></sds-rate>
                         </div>
                       </div>
                   </div>
@@ -161,5 +189,6 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+      <sds-commenter entry="UCSD"></sds-commenter>
   </body>
 </html>

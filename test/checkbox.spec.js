@@ -1,4 +1,4 @@
-const showroom = require("showroom/puppeteer")();
+/*const showroom = require("showroom/puppeteer")();
 const assert = require("assert");
 
 describe("sds-checkbox", () => {
@@ -45,4 +45,4 @@ describe("sds-checkbox", () => {
     const endtext = await showroom.getProperty("className", endinlabel);
     assert.equal("el-checkbox  ", endtext);
   });
-});
+});*/

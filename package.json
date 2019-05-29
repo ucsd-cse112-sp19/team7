@@ -27,7 +27,8 @@
     "lit-element": "^2.1.0",
     "mocha": "^6.1.4",
     "owc-dev-server": "^0.3.0",
-    "showroom": "^0.9.3"
+    "showroom": "^0.9.3",
+    "testcafe": "^1.2.0"
   },
   "husky": {
     "hooks": {

@@ -4,12 +4,12 @@ module.exports = function (config) {
     config.set({
         frameworks: ['mocha', 'chai'], 
         files: [
-            'test/rater.spec.js',
+            'test/*.spec.js',
         ],
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'test/rater.spec.js': ['webpack'],
+            'test/*.spec.js': ['webpack'],
         },
         webpack: {
             // karma watches the test entry points

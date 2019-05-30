@@ -1,36 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Team7</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="../index/img/devilbus1.jpg">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!-- CSS for icons from Element -->
-    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <link href="https://element.eleme.io/docs.b8e65c4.css" rel="stylesheet">
-  
-    <!-- Scripts -->
+<head>
+  <title>Team7</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="../index/img/devilbus1.jpg">
 
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- CSS for icons from Element -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link href="https://element.eleme.io/docs.b8e65c4.css" rel="stylesheet">
 
-    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
-    <script>
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+  <script type="module" src="script/Upload.js"></script>
+</head>
 
-    </script>
-    <script type="module" src="script/Upload.js"></script>
-  </head>
-  <body>
-      <sds-upload></sds-upload>
-      <form enctype="multipart/form-data" action="/upload/image" method="post">
-        <input id="image-file" type="file" />
-        <input type="submit">
-    </form>
-    <div id="filesubmit">
-      <input type="file" class="file-select" accept="image/*"/>
-      <button class="file-submit">SUBMIT</button>
-    </div>
-  </body>
+<body>
+  <!--
+  <sds-upload></sds-upload>
+  <form enctype="multipart/form-data" action="/upload/image" method="post">
+    <input id="image-file" type="file" />
+    <input type="submit">
+  </form>
+  -->
+  <div id="filesubmit">
+    <input type="file" class="file-select" accept="image/*" />
+    <button class="file-submit">SUBMIT</button>
+  </div>
+</body>
+
 </html>

@@ -6,7 +6,7 @@
   "scripts": {
     "utest": "karma start karma.config.js ",
     "btest": "testcafe chrome ./testcafe/sds-rater.testcafe.js",
-    "test": "npm run utest && npm run btest",
+    "test": "nyc --all --reporter=lcov --reporter=text npm run utest && npm run btest",
     "start": "owc-dev-server -o"
   },
   "repository": {
@@ -36,7 +36,6 @@
     "karma-safari-launcher": "^1.0.0",
     "karma-webpack": "^3.0.5",
     "lit-element": "^2.1.0",
-    "mocha": "^6.1.4",
     "nyc": "^14.1.1",
     "owc-dev-server": "^0.3.0",
     "webpack": "^4.32.2",

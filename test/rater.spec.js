@@ -15,13 +15,16 @@ describe("sds-rate", () => {
     document.body.appendChild(rater);
   });
 
+  afterEach(() => {
+    document.body.removeChild(rater);
+  });
+
   it("Unit test 1: check author attribute is correct", async () => {
     rater.setAttribute("author", "Etsu");
     /*
     const intex = await showroom.find("// #author" );
     const text = await showroom.getTextContent(intex);
     assert.equal("Author: stupidEtsu", text);*/
-    //"Etsu".should.equal(rater.getAttribute("author"));
     "Author: Etsu".should.equal(shadow.querySelector("p#author").textContent);
   });
 
@@ -31,7 +34,6 @@ describe("sds-rate", () => {
     const intex = await showroom.find("// #des" );
     const text = await showroom.getTextContent(intex);
     assert.equal("Description: Etsu is dumb", text);*/
-    //"Oscar should do more works".should.equal(rater.getAttribute("des"));
     "Description: Oscar should do more works".should.equal(shadow.querySelector("p#des").textContent);
   });
 
@@ -107,7 +109,7 @@ describe("sds-rate", () => {
     assert.equal(" el-rate__icon   el-icon-star-off", nochantext);*/
 
     //check to make sure that the after message is set correctly
-    "满意".should.equal(shadow.querySelector("div p").textContent);
+    "Glad".should.equal(shadow.querySelector("div p").textContent);
     /*
     const textp = await showroom.find("// div p");
     const text = await showroom.getTextContent(textp);

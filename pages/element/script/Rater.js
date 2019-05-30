@@ -734,7 +734,7 @@ export class Rater extends HTMLElement {
     else if (this.getAttribute("texts"))
       return this.getAttribute("texts").split(",");
     else 
-      return ["极差", "失望", "一般", "满意", "惊喜"];
+      return ["Worst", "Disappointing", "So-So", "Glad", "Surprised"];
   }
  
   /** @type {string} */

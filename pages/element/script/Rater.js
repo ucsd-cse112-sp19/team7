@@ -163,28 +163,29 @@ export class Rater extends HTMLElement {
 
     var author = shadow.querySelector("p#author");  //Author text
     var info = shadow.querySelector("p#des"); //Description text
-    var span = shadow.querySelector("span");  
+    //var span = shadow.querySelector("span");  
     if (this.getAttribute("author")) {
       author.textContent = "Author: " + this.getAttribute("author");
     }
     else { 
-      span.removeChild(author);
+      author.style.display = "none";
     }
     if (this.getAttribute("des")) {
       info.textContent = "Description: " + this.getAttribute("des");
     }
     else { 
-      span.removeChild(info);
+      info.style.display = "none";
     }
     //Handle image
     var imgUrl;
     var img = shadow.querySelector("img");
     if(this.hasAttribute("img")) {
+      img.style.display = "block";
       imgUrl = this.getAttribute("img");
       img.src = imgUrl;
     } else {
       //imgUrl = "background.jpg";
-      span.removeChild(img);
+      img.style.display = "none";
     }
 
     //Wrapper for rater
@@ -274,6 +275,7 @@ export class Rater extends HTMLElement {
    */
   updateStars(curr) {
     var stars = this.shadowRoot.querySelectorAll("div i");
+    
     var level;
     // + sign is used to convert curr to int so that comparison is done correctly
     if (+curr <= +this.lowThreshold) {
@@ -313,6 +315,7 @@ export class Rater extends HTMLElement {
   /**
    * `handleTextColor()` is called when the `text-color` attribute is changed
    * and will update the text color
+   * @param {string} newValue - new color 
    */
   handleTextColor(newValue) {
     if(newValue == null) {
@@ -325,6 +328,7 @@ export class Rater extends HTMLElement {
   /**
    * `handleValueModel()` is called when the `v-model` attribute is changed
    * and will update the number of selected icons accordingly
+   * @param {number} newValue - new value model number 
    */
   handleValueModel(newValue) {
     //this.updateStars(newValue);
@@ -350,9 +354,14 @@ export class Rater extends HTMLElement {
   /**
    * `handleMax()` is called when the `max` attribute is changed and will
    * update the number of icons accordingly
+   * @param {number} oldValue - old max, default is 5 
+   * @param {number} newValue - new max 
    */
   handleMax(oldValue, newValue) {
     const slider = this.shadowRoot.querySelector("div");
+    var items = this.shadowRoot.querySelectorAll("div span");
+    if (items.length != this.max) // which would happen before connectedCallBack
+      oldValue = items.length;
     var i;
     if (oldValue < newValue) {
       for (i = oldValue; i < newValue; i++) {
@@ -371,9 +380,13 @@ export class Rater extends HTMLElement {
         newItem.appendChild(newStar);
         slider.appendChild(newItem);
       }
+      var text = this.shadowRoot.querySelector("div p");
+      if (text) {
+        slider.removeChild(text);
+        slider.appendChild(text);
+      }
     }
     else {
-      var items = this.shadowRoot.querySelectorAll("div span");
       for (i = oldValue; i > newValue; i--) {
         slider.removeChild(items[i]);  
       }
@@ -403,6 +416,8 @@ export class Rater extends HTMLElement {
   /**
    * `handleShowScoreAndText()` is called when the `show-text` attribute 
    * or `show-score` attribute is changed and will update the display of the text
+   * @param {string} scoreVal - the score value 
+   * @param {string} textVal - the text content
    */
   handleShowScoreAndText(scoreVal, textVal) {
     if (!this.shadowRoot.querySelector("div p"))
@@ -517,7 +532,7 @@ export class Rater extends HTMLElement {
       "v-model", "max", "disabled", "show-score", "text-color", 
       "show-text", "texts", "score-template", "low-threshold", 
       "high-threshold", "colors", "void-color", "disabled-void-color",
-      "icons", "void-icon", "disabled-void-icon"
+      "icons", "void-icon", "disabled-void-icon", "img", "author", "des"
     ]; //TODO1
   }
 
@@ -536,6 +551,8 @@ export class Rater extends HTMLElement {
       this.handleValueModel(newValue);
       break;
     case "max":
+      if (!oldValue)
+        oldValue = 5;
       this.handleMax(oldValue, newValue);
       break;
     case "disabled":
@@ -579,6 +596,35 @@ export class Rater extends HTMLElement {
       break;
     case "disabled-void-icon":
       this.updateIcons();
+      break;
+    case "img":
+      var img = this.shadowRoot.querySelector("img");
+      if(newValue) {
+        img.style.display = "block";
+        img.src = newValue;
+      } else {
+        img.style.display = "none";
+      }
+      break;
+    case "author":
+      var author = this.shadowRoot.querySelector("p#author");  //Author text
+      if (newValue) {
+        author.style.display = "block";
+        author.textContent = "Author: " + newValue;
+      }
+      else { 
+        author.style.display = "none";
+      }
+      break;
+    case "des":
+      var info = this.shadowRoot.querySelector("p#des"); //Description text
+      if (newValue) {
+        info.style.display = "block";
+        info.textContent = "Description: " + newValue;
+      }
+      else { 
+        info.style.display = "none";
+      }
       break;
     //TODO3
     }
@@ -688,7 +734,7 @@ export class Rater extends HTMLElement {
     else if (this.getAttribute("texts"))
       return this.getAttribute("texts").split(",");
     else 
-      return ["极差", "失望", "一般", "满意", "惊喜"];
+      return ["Worst", "Disappointing", "So-So", "Glad", "Surprised"];
   }
  
   /** @type {string} */

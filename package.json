@@ -6,7 +6,7 @@
   "scripts": {
     "utest": "karma start karma.config.js ",
     "btest": "testcafe chrome ./testcafe/sds-rater.testcafe.js",
-    "test": "nyc --all --reporter=lcov --reporter=text npm run utest && nyc --all --reporter=lcov --reporter=text npm run btest",
+    "test": "npm run utest && npm run btest",
     "start": "owc-dev-server -o"
   },
   "repository": {

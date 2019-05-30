@@ -7,7 +7,8 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'test/*.spec.js': ['webpack'],
+            'pages/**/script/*.js': ['webpack', 'sourcemap'],
+            'test/*.spec.js': ['webpack', 'sourcemap'],
         },
         webpack: {
             // karma watches the test entry points
@@ -20,7 +21,14 @@ module.exports = function (config) {
         // list of files to exclude
         exclude: [
         ],
-        reporters: ['progress'],
+        
+        reporters: ['progress', 'coverage-istanbul'],
+
+        coverageIstanbulReporter: {
+          reports: ['html', 'lcovonly', 'text-summary'],
+          fixWebpackSourcePaths: true
+        },
+
         port: 9876,  // karma web server port
         colors: true,
         logLevel: config.LOG_INFO,

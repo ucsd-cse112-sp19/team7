@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/rater.spec.js | team7</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="team7"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/rater.spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">const showroom = require(&quot;showroom/puppeteer&quot;)();
+const assert = require(&quot;assert&quot;);
+
+//let root;
+
+describe(&quot;sds-rate&quot;, () =&gt; {
+  before( async () =&gt; {
+    await showroom.start();
+  });
+  after( async () =&gt; {
+    await showroom.stop();
+  });
+  beforeEach( async () =&gt; {
+    await showroom.setTestSubject(&quot;sds-rate&quot;);
+    //root = await showroom.page.$(&apos;showroom-app&apos;);
+    //await showroom.page.waitFor(300);
+  });
+
+  it(&quot;Unit test 1: check author attribute is correct&quot;, async () =&gt; {
+    const intex = await showroom.find(&quot;// #author&quot; );
+    const text = await showroom.getTextContent(intex);
+    assert.equal(&quot;Author: stupidEtsu&quot;, text);
+  });
+
+  it(&quot;Unit test 2: check decription atrribute correct&quot;, async () =&gt; {
+    const intex = await showroom.find(&quot;// #des&quot; );
+    const text = await showroom.getTextContent(intex);
+    assert.equal(&quot;Description: Etsu is dumb&quot;, text);
+  });
+
+  it(&quot;Unit test 3: check default rater has no img&quot;, async () =&gt; {
+    //const intex = await showroom.find(&apos;// img&apos; );
+    //const text = await showroom.getProperty(&apos;src&apos;,intex);
+    assert.fail(&quot;Please implement test that checks for null object&quot;);
+  });
+
+  it(&quot;Unit test 4: check img can be set via attribute&quot;, async () =&gt; {
+    await showroom.setAttribute(&quot;img&quot;,&quot;lol.png&quot;);
+    assert.equal(&quot;lol.png&quot;, await showroom.getAttribute(&quot;img&quot;));
+  });
+
+  it(&quot;Unit test 5: check if max is creating more stars&quot;, async () =&gt; {
+    const instar = await showroom.find(&quot;// #\\36&quot;);
+    const other = await showroom.getProperty(&quot;id&quot;, instar);
+    assert.equal(&quot;6&quot;, other);
+    await showroom.setAttribute(&quot;max&quot;, 9);
+    const inst = await showroom.find(&quot;// #\\39&quot;);
+    assert.equal(&quot;9&quot;, await showroom.getProperty(&quot;id&quot;, inst));
+  });
+
+  it(&quot;Unit test 6: check if clicking on stars is working&quot;, async () =&gt; {
+    //first check for original class of star
+    const start = await showroom.find(&quot;// #\\32&quot;);
+    const startext = await showroom.getProperty(&quot;className&quot;, start);
+    assert.equal(&quot; el-rate__icon  el-icon-star-off&quot;, startext);
+
+    //click a star further on
+    await showroom.page.evaluate(() =&gt; {
+      showroom.find(&quot;// #\\34&quot;).click(); 
+    });
+
+    //check to make sure it has changed class
+    const star = await showroom.find(&quot;// #\\32&quot;);
+    const tex = await showroom.getProperty(&quot;className&quot;, star);
+    assert.equal(&quot; el-rate__icon   el-icon-star-on&quot;, tex);
+
+    //check to see if the clicked star changed class as well
+    const clicked = await showroom.find(&quot;// #\\34&quot;);
+    const clickedtext = await showroom.getProperty(&quot;className&quot;, clicked);
+    assert.equal(&quot; el-rate__icon   el-icon-star-on&quot;, clickedtext);
+
+    //check that further along star didn&apos;t change at all
+    const nochan = await showroom.find(&quot;// #\\35&quot;);
+    const nochantext = await showroom.getProperty(&quot;className&quot;, nochan);
+    assert.equal(&quot; el-rate__icon   el-icon-star-off&quot;, nochantext);
+
+    //check to make sure that the after message is set correctly
+    const textp = await showroom.find(&quot;// div p&quot;);
+    const text = await showroom.getTextContent(textp);
+    assert.equal(&quot;&#x6EE1;&#x610F;&quot;, text);
+  });
+
+  it(&quot;Unit test 7: checking if v-model correctly sets the stars&quot;, async () =&gt; {
+    await showroom.setAttribute(&quot;v-model&quot;, &quot;2&quot;);
+    const secstar = await showroom.find(&quot;// #\\32&quot;);
+    const text = await showroom.getProperty(&quot;className&quot;, secstar);
+    assert.equal(&quot; el-rate__icon   el-icon-star-on&quot;, text);
+
+    //move v-model back and check to see that the star isn&apos;t set anymore
+    await showroom.setAttribute(&quot;v-model&quot;, &quot;1&quot;);
+    const newsecstar = await showroom.find(&quot;// #\\32&quot;);
+    const newtext = await showroom.getProperty(&quot;className&quot;, secstar);
+    assert.equal(&quot; el-rate__icon    el-icon-star-off&quot;, newtext);
+  });
+  
+});</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

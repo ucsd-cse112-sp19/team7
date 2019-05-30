@@ -13,6 +13,13 @@
     <link href="https://element.eleme.io/docs.b8e65c4.css" rel="stylesheet">
   
     <!-- Scripts -->
+
+
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <script>
+
+    </script>
     <script type="module" src="script/Upload.js"></script>
   </head>
   <body>
@@ -21,5 +28,9 @@
         <input id="image-file" type="file" />
         <input type="submit">
     </form>
+    <div id="filesubmit">
+      <input type="file" class="file-select" accept="image/*"/>
+      <button class="file-submit">SUBMIT</button>
+    </div>
   </body>
 </html>

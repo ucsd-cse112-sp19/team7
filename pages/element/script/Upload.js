@@ -28,8 +28,16 @@ function handleFileUploadChange(e) {
   selectedFile = e.target.files[0];
 }
 
+/** 
+ * function handleFileUploadSubmit
+ * handles when the user clicks the submit button - it uploads the image to firebase and displays it 
+ * @listens {click} listens for the user click on the submit button
+ * @throws {error} when upload is unsucessfil
+ * @throws {error} when displaying the image is unsucessful
+*/
 function handleFileUploadSubmit(e) {
-  const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+  let imageRef = storageRef.child(`images/${selectedFile.name}`);
+  const uploadTask = imageRef.put(selectedFile); //create a child directory called images, and place the file inside this directory
   uploadTask.on("state_changed", (snapshot) => {
     // Observe state change events such as progress, pause, and resume
   }, (error) => {
@@ -37,7 +45,27 @@ function handleFileUploadSubmit(e) {
     console.log(error);
   }, () => {
     // Do something once upload is complete
-    console.log("success");
+    console.log("successfully loaded image to firebase");
+  });
+
+  //display image
+  /*imageRef.getMetadata().then(function(metadata) {
+    //document.getElementById('img').src = metadata.downloadURLs[0]
+    //document.getElementById('img').src = imageRef.getDownloadURL();
+    console.log("OOP");
+    console.log(metadata.downloadURL);
+    //console.log(imageRef.getDownloadURL());
+  }).catch(function(error) { console.log("Couldn't display image") });*/    
+
+  //display image. It gets the uploaded image's url 
+  imageRef.getDownloadURL().then(function(url) {
+    // Get the download URL for 'images/stars.jpg'
+    // This can be inserted into an <img> tag
+    var img = document.createElement('img');
+    img.setAttribute('src', url);
+    document.body.appendChild(img);
+  }).catch(function(error) {
+    console.error(error);
   });
 }
 
@@ -53,8 +81,8 @@ template.innerHTML = `
 `;
 
 /**
- * Rater is a custom element that creates a web component.
- * It can be used by the tag <sds-rate>
+ * Upload is a custom element that creates a web component.
+ * It can be used by the tag <sds-upload>
  */
 export class Upload extends HTMLElement {
   /**

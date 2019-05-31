@@ -11,15 +11,83 @@
     <!-- CSS for icons from Element -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
     <link href="https://element.eleme.io/docs.b8e65c4.css" rel="stylesheet">
-  
-    <!-- Scripts -->
-    <script type="module" src="script/Upload.js"></script>
   </head>
   <body>
-      <sds-upload></sds-upload>
-      <form enctype="multipart/form-data" action="/upload/image" method="post">
-        <input id="image-file" type="file" />
-        <input type="submit">
-    </form>
-  </body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAWQ3Vi-7CTKYVgS1yQ7WHA7S0vShJCgZs",
+      authDomain: "team7-element.firebaseapp.com",
+      databaseURL: "https://team7-element.firebaseio.com",
+      projectId: "team7-element",
+      storageBucket: "team7-element.appspot.com",
+      messagingSenderId: "860166313157",
+      appId: "1:860166313157:web:59ab005177ad2f01"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script type="module" src="script/Rater.js"></script>
+    <script type="module" src="script/Checkbox.js"></script>
+    <script type="module" src="../webcomponent/script/CECoreHello.js"></script>
+    <script type="module" src="script/Comment.js"></script>
+    <script type="module" src="script/Upload.js"></script>
+    <!--Custom Element Templates-->
+    <template id="CECoreHelloT">
+      <style>
+        :host {
+          all: initial;
+          display: block;
+          contain: content;
+          text-align:center;
+        }
+  
+        p {
+          display: inline !important;
+          font-weight: bold;
+          font-size: 34px;
+          font-family: "Comic Sans MS", "Arial";
+        }
+      </style>
+      <p></p>
+    </template>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img src="../index/img/devilbus_blue.jpg" width="30" height="30" alt="">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="../../index.html">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="../webcomponent/webcomponent.html">Webcomponents</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../core-hello/core-hello.html">CoreHello</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="element.html">Element-Sprint1</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div id="header">
+    <br>
+      <img src="../index/img/devilbus_blue.jpg" class="center" style="display: block; margin-left: auto; margin-right: auto; width: 10%;">
+      <ce-core-hello lang="en" rainbow>Rate & Checkbox -- in Bootstrap Carousel</ce-core-hello>
+      <ce-core-hello lang="en" rainbow>Team 7 Present</ce-core-hello>
+      <br>
+    </div>
+
+    <sds-upload></sds-upload>
 </html>

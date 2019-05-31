@@ -424,11 +424,8 @@ export class Upload extends HTMLElement {
      * It's a good place to set the initial attribute values and install event listeners.
      */
   connectedCallback() {
-    const shadow = this.shadowRoot;
+    //const shadow = this.shadowRoot; //commented to pass eslint
     //TODO4
-
-    var author = shadow.querySelector("p#author");  //Author text
-    var info = shadow.querySelector("p#des"); //Description text
 
 
     // add click event listener

@@ -22,5 +22,6 @@ deploy:
   #    branch: dev-npm-export # todo: change to master
 script: ./bash_scripts/deploy.sh
 after_deploy:
+  - cd ./pages/element/script/ # go to the to-be-published directory to prepare for travis to publish that to npm
   - npm publish # todo: switch to travis publishing for you
   - npm --no-git-tag-version version patch # increment version

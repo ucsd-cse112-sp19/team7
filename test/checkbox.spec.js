@@ -1,48 +1,50 @@
-/*const showroom = require("showroom/puppeteer")();
-const assert = require("assert");
+import {Checkbox} from "../pages/element/script/Checkbox.js";
 
-describe("sds-checkbox", () => {
+var expect = require("chai").expect;
+var should = require("chai").should();
 
-  before( async() => {
-    await showroom.start();
-  });
+/* please use "" instead of '' */
 
-  after( async () => {
-    await showroom.stop(); 
-  });
+describe("sds-rate unit", () => {
+  let checkbox;
+  let shadow;
 
   beforeEach( async () => {
-    await showroom.setTestSubject("sds-checkbox");
+    checkbox = document.createElement("sds-checkbox");
+    shadow = checkbox.shadowRoot;
+    document.body.appendChild(checkbox);
   });
 
-  it("Unit test 1: check clicking", async () => {
-    //check class name before clicking to see that it isn't checked yet
-    const inlabel = await showroom.find("// label");
-    const text = await showroom.getProperty("className", inlabel);
-    assert.equal("el-checkbox", text);
-
-    //click on the label to check the checkbox
-    await showroom.page.evaluate(() => {
-      showroom.find("// label").click(); 
-    });
-
-    //check to see if class name changed to clicked
-    const ninlabel = await showroom.find("// label");
-    const ntext = await showroom.getProperty("className", ninlabel);
-    assert.equal("el-checkbox is-checked", ntext);
-
-    //check to see if attribute for checked has been set
-    const checkedatt = await showroom.getAttribute("checked");
-    assert.equal("", checkedatt);
-
-    //click to uncheck
-    await showroom.page.evaluate(() => {
-      showroom.find("// label").click(); 
-    });
-
-    //check to see if checkbox is unchecked
-    const endinlabel = await showroom.find("// label");
-    const endtext = await showroom.getProperty("className", endinlabel);
-    assert.equal("el-checkbox  ", endtext);
+  afterEach(() => {
+    document.body.removeChild(checkbox);
   });
-});*/
+
+  it("Unit test 1: check the getters and setters for True labels", async () => {
+    checkbox.trueLabel = "Some Label"
+    "Some Label".should.equal(checkbox.trueLabel)
+    // attribute should be changed as well
+    checkbox.getAttribute("true-label").should.equal("Some Label")
+  });
+
+  it("Unit test 2: check the getters and setters for False labels", async () => {
+    checkbox.falseLabel = "Some False Label"
+    "Some False Label".should.equal(checkbox.falseLabel)
+    // attribute should be changed as well
+    checkbox.getAttribute("false-label").should.equal("Some False Label")
+  });
+
+  it("Unit test 3: check the functionality disable", async () => {
+    checkbox.disabled = true
+    let t = true
+    t.should.equal(checkbox.disabled)
+    // attribute should be removed correctly
+    checkbox.hasAttribute("disabled")
+  });
+
+  it("Unit test 4: check the default label class name", async () => {
+    let lb = shadow.querySelector("label")
+    "el-checkbox".should.equal(lb.className);
+  });
+
+  
+});

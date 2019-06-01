@@ -60,6 +60,16 @@ template.innerHTML = `
       word-wrap: break-word;
       white-space: normal;
     }
+
+  </style>
+  <span id="title">Reviews:</span>
+  <span id="box"></span>
+  <input id="name" placeholder="Name Here"></input>
+  <span id="ratetext">Your Rate:</span>
+  <sds-rate id="rating"></sds-rate>
+  <textarea id="comment" placeholder="Your Thoughtful Comments Here..."></textarea>
+  <button id="submit">Submit</button>
+
 `;
 
 export class Commenter extends HTMLElement {
@@ -71,35 +81,18 @@ export class Commenter extends HTMLElement {
   connectedCallback() {
     const shadow = this.shadowRoot;
 
-    var title = document.createElement("span");
-    title.id = "title";
-    title.textContent="Reviews: ";
-
-    var msgbox = document.createElement("span");
-    msgbox.id = "box";
-
-    var username = document.createElement("input");
-    username.id="name";
-    username.placeholder="Name Here";
-
-    var ratetext = document.createElement("span");
-    ratetext.id="ratetext";
-    ratetext.textContent="Your Rate: ";
-    var rating = document.createElement("sds-rate");
-    rating.id="rating";
-
-    var comment = document.createElement("textarea");
-    comment.id="comment";
-    comment.placeholder="Your Thoughtful Comments Here...";
-
-    var submit = document.createElement("button");
-    submit.id="submit";
-    submit.textContent="Submit";
-
+    // Gather all html elements from the shadow root for later use
+    var title = shadow.querySelector("span#title");
+    var msgbox = shadow.querySelector("span#box");
+    var username = shadow.querySelector("input#name");
+    var ratetext = shadow.querySelector("span#ratetext");
+    var rating = shadow.querySelector("sds-rate#rating");
+    var comment = shadow.querySelector("textarea#comment");
+    var submit = shadow.querySelector("button#submit");
     var entry = this.getAttribute("entry");
 
+    // Parse the database, adding reviews to the msgbox span element
     var counter = 0;
-
     db.collection(`${entry}`).orderBy("sent").onSnapshot(function(snapshot) {
       snapshot.docChanges().forEach(function(change) {
         counter += 1;
@@ -120,10 +113,12 @@ export class Commenter extends HTMLElement {
         wrapper.appendChild(star);
         wrapper.appendChild(body);
         msgbox.appendChild(wrapper);
-        title.innerHTML = "Reviews: "+ "(" + counter + ")";
+        //title.innerHTML = "Reviews: "+ "(" + counter + ")";
+        title.textContent = "Reviews: "+ "(" + counter + ")";
       });
     });
 
+    // Upon pushing submit, add comment data to firebase
     submit.addEventListener("click", function() {
       db.collection(`${entry}`).add({
         user: `${username.value}`,
@@ -138,13 +133,6 @@ export class Commenter extends HTMLElement {
       comment.value = "";
     });
 
-    shadow.appendChild(title);
-    shadow.appendChild(msgbox);
-    shadow.appendChild(username);
-    shadow.appendChild(ratetext);
-    shadow.appendChild(rating);
-    shadow.appendChild(comment);
-    shadow.appendChild(submit);
   }
 }
 customElements.define("sds-commenter", Commenter);

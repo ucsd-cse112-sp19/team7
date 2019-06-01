@@ -4,9 +4,9 @@ const path = require('path');
 const components = ["Checkbox", "Comment", "Rater"];
 const componentsEntries = {};
 
-componentsEntries[`pages/core-hello/script/core-hello`] = `pages/core-hello/script/core-hello.js`;
+componentsEntries[`pages/core-hello/script/core-hello`] = `./pages/core-hello/script/core-hello.js`;
 components.forEach((component) => {
-    componentsEntries[`pages/element/script/${component}`] = `pages/element/script/${component}.js`;
+    componentsEntries[`pages/element/script/${component}`] = `./pages/element/script/${component}.js`;
 });
 
 module.exports = {

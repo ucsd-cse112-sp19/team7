@@ -18,6 +18,7 @@
  * Cloning contents from a &lt;template&gt; element is more performant
  * than using innerHTML because it avoids addtional HTML parse costs.
  */
+
 import {storageRef} from "./init_firebase.js";
 
 document.querySelector(".file-select").addEventListener("change", handleFileUploadChange);
@@ -29,7 +30,7 @@ function handleFileUploadChange(e) {
 }
 
 /** 
- * function handleFileUploadSubmit
+ * function handleFileUploadSubmit 
  * handles when the user clicks the submit button - it uploads the image to firebase and displays it 
  * @listens {click} listens for the user click on the submit button
  * @throws {error} when upload is unsucessfil
@@ -59,11 +60,14 @@ function handleFileUploadSubmit(e) {
 
   //display image. It gets the uploaded image's url 
   imageRef.getDownloadURL().then(function(url) {
-    // Get the download URL for 'images/stars.jpg'
+    // Get the download URL for image
     // This can be inserted into an <img> tag
-    var img = document.createElement('img');
-    img.setAttribute('src', url);
-    document.body.appendChild(img);
+    //var img = document.createElement("img");
+    //img.setAttribute("src", url);
+    //document.body.appendChild(img);
+    
+    var img = document.getElementById('imageholder');
+    img.setAttribute("src", url);
   }).catch(function(error) {
     console.error(error);
   });
@@ -74,10 +78,16 @@ template.innerHTML = `
   <style>
     :host {
     }
-    
- 
+
   </style>
  
+  <span>
+    <div id="filesubmit">
+      <input type="file" class="file-select" accept="image/*" />
+      <button class="file-submit">SUBMIT</button>
+      <img id = 'imageholder'></img>
+    </div>
+  </span>
 `;
 
 /**
@@ -106,6 +116,8 @@ export class Upload extends HTMLElement {
   connectedCallback() {
     const shadow = this.shadowRoot;
     //TODO4
+    shadow.querySelector(".file-select").addEventListener("change", handleFileUploadChange);
+    shadow.querySelector(".file-submit").addEventListener("click", this.handleFileUploadSubmit2);
 
   }
 
@@ -146,6 +158,33 @@ export class Upload extends HTMLElement {
   }
 
   //TODO2
+  handleFileUploadSubmit2(e) {
+    let imageRef = storageRef.child(`images/${selectedFile.name}`);
+    const uploadTask = imageRef.put(selectedFile); //create a child directory called images, and place the file inside this directory
+    uploadTask.on("state_changed", (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+    }, (error) => {
+      // Handle unsuccessful uploads
+      console.log(error);
+    }, () => {
+      // Do something once upload is complete
+      console.log("successfully loaded image to firebase");
+    });
+   
+    //display image. It gets the uploaded image's url 
+    imageRef.getDownloadURL().then(function(url) {
+      // Get the download URL for image
+      // This can be inserted into an <img> tag
+      //var img = document.createElement("img");
+      //img.setAttribute("src", url);
+      //document.body.appendChild(img);
+      
+      var img = this.shadowRoot.getElementById('imageholder');
+      img.setAttribute("src", url);
+    }).catch(function(error) {
+      console.error(error);
+    });
+  }
 }
 
 customElements.define("sds-upload", Upload);

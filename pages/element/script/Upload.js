@@ -21,57 +21,17 @@
 
 import {storageRef} from "./init_firebase.js";
 
-document.querySelector(".file-select").addEventListener("change", handleFileUploadChange);
-document.querySelector(".file-submit").addEventListener("click", handleFileUploadSubmit);
 
 let selectedFile;
+/**
+ * `handleFileUploadChange` deals with file selection. NOTE: still trying to figure out how to include it within the class below
+ * @param {*} e 
+ */
 function handleFileUploadChange(e) {
   selectedFile = e.target.files[0];
 }
 
-/** 
- * function handleFileUploadSubmit 
- * handles when the user clicks the submit button - it uploads the image to firebase and displays it 
- * @listens {click} listens for the user click on the submit button
- * @throws {error} when upload is unsucessfil
- * @throws {error} when displaying the image is unsucessful
-*/
-function handleFileUploadSubmit(e) {
-  let imageRef = storageRef.child(`images/${selectedFile.name}`);
-  const uploadTask = imageRef.put(selectedFile); //create a child directory called images, and place the file inside this directory
-  uploadTask.on("state_changed", (snapshot) => {
-    // Observe state change events such as progress, pause, and resume
-  }, (error) => {
-    // Handle unsuccessful uploads
-    console.log(error);
-  }, () => {
-    // Do something once upload is complete
-    console.log("successfully loaded image to firebase");
-  });
 
-  //display image
-  /*imageRef.getMetadata().then(function(metadata) {
-    //document.getElementById('img').src = metadata.downloadURLs[0]
-    //document.getElementById('img').src = imageRef.getDownloadURL();
-    console.log("OOP");
-    console.log(metadata.downloadURL);
-    //console.log(imageRef.getDownloadURL());
-  }).catch(function(error) { console.log("Couldn't display image") });*/    
-
-  //display image. It gets the uploaded image's url 
-  imageRef.getDownloadURL().then(function(url) {
-    // Get the download URL for image
-    // This can be inserted into an <img> tag
-    //var img = document.createElement("img");
-    //img.setAttribute("src", url);
-    //document.body.appendChild(img);
-    
-    var img = document.getElementById('imageholder');
-    img.setAttribute("src", url);
-  }).catch(function(error) {
-    console.error(error);
-  });
-}
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -80,14 +40,15 @@ template.innerHTML = `
     }
 
   </style>
- 
+  <div>
   <span>
     <div id="filesubmit">
       <input type="file" class="file-select" accept="image/*" />
       <button class="file-submit">SUBMIT</button>
-      <img id = 'imageholder'></img>
+      <img class = 'imageholder'></img>
     </div>
   </span>
+  </div>
 `;
 
 /**
@@ -116,9 +77,12 @@ export class Upload extends HTMLElement {
   connectedCallback() {
     const shadow = this.shadowRoot;
     //TODO4
+    var wrapper = shadow.querySelector("div");
+    shadow.appendChild(wrapper);
+    //var img = shadow.querySelector("label");
+    //var imageholder = shadow.querySelector("imageholder");
     shadow.querySelector(".file-select").addEventListener("change", handleFileUploadChange);
-    shadow.querySelector(".file-submit").addEventListener("click", this.handleFileUploadSubmit2);
-
+    shadow.querySelector(".file-submit").addEventListener("click", this.handleFileUploadSubmit);
   }
 
   /**
@@ -158,7 +122,19 @@ export class Upload extends HTMLElement {
   }
 
   //TODO2
-  handleFileUploadSubmit2(e) {
+  /** 
+ * `handleFileUploadSubmit` handles when the user clicks the submit button - it uploads the image to firebase and displays it 
+ * @listens {click} listens for the user click on the submit button
+ * @throws {error} when upload is unsucessfil
+ * @throws {error} when displaying the image is unsucessful
+*/
+  handleFileUploadSubmit(event) {
+    var upload = event.target.getRootNode().host;
+    if (upload.disabled)
+    return;
+
+    var imageholder = upload.shadowRoot.querySelector('img.imageholder');
+    
     let imageRef = storageRef.child(`images/${selectedFile.name}`);
     const uploadTask = imageRef.put(selectedFile); //create a child directory called images, and place the file inside this directory
     uploadTask.on("state_changed", (snapshot) => {
@@ -171,6 +147,7 @@ export class Upload extends HTMLElement {
       console.log("successfully loaded image to firebase");
     });
    
+    //var upload = e.target.getRootNode().host
     //display image. It gets the uploaded image's url 
     imageRef.getDownloadURL().then(function(url) {
       // Get the download URL for image
@@ -179,8 +156,9 @@ export class Upload extends HTMLElement {
       //img.setAttribute("src", url);
       //document.body.appendChild(img);
       
-      var img = this.shadowRoot.getElementById('imageholder');
-      img.setAttribute("src", url);
+      //var img = this.shadowRoot.querySelector('imageholder');
+      //var img = upload.shadowRoot.querySelector('imageholder');
+      imageholder.setAttribute("src", url);
     }).catch(function(error) {
       console.error(error);
     });

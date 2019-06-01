@@ -16,7 +16,7 @@
  * than using innerHTML because it avoids addtional HTML parse costs.
  */
 import {storageRef} from "./init_firebase.js";
-
+/*
 document.querySelector(".file-select").addEventListener("change", handleFileUploadChange);
 document.querySelector(".file-submit").addEventListener("click", handleFileUploadSubmit);
 
@@ -39,7 +39,7 @@ function handleFileUploadSubmit(e) {
     console.log("success");
   });
 }
-
+*/
 const template = document.createElement("template");
 template.innerHTML = `
   <style>
@@ -454,31 +454,49 @@ export class Upload extends HTMLElement {
 
 
     // add click event listener
+    
     var button = this.shadowRoot.querySelector("button");
     button.addEventListener("click", this.onButtonClick);
 
     var input = this.shadowRoot.querySelector("input");
-    input.addEventListener("click", this.handleFileUploadSubmit);
+    //input.addEventListener("click", this.handleFileUploadSubmit);
+    input.addEventListener("change", this.handleFileUpload);
+  }
+
+  handleFileUpload(e) {
+    console.log(e.target.files);
+    var selectedFile = e.target.files[0];
+    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+    uploadTask.on("state_changed", (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+    }, (error) => {
+      // Handle unsuccessful uploads
+      console.log(error);
+    }, () => {
+      // Do something once upload is complete
+      console.log("success");
+    });
   }
 
   /**
-     * `observedAttributes()` returns an array of attributes whose changes will
-     * be handled in `attributeChangedCallback()`
-     * @return {string[]} array of attributes whose changes will be handled 
-     */
+    * `observedAttributes()` returns an array of attributes whose changes will
+    * be handled in `attributeChangedCallback()`
+    * @return {string[]} array of attributes whose changes will be handled 
+    */
   static get observedAttributes() {
     return [
     ]; //TODO1
   }
+  
 
   /**
-     * `attributeChangedCallback()` is called when any of the attributes in the
-     * returned array of `observedAttributes()` are changed. It's a good place to 
-     * handle side effects
-     * @param {string} name - the name of the changed attribute
-     * @param {string} oldValue - the old value of the attribute
-     * @param {string} newValue - the new value of the attribute
-     */
+    * `attributeChangedCallback()` is called when any of the attributes in the
+    * returned array of `observedAttributes()` are changed. It's a good place to 
+    * handle side effects
+    * @param {string} name - the name of the changed attribute
+    * @param {string} oldValue - the old value of the attribute
+    * @param {string} newValue - the new value of the attribute
+    */
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
     switch (name) {

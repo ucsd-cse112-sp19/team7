@@ -399,6 +399,7 @@ template.innerHTML = `
         <!---->
       </li>
     </ul>
+    <img class="imageholder"></img>
   </div>
   <div>
     <span>
@@ -406,7 +407,7 @@ template.innerHTML = `
         <input type="file" class="file-select" accept="image/*" />
         <button class="file-submit">SUBMIT</button>
       </div>
-        <img class="imageholder"></img>
+      <img class="imageholder"></img>
     </span>
   </div>
 `;

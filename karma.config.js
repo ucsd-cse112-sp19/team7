@@ -63,6 +63,6 @@ module.exports = function (config) {
         // Concurrency level: how many browser should be started simultaneous
         concurrency: Infinity,
        
-        webpack: require("config/webpack.dev"),
+        webpack: require("./config/webpack.dev"),
     })
 }

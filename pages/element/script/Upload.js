@@ -129,7 +129,7 @@ export class Upload extends HTMLElement {
  * @throws {error} when displaying the image is unsucessful
 */
   handleFileUploadSubmit(event) {
-    var upload = event.target.getRootNode().host;
+    var upload = event.target.getRootNode().host; //this needs to be done since this is an event
     if (upload.disabled)
     return;
 

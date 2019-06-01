@@ -2,8 +2,8 @@ module.exports = function (config) {
     config.set({
         basePath: '',
 
-        //frameworks: ['mocha', 'chai'], 
-        frameworks: ['jasmine'], 
+        frameworks: ['mocha', 'chai'], 
+        //frameworks: ['jasmine'], 
         files: [
             'test/*.spec.js',
         ],

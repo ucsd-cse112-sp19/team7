@@ -104,7 +104,7 @@ template.innerHTML = `
 
 `;
 
-export class Commenter extends HTMLElement {
+export class Comment extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({mode: "open"});
@@ -343,4 +343,4 @@ export class Commenter extends HTMLElement {
   }
 
 }
-customElements.define("sds-commenter", Commenter);
+customElements.define("sds-commenter", Comment);

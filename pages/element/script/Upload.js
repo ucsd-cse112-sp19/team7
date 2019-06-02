@@ -214,6 +214,12 @@ template.innerHTML = `
     .el-upload-list__item:hover {
       background-color: #f5f7fa;
     }
+    .el-upload-list__item:hover .el-icon-close {
+      display: block;
+    }
+    .el-upload-list__item:hover .el-upload-list__item-status-label {
+      display: none !important;
+    }
     .el-upload-list__item:first-child {
       margin-top: 10px;
     }
@@ -382,6 +388,8 @@ template.innerHTML = `
     .el-icon-close:before {
       content: "\\e6db";
     }
+    
+
   </style>
   
   <div class="demo-block upload-demo">
@@ -422,6 +430,45 @@ template.innerHTML = `
       </li>
     </ul>
   </div>
+  <div class="el-message-box">
+    <div class="el-message-box__header">
+      <div class="el-message-box__title">
+        <!---->
+        <span></span>
+      </div>
+      <button type="button" aria-label="Close" class="el-message-box__headerbtn">
+        <i class="el-message-box__close el-icon-close"></i>
+      </button>
+    </div>
+    <div class="el-message-box__content">
+      <!---->
+      <div class="el-message-box__message">
+        <p>Cancel the transfert of food2.jpeg ?</p>
+      </div>
+      <div class="el-message-box__input" style="display: none;">
+        <div class="el-input">
+          <!---->
+          <input type="text" autocomplete="off" placeholder="" class="el-input__inner">
+          <!----><!----><!----><!---->
+        </div>
+        <div class="el-message-box__errormsg" style="visibility: hidden;">
+        </div>
+      </div>
+    </div>
+    <div class="el-message-box__btns">
+      <button type="button" class="el-button el-button--default el-button--small">
+        <!----><!---->
+        <span>
+          No
+        </span>
+      </button>
+      <button type="button" class="el-button el-button--default el-button--small el-button--primary "><!----><!---->
+        <span>
+          Yes
+        </span>
+      </button>
+    </div>
+  </div>
 
 `;
 
@@ -461,6 +508,10 @@ export class Upload extends HTMLElement {
     var input = this.shadowRoot.querySelector("input");
     //input.addEventListener("click", this.handleFileUploadSubmit);
     input.addEventListener("change", this.handleFileUpload);
+
+    const deleteButton = this.shadowRoot.querySelector(".el-icon-close");
+    deleteButton.addEventListener("click", this.onDelButClick);
+
   }
 
   handleFileUpload(e) {
@@ -504,6 +555,11 @@ export class Upload extends HTMLElement {
 
       break;
     }
+  }
+
+  onDelButClick(event){
+    //TODO
+    console.log("hello");
   }
 
   /**

@@ -300,6 +300,9 @@ template.innerHTML = `
     .el-upload-list__item.is-success .el-upload-list__item-status-label {
       display: block;
     }
+    .el-upload-list__item.is-success:active .el-icon-close-tip, .el-upload-list__item.is-success:focus .el-upload-list__item-status-label, .el-upload-list__item.is-success:hover .el-upload-list__item-status-label, .el-upload-list__item.is-success:not(.focusing):focus .el-icon-close-tip {
+      display: none;
+    }
     .el-upload-list__item-status-label {
       position: absolute;
       right: 5px;
@@ -382,6 +385,13 @@ template.innerHTML = `
     .el-icon-close:before {
       content: "\\e6db";
     }
+    .el-upload-list__item .el-icon-close:hover {
+      opacity: 1;
+    }
+    .el-upload-list__item:hover .el-icon-close {
+      display: inline-block;
+    }
+    
   </style>
   
   <div class="demo-block upload-demo">
@@ -391,38 +401,30 @@ template.innerHTML = `
         <!---->
         <span>Click to upload</span>
       </button>
-      <input type="file" name="file" multiple="multiple" class="el-upload__input">
+      <input type="file" name="file" multiple class="el-upload__input">
     </div>
     <ul class="el-upload-list el-upload-list--text">
-      <li tabindex="0" class="el-upload-list__item is-success">
-        <!---->
-        <a class="el-upload-list__item-name">
-          <i class="el-icon-document"></i>food.jpeg
-        </a>
-        <label class="el-upload-list__item-status-label">
-          <i class="el-icon-upload-success el-icon-circle-check"></i>
-        </label>
-        <i class="el-icon-close"></i>
-        <i class="el-icon-close-tip">按 delete 键可删除</i>
-        <!---->
-        <!---->
-      </li>
-      <li tabindex="0" class="el-upload-list__item is-success">
-        <!---->
-        <a class="el-upload-list__item-name">
-          <i class="el-icon-document"></i>food2.jpeg
-        </a>
-        <label class="el-upload-list__item-status-label">
-          <i class="el-icon-upload-success el-icon-circle-check"></i>
-        </label>
-        <i class="el-icon-close"></i>
-        <i class="el-icon-close-tip">按 delete 键可删除</i>
-        <!---->
-        <!---->
-      </li>
+      
     </ul>
   </div>
 
+`;
+
+const listTemplate = document.createElement("template");
+listTemplate.innerHTML = `
+      <li tabindex="0" class="el-upload-list__item is-success">
+        <!---->
+        <a class="el-upload-list__item-name">
+          <i class="el-icon-document"></i><!-- file name goes here -->
+        </a>
+        <label class="el-upload-list__item-status-label">
+          <i class="el-icon-upload-success el-icon-circle-check"></i>
+        </label>
+        <i class="el-icon-close"></i>
+        <i class="el-icon-close-tip">按 delete 键可删除</i>
+        <!---->
+        <!---->
+      </li>
 `;
 
 /**
@@ -463,9 +465,14 @@ export class Upload extends HTMLElement {
     input.addEventListener("change", this.handleFileUpload);
   }
 
-  handleFileUpload(e) {
-    console.log(e.target.files);
-    var selectedFile = e.target.files[0];
+  handleFileUpload(event) {
+    console.log(event.target.files);
+    var upload = event.target.getRootNode().host;
+    var selectedFile = event.target.files[0];
+
+    if (!selectedFile)
+      return;
+
     const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
     uploadTask.on("state_changed", (snapshot) => {
       // Observe state change events such as progress, pause, and resume
@@ -475,35 +482,35 @@ export class Upload extends HTMLElement {
     }, () => {
       // Do something once upload is complete
       console.log("success");
+
+      upload.addFileListItem(selectedFile.name);
     });
   }
 
-  /**
-    * `observedAttributes()` returns an array of attributes whose changes will
-    * be handled in `attributeChangedCallback()`
-    * @return {string[]} array of attributes whose changes will be handled 
-    */
-  static get observedAttributes() {
-    return [
-    ]; //TODO1
-  }
-  
+  addFileListItem(fileName) {
+    var upload = this;
+    var list = upload.shadowRoot.querySelector("ul.el-upload-list");
+    list.appendChild(listTemplate.content.cloneNode(true));
 
-  /**
-    * `attributeChangedCallback()` is called when any of the attributes in the
-    * returned array of `observedAttributes()` are changed. It's a good place to 
-    * handle side effects
-    * @param {string} name - the name of the changed attribute
-    * @param {string} oldValue - the old value of the attribute
-    * @param {string} newValue - the new value of the attribute
-    */
-  attributeChangedCallback(name, oldValue, newValue) {
-    // this is called also when loading the page initially, based on the initial attributes
-    switch (name) {
-    case "":
+    // add item to list
+    var listItems = upload.shadowRoot.querySelectorAll("ul.el-upload-list li");
+    var lastItem = listItems[listItems.length - 1];
+    lastItem.querySelector("a.el-upload-list__item-name").innerHTML += fileName;
 
-      break;
-    }
+    // add click listener to the cancel icon
+    lastItem.querySelector("i.el-icon-close").addEventListener("click", function() {
+      // delete from list
+      list.removeChild(lastItem);
+
+      // delete from firebase
+      var desertRef = storageRef.child(`images/${fileName}`); // create a reference to the file to delete
+      desertRef.delete().then(function() {
+        // File deleted successfully
+        console.log("deleted " + fileName);
+      }).catch(function(error) {
+        // Uh-oh, an error occurred!
+      });
+    });
   }
 
   /**
@@ -532,6 +539,38 @@ export class Upload extends HTMLElement {
     
   }
 
+
+
+
+
+
+  /**
+    * `observedAttributes()` returns an array of attributes whose changes will
+    * be handled in `attributeChangedCallback()`
+    * @return {string[]} array of attributes whose changes will be handled 
+    */
+  static get observedAttributes() {
+    return [
+    ]; //TODO1
+  }
+  
+
+  /**
+    * `attributeChangedCallback()` is called when any of the attributes in the
+    * returned array of `observedAttributes()` are changed. It's a good place to 
+    * handle side effects
+    * @param {string} name - the name of the changed attribute
+    * @param {string} oldValue - the old value of the attribute
+    * @param {string} newValue - the new value of the attribute
+    */
+  attributeChangedCallback(name, oldValue, newValue) {
+    // this is called also when loading the page initially, based on the initial attributes
+    switch (name) {
+    case "":
+
+      break;
+    }
+  }
 
   /** @type {string} */
   set disabledVoidIcon(value) {

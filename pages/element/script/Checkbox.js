@@ -238,7 +238,7 @@ export class Checkbox extends HTMLElement {
    */
   constructor() {
     super();
-    this.attachShadow({mode: "open"});
+    this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
@@ -254,7 +254,7 @@ export class Checkbox extends HTMLElement {
     //var img = shadow.querySelector("label");
 
     var text = "Option";
-    if(this.innerHTML != "") {
+    if (this.innerHTML != "") {
       text = this.innerHTML;
     }
     this.shadowRoot.querySelector("span.el-checkbox__label").textContent = text;
@@ -265,7 +265,7 @@ export class Checkbox extends HTMLElement {
     // add click event listener
     var input = this.shadowRoot.querySelector("input");
     input.addEventListener("click", this.onBoxClick);
-    
+
     this.handleChecked();
     this.updateValueModel();
 
@@ -297,7 +297,7 @@ export class Checkbox extends HTMLElement {
 
     label.className = label.className.replace(/\bis-checked\b/g, "");
     span.className = span.className.replace(/\bis-checked\b/g, "");
-    if(rater.checked) { 
+    if (rater.checked) {
       label.className += " is-checked";
       span.className += " is-checked";
       rater.checked = false;
@@ -361,12 +361,12 @@ export class Checkbox extends HTMLElement {
     var span = this.shadowRoot.querySelector("label span");
     label.className = label.className.replace(/\bis-checked\b/g, "");
     span.className = span.className.replace(/\bis-checked\b/g, "");
-    if(this.checked) { 
+    if (this.checked) {
       label.className += " is-checked";
       span.className += " is-checked";
     }
   }
-  
+
   /**
    * `handleSize()` is called when the `size` changes and will
    * update the size of the border
@@ -383,17 +383,79 @@ export class Checkbox extends HTMLElement {
     }
   }
 
+  /**
+   * `insertOutsideClass()` is called to insert css rules of the class names in
+   * `class` attribute into the shadowDOM's stylesheet
+   */
+  insertOutsideClass() {
+    var rootStyleSheet = this.getRootNode().styleSheets;
+    var classArray = this.className.match(/\S+/g);
+    if (!classArray || classArray.length == 0)
+      return;
 
+    var k;
+    var tagArray = []; // the index corresponds to the index of classArray
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var class_tag = classArray[k].split("@");
+      if (class_tag.length == 1) {
+        classArray.splice(k, 1);
+        k--;
+      }
+      else {
+        classArray[k] = class_tag[0];
+        tagArray.push(class_tag[1]);
+      }
+    }
 
+    var shadowStyleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i, j;
+    for (i = 0; i < rootStyleSheet.length; i++) {
+      try {
+        var rules = rootStyleSheet[i].cssRules;
+        
+        for (j = 0; j < rules.length; j++) {
+          for (k = 0; k < classArray.length; k++) {
+            if (rules[j].selectorText 
+                && rules[j].selectorText.includes("." + classArray[k])
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                       )
+                   ) 
+               ){
+              console.log(rules[j].selectorText);
+              shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
+            }
+          }
+        }
+      }
+      catch (e) {
+        console.log(e);
+        break;
+      }
+    }
 
-  
+    
+    //var everything = this.shadowRoot.querySelectorAll("*:not(style)");
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var items = this.shadowRoot.querySelectorAll(tagArray[k]);
+      for (i = 0; i < items.length; i++) {
+        if (items[i].tagName == "STYLE")
+          continue;
+        items[i].className += " " + classArray[k];
+      }
+    }
+  }
+
   /**
    * `observedAttributes()` returns an array of attributes whose changes will
    * be handled in `attributeChangedCallback()`
    * @return {string[]} array of attributes whose changes will be handled 
    */
   static get observedAttributes() {
-    return ["v-model", "disabled", "checked", "true-label", "false-label", "name", "border", "size"]; //TODO1
+    return ["v-model", "disabled", "checked", "true-label", "false-label", "name", "border", "size", "class"]; //TODO1
   }
 
   /**
@@ -406,29 +468,32 @@ export class Checkbox extends HTMLElement {
    */
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
-  
+
     switch (name) {
-    //case "v-model": no process needed for v-model
-    case "checked":
-      this.handleChecked();
-      break;
-    case "true-label":
-      this.updateValueModel();
-      break;
-    case "false-label":
-      this.updateValueModel();
-      break;
-    case "disabled":
-      this.handleDisabled(newValue);
-      break;
-    case "name":
-      break;
-    case "size":
-      this.handleSize();
-      break;
-    case "border":
-      this.handleBorder();
-      break;
+      //case "v-model": no process needed for v-model
+      case "checked":
+        this.handleChecked();
+        break;
+      case "true-label":
+        this.updateValueModel();
+        break;
+      case "false-label":
+        this.updateValueModel();
+        break;
+      case "disabled":
+        this.handleDisabled(newValue);
+        break;
+      case "name":
+        break;
+      case "size":
+        this.handleSize();
+        break;
+      case "border":
+        this.handleBorder();
+        break;
+      case "class":
+        this.insertOutsideClass();
+        break;
     }
   }
 
@@ -479,7 +544,7 @@ export class Checkbox extends HTMLElement {
   get checked() {
     return this.hasAttribute("checked");
   }
-  
+
   /** @type {string} */
   set name(value) {
     this.setAttribute("name", value);
@@ -489,7 +554,7 @@ export class Checkbox extends HTMLElement {
   get name() {
     return this.getAttribute("name") || "";
   }
-  
+
   /** @type {boolean} */
   set border(bSelect) {
     const isSelect = Boolean(bSelect);
@@ -503,7 +568,7 @@ export class Checkbox extends HTMLElement {
   get border() {
     return this.hasAttribute("border");
   }
-  
+
   /** @type {string} */
   set size(newValue) {
     if (newValue == "small")
@@ -520,5 +585,25 @@ export class Checkbox extends HTMLElement {
   }
 
 }
-  
+
 customElements.define("sds-checkbox", Checkbox);
+/*
+function getCss() {
+  if (document.styleSheets && document.styleSheets.length > 0)
+    return document.styleSheets;
+
+  var css = [];
+  for (var sheeti = 0; sheeti < document.styleSheets.length; sheeti++) {
+    var sheet = document.styleSheets[sheeti];
+    var rules = ('cssRules' in sheet) ? sheet.cssRules : sheet.rules;
+    for (var rulei = 0; rulei < rules.length; rulei++) {
+      var rule = rules[rulei];
+      if ('cssText' in rule)
+        css.push(rule.cssText);
+      else
+        css.push(rule.selectorText + ' {\n' + rule.style.cssText + '\n}\n');
+    }
+  }
+
+  return css.join('\n');
+}*/

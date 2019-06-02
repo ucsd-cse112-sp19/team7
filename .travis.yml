@@ -10,18 +10,19 @@ deploy:
     keep_history: true
     on:
       branch: master
-  # - provider: script
-  #   script: cd ./pages/element/script/ # go to the to-be-published directory to prepare for travis to publish that to npm
-  #   on:
-  #     branch: dev-npm-export # todo: change to master
-  #- provider: npm
-  #  skip_cleanup: true
-  #  email: "cvpage@ucsd.edu"
-  #  api_key: "" #todo: encrypt API KEY
-  #  on:
-  #    branch: dev-npm-export # todo: change to master
+  - provider: script
+    script: cd ./pages/element/script/ # go to the to-be-published directory to prepare for travis to publish that to npm
+    on:
+      branch: dev-npm-export # todo: change to master
+  - provider: npm
+    skip_cleanup: true
+    email: "cvpage@ucsd.edu"
+    api_key:
+      secure: dKp2Jh4hkbdXNM3BZ50Iu/W9YXzImaZLYf4gJULTak8ZvSmRLEXkNJrJAHBd6SF9OoLI7aix8zjAi9l4tdojBMkmfniAiWn/Lk7HuWBemIXm5am0Zsb5mX8Ne39Dr44D7mu+vhrz/phfSjOzAwrlRDF4TvCRO/t8n+8WcVy0GABobCg2Zsa1gXArl4NexcFf8q+YoW793W32x7hAlSvuDWGcnG5bO3a25zEW+2lR1DZATbO+SzY2QzxVC5nXaEBrR+LeSUxdkOcompRdSxhUyFw6mH2Re6lbdKM+4QTOFGbHJrjjAy2GIPS8oxDfoYX7LtHcb3W653fmzTasWKNW+8D0tGvwbolmW32ohzLR9ieh0CkmrJwDKQFzMT+V0LI8PHsHYlpPVwRBKRNKwESo86C6DomNTPrVAf9xKvV0cSgKasZOvkkA3RQJW8itNyGUNQOYfVkC10ClmXfN2YQaYhjz5LuTAQcolcxXG+BZCaeUaGl1YTPnzDQ946kf6H3yeCvEgYuF3byb9UYhHGrz1WFNQRIURurI5N9JzH396zm5waY+o5muydx9mSD7xQw0qXAaIYTMVyEjtqGFCskxQistgcdpOJcmalYEFayBKT6PO97W3mafCQCKGbye4wpkzXouLp+ZjvZuFzVEmuJROQ9q0QTTc+azT6nlYBiKYt8=
+    on:
+      branch: dev-npm-export # todo: change to master
 script: ./bash_scripts/deploy.sh
 after_deploy:
-  - cd ./pages/element/script/ # go to the to-be-published directory to prepare for travis to publish that to npm
-  - npm publish # todo: switch to travis publishing for you
+ #  - cd ./pages/element/script/ # go to the to-be-published directory to prepare for travis to publish that to npm
+ # - npm publish # todo: switch to travis publishing for you
   - npm --no-git-tag-version version patch # increment version

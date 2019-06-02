@@ -6,16 +6,16 @@
 
   function adjust() {
     window.scrollBy(0, -55);
-    var el = document.querySelector('.inner-link-active');
-    if (el) el.classList.remove('inner-link-active');
+    var el = document.querySelector(".inner-link-active");
+    if (el) el.classList.remove("inner-link-active");
 
     // ``[ ] . ' " @`` are not valid in DOM id. so must escape these.
-    var id = location.hash.replace(/([\[\].'"@$])/g, '\\$1');
+    var id = location.hash.replace(/([\[\].'"@$])/g, "\\$1");
     var el = document.querySelector(id);
-    if (el) el.classList.add('inner-link-active');
+    if (el) el.classList.add("inner-link-active");
   }
 
-  window.addEventListener('hashchange', adjust);
+  window.addEventListener("hashchange", adjust);
 
   if (location.hash) {
     setTimeout(adjust, 0);
@@ -23,10 +23,10 @@
 })();
 
 (function(){
-  var els = document.querySelectorAll('[href^="#"]');
-  var href = location.href.replace(/#.*$/, ''); // remove existed hash
+  var els = document.querySelectorAll("[href^=\"#\"]");
+  var href = location.href.replace(/#.*$/, ""); // remove existed hash
   for (var i = 0; i < els.length; i++) {
     var el = els[i];
-    el.href = href + el.getAttribute('href'); // because el.href is absolute path
+    el.href = href + el.getAttribute("href"); // because el.href is absolute path
   }
 })();

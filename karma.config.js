@@ -5,6 +5,7 @@ module.exports = function (config) {
 
         frameworks: ['mocha', 'chai'], 
         //frameworks: ['jasmine'], 
+        
         files: [
             'test/*.spec.js',
         ],

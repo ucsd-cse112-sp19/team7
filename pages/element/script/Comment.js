@@ -103,6 +103,7 @@ export class Commenter extends HTMLElement {
         var body = document.createElement("p");
         name.id="entry-name";
         body.id="entry-body";
+        star.id="entry-rating";
         name.innerHTML = `${change.doc.data().user} -- Posted on: `;
         name.innerHTML += `${change.doc.data().sent.toDate()}` + "<br />";
         star.valueModel = `${change.doc.data().star}`;
@@ -134,6 +135,9 @@ export class Commenter extends HTMLElement {
 
     // Set up attributes
     this.handleColor();
+    this.handleDisabled();
+    this.handleHideRating();
+    this.handleHideComment();
   }
 
   /**
@@ -143,7 +147,7 @@ export class Commenter extends HTMLElement {
    */
     static get observedAttributes() {
       return [
-        "color", "disabled", "show-rating", "show-comment"
+        "color", "disabled", "hide-rating", "hide-comment"
       ];
     }
 
@@ -162,23 +166,95 @@ export class Commenter extends HTMLElement {
         this.handleColor();
         break;
       case "disabled":
-        //this.handleDisabled();
+        this.handleDisabled();
         break;
-      case "show-rating":
-        //this.handleShowRating();
+      case "hide-rating":
+        this.handleHideRating();
         break;
-      case "show-comment":
-        //this.handleShowComment();
+      case "hide-comment":
+        this.handleHideComment();
         break;
     }
   }
 
+  /**
+   * `handleColor()` is called when the `color` attribute is changed and will 
+   *  update the color of the response backgrounds
+   */
   handleColor() {
     var value = this.color;
     var matches = this.shadowRoot.querySelectorAll("span#entry");
     matches.forEach(function(entry) {
       entry.style.background = value;
     });
+  }
+
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute is changed
+   * and will disable the comment element accordingly
+   */
+  handleDisabled() {
+    var username = this.shadowRoot.querySelector("input#name");
+    var ratetext = this.shadowRoot.querySelector("span#ratetext");
+    var rating = this.shadowRoot.querySelector("sds-rate#rating");
+    var comment = this.shadowRoot.querySelector("textarea#comment");
+    var submit = this.shadowRoot.querySelector("button#submit");
+    
+    if(this.disabled) {
+      username.style.display = "none"
+      ratetext.style.display = "none"
+      rating.style.display   = "none"
+      comment.style.display  = "none"
+      submit.style.display   = "none"
+    }
+
+    else {
+      username.style.display = "block"
+      ratetext.style.display = "block"
+      rating.style.display   = "block"
+      comment.style.display  = "block"
+      submit.style.display   = "block"
+    }
+  }i
+
+  /**
+   * `handleHideRating()` is called when the 'hide-rating' attribute is changed
+   * and will hide the rating element in displayed reviews accordingly
+   */
+  handleHideRating() {
+    var matches = this.shadowRoot.querySelectorAll("sds-rate#entry-rating");
+    
+    if(this.hideRating) {
+      matches.forEach(function(rating) {
+        rating.style.display = "none"
+      });
+    }
+
+    else {
+      matches.forEach(function(rating) {
+        rating.style.display = "block"
+      });
+    }
+  }
+
+  /**
+   * `handleHideComment()` is called when the 'hide-comment' attribute is changed
+   * and will hide the rating element in displayed reviews accordingly
+   */
+  handleHideComment() {
+    var matches = this.shadowRoot.querySelectorAll("p#entry-body");
+    
+    if(this.hideComment) {
+      matches.forEach(function(comment) {
+        comment.style.display = "none"
+      });
+    }
+
+    else {
+      matches.forEach(function(comment) {
+        comment.style.display = "block"
+      });
+    }
   }
 
   /** @type {string} */
@@ -194,32 +270,44 @@ export class Commenter extends HTMLElement {
 
   /** @type {boolean} */
   get disabled() {
-
+    return this.hasAttribute("disabled");
   }
 
   /** @type {boolean} */
   set disabled(value) {
-
+    const isDisabled = Boolean(value);
+    if (isDisabled)
+      this.setAttribute("disabled", "");
+    else
+      this.removeAttribute("disabled");
   }
 
   /** @type {boolean} */
-  get showRating() {
-
+  get hideRating() {
+    return this.hasAttribute("hide-rating");
   }
 
   /** @type {boolean} */
-  set showRating(value) {
-
+  set hideRating(value) {
+    const isHiddenRating = Boolean(value);
+    if (isHiddenRating)
+      this.setAttribute("hide-rating", "");
+    else
+      this.removeAttribute("hide-rating");
   }
 
   /** @type {boolean} */
-  get showComment() {
-
+  get hideComment() {
+    return this.hasAttribute("hide-comment");
   }
 
   /** @type {boolean} */
-  set showComment(value) {
-
+  set hideComment(value) {
+    const isHiddenComment = Boolean(value);
+    if (isHiddenComment)
+      this.setAttribute("hide-comment", "");
+    else
+      this.removeAttribute("hide-comment");
   }
 
 }

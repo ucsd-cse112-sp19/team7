@@ -1,6 +1,6 @@
 {
   "name": "rater-and-checkbox",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&branch=dev)](https://travis-ci.com/ucsd-cse112/team7)",
   "main": "index.js",
   "scripts": {
@@ -39,5 +39,8 @@
     "element-ui": "^2.8.2",
     "esdoc-integrate-manual-plugin": "^1.0.0",
     "vue": "^2.6.10"
-  }
+  },
+  "files": [
+    "pages/element/script"
+  ]
 }

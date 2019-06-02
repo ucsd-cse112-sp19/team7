@@ -1,8 +1,6 @@
 language: node_js
 node_js:
   - "10"
-before_deploy:
-  - cp package.json ./pages/element/script/ # Update the package.json in the folder that will be published (by copying the package.json)
 deploy:
   - provider: pages
     skip_cleanup: true
@@ -10,10 +8,6 @@ deploy:
     keep_history: true
     on:
       branch: master
-  - provider: script
-    script: cd ./pages/element/script/ # go to the to-be-published directory to prepare for travis to publish that to npm
-    on:
-      branch: dev-npm-export # todo: change to master
   - provider: npm
     skip_cleanup: true
     email: "cvpage@ucsd.edu"
@@ -23,6 +17,4 @@ deploy:
       branch: dev-npm-export # todo: change to master
 script: ./bash_scripts/deploy.sh
 after_deploy:
- #  - cd ./pages/element/script/ # go to the to-be-published directory to prepare for travis to publish that to npm
- # - npm publish # todo: switch to travis publishing for you
   - npm --no-git-tag-version version patch # increment version

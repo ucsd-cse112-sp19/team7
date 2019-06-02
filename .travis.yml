@@ -1,6 +1,33 @@
 language: node_js
 node_js:
   - "10"
+dist: trusty
+sudo: required
+
+addons:
+  firefox: latest
+  apt:
+    sources:
+     - google-chrome
+    packages:
+     - google-chrome-stable fluxbox
+  chrome: stable
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=9e134fa353cc4364d2b074b55ae5a97cfade6d928a09d12aa26b1250b1bac9ab
+rvm:
+  - 2.2.0
+before_script:
+  - npm install
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - sleep 3
+  - fluxbox >/dev/null 2>&1 &
+  #- npm install -g nyc
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 deploy:
   provider: pages
   skip_cleanup: true
@@ -9,3 +36,5 @@ deploy:
   on:
     branch: master
 script: ./bash_scripts/deploy.sh
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

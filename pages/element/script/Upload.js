@@ -500,40 +500,14 @@ export class Upload extends HTMLElement {
   }
   
   /**
-   * `onBoxClick()` is called when any checkbox is clicked
-   * It will correctly toggle the checkbox
+   * `onButtonClick()` is called when upload button is clicked
+   * It will correctly trigger the upload action
    * @param {Event} event - the click event
    */
   onButtonClick(event) {
     // cannot use this as the this in event listener is the target
     var button = event.target.getRootNode().host;
     var input = button.shadowRoot.querySelector("input.el-upload__input");
-    input.click();
-
-    /*selectedFile = input.value;//event.target.files[0];
-    console.log(selectedFile);
-    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
-    uploadTask.on("state_changed", (snapshot) => {
-      // Observe state change events such as progress, pause, and resume
-    }, (error) => {
-      // Handle unsuccessful uploads
-      console.log(error);
-    }, () => {
-      // Do something once upload is complete
-      console.log("success");
-    });*/
-    
-  }
-
-  /**
-   * `onBoxClick()` is called when any checkbox is clicked
-   * It will correctly toggle the checkbox
-   * @param {Event} event - the click event
-   */
-  onButtonClick(event) {
-    // cannot use this as the this in event listener is the target
-    var button = event.target.getRootNode().host;
-    var input = button.shadowRoot.querySelector("input");
     input.click();
 
     /*selectedFile = input.value;//event.target.files[0];

@@ -18,11 +18,19 @@ template.innerHTML = `
       display: block;
       margin-top: 20px;
       margin-left: 20px;
+      background-color: #fff;
+      border-radius: 4px;
+      border: 1px solid #dcdfe6;
+      box-sizing: border-box;
+      color: #606fe6;
+      outline: none;
+      fot-size: 14px;
     }
     #ratetext {
       display: block;
       margin-top: 20px;
       margin-left: 20px;
+      cursor: default;
     }
     #rating {
       display: block;
@@ -34,12 +42,36 @@ template.innerHTML = `
       margin-top: 20px;
       margin-left: 20px;
       height: 100px;
-      width: 40%;
+      width: 45%;
+      font-size: 14px;
+      box-sizing: border-box;
+      color: #606266;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #dcdfe6;
+      border-radius: 4px
+      transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
     }
     #submit {
       display: block;
       margin-top: 20px;
       margin-left: 20px;
+      margin-bottom: 20px;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      color: #fff;
+      background: #fff;
+      background-color: #409eff;
+      border: 1px solid #dcdfe6;
+      border-color: #409eff;
+      border-radius: 4px;
+      text-align: center;
+      box-sizing: border-box;
+      font-weight: 500;
+      font-size: 14px;
+      padding: 12px 20px;
+      outline: none;
     }
 
     #entry {

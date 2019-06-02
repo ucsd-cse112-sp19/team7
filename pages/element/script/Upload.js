@@ -455,7 +455,7 @@ export class Upload extends HTMLElement {
 
     var input = this.shadowRoot.querySelector("input.el-upload__input");
     //input.addEventListener("click", this.handleFileUploadSubmit);
-    input.addEventListener("change", this.handleFileUpload);
+    input.addEventListener("change", this.handleFileUploadChange2);
   }
 
   handleFileUpload(e) {
@@ -470,6 +470,19 @@ export class Upload extends HTMLElement {
     }, () => {
       // Do something once upload is complete
       console.log("success");
+    });
+        imageRef.getDownloadURL().then(function(url) {
+      // Get the download URL for image
+      // This can be inserted into an <img> tag
+      //var img = document.createElement("img");
+      //img.setAttribute("src", url);
+      //document.body.appendChild(img);
+      
+      //var img = this.shadowRoot.querySelector('imageholder');
+      //var img = upload.shadowRoot.querySelector('imageholder');
+      imageholder.setAttribute("src", url);
+    }).catch(function(error) {
+      console.error(error);
     });
   }
 
@@ -507,6 +520,10 @@ export class Upload extends HTMLElement {
     selectedFile = e.target.files[0];
   }
 
+  handleFileUploadChange2(event){
+    selectedFile = event.target.files[0];
+    
+  }
   /** 
    * `handleFileUploadSubmit` handles when the user clicks the submit button - it uploads the image to firebase and displays it 
    * @listens {click} listens for the user click on the submit button

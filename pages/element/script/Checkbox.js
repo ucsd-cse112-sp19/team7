@@ -421,17 +421,17 @@ export class Checkbox extends HTMLElement {
                 && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
                     || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
                         && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
-                       )
-                   ) 
-               ){
-              console.log(rules[j].selectorText);
+                    )
+                ) 
+            ){
+              //console.log(rules[j].selectorText);
               shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
             }
           }
         }
       }
       catch (e) {
-        console.log(e);
+        //console.log(e);
         break;
       }
     }
@@ -470,30 +470,30 @@ export class Checkbox extends HTMLElement {
     // this is called also when loading the page initially, based on the initial attributes
 
     switch (name) {
-      //case "v-model": no process needed for v-model
-      case "checked":
-        this.handleChecked();
-        break;
-      case "true-label":
-        this.updateValueModel();
-        break;
-      case "false-label":
-        this.updateValueModel();
-        break;
-      case "disabled":
-        this.handleDisabled(newValue);
-        break;
-      case "name":
-        break;
-      case "size":
-        this.handleSize();
-        break;
-      case "border":
-        this.handleBorder();
-        break;
-      case "class":
-        this.insertOutsideClass();
-        break;
+    //case "v-model": no process needed for v-model
+    case "checked":
+      this.handleChecked();
+      break;
+    case "true-label":
+      this.updateValueModel();
+      break;
+    case "false-label":
+      this.updateValueModel();
+      break;
+    case "disabled":
+      this.handleDisabled(newValue);
+      break;
+    case "name":
+      break;
+    case "size":
+      this.handleSize();
+      break;
+    case "border":
+      this.handleBorder();
+      break;
+    case "class":
+      this.insertOutsideClass();
+      break;
     }
   }
 

@@ -113,7 +113,6 @@ export class Commenter extends HTMLElement {
         wrapper.appendChild(star);
         wrapper.appendChild(body);
         msgbox.appendChild(wrapper);
-        //title.innerHTML = "Reviews: "+ "(" + counter + ")";
         title.textContent = "Reviews: "+ "(" + counter + ")";
       });
     });
@@ -133,6 +132,95 @@ export class Commenter extends HTMLElement {
       comment.value = "";
     });
 
+    // Set up attributes
+    this.handleColor();
   }
+
+  /**
+   * `observedAttributes()` returns an array of attributes whose changes will
+   * be handled in `attributeChangedCallback()`
+   * @return {string[]} array of attributes whose changes will be handled 
+   */
+    static get observedAttributes() {
+      return [
+        "color", "disabled", "show-rating", "show-comment"
+      ];
+    }
+
+  /**
+   * `attributeChangedCallback()` is called when any of the attributes in the
+   * returned array of `observedAttributes()` are changed. It's a good place to 
+   * handle side effects
+   * @param {string} name - the name of the changed attribute
+   * @param {string} oldValue - the old value of the attribute
+   * @param {string} newValue - the new value of the attribute
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    // this is called also when loading the page initially, based on the initial attributes
+    switch (name) {
+      case "color":
+        this.handleColor();
+        break;
+      case "disabled":
+        //this.handleDisabled();
+        break;
+      case "show-rating":
+        //this.handleShowRating();
+        break;
+      case "show-comment":
+        //this.handleShowComment();
+        break;
+    }
+  }
+
+  handleColor() {
+    var value = this.color;
+    var matches = this.shadowRoot.querySelectorAll("span#entry");
+    matches.forEach(function(entry) {
+      entry.style.background = value;
+    });
+  }
+
+  /** @type {string} */
+  get color() {
+    return this.getAttribute("color") || "#27f9f6";
+  }
+
+  /** @type {string} */
+  set color(value) {
+    // Default value subject to change
+    this.setAttribute("color", value);
+  }
+
+  /** @type {boolean} */
+  get disabled() {
+
+  }
+
+  /** @type {boolean} */
+  set disabled(value) {
+
+  }
+
+  /** @type {boolean} */
+  get showRating() {
+
+  }
+
+  /** @type {boolean} */
+  set showRating(value) {
+
+  }
+
+  /** @type {boolean} */
+  get showComment() {
+
+  }
+
+  /** @type {boolean} */
+  set showComment(value) {
+
+  }
+
 }
 customElements.define("sds-commenter", Commenter);

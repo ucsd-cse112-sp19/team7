@@ -557,10 +557,10 @@ export class Rater extends HTMLElement {
       // no need to handle since "get texts" is updated
       break;
     case "low-threshold":
-      this.updateStars();
+      this.updateStars(this.valueModel);
       break;
     case "high-threshold":
-      this.updateStars();
+      this.updateStars(this.valueModel);
       break;
     case "colors":
       this.updateColors();

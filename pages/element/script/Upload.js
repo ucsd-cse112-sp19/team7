@@ -421,8 +421,9 @@ listTemplate.innerHTML = `
           <i class="el-icon-upload-success el-icon-circle-check"></i>
         </label>
         <i class="el-icon-close"></i>
+        <!--
         <i class="el-icon-close-tip">按 delete 键可删除</i>
-        <!---->
+        -->
         <!---->
       </li>
 `;
@@ -479,6 +480,7 @@ export class Upload extends HTMLElement {
     }, (error) => {
       // Handle unsuccessful uploads
       console.log(error);
+      window.alert("Upload failed, please try again");
     }, () => {
       // Do something once upload is complete
       console.log("success");
@@ -550,7 +552,7 @@ export class Upload extends HTMLElement {
     * @return {string[]} array of attributes whose changes will be handled 
     */
   static get observedAttributes() {
-    return [
+    return [ "hide-file-list"
     ]; //TODO1
   }
   
@@ -566,10 +568,25 @@ export class Upload extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
     switch (name) {
-    case "":
-
+    case "hide-file-list":
+      this.shadowRoot.querySelector("ul.el-upload-list").style.display
+        = this.hideFileList ? "none" : "";
       break;
     }
+  }
+
+  /** @type {boolean} */
+  set hideFileList(value) {
+    const showList = Boolean(value);
+    if (showList)
+      this.setAttribute("hide-file-list", "");
+    else
+      this.removeAttribute("hide-file-list");
+  }
+
+  /** @type {boolean} */
+  get hideFileList() {
+    return this.hasAttribute("hide-file-list");
   }
 
   /** @type {string} */

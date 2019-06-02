@@ -983,4 +983,4 @@ window.esdocSearchIndex = [
     "test/rater.spec.js",
     "testFile"
   ]
-]
+];

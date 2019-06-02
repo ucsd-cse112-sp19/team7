@@ -15,31 +15,9 @@
  * Cloning contents from a &lt;template&gt; element is more performant
  * than using innerHTML because it avoids addtional HTML parse costs.
  */
+
 import {storageRef} from "./init_firebase.js";
-/*
-document.querySelector(".file-select").addEventListener("change", handleFileUploadChange);
-document.querySelector(".file-submit").addEventListener("click", handleFileUploadSubmit);
 
-let selectedFile;
-function handleFileUploadChange(e) {
-  selectedFile = e.target.files[0];
-}
-
-function handleFileUploadSubmit(e) {
-  console.log(e.target.files)
-  selectedFile = e.target.files[0];
-  const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
-  uploadTask.on("state_changed", (snapshot) => {
-    // Observe state change events such as progress, pause, and resume
-  }, (error) => {
-    // Handle unsuccessful uploads
-    console.log(error);
-  }, () => {
-    // Do something once upload is complete
-    console.log("success");
-  });
-}
-*/
 const template = document.createElement("template");
 template.innerHTML = `
   <style>
@@ -408,6 +386,16 @@ template.innerHTML = `
     </ul>
   </div>
 
+  </div>
+  <div>
+    <span>
+      <div id="filesubmit">
+        <input type="file" class="file-select" accept="image/*" />
+        <button class="file-submit">SUBMIT</button>
+      </div>
+      <img class="imageholder"></img>
+    </span>
+  </div>
 `;
 
 const listTemplate = document.createElement("template");
@@ -427,9 +415,11 @@ listTemplate.innerHTML = `
       </li>
 `;
 
+let selectedFile;
+
 /**
- * Rater is a custom element that creates a web component.
- * It can be used by the tag <sds-rate>
+ * Upload is a custom element that creates a web component.
+ * It can be used by the tag <sds-upload>
  */
 export class Upload extends HTMLElement {
   /**
@@ -451,18 +441,24 @@ export class Upload extends HTMLElement {
      * It's a good place to set the initial attribute values and install event listeners.
      */
   connectedCallback() {
-    //const shadow = this.shadowRoot; //commented to pass eslint
+    const shadow = this.shadowRoot;
     //TODO4
+    var wrapper = shadow.querySelector("div");
+    shadow.appendChild(wrapper);
+    //var img = shadow.querySelector("label");
+    //var imageholder = shadow.querySelector("imageholder");
+    shadow.querySelector(".file-select").addEventListener("change", this.handleFileUploadChange);
+    shadow.querySelector(".file-submit").addEventListener("click", this.handleFileUploadSubmit);
 
 
     // add click event listener
     
-    var button = this.shadowRoot.querySelector("button");
+    var button = this.shadowRoot.querySelector("button.el-button");
     button.addEventListener("click", this.onButtonClick);
 
-    var input = this.shadowRoot.querySelector("input");
+    var input = this.shadowRoot.querySelector("input.el-upload__input");
     //input.addEventListener("click", this.handleFileUploadSubmit);
-    input.addEventListener("change", this.handleFileUpload);
+    input.addEventListener("change", this.handleFileUploadChange2);
   }
 
   handleFileUpload(event) {
@@ -485,6 +481,19 @@ export class Upload extends HTMLElement {
 
       upload.addFileListItem(selectedFile.name);
     });
+        imageRef.getDownloadURL().then(function(url) {
+      // Get the download URL for image
+      // This can be inserted into an <img> tag
+      //var img = document.createElement("img");
+      //img.setAttribute("src", url);
+      //document.body.appendChild(img);
+      
+      //var img = this.shadowRoot.querySelector('imageholder');
+      //var img = upload.shadowRoot.querySelector('imageholder');
+      imageholder.setAttribute("src", url);
+    }).catch(function(error) {
+      console.error(error);
+    });
   }
 
   addFileListItem(fileName) {
@@ -496,7 +505,7 @@ export class Upload extends HTMLElement {
     var listItems = upload.shadowRoot.querySelectorAll("ul.el-upload-list li");
     var lastItem = listItems[listItems.length - 1];
     lastItem.querySelector("a.el-upload-list__item-name").innerHTML += fileName;
-
+    
     // add click listener to the cancel icon
     lastItem.querySelector("i.el-icon-close").addEventListener("click", function() {
       // delete from list
@@ -510,6 +519,86 @@ export class Upload extends HTMLElement {
       }).catch(function(error) {
         // Uh-oh, an error occurred!
       });
+    });
+  }
+  
+  /**
+   * `onBoxClick()` is called when any checkbox is clicked
+   * It will correctly toggle the checkbox
+   * @param {Event} event - the click event
+   */
+  onButtonClick(event) {
+    // cannot use this as the this in event listener is the target
+    var button = event.target.getRootNode().host;
+    var input = button.shadowRoot.querySelector("input.el-upload__input");
+    input.click();
+
+    /*selectedFile = input.value;//event.target.files[0];
+    console.log(selectedFile);
+    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
+    uploadTask.on("state_changed", (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+    }, (error) => {
+      // Handle unsuccessful uploads
+      console.log(error);
+    }, () => {
+      // Do something once upload is complete
+      console.log("success");
+    });*/
+    
+  }
+  
+  /**
+   * `handleFileUploadChange` deals with file selection. NOTE: still trying to figure out how to include it within the class below
+   * @param {*} e 
+   */
+  handleFileUploadChange(e) {
+    selectedFile = e.target.files[0];
+  }
+
+  handleFileUploadChange2(event){
+    selectedFile = event.target.files[0];
+    
+  }
+  /** 
+   * `handleFileUploadSubmit` handles when the user clicks the submit button - it uploads the image to firebase and displays it 
+   * @listens {click} listens for the user click on the submit button
+   * @throws {error} when upload is unsucessfil
+   * @throws {error} when displaying the image is unsucessful
+  */
+  handleFileUploadSubmit(event) {
+    var upload = event.target.getRootNode().host; //this needs to be done since this is an event
+    if (upload.disabled)
+      return;
+
+    var imageholder = upload.shadowRoot.querySelector("img.imageholder");
+    
+    let imageRef = storageRef.child(`images/${selectedFile.name}`);
+    const uploadTask = imageRef.put(selectedFile); //create a child directory called images, and place the file inside this directory
+    uploadTask.on("state_changed", (snapshot) => {
+      // Observe state change events such as progress, pause, and resume
+    }, (error) => {
+      // Handle unsuccessful uploads
+      console.log(error);
+    }, () => {
+      // Do something once upload is complete
+      console.log("successfully loaded image to firebase");
+    });
+  
+    //var upload = e.target.getRootNode().host
+    //display image. It gets the uploaded image's url 
+    imageRef.getDownloadURL().then(function(url) {
+      // Get the download URL for image
+      // This can be inserted into an <img> tag
+      //var img = document.createElement("img");
+      //img.setAttribute("src", url);
+      //document.body.appendChild(img);
+      
+      //var img = this.shadowRoot.querySelector('imageholder');
+      //var img = upload.shadowRoot.querySelector('imageholder');
+      imageholder.setAttribute("src", url);
+    }).catch(function(error) {
+      console.error(error);
     });
   }
 
@@ -540,6 +629,7 @@ export class Upload extends HTMLElement {
   }
 
 
+  
 
 
 

@@ -386,6 +386,17 @@ template.innerHTML = `
       margin-left: -80px;
       background-color: #fff;
     }
+    .el-upload-list--picture .el-upload-list__item {
+      overflow: hidden;
+      z-index: 0;
+      background-color: #fff;
+      border: 1px solid #c0ccda;
+      border-radius: 6px;
+      box-sizing: border-box;
+      margin-top: 10px;
+      padding: 10px 10px 10px 90px;
+      height: 92px;
+  }
   
   
   </style>
@@ -517,7 +528,8 @@ export class Upload extends HTMLElement {
     if(this.displayThumbnail){
       lastItem.querySelector("img").src = URL.createObjectURL(file);
       lastItem.querySelector("img").style.display = "block";
-      //lastItem.className = "el-upload-list--picture";
+      //list.className = "el-upload-list--picture";
+      list.classList.add("el-upload-list--picture");
     }
 
 
@@ -562,10 +574,6 @@ export class Upload extends HTMLElement {
     });*/
     
   }
-
-  handleThumnail(){
-    
-  }
   
   /**
     * `observedAttributes()` returns an array of attributes whose changes will
@@ -594,7 +602,7 @@ export class Upload extends HTMLElement {
         = this.hideFileList ? "none" : "";
       break;
     case "display-thumbnail":
-      this.handleThumnail();
+      //don't need anything for this
       break;
     }
   }

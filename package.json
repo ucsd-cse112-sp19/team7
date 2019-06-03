@@ -9,7 +9,9 @@
     "b1test": "testcafe \"saucelabs:Chrome@beta:Windows 10,saucelabs:Safari\" ./testcafe/sds-rater.testcafe.js",
     "btest": "npm run b1test && npm run b2test",
     "test": "npm run utest && npm run btest",
-    "start": "owc-dev-server -o"
+    "start": "owc-dev-server -o",
+    "storybook": "start-storybook",
+    "snapshot": "build-storybook && percy-storybook --widths=320,1280"
   },
   "repository": {
     "type": "git",
@@ -22,6 +24,10 @@
   },
   "homepage": "https://github.com/ucsd-cse112/team7#readme",
   "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@percy/storybook": "^3.0.2",
+    "@storybook/html": "^5.0.11",
+    "babel-loader": "^8.0.6",
     "babel-plugin-component": "^1.1.1",
     "chai": "^4.2.0",
     "clean-webpack-plugin": "^2.0.1",

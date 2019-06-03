@@ -35,6 +35,8 @@ deploy:
   keep_history: true
   on:
     branch: master
-script: ./bash_scripts/deploy.sh
+script: 
+  - ./bash_scripts/deploy.sh
+  - npm run snapshot
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT

@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "utest": "npx karma start karma.config.js",
-    "btest": "testcafe \"saucelabs:Chrome@beta:Windows 10\" ./testcafe/sds-rater.testcafe.js",
+    "btest": "testcafe saucelabs:chrome,saucelabs:safari,saucelabs:firefox ./testcafe/sds-rater.testcafe.js",
     "test": "npm run utest && npm run btest",
     "start": "owc-dev-server -o"
   },

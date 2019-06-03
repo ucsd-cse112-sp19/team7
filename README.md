@@ -2,6 +2,9 @@
 
 [![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&branch=dev)](https://travis-ci.com/ucsd-cse112/team7)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/7-Deadly-Sins/Team7)
+[![Maintainability](https://api.codeclimate.com/v1/badges/2c5eb5cea98f2e51d1c2/maintainability)](https://codeclimate.com/repos/5cda76f15edc6166400005f9/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/2c5eb5cea98f2e51d1c2/test_coverage)](https://codeclimate.com/repos/5cda76f15edc6166400005f9/test_coverage)
+
 
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
 <br>

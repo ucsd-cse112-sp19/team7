@@ -1,4 +1,4 @@
-const showroom = require("showroom/puppeteer")();
+/*const showroom = require("showroom/puppeteer")();
 const assert = require("assert");
 
 describe("core-hello", () => {
@@ -30,4 +30,4 @@ describe("core-hello", () => {
     assert.equal(ctext, '你好,世界 -  Name');
   });
   */
-});
+//});

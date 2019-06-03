@@ -8,7 +8,7 @@
     "btest": "testcafe chrome ./testcafe/sds-rater.testcafe.js",
     "test": "npm run utest && npm run btest",
     "start": "owc-dev-server -o",
-    "storybook": "build-storybook",
+    "storybook": "start-storybook",
     "snapshot": "build-storybook && percy-storybook --widths=320,1280"
   },
   "repository": {

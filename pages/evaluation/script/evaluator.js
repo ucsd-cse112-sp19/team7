@@ -68,18 +68,21 @@ function displayComment(value, throughSubmit = false) {
         window.alert("This post is not accessible through lookup");
         return;
       }
-    
+
       thing.innerHTML = value;
       des.innerHTML = doc.data().des;
       avgRate(value);
 
       var tagarray = `${doc.data().tags}`.split(",");
-
+      if (!tagarray || (tagarray.length <= 1 && tagarray[0].length) == 0 )
+        tagarray = [];
       //comment.setAttribute("max-of-rate", rater.max);
       //comment.setAttribute("topic-name", thing.textContent);
       comment.allDisabled = false; // this will initialize the comment
-      comment.showRating = true;
-      comment.showTags = true;
+      if (doc.data().disableRateTag === "0") {
+        comment.showRating = true;
+        comment.showTags = true;
+      }
       comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
 
       wrapper.style = "display: block";

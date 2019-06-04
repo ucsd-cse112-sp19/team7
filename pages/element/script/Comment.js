@@ -141,7 +141,7 @@ export class Comment extends HTMLElement {
 
   connectedCallback() {
     // Set up attributes
-    this.handleColor();
+    //this.handleColor();
     this.handleDisabled();
     this.handleShowRating();
     this.handleHideComment();
@@ -280,68 +280,19 @@ export class Comment extends HTMLElement {
   }
 
   /**
-   * `observedAttributes()` returns an array of attributes whose changes will
-   * be handled in `attributeChangedCallback()`
-   * @return {string[]} array of attributes whose changes will be handled 
-   */
-  static get observedAttributes() {
-    return [
-      "color", "disabled", "show-rating", "hide-comment",
-      "show-tags", "all-disabled", "max-of-rate", "topic-Name"
-    ];
-  }
-
-  /**
-   * `attributeChangedCallback()` is called when any of the attributes in the
-   * returned array of `observedAttributes()` are changed. It's a good place to 
-   * handle side effects
-   * @param {string} name - the name of the changed attribute
-   * @param {string} oldValue - the old value of the attribute
-   * @param {string} newValue - the new value of the attribute
-   */
-  attributeChangedCallback(name, oldValue, newValue) {
-    // this is called also when loading the page initially, based on the initial attributes
-    switch (name) {
-    case "color":
-      this.handleColor();
-      break;
-    case "disabled":
-      this.handleDisabled();
-      break;
-    case "show-rating":
-      this.handleShowRating();
-      break;
-    case "hide-comment":
-      this.handleHideComment();
-      break;
-    case "show-tags":
-      this.handleShowTags();
-      break;
-    case "all-disabled":
-      if (this.allDisabled) {
-        this.style.display = "none";
-      }
-      else {
-        this.style.display = "block";
-        //this.updateComment();
-      }
-      break;
-    case "no going to be called but just to avoid linting check":
-      window.alert(oldValue + newValue);
-      break;
-    }
-  }
-
-  /**
    * `handleColor()` is called when the `color` attribute is changed and will 
    *  update the color of the response backgrounds
    */
   handleColor() {
     var value = this.color;
-    var matches = this.shadowRoot.querySelectorAll("span#entry");
-    matches.forEach(function (entry) {
-      entry.style.background = value;
-    });
+    var styleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i;
+    console.log(styleSheet);
+    for (i = 0; i < styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      if (rule.selectorText === "#entry")
+        rule.style.background = value;
+    }
   }
 
   /**
@@ -422,6 +373,64 @@ export class Comment extends HTMLElement {
         tags.style.display = "none";
       });
       tagcontainer.style.display = "none";
+    }
+  }
+
+
+
+
+
+
+  /**
+   * `observedAttributes()` returns an array of attributes whose changes will
+   * be handled in `attributeChangedCallback()`
+   * @return {string[]} array of attributes whose changes will be handled 
+   */
+  static get observedAttributes() {
+    return [
+      "color", "disabled", "show-rating", "hide-comment",
+      "show-tags", "all-disabled", "max-of-rate", "topic-Name"
+    ];
+  }
+
+  /**
+   * `attributeChangedCallback()` is called when any of the attributes in the
+   * returned array of `observedAttributes()` are changed. It's a good place to 
+   * handle side effects
+   * @param {string} name - the name of the changed attribute
+   * @param {string} oldValue - the old value of the attribute
+   * @param {string} newValue - the new value of the attribute
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    // this is called also when loading the page initially, based on the initial attributes
+    switch (name) {
+    case "color":
+      this.handleColor();
+      break;
+    case "disabled":
+      this.handleDisabled();
+      break;
+    case "show-rating":
+      this.handleShowRating();
+      break;
+    case "hide-comment":
+      this.handleHideComment();
+      break;
+    case "show-tags":
+      this.handleShowTags();
+      break;
+    case "all-disabled":
+      if (this.allDisabled) {
+        this.style.display = "none";
+      }
+      else {
+        this.style.display = "block";
+        //this.updateComment();
+      }
+      break;
+    case "no going to be called but just to avoid linting check":
+      window.alert(oldValue + newValue);
+      break;
     }
   }
 

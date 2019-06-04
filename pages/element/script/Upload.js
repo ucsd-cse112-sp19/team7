@@ -178,6 +178,7 @@ template.innerHTML = `
       list-style: none;
     }
     ul {
+      width: 360px;
       display: block;
       list-style-type: disc;
       margin-block-start: 1em;
@@ -375,6 +376,59 @@ template.innerHTML = `
     .el-upload-list__item:hover .el-icon-close {
       display: inline-block;
     }
+    .el-upload-dragger {
+      background-color: #fff;
+      border: 1px dashed #d9d9d9;
+      border-radius: 6px;
+      box-sizing: border-box;
+      width: 360px;
+      height: 180px;
+      text-align: center;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+    div {
+      display: block;
+    }
+    .el-upload-dragger .el-icon-upload {
+      font-size: 67px;
+      color: #c0c4cc;
+      margin: 40px 0 16px;
+      line-height: 50px;
+    }
+    [class*=" el-icon-"], [class^=el-icon-] {
+      font-family: element-icons!important;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: baseline;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    .el-upload-dragger .el-upload__text {
+      color: #606266;
+      font-size: 14px;
+      text-align: center;
+    }
+    .el-upload-dragger:hover {
+      border-color: #409eff;
+    }
+    .el-icon-upload:before {
+      content: "\\e7c3";
+    }
+    .el-upload-dragger .el-upload__text em {
+      color: #409eff;
+      font-style: normal;
+    }
+    .el-upload-dragger.is-dragover {
+      background-color: rgba(32,159,255,.06);
+      border: 2px dashed #409eff;
+    }
   </style>
   
   <div class="demo-block upload-demo">
@@ -384,6 +438,14 @@ template.innerHTML = `
         <!---->
         <span>Click to upload</span>
       </button>
+
+      <div class="el-upload-dragger">
+        <i class="el-icon-upload"></i>
+        <div class="el-upload__text">
+          Drop file here or <em>click to upload</em>
+        </div> 
+      </div>
+
       <input type="file" name="file" multiple class="el-upload__input">
     </div>
     <ul class="el-upload-list el-upload-list--text">
@@ -447,13 +509,27 @@ export class Upload extends HTMLElement {
     button.addEventListener("click", this.onButtonClick);
 
     var input = this.shadowRoot.querySelector("input.el-upload__input");
-    input.addEventListener("change", this.handleFileUpload);
+    input.addEventListener("change", this.onClickUpload);
+
+    var dragger = this.shadowRoot.querySelector("div.el-upload-dragger");
+    dragger.addEventListener("click", this.onButtonClick);
+    dragger.addEventListener("dragover", this.onDragOver);
+    dragger.addEventListener("dragleave", this.onDragLeave);
+    dragger.addEventListener("drop", this.onDrop);
+
+    this.handleDrag();
+
   }
 
-  handleFileUpload(event) {
-    console.log(event.target.files);
+  onClickUpload(event) {
     var upload = event.target.getRootNode().host;
-    var selectedFile = event.target.files[0];
+    upload.handleFileUpload(event.target.files);
+  }
+
+  handleFileUpload(files) {
+    console.log(files);
+    var upload = this;
+    var selectedFile = files[0];
 
     if (!selectedFile)
       return;
@@ -498,6 +574,33 @@ export class Upload extends HTMLElement {
       });
     });
   }
+
+  onDragOver(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var select = event.target.getRootNode().host;
+    var dragger = select.shadowRoot.querySelector("div.el-upload-dragger");
+    dragger.className = "el-upload-dragger is-dragover";
+  }
+  onDragLeave(event){
+    event.preventDefault();
+    event.stopPropagation();
+    var select = event.target.getRootNode().host;
+    var dragger = select.shadowRoot.querySelector("div.el-upload-dragger");
+    dragger.className = "el-upload-dragger";
+  }
+  onDrop(event){
+    event.preventDefault();
+    event.stopPropagation();
+
+    var upload = event.target.getRootNode().host;
+    var input = upload.shadowRoot.querySelector("input.el-upload__input");
+    upload.handleFileUpload(event.dataTransfer.files);
+    
+    var select = event.target.getRootNode().host;
+    var dragger = select.shadowRoot.querySelector("div.el-upload-dragger");
+    dragger.className = "el-upload-dragger";
+  }
   
   /**
    * `onButtonClick()` is called when upload button is clicked
@@ -528,7 +631,21 @@ export class Upload extends HTMLElement {
 
   
 
-
+  /**
+   * `handleDragger()` is called when the `dragger` attribute changes and will
+   * update the class of the checkbox
+   */
+  handleDrag() {
+    var dragger = this.shadowRoot.querySelector("div.el-upload-dragger");
+    var button = this.shadowRoot.querySelector("button.el-button");
+    if (this.drag){
+      dragger.style.display = "";
+      button.style.display = "none";
+    } else {
+      dragger.style.display = "none";
+      button.style.display = "";
+    }
+  }
 
 
   /**
@@ -537,8 +654,7 @@ export class Upload extends HTMLElement {
     * @return {string[]} array of attributes whose changes will be handled 
     */
   static get observedAttributes() {
-    return [ "hide-file-list"
-    ]; //TODO1
+    return [ "hide-file-list", "drag"]; //TODO1
   }
   
 
@@ -557,6 +673,9 @@ export class Upload extends HTMLElement {
       this.shadowRoot.querySelector("ul.el-upload-list").style.display
         = this.hideFileList ? "none" : "";
       break;
+    case "drag":
+      this.handleDrag();
+      break;
     }
   }
 
@@ -572,6 +691,20 @@ export class Upload extends HTMLElement {
   /** @type {boolean} */
   get hideFileList() {
     return this.hasAttribute("hide-file-list");
+  }
+
+  /** @type {boolean} */
+  set drag(value) {
+    const showList = Boolean(value);
+    if (showList)
+      this.setAttribute("drag", "");
+    else
+      this.removeAttribute("drag");
+  }
+
+  /** @type {boolean} */
+  get drag() {
+    return this.hasAttribute("drag");
   }
 
   /** @type {string} */

@@ -440,21 +440,21 @@ export class Rater extends HTMLElement {
     for (i = 0; i < styleSheet.cssRules.length; i++) {
       var rule = styleSheet.cssRules[i];
       switch (rule.selectorText) {
-        case ".el-icon-star-on.low-level":
-          rule.style.color = this.colors[0];
-          break;
-        case ".el-icon-star-on.medium-level":
-          rule.style.color = this.colors[1];
-          break;
-        case ".el-icon-star-on.high-level":
-          rule.style.color = this.colors[2];
-          break;
-        case ".el-icon-star-off":
-          rule.style.color = this.voidColor;
-          break;
-        case ".disabled .el-icon-star-off":
-          rule.style.color = this.disabledVoidColor;
-          break;
+      case ".el-icon-star-on.low-level":
+        rule.style.color = this.colors[0];
+        break;
+      case ".el-icon-star-on.medium-level":
+        rule.style.color = this.colors[1];
+        break;
+      case ".el-icon-star-on.high-level":
+        rule.style.color = this.colors[2];
+        break;
+      case ".el-icon-star-off":
+        rule.style.color = this.voidColor;
+        break;
+      case ".disabled .el-icon-star-off":
+        rule.style.color = this.disabledVoidColor;
+        break;
       }
     }
     /*
@@ -479,41 +479,41 @@ export class Rater extends HTMLElement {
     for (i = 0; i < styleSheet.cssRules.length; i++) {
       var rule = styleSheet.cssRules[i];
       switch (rule.selectorText) {
-        case ".el-icon-star-on.low-level::before":
-          styleSheet.deleteRule(i);
-          styleSheet.insertRule(`
+      case ".el-icon-star-on.low-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
         .el-icon-star-on.low-level::before {
           content: "` + this.icons[0] + `";
         }`, i);
-          break;
-        case ".el-icon-star-on.medium-level::before":
-          styleSheet.deleteRule(i);
-          styleSheet.insertRule(`
+        break;
+      case ".el-icon-star-on.medium-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
         .el-icon-star-on.medium-level::before {
           content: "` + this.icons[1] + `";
         }`, i);
-          break;
-        case ".el-icon-star-on.high-level::before":
-          styleSheet.deleteRule(i);
-          styleSheet.insertRule(`
+        break;
+      case ".el-icon-star-on.high-level::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
         .el-icon-star-on.high-level::before {
           content: "` + this.icons[2] + `";
         }`, i);
-          break;
-        case ".el-icon-star-off::before":
-          styleSheet.deleteRule(i);
-          styleSheet.insertRule(`
+        break;
+      case ".el-icon-star-off::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
         .el-icon-star-off::before {
           content: "` + this.voidIcon + `";
         }`, i);
-          break;
-        case ".disabled .el-icon-star-off::before":
-          styleSheet.deleteRule(i);
-          styleSheet.insertRule(`
+        break;
+      case ".disabled .el-icon-star-off::before":
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
         .disabled .el-icon-star-off::before {
           content: "` + this.disabledVoidIcon + `";
         }`, i);
-          break;
+        break;
       }
     }
   }
@@ -547,85 +547,85 @@ export class Rater extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
     switch (name) {
-      case "v-model":
-        this.handleValueModel(newValue);
-        break;
-      case "max":
-        if (!oldValue)
-          oldValue = 5;
-        this.handleMax(oldValue, newValue);
-        break;
-      case "disabled":
-        this.handleDisabled();
-        break;
-      case "show-score":
-        this.handleShowScoreAndText(this.showScore, this.showText);
-        break;
-      case "text-color":
-        this.handleTextColor(newValue);
-        break;
-      case "show-text":
-        this.handleShowScoreAndText(this.showScore, this.showText);
-        break;
-      case "texts":
-        // no need to handle since "get texts" is updated
-        break;
-      case "score-template":
-        // no need to handle since "get texts" is updated
-        break;
-      case "low-threshold":
-        this.updateStars(this.valueModel);
-        break;
-      case "high-threshold":
-        this.updateStars(this.valueModel);
-        break;
-      case "colors":
-        this.updateColors();
-        break;
-      case "void-color":
-        this.updateColors();
-        break;
-      case "disabled-void-color":
-        this.updateColors();
-        break;
-      case "icons":
-        this.updateIcons();
-        break;
-      case "void-icon":
-        this.updateIcons();
-        break;
-      case "disabled-void-icon":
-        this.updateIcons();
-        break;
-      case "img":
-        var img = this.shadowRoot.querySelector("img");
-        if (newValue) {
-          img.style.display = "block";
-          img.src = newValue;
-        } else {
-          img.style.display = "none";
-        }
-        break;
-      case "author":
-        var author = this.shadowRoot.querySelector("p#author");  //Author text
-        if (newValue) {
-          author.style.display = "block";
-          author.textContent = "Author: " + newValue;
-        }
-        else {
-          author.style.display = "none";
-        }
-        break;
-      case "des":
-        var info = this.shadowRoot.querySelector("p#des"); //Description text
-        if (newValue) {
-          info.style.display = "block";
-          info.textContent = "Description: " + newValue;
-        }
-        else {
-          info.style.display = "none";
-        }
-        break;
+    case "v-model":
+      this.handleValueModel(newValue);
+      break;
+    case "max":
+      if (!oldValue)
+        oldValue = 5;
+      this.handleMax(oldValue, newValue);
+      break;
+    case "disabled":
+      this.handleDisabled();
+      break;
+    case "show-score":
+      this.handleShowScoreAndText(this.showScore, this.showText);
+      break;
+    case "text-color":
+      this.handleTextColor(newValue);
+      break;
+    case "show-text":
+      this.handleShowScoreAndText(this.showScore, this.showText);
+      break;
+    case "texts":
+      // no need to handle since "get texts" is updated
+      break;
+    case "score-template":
+      // no need to handle since "get texts" is updated
+      break;
+    case "low-threshold":
+      this.updateStars(this.valueModel);
+      break;
+    case "high-threshold":
+      this.updateStars(this.valueModel);
+      break;
+    case "colors":
+      this.updateColors();
+      break;
+    case "void-color":
+      this.updateColors();
+      break;
+    case "disabled-void-color":
+      this.updateColors();
+      break;
+    case "icons":
+      this.updateIcons();
+      break;
+    case "void-icon":
+      this.updateIcons();
+      break;
+    case "disabled-void-icon":
+      this.updateIcons();
+      break;
+    case "img":
+      var img = this.shadowRoot.querySelector("img");
+      if (newValue) {
+        img.style.display = "block";
+        img.src = newValue;
+      } else {
+        img.style.display = "none";
+      }
+      break;
+    case "author":
+      var author = this.shadowRoot.querySelector("p#author");  //Author text
+      if (newValue) {
+        author.style.display = "block";
+        author.textContent = "Author: " + newValue;
+      }
+      else {
+        author.style.display = "none";
+      }
+      break;
+    case "des":
+      var info = this.shadowRoot.querySelector("p#des"); //Description text
+      if (newValue) {
+        info.style.display = "block";
+        info.textContent = "Description: " + newValue;
+      }
+      else {
+        info.style.display = "none";
+      }
+      break;
       //TODO3
     }
   }

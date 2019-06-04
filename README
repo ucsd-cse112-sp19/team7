@@ -1,4 +1,3 @@
-A rater and a checkbox component
+A rater, checkbox, upload, and comment components
 
-To import these web components, simply call `import "rater-and-checkbox";` from a JavaScript module.
-[Insert full documentation or link to it here.]
+To import these web components, call `import "pandoras-box";` from a JavaScript module.

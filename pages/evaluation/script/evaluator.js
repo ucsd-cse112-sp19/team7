@@ -27,19 +27,14 @@ function getURLParameter(sParam) {
   return "Parameter Not Found";
 }
 
-getURLParameter("temp");
-// test
-//console.log("Check Parse URL");
-//console.log(getURLParameter("name"));
-//console.log(getURLParameter("id"));
-
 var comment = document.querySelector("sds-comment");
 
-document.getElementById("submit").addEventListener("click", function () {
+// display function
+function displayComment(value){
   //display the comment
-  db.collection(`${title.value}`).doc("config").get().then(function (doc) {
+  db.collection(`${value}`).doc("config").get().then(function (doc) {
     if (doc.exists) { // TODO why the if statement doesn't apply to the bellow
-      thing.innerHTML = title.value;
+      thing.innerHTML = value;
       des.innerHTML = doc.data().des;
 
       var tagarray = `${doc.data().tags}`.split(",");
@@ -59,8 +54,19 @@ document.getElementById("submit").addEventListener("click", function () {
       //wrapper.style = "display: none";
       //window.location.href = "#title";
     }
-
   });
+}
 
+// check if get from url
+var lookup_value = getURLParameter("lookup");
+if ( lookup_value != "Parameter Not Found"){
+  displayComment(lookup_value)
+}
+
+
+// onclick for submit button
+document.getElementById("submit").addEventListener("click", function () {
+  //display the comment
+  displayComment(title.value);
 
 });

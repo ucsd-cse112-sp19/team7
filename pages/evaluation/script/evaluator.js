@@ -1,3 +1,5 @@
+import { storageRef } from "../../element/script/init_firebase.js";
+
 // eslint-disable-next-line no-undef
 var db = firebase.firestore();
 var wrapper = document.getElementById("wrapper");
@@ -69,9 +71,19 @@ function displayComment(value, throughSubmit = false) {
         return;
       }
 
+      // populate title and description
       thing.innerHTML = value;
       des.innerHTML = doc.data().des;
-      avgRate(value);
+      // populate image
+      let imageRef = storageRef.child(`images/${doc.data().image}`);
+      imageRef.getDownloadURL().then(function(url) {
+        var img = document.getElementById('image');
+        img.setAttribute("src", url);
+      }).catch(function(error) {
+        console.error(error);
+      });
+      // set the overall rating and tags score
+      calcOverallScore(value);
 
       var tagarray = `${doc.data().tags}`.split(",");
       if (!tagarray || (tagarray.length <= 1 && tagarray[0].length) == 0 )
@@ -98,7 +110,7 @@ function displayComment(value, throughSubmit = false) {
 
 
 //  ------------------- function that get avg rating ----------------------- //
-function avgRate(value) {
+function calcOverallScore(value) {
 
   var ref = db.collection(`${value}`);
   let stars = [];

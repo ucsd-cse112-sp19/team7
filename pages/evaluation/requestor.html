@@ -38,6 +38,7 @@
   <!-- scripts -->
   <script type="module" src="../element/script/init_firebase.js"></script>
   <script type="module" src="script/requestor.js"></script>
+  <script type="module" src="../element/script/Upload.js"></script>
   <script type="module" src="../element/script/Rater.js"></script>
   <script type="module" src="../element/script/Checkbox.js"></script>
 
@@ -104,7 +105,11 @@
         margin-bottom: 20px;
         height: 100px;
         width: 40%;"></textarea>
-  <p style="margin-left: 20px;font-size: 30px">Do You Want Feedback as comments and stars?</p>
+  <p style="margin-left: 20px;font-size: 30px">Upload Its Image</p>
+  <sds-upload id="upload" drag display-thumbnail></sds-upload>
+  
+
+  <p style="margin-left: 20px;font-size: 30px">Configuration:</p>
   <sds-checkbox id="ckb" border style="
         display: block;
         margin-top: 20px;
@@ -115,13 +120,8 @@
         margin-top: 20px;
         margin-bottom: 20px;
         margin-left: 20px;">Set as Private</sds-checkbox>
-  <span style="
-        display: block;
-        margin-top: 20px;
-        margin-left: 20px;
-        margin-bottom: 20px;
-        background: yellow
-        ">**********Upload component Goes Here*************</span>
+
+
   <p style="margin-left: 20px;font-size: 30px">Add some tags you want people to give you</p>
   <input id="tag" placeholder="Tag" style="
       display: block;

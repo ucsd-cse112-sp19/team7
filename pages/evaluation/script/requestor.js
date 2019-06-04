@@ -28,6 +28,9 @@ document.getElementById("submit").addEventListener("click", function () {
   var disableRateTag = document.getElementById("ckb").checked ? "1" : "0";
   var titleText = document.getElementById("title").value;
   var id = databaseService.ref(`${titleText}`).push().key;
+  var img = document.getElementById("upload").shadowRoot.querySelector("a.el-upload-list__item-name").innerHTML;
+  img = img.split("-->")[1].trim();
+  console.log(img);
   db.collection(`${titleText}`).doc("config").set({
     stars: `${stars}`,
     tags: `${tags}`,
@@ -36,11 +39,13 @@ document.getElementById("submit").addEventListener("click", function () {
     sent: firebase.firestore.Timestamp.fromDate(new Date()),
     id: `${id}`,
     isPrivate: `${isPrivate}`,
-    disableRateTag: `${disableRateTag}`
+    disableRateTag: `${disableRateTag}`,
+    image: `${img}`
   }).then(result => {
+    console.log(img);
     // submission succeeded
     document.getElementById("submitted").innerHTML = "Request Submitted!";
-    window.location.href = "evaluator.html?lookup=" + titleText.replace(" ", "\\_") + "%" + id;
+    //window.location.href = "evaluator.html?lookup=" + titleText.replace(" ", "\\_") + "%" + id;
   }).catch(err => {
     console.log("Error: " + err);
   });

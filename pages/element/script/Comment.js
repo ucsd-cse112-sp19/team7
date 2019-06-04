@@ -77,6 +77,7 @@ template.innerHTML = `
     #entry {
       display: block;
       background: #27f9f6;
+      //background: #fd8e83
     }
     #entry-name {
       display: block;
@@ -107,18 +108,25 @@ template.innerHTML = `
     <span id="box">
       <!-- Other's comments go here -->
     </span>
-    <input id="name" placeholder="Name Here"></input>
+    <div id="formcontainer">
+      <h2>Write your own review:</h2>
+      <input id="name" placeholder="Name Here"></input>
+   
+      <div id="tagcontainer">
+        <h3 id="tagtext">Tags:</h3>
+        <div id="tags">
+          <!-- checkboxes/tags will go here -->
+        </div>
+        <br>
+      </div>
     
-    <h3 id="tagtext">Tags:</h3>
-    <div id="tags">
-      <!-- checkboxes/tags will go here -->
+      <div id="ratecontainer">
+        <span id="ratetext">Your Rate:</span>
+        <sds-rate id="rating" show-score score-template="{value} Points"></sds-rate>
+      </div>
+      <textarea id="comment" placeholder="Your Thoughtful Comments Here..."></textarea>
+      <button id="submit">Submit</button>
     </div>
-    <br>
-    
-    <span id="ratetext">Your Rate:</span>
-    <sds-rate id="rating" show-score score-template="{value} Points"></sds-rate>
-    <textarea id="comment" placeholder="Your Thoughtful Comments Here..."></textarea>
-    <button id="submit">Submit</button>
   </div>
 `;
 
@@ -133,8 +141,9 @@ export class Comment extends HTMLElement {
     // Set up attributes
     this.handleColor();
     this.handleDisabled();
-    this.handleHideRating();
+    this.handleShowRating();
     this.handleHideComment();
+    this.handleShowTags();
   }
 
   updateComment(topicName, maxOfRate, tagarray = []) {
@@ -229,8 +238,10 @@ export class Comment extends HTMLElement {
         var name = document.createElement("p");
         var star = document.createElement("sds-rate");
         star.showScore = true;
+        //star.style.display = "none";
         var body = document.createElement("p");
         var checkedtags = document.createElement("p");
+        //checkedtags.style.display = "none";
 
         var i;
         var checked = `${change.doc.data().checked}`;
@@ -244,6 +255,7 @@ export class Comment extends HTMLElement {
         name.id = "entry-name";
         body.id = "entry-body";
         star.id = "entry-rating";
+        checkedtags.id = "entry-tags";
         name.innerHTML = `${change.doc.data().user} -- Posted on: `;
         name.innerHTML += `${change.doc.data().sent.toDate()}` + "<br />";
 
@@ -272,8 +284,8 @@ export class Comment extends HTMLElement {
    */
   static get observedAttributes() {
     return [
-      "color", "disabled", "hide-rating", "hide-comment",
-      "all-disabled", "max-of-rate", "topic-Name"
+      "color", "disabled", "show-rating", "hide-comment",
+      "show-tags", "all-disabled", "max-of-rate", "topic-Name"
     ];
   }
 
@@ -294,11 +306,14 @@ export class Comment extends HTMLElement {
     case "disabled":
       this.handleDisabled();
       break;
-    case "hide-rating":
-      this.handleHideRating();
+    case "show-rating":
+      this.handleShowRating();
       break;
     case "hide-comment":
       this.handleHideComment();
+      break;
+    case "show-tags":
+      this.handleShowTags();
       break;
     case "all-disabled":
       if (this.allDisabled) {
@@ -332,46 +347,37 @@ export class Comment extends HTMLElement {
    * and will disable the comment element accordingly
    */
   handleDisabled() {
-    var username = this.shadowRoot.querySelector("input#name");
-    var ratetext = this.shadowRoot.querySelector("span#ratetext");
-    var rating = this.shadowRoot.querySelector("sds-rate#rating");
-    var comment = this.shadowRoot.querySelector("textarea#comment");
-    var submit = this.shadowRoot.querySelector("button#submit");
+    var form = this.shadowRoot.querySelector("div#formcontainer");
 
     if (this.disabled) {
-      username.style.display = "none";
-      ratetext.style.display = "none";
-      rating.style.display = "none";
-      comment.style.display = "none";
-      submit.style.display = "none";
+      form.style.display = "none";
     }
 
     else {
-      username.style.display = "block";
-      ratetext.style.display = "block";
-      rating.style.display = "block";
-      comment.style.display = "block";
-      submit.style.display = "block";
+      form.style.display = "block";
     }
   }
 
   /**
-   * `handleHideRating()` is called when the 'hide-rating' attribute is changed
+   * `handleShowRating()` is called when the 'show-rating' attribute is changed
    * and will hide the rating element in displayed reviews accordingly
    */
-  handleHideRating() {
+  handleShowRating() {
     var matches = this.shadowRoot.querySelectorAll("sds-rate#entry-rating");
+    var ratecontainer = this.shadowRoot.querySelector("div#ratecontainer");
 
-    if (this.hideRating) {
+    if (this.showRating) {
       matches.forEach(function (rating) {
-        rating.style.display = "none";
+        rating.style.display = "block";
       });
+      ratecontainer.style.display = "block";
     }
 
     else {
       matches.forEach(function (rating) {
-        rating.style.display = "block";
+        rating.style.display = "none";
       });
+      ratecontainer.style.display = "none";
     }
   }
 
@@ -392,6 +398,28 @@ export class Comment extends HTMLElement {
       matches.forEach(function (comment) {
         comment.style.display = "block";
       });
+    }
+  }
+
+  /**
+   * `handleShowTags()` is called when the 'show-tags' attribute is changed
+   * and will hide the rating element in displayed reviews accordingly
+   */
+  handleShowTags() {
+    var matches = this.shadowRoot.querySelectorAll("p#entry-tags");
+    var tagcontainer = this.shadowRoot.querySelector("div#tagcontainer");
+    if (this.showTags) {
+      matches.forEach(function (tags) {
+        tags.style.display = "block";
+      });
+      tagcontainer.style.display = "block";
+    }
+
+    else {
+      matches.forEach(function (tags) {
+        tags.style.display = "none";
+      });
+      tagcontainer.style.display = "none";
     }
   }
 
@@ -421,17 +449,17 @@ export class Comment extends HTMLElement {
   }
 
   /** @type {boolean} */
-  get hideRating() {
-    return this.hasAttribute("hide-rating");
+  get showRating() {
+    return this.hasAttribute("show-rating");
   }
 
   /** @type {boolean} */
-  set hideRating(value) {
-    const isHiddenRating = Boolean(value);
-    if (isHiddenRating)
-      this.setAttribute("hide-rating", "");
+  set showRating(value) {
+    const isShownRating = Boolean(value);
+    if (isShownRating)
+      this.setAttribute("show-rating", "");
     else
-      this.removeAttribute("hide-rating");
+      this.removeAttribute("show-rating");
   }
 
   /** @type {boolean} */
@@ -446,6 +474,20 @@ export class Comment extends HTMLElement {
       this.setAttribute("hide-comment", "");
     else
       this.removeAttribute("hide-comment");
+  }
+
+  /** @type {boolean} */
+  get showTags() {
+    return this.hasAttribute("show-tags");
+  }
+
+  /** @type {boolean} */
+  set showTags(value) {
+    const isShownTags = Boolean(value);
+    if (isShownTags)
+      this.setAttribute("show-tags", "");
+    else
+      this.removeAttribute("show-tags");
   }
 
   /** @type {boolean} */

@@ -7,6 +7,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="icon" href="../index/img/devilbus1.jpg">
 
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/evaluator.css">
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -112,10 +115,20 @@
 
   <div id="wrapper" style="display: none">
     <h2 style="background: burlywood">About This Thing</h2>
+
     <h3 style="display: inline;margin-left: 20px;">Thing: </h3>
     <h3 id="thing" style="display: inline"></h3><br><br>
+
     <h3 style="display: inline;margin-left: 20px;">Description: </h3>
     <h3 id="des" style="display: inline"></h3><br><br>
+    <!--
+    <h3 style="display: inline;margin-left: 20px;">Avergae Rating Score: </h3>
+    <h3 id="avgStar" style="display: inline"></h3><br><br>
+    -->
+
+    <div id="overall-tags"></div>
+    <sds-rate id="overall-rate" disabled show-score score-template="{value} Points"></sds-rate>
+     
     <h2 style="background: burlywood">Create Your Own Eval</h2>
 
     <sds-comment all-disabled></sds-comment>
@@ -139,9 +152,9 @@
           <button id="submitcomment" style="margin-left: 20px;">Submit Eval</button><br><br>
         </div>
     <p id="submittedeval"></p>
-      -->
     <h2 style="background: burlywood">Past Evals</h2>
     <div id="comment"></div>
+      -->
   </div>
 
 </body>

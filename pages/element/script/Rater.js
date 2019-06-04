@@ -252,11 +252,11 @@ export class Rater extends HTMLElement {
   }
 
   /**
-   * `onStarOver()` is called when any rating star is hovered and will correctly 
+   * `onStarEnter()` is called when any rating star is hovered and will correctly 
    * set the start img and text contents
    * @param {Event} event - the hover event
    */
-  onStarOver(event) {
+  onStarEnter(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
@@ -373,7 +373,7 @@ export class Rater extends HTMLElement {
         newStar.className += " el-icon-star-off";
         newStar.id = i+1;
         
-        newItem.addEventListener("mouseover", this.onStarOver);
+        newItem.addEventListener("mouseover", this.onStarEnter);
         newStar.addEventListener("click",this.onStarClick);
         newStar.addEventListener("mouseleave",this.onStarLeave);
 

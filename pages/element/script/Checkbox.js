@@ -424,7 +424,7 @@ export class Checkbox extends HTMLElement {
                     )
                 ) 
             ){
-              console.log(rules[j].selectorText);
+              //console.log(rules[j].selectorText);
               shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
             }
           }

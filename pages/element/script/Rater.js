@@ -150,7 +150,7 @@ export class Rater extends HTMLElement {
    */
   constructor() {
     super();
-    this.attachShadow({mode: "open"});
+    this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
@@ -167,19 +167,19 @@ export class Rater extends HTMLElement {
     if (this.getAttribute("author")) {
       author.textContent = "Author: " + this.getAttribute("author");
     }
-    else { 
+    else {
       author.style.display = "none";
     }
     if (this.getAttribute("des")) {
       info.textContent = "Description: " + this.getAttribute("des");
     }
-    else { 
+    else {
       info.style.display = "none";
     }
     //Handle image
     var imgUrl;
     var img = shadow.querySelector("img");
-    if(this.hasAttribute("img")) {
+    if (this.hasAttribute("img")) {
       img.style.display = "block";
       imgUrl = this.getAttribute("img");
       img.src = imgUrl;
@@ -196,7 +196,7 @@ export class Rater extends HTMLElement {
       this.handleMax(slider.querySelectorAll("span").length, this.max); //add the stars
     else
       this.handleMax(0, this.max);
- 
+
     // append the text field for the rating bar
     const ratertext = document.createElement("p");
     ratertext.textContent = "";
@@ -207,7 +207,7 @@ export class Rater extends HTMLElement {
     this.handleDisabled();
 
     this.handleTextColor(this.textColor);
-    
+
     // set up the text content, either number or the chinese characters
     this.handleShowScoreAndText(this.showScore, this.showText);
 
@@ -233,7 +233,7 @@ export class Rater extends HTMLElement {
    */
   onStarClick(event) {
     var rater = event.target.getRootNode().host;
-    if(!rater.disabled) {
+    if (!rater.disabled) {
       rater.valueModel = event.target.id;
     }
   }
@@ -246,7 +246,7 @@ export class Rater extends HTMLElement {
   onStarLeave(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
-    if(!rater.disabled) {
+    if (!rater.disabled) {
       rater.updateStars(rater.valueModel);
     }
   }
@@ -259,7 +259,7 @@ export class Rater extends HTMLElement {
   onStarOver(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
-    if(!rater.disabled) {
+    if (!rater.disabled) {
       var id = event.target.id ? event.target.id : event.target.querySelector(".el-rate__icon").id;
       rater.updateStars(id);
     }
@@ -275,7 +275,7 @@ export class Rater extends HTMLElement {
    */
   updateStars(curr) {
     var stars = this.shadowRoot.querySelectorAll("div i");
-    
+
     var level;
     // + sign is used to convert curr to int so that comparison is done correctly
     if (+curr <= +this.lowThreshold) {
@@ -287,14 +287,14 @@ export class Rater extends HTMLElement {
     else {
       level = " high-level";
     }
-    
+
     var i;
-    for(i = 0; i < this.max; i++) {
+    for (i = 0; i < this.max; i++) {
       stars[i].className = stars[i].className.replace(/\blow-level\b/g, "");
       stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, "");
       stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, "");
-      
-      if(i < curr) {
+
+      if (i < curr) {
         stars[i].className += level;
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
         stars[i].className += " el-icon-star-on";
@@ -306,8 +306,8 @@ export class Rater extends HTMLElement {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
       }
     }
-    if (curr-1 >= 0 && this.texts[curr-1])
-      this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
+    if (curr - 1 >= 0 && this.texts[curr - 1])
+      this.shadowRoot.querySelector("div p").textContent = this.texts[curr - 1];
     else if (this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = "";
   }
@@ -318,7 +318,7 @@ export class Rater extends HTMLElement {
    * @param {string} newValue - new color 
    */
   handleTextColor(newValue) {
-    if(newValue == null) {
+    if (newValue == null) {
       newValue = "rgb(247, 186, 42)";
     }
     if (this.shadowRoot.querySelector("div p"))
@@ -335,8 +335,8 @@ export class Rater extends HTMLElement {
     // I don't know why but the above statement will return an error
     var stars = this.shadowRoot.querySelectorAll("div i");
     var i;
-    for(i = 0; i < stars.length; i++) {
-      if(i < newValue) {
+    for (i = 0; i < stars.length; i++) {
+      if (i < newValue) {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
         stars[i].className += " el-icon-star-on";
         stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
@@ -347,8 +347,8 @@ export class Rater extends HTMLElement {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
       }
     }
-    if (newValue-1 >= 0 && this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
-      this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
+    if (newValue - 1 >= 0 && this.texts[newValue - 1] && this.shadowRoot.querySelector("div p"))
+      this.shadowRoot.querySelector("div p").textContent = this.texts[newValue - 1];
   }
 
   /**
@@ -371,11 +371,11 @@ export class Rater extends HTMLElement {
         var newStar = document.createElement("i");
         newStar.className += " el-rate__icon";
         newStar.className += " el-icon-star-off";
-        newStar.id = i+1;
-        
+        newStar.id = i + 1;
+
         newItem.addEventListener("mouseover", this.onStarOver);
-        newStar.addEventListener("click",this.onStarClick);
-        newStar.addEventListener("mouseleave",this.onStarLeave);
+        newStar.addEventListener("click", this.onStarClick);
+        newStar.addEventListener("mouseleave", this.onStarLeave);
 
         newItem.appendChild(newStar);
         slider.appendChild(newItem);
@@ -388,11 +388,11 @@ export class Rater extends HTMLElement {
     }
     else {
       for (i = oldValue; i > newValue; i--) {
-        slider.removeChild(items[i]);  
+        slider.removeChild(items[i]);
       }
     }
   }
-  
+
   /**
    * `handleDisabled()` is called when the `disabled` attribute is changed
    * and will disable the rater accordingly
@@ -401,13 +401,13 @@ export class Rater extends HTMLElement {
     var items = this.shadowRoot.querySelectorAll("div span");
     var i;
     if (this.disabled) {
-      for(i = 0; i < this.max; i++) {
+      for (i = 0; i < this.max; i++) {
         items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
         items[i].className += " disabled";
       }
     }
     else {
-      for(i = 0; i < this.max; i++) {
+      for (i = 0; i < this.max; i++) {
         items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
       }
     }
@@ -428,7 +428,7 @@ export class Rater extends HTMLElement {
     else {
       this.shadowRoot.querySelector("div p").style.display = "none";
     }
-  } 
+  }
 
   /**
    * `updateColors()` is called when the `colors` `void-color` `disabled-void-color`
@@ -440,21 +440,21 @@ export class Rater extends HTMLElement {
     for (i = 0; i < styleSheet.cssRules.length; i++) {
       var rule = styleSheet.cssRules[i];
       switch (rule.selectorText) {
-      case ".el-icon-star-on.low-level":
-        rule.style.color = this.colors[0];
-        break;
-      case ".el-icon-star-on.medium-level":
-        rule.style.color = this.colors[1];
-        break;
-      case ".el-icon-star-on.high-level":
-        rule.style.color = this.colors[2];
-        break;
-      case ".el-icon-star-off":
-        rule.style.color = this.voidColor;
-        break;
-      case ".disabled .el-icon-star-off":
-        rule.style.color = this.disabledVoidColor;
-        break;
+        case ".el-icon-star-on.low-level":
+          rule.style.color = this.colors[0];
+          break;
+        case ".el-icon-star-on.medium-level":
+          rule.style.color = this.colors[1];
+          break;
+        case ".el-icon-star-on.high-level":
+          rule.style.color = this.colors[2];
+          break;
+        case ".el-icon-star-off":
+          rule.style.color = this.voidColor;
+          break;
+        case ".disabled .el-icon-star-off":
+          rule.style.color = this.disabledVoidColor;
+          break;
       }
     }
     /*
@@ -467,7 +467,7 @@ export class Rater extends HTMLElement {
     styleSheet.addRule(".el-icon-star-on.high-level", "color: " + this.colors[2] + ";", 0);
   */
   }
-  
+
   /**
    * `updateIcons()` is called when the `icons` `void-icon` `disabled-void-icon`
    * attributes are changed and it will update the icons accordingly
@@ -475,45 +475,45 @@ export class Rater extends HTMLElement {
   updateIcons() {
     var styleSheet = this.shadowRoot.querySelector("style").sheet;
     var i;
-    
+
     for (i = 0; i < styleSheet.cssRules.length; i++) {
       var rule = styleSheet.cssRules[i];
       switch (rule.selectorText) {
-      case ".el-icon-star-on.low-level::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
+        case ".el-icon-star-on.low-level::before":
+          styleSheet.deleteRule(i);
+          styleSheet.insertRule(`
         .el-icon-star-on.low-level::before {
           content: "` + this.icons[0] + `";
         }`, i);
-        break;
-      case ".el-icon-star-on.medium-level::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
+          break;
+        case ".el-icon-star-on.medium-level::before":
+          styleSheet.deleteRule(i);
+          styleSheet.insertRule(`
         .el-icon-star-on.medium-level::before {
           content: "` + this.icons[1] + `";
         }`, i);
-        break;
-      case ".el-icon-star-on.high-level::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
+          break;
+        case ".el-icon-star-on.high-level::before":
+          styleSheet.deleteRule(i);
+          styleSheet.insertRule(`
         .el-icon-star-on.high-level::before {
           content: "` + this.icons[2] + `";
         }`, i);
-        break;
-      case ".el-icon-star-off::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
+          break;
+        case ".el-icon-star-off::before":
+          styleSheet.deleteRule(i);
+          styleSheet.insertRule(`
         .el-icon-star-off::before {
           content: "` + this.voidIcon + `";
         }`, i);
-        break;
-      case ".disabled .el-icon-star-off::before":
-        styleSheet.deleteRule(i);
-        styleSheet.insertRule(`
+          break;
+        case ".disabled .el-icon-star-off::before":
+          styleSheet.deleteRule(i);
+          styleSheet.insertRule(`
         .disabled .el-icon-star-off::before {
           content: "` + this.disabledVoidIcon + `";
         }`, i);
-        break;
+          break;
       }
     }
   }
@@ -529,8 +529,8 @@ export class Rater extends HTMLElement {
    */
   static get observedAttributes() {
     return [
-      "v-model", "max", "disabled", "show-score", "text-color", 
-      "show-text", "texts", "score-template", "low-threshold", 
+      "v-model", "max", "disabled", "show-score", "text-color",
+      "show-text", "texts", "score-template", "low-threshold",
       "high-threshold", "colors", "void-color", "disabled-void-color",
       "icons", "void-icon", "disabled-void-icon", "img", "author", "des"
     ]; //TODO1
@@ -547,86 +547,86 @@ export class Rater extends HTMLElement {
   attributeChangedCallback(name, oldValue, newValue) {
     // this is called also when loading the page initially, based on the initial attributes
     switch (name) {
-    case "v-model":
-      this.handleValueModel(newValue);
-      break;
-    case "max":
-      if (!oldValue)
-        oldValue = 5;
-      this.handleMax(oldValue, newValue);
-      break;
-    case "disabled":
-      this.handleDisabled();
-      break;
-    case "show-score":
-      this.handleShowScoreAndText(this.showScore, this.showText);
-      break;
-    case "text-color":
-      this.handleTextColor(newValue);
-      break;
-    case "show-text":
-      this.handleShowScoreAndText(this.showScore, this.showText);
-      break;
-    case "texts":
-      // no need to handle since "get texts" is updated
-      break;
-    case "score-template":
-      // no need to handle since "get texts" is updated
-      break;
-    case "low-threshold":
-      this.updateStars(this.valueModel);
-      break;
-    case "high-threshold":
-      this.updateStars(this.valueModel);
-      break;
-    case "colors":
-      this.updateColors();
-      break;
-    case "void-color":
-      this.updateColors();
-      break;
-    case "disabled-void-color":
-      this.updateColors();
-      break;
-    case "icons":
-      this.updateIcons();
-      break;
-    case "void-icon":
-      this.updateIcons();
-      break;
-    case "disabled-void-icon":
-      this.updateIcons();
-      break;
-    case "img":
-      var img = this.shadowRoot.querySelector("img");
-      if(newValue) {
-        img.style.display = "block";
-        img.src = newValue;
-      } else {
-        img.style.display = "none";
-      }
-      break;
-    case "author":
-      var author = this.shadowRoot.querySelector("p#author");  //Author text
-      if (newValue) {
-        author.style.display = "block";
-        author.textContent = "Author: " + newValue;
-      }
-      else { 
-        author.style.display = "none";
-      }
-      break;
-    case "des":
-      var info = this.shadowRoot.querySelector("p#des"); //Description text
-      if (newValue) {
-        info.style.display = "block";
-        info.textContent = "Description: " + newValue;
-      }
-      else { 
-        info.style.display = "none";
-      }
-      break;
-    //TODO3
+      case "v-model":
+        this.handleValueModel(newValue);
+        break;
+      case "max":
+        if (!oldValue)
+          oldValue = 5;
+        this.handleMax(oldValue, newValue);
+        break;
+      case "disabled":
+        this.handleDisabled();
+        break;
+      case "show-score":
+        this.handleShowScoreAndText(this.showScore, this.showText);
+        break;
+      case "text-color":
+        this.handleTextColor(newValue);
+        break;
+      case "show-text":
+        this.handleShowScoreAndText(this.showScore, this.showText);
+        break;
+      case "texts":
+        // no need to handle since "get texts" is updated
+        break;
+      case "score-template":
+        // no need to handle since "get texts" is updated
+        break;
+      case "low-threshold":
+        this.updateStars(this.valueModel);
+        break;
+      case "high-threshold":
+        this.updateStars(this.valueModel);
+        break;
+      case "colors":
+        this.updateColors();
+        break;
+      case "void-color":
+        this.updateColors();
+        break;
+      case "disabled-void-color":
+        this.updateColors();
+        break;
+      case "icons":
+        this.updateIcons();
+        break;
+      case "void-icon":
+        this.updateIcons();
+        break;
+      case "disabled-void-icon":
+        this.updateIcons();
+        break;
+      case "img":
+        var img = this.shadowRoot.querySelector("img");
+        if (newValue) {
+          img.style.display = "block";
+          img.src = newValue;
+        } else {
+          img.style.display = "none";
+        }
+        break;
+      case "author":
+        var author = this.shadowRoot.querySelector("p#author");  //Author text
+        if (newValue) {
+          author.style.display = "block";
+          author.textContent = "Author: " + newValue;
+        }
+        else {
+          author.style.display = "none";
+        }
+        break;
+      case "des":
+        var info = this.shadowRoot.querySelector("p#des"); //Description text
+        if (newValue) {
+          info.style.display = "block";
+          info.textContent = "Description: " + newValue;
+        }
+        else {
+          info.style.display = "none";
+        }
+        break;
+      //TODO3
     }
   }
 
@@ -657,7 +657,7 @@ export class Rater extends HTMLElement {
 
   /** @type {number} */
   set currentRate(value) {
-    this.setAttribute("currate",value);
+    this.setAttribute("currate", value);
   }
 
   /** @type {boolean} */
@@ -697,7 +697,7 @@ export class Rater extends HTMLElement {
   set textColor(value) {
     this.setAttribute("text-color", value);
   }
- 
+
   /** @type {boolean} */
   set showText(value) {
     const testShown = Boolean(value);
@@ -711,12 +711,12 @@ export class Rater extends HTMLElement {
   get showText() {
     return this.hasAttribute("show-text");
   }
-   
+
   /** @type {string[]} */
   set texts(value) {
     this.setAttribute("texts", value);
   }
- 
+
   /** @type {string[]} */
   get texts() {
     if (this.showScore) {
@@ -726,32 +726,32 @@ export class Rater extends HTMLElement {
       for (i = 1; i <= this.max; i++) {
         if (correctTemplate)
           textArray.push(this.scoreTemplate.replace("{value}", i));
-        else 
+        else
           textArray.push(i);
       }
       return textArray;
     }
     else if (this.getAttribute("texts"))
       return this.getAttribute("texts").split(",");
-    else 
+    else
       return ["Worst", "Disappointing", "So-So", "Glad", "Surprised"];
   }
- 
+
   /** @type {string} */
   set scoreTemplate(value) {
     this.setAttribute("score-template", value);
   }
- 
+
   /** @type {string} */
   get scoreTemplate() {
     return this.getAttribute("score-template") || "{value}";
   }
- 
+
   /** @type {number} */
   set lowThreshold(value) {
     this.setAttribute("low-threshold", value);
   }
- 
+
   /** @type {number} */
   get lowThreshold() {
     return this.getAttribute("low-threshold") || 2;
@@ -776,10 +776,10 @@ export class Rater extends HTMLElement {
   get colors() {
     if (this.getAttribute("colors")) {
       if (this.getAttribute("colors").split(",").length > 3)
-        return this.getAttribute("colors").split(";"); 
+        return this.getAttribute("colors").split(";");
       return this.getAttribute("colors").split(",");
     }
-    else 
+    else
       return ["#F7BA2A", "#F7BA2A", "#F7BA2A"];
   }
 
@@ -813,7 +813,7 @@ export class Rater extends HTMLElement {
     if (this.getAttribute("icons")) {
       return this.getAttribute("icons").split(",");
     }
-    else 
+    else
       return ["\\2605", "\\2605", "\\2605"];
   }
 
@@ -841,5 +841,5 @@ export class Rater extends HTMLElement {
 
   //TODO2
 }
-  
+
 customElements.define("sds-rate", Rater);

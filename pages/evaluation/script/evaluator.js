@@ -1,0 +1,64 @@
+// eslint-disable-next-line no-undef
+var db = firebase.firestore();
+var wrapper = document.getElementById("wrapper");
+var title = document.getElementById("title");
+var thing = document.getElementById("thing");
+var des = document.getElementById("des");
+/*var username = document.getElementById("username");
+var evals = document.getElementById("eval");
+var tags = document.getElementById("tags");
+var rate = document.getElementById("rate");
+var submitcomment = document.getElementById("submitcomment");
+var msgbox = document.getElementById("comment");
+
+var rater;
+*/
+
+// parse url funct
+function getURLParameter(sParam) {
+  var sPageURL = window.location.search.substring(1);
+  var sURLVariables = sPageURL.split("&");
+  for (var i = 0; i < sURLVariables.length; i++) {
+    var sParameterName = sURLVariables[i].split("=");
+    if (sParameterName[0] == sParam) {
+      return sParameterName[1];
+    }
+  }
+  return "Parameter Not Found";
+}
+
+getURLParameter("temp");
+// test
+//console.log("Check Parse URL");
+//console.log(getURLParameter("name"));
+//console.log(getURLParameter("id"));
+
+var comment = document.querySelector("sds-comment");
+
+document.getElementById("submit").addEventListener("click", function () {
+  //display the comment
+  db.collection(`${title.value}`).doc("config").get().then(function (doc) {
+    if (doc.exists) { // TODO why the if statement doesn't apply to the bellow
+      thing.innerHTML = title.value;
+      des.innerHTML = doc.data().des;
+
+      var tagarray = `${doc.data().tags}`.split(",");
+
+      //comment.setAttribute("max-of-rate", rater.max);
+      //comment.setAttribute("topic-name", thing.textContent);
+      comment.allDisabled = false; // this will initialize the comment
+      comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
+      
+      wrapper.style = "display: block";
+      window.location.href = "#wrapper";
+    }
+    else {
+      window.alert("No search hit!");
+      //wrapper.style = "display: none";
+      //window.location.href = "#title";
+    }
+
+  });
+
+
+});

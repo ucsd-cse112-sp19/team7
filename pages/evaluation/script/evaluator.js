@@ -48,6 +48,8 @@ document.getElementById("submit").addEventListener("click", function () {
       //comment.setAttribute("topic-name", thing.textContent);
       comment.allDisabled = false; // this will initialize the comment
       comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
+      comment.showRating = true;
+      comment.showTags = true;
       
       wrapper.style = "display: block";
       window.location.href = "#wrapper";

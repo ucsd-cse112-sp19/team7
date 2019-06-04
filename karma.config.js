@@ -47,16 +47,16 @@ module.exports = function (config) {
             },
         },
         */
-       customLaunchers: {
-        HeadlessChrome: {
-                base: 'Chrome',
-                flags: [
-                    '--headless',
-                    '--disable-gpu',
-                    // Without a remote debugging port, Google Chrome exits immediately.
-                    '--remote-debugging-port=9222'
-                ],
-            },
+        customLaunchers: {
+          HeadlessChrome: {
+            base: "Chrome",
+            flags: [
+              "--headless",
+              "--disable-gpu",
+              // Without a remote debugging port, Google Chrome exits immediately.
+              "--remote-debugging-port=9222"
+            ],
+          },
         },
         autoWatch: false,
         // Continuous Integration mode
@@ -64,7 +64,7 @@ module.exports = function (config) {
         singleRun: true,
         // Concurrency level: how many browser should be started simultaneous
         concurrency: Infinity,
-       
+
         webpack: require("./config/webpack.dev"),
     })
 }

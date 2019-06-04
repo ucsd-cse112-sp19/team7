@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">pages/element/script/Checkbox.js | team7</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="team7"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">pages/element/script/Checkbox.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Author: Team7, CSE112 Spring 2019
+ * 
+ * Description: This is a ported version of checkbox originally from: 
+ * 
+ * https://element.eleme.io/#/en-US/component/checkbox
+ * 
+ * Orinal Code written in Vue.js:
+ * 
+ * https://github.com/ElemeFE/element/blob/dev/packages/checkbox/src/checkbox.vue
+ * 
+ * Parts of comments copied and modified from:
+ * 
+ * https://github.com/GoogleChromeLabs/howto-components/blob/master/elements/howto-checkbox/howto-checkbox.js
+ */
+
+/**
+ * Cloning contents from a &amp;lt;template&amp;gt; element is more performant
+ * than using innerHTML because it avoids addtional HTML parse costs.
+ */
+const template = document.createElement(&quot;template&quot;);
+template.innerHTML = `
+  &lt;style&gt;
+    :host {
+      font-family: Helvetica Neue,Helvetica,PingFang SC,Hiragino Sans GB,Microsoft YaHei,SimSun,sans-serif; 
+    }
+    .el-checkbox:last-child {
+        margin-right: 0;
+    }
+    .el-checkbox {
+        color: #606266;
+        font-weight: 500;
+        font-size: 14px;
+        position: relative;
+        cursor: pointer;
+        display: inline-block;
+        white-space: nowrap;
+        user-select: none;
+        margin-right: 30px;
+        //padding: 5px 0px 5px 0px;
+        margin: 0px 0px 10px 0px;
+    }
+    .el-checkbox__input {
+        white-space: nowrap;
+        cursor: pointer;
+        outline: none;
+        display: inline-block;
+        line-height: 1;
+        position: relative;
+        vertical-align: middle;
+    }
+    .el-checkbox__input.is-checked .el-checkbox__inner {
+        background-color: #409eff;
+        border-color: #409eff;
+        border-top-color: rgb(64, 158, 255);
+        border-right-color: rgb(64, 158, 255);
+        border-bottom-color: rgb(64, 158, 255);
+        border-left-color: rgb(64, 158, 255);
+    }
+    .el-checkbox__input.is-checked .el-checkbox__inner:after {
+        transform: rotate(45deg) scaleY(1);
+    }
+    .el-checkbox__inner {
+        display: inline-block;
+        position: relative;
+        border: 1px solid #dcdfe6;
+        border-radius: 2px;
+        box-sizing: border-box;
+        width: 14px;
+        height: 14px;
+        background-color: #fff;
+        z-index: 1;
+        transition: border-color .25s cubic-bezier(.71,-.46,.29,1.46),background-color .25s cubic-bezier(.71,-.46,.29,1.46);
+    }
+    .el-checkbox__inner:after {
+        box-sizing: content-box;
+        content: &quot;&quot;;
+        border: 1px solid #fff;
+        border-left: 0;
+        border-top: 0;
+        height: 7px;
+        left: 4px;
+        position: absolute;
+        top: 1px;
+        transform: rotate(45deg) scaleY(0);
+        width: 3px;
+        transition: transform .15s ease-in .05s;
+        transform-origin: center;
+    }
+    .el-checkbox__original {
+        opacity: 0;
+        outline: none;
+        position: absolute;
+        margin: 0;
+        width: 0;
+        height: 0;
+        z-index: -1;
+    }
+    .el-checkbox__input.is-checked+.el-checkbox__label {
+        color: #409eff;
+    }
+    input {
+        cursor: pointer;
+    }
+    button, input, select, textarea {
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+    }
+    input[type=&quot;checkbox&quot; i] {
+        -webkit-appearance: checkbox;
+        box-sizing: border-box;
+    }
+    input[type=&quot;checkbox&quot; i] {
+        background-color: initial;
+        cursor: default;
+        margin: 3px 0.5ex;
+        padding: initial;
+        border: initial;
+    }
+    input {
+        -webkit-appearance: textfield;
+        background-color: white;
+        -webkit-rtl-ordering: logical;
+        cursor: text;
+        padding: 1px;
+        border-width: 2px;
+        border-style: inset;
+        border-color: initial;
+        border-image: initial;
+    }
+    input {
+        text-rendering: auto;
+        color: initial;
+        letter-spacing: normal;
+        word-spacing: normal;
+        text-transform: none;
+        text-indent: 0px;
+        text-shadow: none;
+        display: inline-block;
+        text-align: start;
+        margin: 0em;
+        font: 400 11px system-ui;
+    }
+    .el-checkbox__label {
+        display: inline-block;
+        padding-left: 10px;
+        line-height: 19px;
+        font-size: 14px;
+    }
+    .el-checkbox.is-bordered {
+      padding: 9px 20px 9px 10px;
+      border-radius: 4px;
+      border: 1px solid #dcdfe6;
+      box-sizing: border-box;
+      line-height: normal;
+      height: 40px;
+    }
+    .el-checkbox.is-bordered.is-checked {
+      border-color: #409eff;
+    }
+    .el-checkbox.is-bordered.el-checkbox--small {
+      padding: 5px 15px 5px 10px;
+      border-radius: 3px;
+      height: 32px;
+    }
+    .el-checkbox.is-bordered.el-checkbox--small .el-checkbox__label {
+      line-height: 15px;
+      font-size: 12px;
+    }
+    .el-checkbox.is-bordered.el-checkbox--mini {
+      padding: 3px 15px 3px 10px;
+      border-radius: 3px;
+      height: 28px;
+    }
+    .el-checkbox.is-bordered.el-checkbox--small .el-checkbox__inner, 
+    .el-checkbox.is-bordered.el-checkbox--mini .el-checkbox__inner {
+      height: 12px;
+      width: 12px;
+    }
+    .el-checkbox.is-bordered.el-checkbox--mini .el-checkbox__label {
+      line-height: 12px;
+      font-size: 12px;
+    }
+    .el-checkbox.is-bordered.is-disabled {
+      border-color: #ebeef5;
+      cursor: not-allowed;
+    }
+    .el-checkbox__input.is-disabled+span.el-checkbox__label {
+      color: #c0c4cc;
+      cursor: not-allowed;
+    }
+    .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner {
+      background-color: #f2f6fc;
+      border-color: #dcdfe6;
+    }
+    .el-checkbox__input.is-disabled.is-checked .el-checkbox__inner:after {
+      /* border-color: #c0c4cc; */
+    }
+    .el-checkbox__input.is-checked .el-checkbox__inner:after {
+      transform: rotate(45deg) scaleY(1);
+    }
+    .el-checkbox__input.is-disabled .el-checkbox__inner:after {
+      cursor: not-allowed;
+      border-color: #c0c4cc;
+    }
+    .el-checkbox__input.is-disabled {
+      cursor: not-allowed;
+    }
+    .el-checkbox:last-child {
+      margin-right: 0;
+    }
+  &lt;/style&gt;
+  &lt;div&gt;
+    &lt;label class=&quot;el-checkbox&quot;&gt;
+      &lt;span class=&quot;el-checkbox__input is-focus&quot;&gt;
+        &lt;span class=&quot;el-checkbox__inner&quot;&gt;&lt;/span&gt;
+        &lt;input type=&quot;checkbox&quot; class=&quot;el-checkbox__original&quot; value=&quot;&quot;&gt;
+      &lt;/span&gt;
+      &lt;span class=&quot;el-checkbox__label&quot; style=&quot;&quot;&gt;&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+`;
+
+/**
+ * Checkbox is a custom element that creates a web component.
+ * It can be used by the tag &lt;sds-checkbox&gt;
+ */
+export class Checkbox extends HTMLElement {
+  /**
+   * The element&apos;s constructor is run anytime a new instance is created.
+   * Instances are created by parsing HTML, or calling
+   * document.createElement(&quot;checkbox-r&quot;)
+   * The construtor is a good place to create shadow DOM, though you should
+   * avoid touching any attributes or light DOM children as they may not
+   * be available yet.
+   */
+  constructor() {
+    super();
+    this.attachShadow({mode: &quot;open&quot;});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  /**
+   * `connectedCallback()` is called when the element is inserted into the DOM.
+   * It&apos;s a good place to set the initial attribute values and install event listeners.
+   */
+  connectedCallback() {
+    const shadow = this.shadowRoot;
+
+
+    var wrapper = shadow.querySelector(&quot;div&quot;);
+    //var img = shadow.querySelector(&quot;label&quot;);
+
+    var text = &quot;Option&quot;;
+    if(this.innerHTML != &quot;&quot;) {
+      text = this.innerHTML;
+    }
+    this.shadowRoot.querySelector(&quot;span.el-checkbox__label&quot;).textContent = text;
+
+    //wrapper.appendChild(img);
+    shadow.appendChild(wrapper);
+
+    // add click event listener
+    var input = this.shadowRoot.querySelector(&quot;input&quot;);
+    input.addEventListener(&quot;click&quot;, this.onBoxClick);
+    
+    this.handleChecked();
+    this.updateValueModel();
+
+    this.handleChecked();
+    this.handleDisabled();
+
+    this.handleSize();
+    this.handleBorder();
+  }
+
+
+
+
+
+  /**
+   * `onBoxClick()` is called when any checkbox is clicked
+   * It will correctly toggle the checkbox
+   * @param {Event} event - the click event
+   */
+  onBoxClick(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+
+    if (rater.disabled)
+      return;
+
+    var label = rater.shadowRoot.querySelector(&quot;label&quot;);
+    var span = rater.shadowRoot.querySelector(&quot;label span&quot;);
+
+    label.className = label.className.replace(/\bis-checked\b/g, &quot;&quot;);
+    span.className = span.className.replace(/\bis-checked\b/g, &quot;&quot;);
+    if(rater.checked) { 
+      label.className += &quot; is-checked&quot;;
+      span.className += &quot; is-checked&quot;;
+      rater.checked = false;
+    } else {
+      rater.checked = true;
+    }
+  }
+
+
+
+
+
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute of
+   * checbox-r is changed
+   */
+  handleDisabled() {
+    var label = this.shadowRoot.querySelector(&quot;label.el-checkbox&quot;);
+    var span = this.shadowRoot.querySelector(&quot;span.el-checkbox__input&quot;);
+    if (this.disabled) {
+      label.className = label.className.replace(/\bis-disabled\b/g, &quot;&quot;);
+      label.className += &quot; is-disabled&quot;;
+      span.className = span.className.replace(/\bis-disabled\b/g, &quot;&quot;);
+      span.className += &quot; is-disabled&quot;;
+    }
+    else {
+      label.className = label.className.replace(/\bis-disabled\b/g, &quot;&quot;);
+      span.className = span.className.replace(/\bis-disabled\b/g, &quot;&quot;);
+    }
+  }
+
+  /**
+   * `handleBorder()` is called when the `border` attribute is changed
+   * and will show or remove the border around the checkbox
+   */
+  handleBorder() {
+    var label = this.shadowRoot.querySelector(&quot;label.el-checkbox&quot;);
+    if (this.border) {
+      label.className = label.className.replace(/\bis-bordered\b/g, &quot;&quot;);
+      label.className += &quot; is-bordered&quot;;
+    }
+    else {
+      label.className = label.className.replace(/\bis-bordered\b/g, &quot;&quot;);
+    }
+  }
+
+  /**
+   * `updateValueModel()` is called when the `true-label` `false-label`
+   * attributes are changed and will update `v-model`
+   */
+  updateValueModel() {
+    this.valueModel = this.checked ? this.trueLabel : this.falseLabel;
+  }
+
+  /**
+   * `handleChecked()` is called when the `checked` attribute changes and will
+   * update the class of the checkbox
+   */
+  handleChecked() {
+    var label = this.shadowRoot.querySelector(&quot;label&quot;);
+    var span = this.shadowRoot.querySelector(&quot;label span&quot;);
+    label.className = label.className.replace(/\bis-checked\b/g, &quot;&quot;);
+    span.className = span.className.replace(/\bis-checked\b/g, &quot;&quot;);
+    if(this.checked) { 
+      label.className += &quot; is-checked&quot;;
+      span.className += &quot; is-checked&quot;;
+    }
+  }
+  
+  /**
+   * `handleSize()` is called when the `size` changes and will
+   * update the size of the border
+   */
+  handleSize() {
+    var label = this.shadowRoot.querySelector(&quot;label.el-checkbox&quot;);
+    label.className = label.className.replace(/\bel-checkbox--small\b/g, &quot;&quot;);
+    label.className = label.className.replace(/\bel-checkbox--mini\b/g, &quot;&quot;);
+    if (this.size == &quot;small&quot;) {
+      label.className += &quot; el-checkbox--small&quot;;
+    }
+    else if (this.size == &quot;mini&quot;) {
+      label.className += &quot; el-checkbox--mini&quot;;
+    }
+  }
+
+
+
+
+  
+  /**
+   * `observedAttributes()` returns an array of attributes whose changes will
+   * be handled in `attributeChangedCallback()`
+   * @return {string[]} array of attributes whose changes will be handled 
+   */
+  static get observedAttributes() {
+    return [&quot;v-model&quot;, &quot;disabled&quot;, &quot;checked&quot;, &quot;true-label&quot;, &quot;false-label&quot;, &quot;name&quot;, &quot;border&quot;, &quot;size&quot;]; //TODO1
+  }
+
+  /**
+   * `attributeChangedCallback()` is called when any of the attributes in the
+   * `observedAttributes` array are changed. It&apos;s a good place to handle
+   * side effects, like setting ARIA attributes.
+   * @param {string} name - the name of the changed attribute
+   * @param {string} oldValue - the old value of the attribute
+   * @param {string} newValue - the new value of the attribute
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    // this is called also when loading the page initially, based on the initial attributes
+  
+    switch (name) {
+    //case &quot;v-model&quot;: no process needed for v-model
+    case &quot;checked&quot;:
+      this.handleChecked();
+      break;
+    case &quot;true-label&quot;:
+      this.updateValueModel();
+      break;
+    case &quot;false-label&quot;:
+      this.updateValueModel();
+      break;
+    case &quot;disabled&quot;:
+      this.handleDisabled(newValue);
+      break;
+    case &quot;name&quot;:
+      break;
+    case &quot;size&quot;:
+      this.handleSize();
+      break;
+    case &quot;border&quot;:
+      this.handleBorder();
+      break;
+    }
+  }
+
+  /** @type {string} */
+  set trueLabel(value) {
+    this.setAttribute(&quot;true-label&quot;, value);
+  }
+
+  /** @type {string} */
+  get trueLabel() {
+    return this.getAttribute(&quot;true-label&quot;) || &quot;&quot;;
+  }
+
+  /** @type {string} */
+  set falseLabel(value) {
+    this.setAttribute(&quot;false-label&quot;, value);
+  }
+
+  /** @type {string} */
+  get falseLabel() {
+    return this.getAttribute(&quot;false-label&quot;) || &quot;&quot;;
+  }
+
+  /** @type {boolean} */
+  set disabled(value) {
+    const isDisabled = Boolean(value);
+    if (isDisabled)
+      this.setAttribute(&quot;disabled&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;disabled&quot;);
+  }
+
+  /** @type {boolean} */
+  get disabled() {
+    return this.hasAttribute(&quot;disabled&quot;);
+  }
+
+  /** @type {boolean} */
+  set checked(value) {
+    const isChecked = Boolean(value);
+    if (isChecked)
+      this.setAttribute(&quot;checked&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;checked&quot;);
+  }
+
+  /** @type {boolean} */
+  get checked() {
+    return this.hasAttribute(&quot;checked&quot;);
+  }
+  
+  /** @type {string} */
+  set name(value) {
+    this.setAttribute(&quot;name&quot;, value);
+  }
+
+  /** @type {string} */
+  get name() {
+    return this.getAttribute(&quot;name&quot;) || &quot;&quot;;
+  }
+  
+  /** @type {boolean} */
+  set border(bSelect) {
+    const isSelect = Boolean(bSelect);
+    if (isSelect)
+      this.setAttribute(&quot;border&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;border&quot;);
+  }
+
+  /** @type {boolean} */
+  get border() {
+    return this.hasAttribute(&quot;border&quot;);
+  }
+  
+  /** @type {string} */
+  set size(newValue) {
+    if (newValue == &quot;small&quot;)
+      this.setAttribute(&quot;size&quot;, &quot;small&quot;);
+    else if (newValue == &quot;mini&quot;)
+      this.setAttribute(&quot;size&quot;, &quot;mini&quot;);
+    else
+      this.setAttribute(&quot;size&quot;, &quot;medium&quot;);
+  }
+
+  /** @type {string} */
+  get size() {
+    return this.getAttribute(&quot;size&quot;) || &quot;medium&quot;;
+  }
+
+}
+  
+customElements.define(&quot;sds-checkbox&quot;, Checkbox);
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "coverage": "88.29%",
+  "expectCount": 94,
+  "actualCount": 83,
+  "files": {
+    "pages/core-hello/script/core-hello.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "pages/element/script/Checkbox.js": {
+      "expectCount": 27,
+      "actualCount": 26,
+      "undocumentLines": [
+        352
+      ]
+    },
+    "pages/element/script/Rater.js": {
+      "expectCount": 51,
+      "actualCount": 51,
+      "undocumentLines": []
+    },
+    "pages/index/script/namecard.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        7
+      ]
+    },
+    "pages/webcomponent/script/CECoreHello.js": {
+      "expectCount": 3,
+      "actualCount": 2,
+      "undocumentLines": [
+        23
+      ]
+    },
+    "pages/webcomponent/script/webcomponents-dan.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "pages/webcomponent/script/webcomponents_christianetsu.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        16,
+        17,
+        20
+      ]
+    },
+    "pages/webcomponent/script/webcomponents_er.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2
+      ]
+    },
+    "pages/webcomponent/script/webcomponents_leon.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3
+      ]
+    }
+  }
+}

@@ -839,7 +839,7 @@ export class Rater extends HTMLElement {
 
 
 
-  //TODO2
+  // TODO2
 }
   
 customElements.define("sds-rate", Rater);

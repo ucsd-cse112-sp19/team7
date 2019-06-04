@@ -248,7 +248,7 @@ export class Comment extends HTMLElement {
         checkedtags.innerHTML = "This Evaluator thinks he is: ";
         for (i = 0; i < checked.length; i++) {
           checkedtags.innerHTML += checked[i];
-          checkedtags.innerHTML += "  ";
+          //checkedtags.innerHTML += "  ";
         }
 
         //TODO id duplicates; should use class instead

@@ -375,6 +375,30 @@ template.innerHTML = `
     .el-upload-list__item:hover .el-icon-close {
       display: inline-block;
     }
+    .el-upload-list--picture .el-upload-list__item-thumbnail {
+      vertical-align: middle;
+      display: inline-block;
+      width: 70px;
+      height: 70px;
+      float: left;
+      position: relative;
+      z-index: 1;
+      margin-left: -80px;
+      background-color: #fff;
+    }
+    .el-upload-list--picture .el-upload-list__item {
+      overflow: hidden;
+      z-index: 0;
+      background-color: #fff;
+      border: 1px solid #c0ccda;
+      border-radius: 6px;
+      box-sizing: border-box;
+      margin-top: 10px;
+      padding: 10px 10px 10px 90px;
+      height: 92px;
+  }
+  
+  
   </style>
   
   <div class="demo-block upload-demo">
@@ -395,6 +419,7 @@ template.innerHTML = `
 const listTemplate = document.createElement("template");
 listTemplate.innerHTML = `
       <li tabindex="0" class="el-upload-list__item is-success">
+      <img style="display:none;" alt="" class="el-upload-list__item-thumbnail">
         <!---->
         <a class="el-upload-list__item-name">
           <i class="el-icon-document"></i><!-- file name goes here -->
@@ -409,6 +434,20 @@ listTemplate.innerHTML = `
         <!---->
       </li>
 `;
+
+/*const listTemplateThumbnail = document.createElement("template");
+listTemplateThumbnail.innerHTML = `
+  <li tabindex="0" class="el-upload-list__item is-success">
+    <img src="https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/360x360/format/webp/quality/100" alt="" class="el-upload-list__item-thumbnail">
+      <a class="el-upload-list__item-name">
+        <i class="el-icon-document"></i>food.jpeg
+      </a>  
+      <label class="el-upload-list__item-status-label">
+        <i class="el-icon-upload-success el-icon-check"></i>
+      </label><i class="el-icon-close"></i>
+      <i class="el-icon-close-tip">按 delete 键可删除</i><!----><!---->
+  </li>
+`;*/
 
 let selectedFile;
 
@@ -468,12 +507,14 @@ export class Upload extends HTMLElement {
     }, () => {
       // Do something once upload is complete
       console.log("success");
-
-      upload.addFileListItem(selectedFile.name);
+      console.log(selectedFile.name);
+      console.log(selectedFile);
+      upload.addFileListItem(selectedFile);
     });
   }
 
-  addFileListItem(fileName) {
+  addFileListItem(file) {
+    var fileName = file.name;
     var upload = this;
     var list = upload.shadowRoot.querySelector("ul.el-upload-list");
     list.appendChild(listTemplate.content.cloneNode(true));
@@ -483,6 +524,15 @@ export class Upload extends HTMLElement {
     var lastItem = listItems[listItems.length - 1];
     lastItem.querySelector("a.el-upload-list__item-name").innerHTML += fileName;
     
+    //check if we have the display-thumbnail attribute on
+    if(this.displayThumbnail){
+      lastItem.querySelector("img").src = URL.createObjectURL(file);
+      lastItem.querySelector("img").style.display = "block";
+      //list.className = "el-upload-list--picture";
+      list.classList.add("el-upload-list--picture");
+    }
+
+
     // add click listener to the cancel icon
     lastItem.querySelector("i.el-icon-close").addEventListener("click", function() {
       // delete from list
@@ -524,20 +574,14 @@ export class Upload extends HTMLElement {
     });*/
     
   }
-
-
   
-
-
-
-
   /**
     * `observedAttributes()` returns an array of attributes whose changes will
     * be handled in `attributeChangedCallback()`
     * @return {string[]} array of attributes whose changes will be handled 
     */
   static get observedAttributes() {
-    return [ "hide-file-list"
+    return [ "hide-file-list", "display-thumbnail"
     ]; //TODO1
   }
   
@@ -556,6 +600,9 @@ export class Upload extends HTMLElement {
     case "hide-file-list":
       this.shadowRoot.querySelector("ul.el-upload-list").style.display
         = this.hideFileList ? "none" : "";
+      break;
+    case "display-thumbnail":
+      //don't need anything for this
       break;
     }
   }
@@ -584,6 +631,17 @@ export class Upload extends HTMLElement {
     return this.getAttribute("disabled-void-icon") || "\\2605";
   }
 
+  /** @type {boolean} */
+  get displayThumbnail(){
+    return this.hasAttribute("display-thumbnail");
+  }
+  set displayThumbnail(value) {
+    const showList = Boolean(value);
+    if (showList)
+      this.setAttribute("display-thumbnail", "");
+    else
+      this.removeAttribute("display-thumbnail");
+  }
   //TODO2
 }
 

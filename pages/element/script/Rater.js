@@ -78,7 +78,7 @@ template.innerHTML = `
       transform: scale(1.2);
     }
     .el-rate__item.disabled {
-        cursor: default;
+      cursor: default;
     }
     .el-rate__text {
       font-size: 14px;
@@ -150,7 +150,7 @@ export class Rater extends HTMLElement {
    */
   constructor() {
     super();
-    this.attachShadow({mode: "open"});
+    this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
@@ -167,19 +167,19 @@ export class Rater extends HTMLElement {
     if (this.getAttribute("author")) {
       author.textContent = "Author: " + this.getAttribute("author");
     }
-    else { 
+    else {
       author.style.display = "none";
     }
     if (this.getAttribute("des")) {
       info.textContent = "Description: " + this.getAttribute("des");
     }
-    else { 
+    else {
       info.style.display = "none";
     }
     //Handle image
     var imgUrl;
     var img = shadow.querySelector("img");
-    if(this.hasAttribute("img")) {
+    if (this.hasAttribute("img")) {
       img.style.display = "block";
       imgUrl = this.getAttribute("img");
       img.src = imgUrl;
@@ -192,11 +192,8 @@ export class Rater extends HTMLElement {
     const slider = shadow.querySelector("div");
 
     // set up the rating bar
-    if (slider.querySelectorAll("span"))
-      this.handleMax(slider.querySelectorAll("span").length, this.max); //add the stars
-    else
-      this.handleMax(0, this.max);
- 
+    this.handleMax();
+
     // append the text field for the rating bar
     const ratertext = document.createElement("p");
     ratertext.textContent = "";
@@ -207,7 +204,7 @@ export class Rater extends HTMLElement {
     this.handleDisabled();
 
     this.handleTextColor(this.textColor);
-    
+
     // set up the text content, either number or the chinese characters
     this.handleShowScoreAndText(this.showScore, this.showText);
 
@@ -233,7 +230,7 @@ export class Rater extends HTMLElement {
    */
   onStarClick(event) {
     var rater = event.target.getRootNode().host;
-    if(!rater.disabled) {
+    if (!rater.disabled) {
       rater.valueModel = event.target.id;
     }
   }
@@ -246,7 +243,7 @@ export class Rater extends HTMLElement {
   onStarLeave(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
-    if(!rater.disabled) {
+    if (!rater.disabled) {
       rater.updateStars(rater.valueModel);
     }
   }
@@ -259,7 +256,7 @@ export class Rater extends HTMLElement {
   onStarOver(event) {
     // cannot use this as the this in event listener is the target
     var rater = event.target.getRootNode().host;
-    if(!rater.disabled) {
+    if (!rater.disabled) {
       var id = event.target.id ? event.target.id : event.target.querySelector(".el-rate__icon").id;
       rater.updateStars(id);
     }
@@ -275,7 +272,7 @@ export class Rater extends HTMLElement {
    */
   updateStars(curr) {
     var stars = this.shadowRoot.querySelectorAll("div i");
-    
+
     var level;
     // + sign is used to convert curr to int so that comparison is done correctly
     if (+curr <= +this.lowThreshold) {
@@ -287,14 +284,14 @@ export class Rater extends HTMLElement {
     else {
       level = " high-level";
     }
-    
+
     var i;
-    for(i = 0; i < this.max; i++) {
+    for (i = 0; i < this.max; i++) {
       stars[i].className = stars[i].className.replace(/\blow-level\b/g, "");
       stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, "");
       stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, "");
-      
-      if(i < curr) {
+
+      if (i < curr) {
         stars[i].className += level;
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
         stars[i].className += " el-icon-star-on";
@@ -306,8 +303,8 @@ export class Rater extends HTMLElement {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
       }
     }
-    if (curr-1 >= 0 && this.texts[curr-1])
-      this.shadowRoot.querySelector("div p").textContent = this.texts[curr-1];
+    if (curr - 1 >= 0 && this.texts[curr - 1])
+      this.shadowRoot.querySelector("div p").textContent = this.texts[curr - 1];
     else if (this.shadowRoot.querySelector("div p"))
       this.shadowRoot.querySelector("div p").textContent = "";
   }
@@ -318,7 +315,7 @@ export class Rater extends HTMLElement {
    * @param {string} newValue - new color 
    */
   handleTextColor(newValue) {
-    if(newValue == null) {
+    if (newValue == null) {
       newValue = "rgb(247, 186, 42)";
     }
     if (this.shadowRoot.querySelector("div p"))
@@ -333,10 +330,27 @@ export class Rater extends HTMLElement {
   handleValueModel(newValue) {
     //this.updateStars(newValue);
     // I don't know why but the above statement will return an error
+    
+    var level;
+    // + sign is used to convert curr to int so that comparison is done correctly
+    if (+newValue <= +this.lowThreshold) {
+      level = " low-level";
+    }
+    else if (+newValue < +this.highThreshold) {
+      level = " medium-level";
+    }
+    else {
+      level = " high-level";
+    }
     var stars = this.shadowRoot.querySelectorAll("div i");
     var i;
-    for(i = 0; i < stars.length; i++) {
-      if(i < newValue) {
+    for (i = 0; i < stars.length; i++) {
+      stars[i].className = stars[i].className.replace(/\blow-level\b/g, "");
+      stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, "");
+      stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, "");
+
+      if (i < newValue) {
+        stars[i].className += level;
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
         stars[i].className += " el-icon-star-on";
         stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
@@ -347,52 +361,48 @@ export class Rater extends HTMLElement {
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
       }
     }
-    if (newValue-1 >= 0 && this.texts[newValue-1] && this.shadowRoot.querySelector("div p"))
-      this.shadowRoot.querySelector("div p").textContent = this.texts[newValue-1];
+    if (newValue - 1 >= 0 && this.texts[newValue - 1] && this.shadowRoot.querySelector("div p"))
+      this.shadowRoot.querySelector("div p").textContent = this.texts[newValue - 1];
   }
 
   /**
    * `handleMax()` is called when the `max` attribute is changed and will
    * update the number of icons accordingly
-   * @param {number} oldValue - old max, default is 5 
-   * @param {number} newValue - new max 
    */
-  handleMax(oldValue, newValue) {
+  handleMax() {
     const slider = this.shadowRoot.querySelector("div");
     var items = this.shadowRoot.querySelectorAll("div span");
-    if (items.length != this.max) // which would happen before connectedCallBack
-      oldValue = items.length;
+
     var i;
-    if (oldValue < newValue) {
-      for (i = oldValue; i < newValue; i++) {
-        var newItem = document.createElement("span");
-        newItem.className += " el-rate__item";
-
-        var newStar = document.createElement("i");
-        newStar.className += " el-rate__icon";
-        newStar.className += " el-icon-star-off";
-        newStar.id = i+1;
-        
-        newItem.addEventListener("mouseover", this.onStarOver);
-        newStar.addEventListener("click",this.onStarClick);
-        newStar.addEventListener("mouseleave",this.onStarLeave);
-
-        newItem.appendChild(newStar);
-        slider.appendChild(newItem);
-      }
-      var text = this.shadowRoot.querySelector("div p");
-      if (text) {
-        slider.removeChild(text);
-        slider.appendChild(text);
-      }
+    for (i = 0; i < items.length; i++) {
+      slider.removeChild(items[i]);
     }
-    else {
-      for (i = oldValue; i > newValue; i--) {
-        slider.removeChild(items[i]);  
-      }
+    for (i = 0; i < this.max; i++) {
+      var newItem = document.createElement("span");
+      newItem.className += " el-rate__item";
+      if (this.disabled)
+        newItem.className += " disabled";
+
+      var newStar = document.createElement("i");
+      newStar.className += " el-rate__icon";
+      newStar.className += " el-icon-star-off";
+      newStar.id = i + 1;
+
+      newItem.addEventListener("mouseover", this.onStarOver);
+      newStar.addEventListener("click", this.onStarClick);
+      newStar.addEventListener("mouseleave", this.onStarLeave);
+
+      newItem.appendChild(newStar);
+      slider.appendChild(newItem);
     }
+    var text = this.shadowRoot.querySelector("div p");
+    if (text) {
+      slider.removeChild(text); // to reorder the text
+      slider.appendChild(text);
+    }
+
   }
-  
+
   /**
    * `handleDisabled()` is called when the `disabled` attribute is changed
    * and will disable the rater accordingly
@@ -401,13 +411,13 @@ export class Rater extends HTMLElement {
     var items = this.shadowRoot.querySelectorAll("div span");
     var i;
     if (this.disabled) {
-      for(i = 0; i < this.max; i++) {
+      for (i = 0; i < items.length; i++) {
         items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
         items[i].className += " disabled";
       }
     }
     else {
-      for(i = 0; i < this.max; i++) {
+      for (i = 0; i < items.length; i++) {
         items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
       }
     }
@@ -428,7 +438,7 @@ export class Rater extends HTMLElement {
     else {
       this.shadowRoot.querySelector("div p").style.display = "none";
     }
-  } 
+  }
 
   /**
    * `updateColors()` is called when the `colors` `void-color` `disabled-void-color`
@@ -455,6 +465,9 @@ export class Rater extends HTMLElement {
       case ".disabled .el-icon-star-off":
         rule.style.color = this.disabledVoidColor;
         break;
+      case "class":
+        this.insertOutsideClass();
+        break;
       }
     }
     /*
@@ -467,7 +480,7 @@ export class Rater extends HTMLElement {
     styleSheet.addRule(".el-icon-star-on.high-level", "color: " + this.colors[2] + ";", 0);
   */
   }
-  
+
   /**
    * `updateIcons()` is called when the `icons` `void-icon` `disabled-void-icon`
    * attributes are changed and it will update the icons accordingly
@@ -475,7 +488,7 @@ export class Rater extends HTMLElement {
   updateIcons() {
     var styleSheet = this.shadowRoot.querySelector("style").sheet;
     var i;
-    
+
     for (i = 0; i < styleSheet.cssRules.length; i++) {
       var rule = styleSheet.cssRules[i];
       switch (rule.selectorText) {
@@ -517,6 +530,71 @@ export class Rater extends HTMLElement {
       }
     }
   }
+  
+  /**
+   * `insertOutsideClass()` is called to insert css rules of the class names in
+   * `class` attribute into the shadowDOM's stylesheet
+   */
+  insertOutsideClass() {
+    var rootStyleSheet = this.getRootNode().styleSheets;
+    var classArray = this.className.match(/\S+/g);
+    if (!classArray || classArray.length == 0)
+      return;
+
+    var k;
+    var tagArray = []; // the index corresponds to the index of classArray
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var class_tag = classArray[k].split("@");
+      if (class_tag.length == 1) {
+        classArray.splice(k, 1);
+        k--;
+      }
+      else {
+        classArray[k] = class_tag[0];
+        tagArray.push(class_tag[1]);
+      }
+    }
+
+    var shadowStyleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i, j;
+    for (i = 0; i < rootStyleSheet.length; i++) {
+      try {
+        var rules = rootStyleSheet[i].cssRules;
+        
+        for (j = 0; j < rules.length; j++) {
+          for (k = 0; k < classArray.length; k++) {
+            if (rules[j].selectorText 
+                && rules[j].selectorText.includes("." + classArray[k])
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                    )
+                ) 
+            ){
+              //console.log(rules[j].selectorText);
+              shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
+            }
+          }
+        }
+      }
+      catch (e) {
+        //console.log(e);
+        break;
+      }
+    }
+ 
+    //var everything = this.shadowRoot.querySelectorAll("*:not(style)");
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var items = this.shadowRoot.querySelectorAll(tagArray[k]);
+      for (i = 0; i < items.length; i++) {
+        if (items[i].tagName == "STYLE")
+          continue;
+        items[i].className += " " + classArray[k];
+      }
+    }
+  }
 
 
 
@@ -529,10 +607,11 @@ export class Rater extends HTMLElement {
    */
   static get observedAttributes() {
     return [
-      "v-model", "max", "disabled", "show-score", "text-color", 
-      "show-text", "texts", "score-template", "low-threshold", 
+      "v-model", "max", "disabled", "show-score", "text-color",
+      "show-text", "texts", "score-template", "low-threshold",
       "high-threshold", "colors", "void-color", "disabled-void-color",
-      "icons", "void-icon", "disabled-void-icon", "img", "author", "des"
+      "icons", "void-icon", "disabled-void-icon", "img", "author", "des", 
+      "class"
     ]; //TODO1
   }
 
@@ -553,7 +632,7 @@ export class Rater extends HTMLElement {
     case "max":
       if (!oldValue)
         oldValue = 5;
-      this.handleMax(oldValue, newValue);
+      this.handleMax();
       break;
     case "disabled":
       this.handleDisabled();
@@ -574,10 +653,10 @@ export class Rater extends HTMLElement {
       // no need to handle since "get texts" is updated
       break;
     case "low-threshold":
-      this.updateStars();
+      this.updateStars(this.valueModel);
       break;
     case "high-threshold":
-      this.updateStars();
+      this.updateStars(this.valueModel);
       break;
     case "colors":
       this.updateColors();
@@ -599,7 +678,7 @@ export class Rater extends HTMLElement {
       break;
     case "img":
       var img = this.shadowRoot.querySelector("img");
-      if(newValue) {
+      if (newValue) {
         img.style.display = "block";
         img.src = newValue;
       } else {
@@ -612,7 +691,7 @@ export class Rater extends HTMLElement {
         author.style.display = "block";
         author.textContent = "Author: " + newValue;
       }
-      else { 
+      else {
         author.style.display = "none";
       }
       break;
@@ -622,11 +701,14 @@ export class Rater extends HTMLElement {
         info.style.display = "block";
         info.textContent = "Description: " + newValue;
       }
-      else { 
+      else {
         info.style.display = "none";
       }
       break;
-    //TODO3
+    case "class":
+      this.insertOutsideClass();
+      break;
+      //TODO3
     }
   }
 
@@ -657,7 +739,7 @@ export class Rater extends HTMLElement {
 
   /** @type {number} */
   set currentRate(value) {
-    this.setAttribute("currate",value);
+    this.setAttribute("currate", value);
   }
 
   /** @type {boolean} */
@@ -697,7 +779,7 @@ export class Rater extends HTMLElement {
   set textColor(value) {
     this.setAttribute("text-color", value);
   }
- 
+
   /** @type {boolean} */
   set showText(value) {
     const testShown = Boolean(value);
@@ -711,12 +793,12 @@ export class Rater extends HTMLElement {
   get showText() {
     return this.hasAttribute("show-text");
   }
-   
+
   /** @type {string[]} */
   set texts(value) {
     this.setAttribute("texts", value);
   }
- 
+
   /** @type {string[]} */
   get texts() {
     if (this.showScore) {
@@ -726,32 +808,32 @@ export class Rater extends HTMLElement {
       for (i = 1; i <= this.max; i++) {
         if (correctTemplate)
           textArray.push(this.scoreTemplate.replace("{value}", i));
-        else 
+        else
           textArray.push(i);
       }
       return textArray;
     }
     else if (this.getAttribute("texts"))
       return this.getAttribute("texts").split(",");
-    else 
+    else
       return ["Worst", "Disappointing", "So-So", "Glad", "Surprised"];
   }
- 
+
   /** @type {string} */
   set scoreTemplate(value) {
     this.setAttribute("score-template", value);
   }
- 
+
   /** @type {string} */
   get scoreTemplate() {
     return this.getAttribute("score-template") || "{value}";
   }
- 
+
   /** @type {number} */
   set lowThreshold(value) {
     this.setAttribute("low-threshold", value);
   }
- 
+
   /** @type {number} */
   get lowThreshold() {
     return this.getAttribute("low-threshold") || 2;
@@ -776,10 +858,10 @@ export class Rater extends HTMLElement {
   get colors() {
     if (this.getAttribute("colors")) {
       if (this.getAttribute("colors").split(",").length > 3)
-        return this.getAttribute("colors").split(";"); 
+        return this.getAttribute("colors").split(";");
       return this.getAttribute("colors").split(",");
     }
-    else 
+    else
       return ["#F7BA2A", "#F7BA2A", "#F7BA2A"];
   }
 
@@ -813,7 +895,7 @@ export class Rater extends HTMLElement {
     if (this.getAttribute("icons")) {
       return this.getAttribute("icons").split(",");
     }
-    else 
+    else
       return ["\\2605", "\\2605", "\\2605"];
   }
 
@@ -841,5 +923,5 @@ export class Rater extends HTMLElement {
 
   // TODO2
 }
-  
+
 customElements.define("sds-rate", Rater);

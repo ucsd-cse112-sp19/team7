@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Team7</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="../index/img/devilbus1.jpg">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link rel="stylesheet" href="css/rateit.css">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+  <!-- scripts -->
+  <script type="module" src="../element/script/init_firebase.js"></script>
+  <script type="module" src="../element/script/Comment.js"></script>
+  <script type="module" src="../element/script/Rater.js"></script>
+  <script type="module" src="../element/script/Checkbox.js"></script>
+  <script type="module" src="script/evaluator.js"></script>
+
+</head>
+
+<body background="../index/img/Canvas-background-1.jpg">
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+  
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+      <img src="../index/img/devilbus_blue.jpg" width="30" height="30" alt="">
+    </a>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="../../index.html">Home</a>
+        </li>
+        <li class="nav-item active">
+          <a class="nav-link" href="../webcomponent/webcomponent.html">Webcomponents</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../core-hello/core-hello.html">CoreHello</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../element/element.html">Element-Sprint1</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../rateit/requestor.html">Requestor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../rateit/evaluator.html">Evaluator</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+
+  
+  <div style="position: relative;">
+    <div style="background-size: cover; background-image: url(&quot;../index/img/Slider-background.jpg&quot;)">
+      <p style="
+            padding-top: 30px;
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 80px;
+            text-align: center;
+            color:white;
+            ">Rateit</p>
+      <p style="
+            font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+            font-size: 50px;
+            text-align: center;
+            color:white;
+            padding-bottom: 30px;
+            ">Find things to evaluate through lookup or URL</p>
+    </div>
+  </div>
+  
+  <h2>Rateit Request Lookup</h2>
+  <div class="content">
+    <input id="title" placeholder="Enter the Thing" style="
+          display: block;
+          margin-top: 20px;">
+    <button id="submit" style="
+          display: inline;
+          margin-top: 20px;">Search</button><br><br>
+  </div>
+
+  <div id="wrapper" style="display: none">
+    <h2>Evaluation Subject</h2>
+    <div class="content">
+      <p id="thing" style=
+          "font-weight: bold; display: inline; font-size: 80px;"></p>
+      <br><br>
+
+      <img id="image">
+
+      <p>Description: </p>
+      <p id="des" style="margin-left: 20px; font-size: 20px;"></p>
+  
+      <!--
+      <h3 style="display: inline;margin-left: 20px;">Avergae Rating Score: </h3>
+      <h3 id="avgStar" style="display: inline"></h3><br><br>
+      -->
+      <sds-rate id="overall-rate" disabled-void-color="#9a9da5"
+       class="custom-rate-enlarge@*" disabled show-score score-template="{value} Points"></sds-rate>
+      <br>
+      <br>
+       <div id="overall-tags"></div>
+      
+    </div>
+
+    <h2 style="background: burlywood">Rate It!</h2>
+    <div class="content">
+      <sds-comment all-disabled color="white"></sds-comment>
+    </div>
+  
+  </div>
+
+</body>
+
+</html>

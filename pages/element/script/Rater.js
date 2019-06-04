@@ -227,11 +227,11 @@ export class Rater extends HTMLElement {
 
 
   /**
-   * `onStarEnter()` is called when any rating star is clicked and will correctly
+   * `onStarClick()` is called when any rating star is clicked and will correctly
    * set the current rate value, or the value model
    * @param {Event} event - the click event
    */
-  onStarEnter(event) {
+  onStarClick(event) {
     var rater = event.target.getRootNode().host;
     if(!rater.disabled) {
       rater.valueModel = event.target.id;
@@ -374,7 +374,7 @@ export class Rater extends HTMLElement {
         newStar.id = i+1;
         
         newItem.addEventListener("mouseover", this.onStarOver);
-        newStar.addEventListener("click",this.onStarEnter);
+        newStar.addEventListener("click",this.onStarClick);
         newStar.addEventListener("mouseleave",this.onStarLeave);
 
         newItem.appendChild(newStar);

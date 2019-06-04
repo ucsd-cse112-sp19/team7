@@ -5,6 +5,7 @@ var title = document.getElementById("title");
 var thing = document.getElementById("thing");
 var des = document.getElementById("des");
 
+var comment = document.querySelector("sds-comment");
 var overalltags = document.getElementById("overall-tags");
 var overallrate = document.getElementById("overall-rate");
 /*var username = document.getElementById("username");
@@ -30,15 +31,29 @@ function getURLParameter(sParam) {
   return "Parameter Not Found";
 }
 
-var comment = document.querySelector("sds-comment");
+// check if get from url
+var lookup_value = getURLParameter("lookup");
+if (lookup_value != "Parameter Not Found") {
+  //console.log("found");
+  displayComment(lookup_value);
+}
+//else{console.log("not found")}
+
+// onclick for submit button
+document.getElementById("submit").addEventListener("click", function () {
+  //display the comment
+  displayComment(title.value);
+
+});
 
 //  --------------------- display function --------------------- //
-function displayComment(value){
+function displayComment(value) {
   //display the comment
   db.collection(`${value}`).doc("config").get().then(function (doc) {
     if (doc.exists) { // TODO why the if statement doesn't apply to the bellow
       thing.innerHTML = value;
       des.innerHTML = doc.data().des;
+      avgRate(value);  
 
       var tagarray = `${doc.data().tags}`.split(",");
 
@@ -62,74 +77,56 @@ function displayComment(value){
 
 
 //  ------------------- function that get avg rating ----------------------- //
-function avgRate(value){
+function avgRate(value) {
 
   var ref = db.collection(`${value}`);
   let stars = [];
-  let tags = {}
+  let tags = {};
 
   // get all comment doc from the collection
   ref.get().then(snapshot => {
 
-      // go over each doc
-      snapshot.forEach(doc => {
-        if (doc.id != "config"){
-          // stars
-          //console.log(doc.id, '=>', doc.data().checked[0]);
-          stars.push(Number(doc.data().star));
-          // tags
-          let tgs = doc.data().checked;
-          for (let i=0; i<tgs.length; i++){
-            if (tgs[i] in tags){
-              tags[tgs[i]] += 1
-            }
-            else{
-              tags[tgs[i]] = 1
-            }
+    // go over each doc
+    snapshot.forEach(doc => {
+      if (doc.id != "config") {
+        // stars
+        //console.log(doc.id, '=>', doc.data().checked[0]);
+        stars.push(Number(doc.data().star));
+        // tags
+        let tgs = doc.data().checked;
+        for (let i = 0; i < tgs.length; i++) {
+          if (tgs[i] in tags) {
+            tags[tgs[i]] += 1;
+          }
+          else {
+            tags[tgs[i]] = 1;
           }
         }
-      });
-
-      // after gor from each doc, process
-      console.log(stars);
-      let sum = stars.reduce((previous, current) => current += previous);
-      console.log();
-      // set up overall rating score
-      overallrate.max = 10;
-      overallrate.valueModel = Math.round(sum/stars.length).toString(); //DONE oscar   
-      // the overall checked tags
-      for (let tagName in tags){
-        var tag = document.createElement("button");
-        tag.type = "button";
-        tag.className = "btn btn-primary";
-        tag.innerHTML = tagName + " ";
-        var tagScore = document.createElement("span");
-        tagScore.className = "badge badge-light";
-        tagScore.innerHTML = tags[tagName].toString(); 
-        tag.appendChild(tagScore);
-        overalltags.appendChild(tag);
       }
+    });
 
-    })
+    // after gor from each doc, process
+    console.log(stars);
+    let sum = stars.reduce((previous, current) => current += previous);
+    console.log();
+    // set up overall rating score
+    overallrate.max = 10;
+    overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
+    // the overall checked tags
+    for (let tagName in tags) {
+      var tag = document.createElement("button");
+      tag.type = "button";
+      tag.className = "btn btn-primary";
+      tag.innerHTML = tagName + " ";
+      var tagScore = document.createElement("span");
+      tagScore.className = "badge badge-light";
+      tagScore.innerHTML = tags[tagName].toString();
+      tag.appendChild(tagScore);
+      overalltags.appendChild(tag);
+    }
+
+  })
     .catch(err => {
-      console.log('Error getting documents', err);
+      console.log("Error getting documents", err);
     });
 }
-
-
-// check if get from url
-var lookup_value = getURLParameter("lookup");
-if ( lookup_value != "Parameter Not Found"){
-  //console.log("found");
-  displayComment(lookup_value)
-}
-//else{console.log("not found")}
-
-avgRate(lookup_value);
-
-// onclick for submit button
-document.getElementById("submit").addEventListener("click", function () {
-  //display the comment
-  displayComment(title.value);
-
-});

@@ -78,7 +78,7 @@ template.innerHTML = `
       transform: scale(1.2);
     }
     .el-rate__item.disabled {
-        cursor: default;
+      cursor: default;
     }
     .el-rate__text {
       font-size: 14px;
@@ -192,10 +192,7 @@ export class Rater extends HTMLElement {
     const slider = shadow.querySelector("div");
 
     // set up the rating bar
-    if (slider.querySelectorAll("span"))
-      this.handleMax(slider.querySelectorAll("span").length, this.max); //add the stars
-    else
-      this.handleMax(0, this.max);
+    this.handleMax();
 
     // append the text field for the rating bar
     const ratertext = document.createElement("p");
@@ -333,10 +330,27 @@ export class Rater extends HTMLElement {
   handleValueModel(newValue) {
     //this.updateStars(newValue);
     // I don't know why but the above statement will return an error
+    
+    var level;
+    // + sign is used to convert curr to int so that comparison is done correctly
+    if (+newValue <= +this.lowThreshold) {
+      level = " low-level";
+    }
+    else if (+newValue < +this.highThreshold) {
+      level = " medium-level";
+    }
+    else {
+      level = " high-level";
+    }
     var stars = this.shadowRoot.querySelectorAll("div i");
     var i;
     for (i = 0; i < stars.length; i++) {
+      stars[i].className = stars[i].className.replace(/\blow-level\b/g, "");
+      stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, "");
+      stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, "");
+
       if (i < newValue) {
+        stars[i].className += level;
         stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, "");
         stars[i].className += " el-icon-star-on";
         stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, "");
@@ -354,43 +368,39 @@ export class Rater extends HTMLElement {
   /**
    * `handleMax()` is called when the `max` attribute is changed and will
    * update the number of icons accordingly
-   * @param {number} oldValue - old max, default is 5 
-   * @param {number} newValue - new max 
    */
-  handleMax(oldValue, newValue) {
+  handleMax() {
     const slider = this.shadowRoot.querySelector("div");
     var items = this.shadowRoot.querySelectorAll("div span");
-    if (items.length != this.max) // which would happen before connectedCallBack
-      oldValue = items.length;
+
     var i;
-    if (oldValue < newValue) {
-      for (i = oldValue; i < newValue; i++) {
-        var newItem = document.createElement("span");
-        newItem.className += " el-rate__item";
-
-        var newStar = document.createElement("i");
-        newStar.className += " el-rate__icon";
-        newStar.className += " el-icon-star-off";
-        newStar.id = i + 1;
-
-        newItem.addEventListener("mouseover", this.onStarOver);
-        newStar.addEventListener("click", this.onStarClick);
-        newStar.addEventListener("mouseleave", this.onStarLeave);
-
-        newItem.appendChild(newStar);
-        slider.appendChild(newItem);
-      }
-      var text = this.shadowRoot.querySelector("div p");
-      if (text) {
-        slider.removeChild(text);
-        slider.appendChild(text);
-      }
+    for (i = 0; i < items.length; i++) {
+      slider.removeChild(items[i]);
     }
-    else {
-      for (i = oldValue; i > newValue; i--) {
-        slider.removeChild(items[i]);
-      }
+    for (i = 0; i < this.max; i++) {
+      var newItem = document.createElement("span");
+      newItem.className += " el-rate__item";
+      if (this.disabled)
+        newItem.className += " disabled";
+
+      var newStar = document.createElement("i");
+      newStar.className += " el-rate__icon";
+      newStar.className += " el-icon-star-off";
+      newStar.id = i + 1;
+
+      newItem.addEventListener("mouseover", this.onStarOver);
+      newStar.addEventListener("click", this.onStarClick);
+      newStar.addEventListener("mouseleave", this.onStarLeave);
+
+      newItem.appendChild(newStar);
+      slider.appendChild(newItem);
     }
+    var text = this.shadowRoot.querySelector("div p");
+    if (text) {
+      slider.removeChild(text); // to reorder the text
+      slider.appendChild(text);
+    }
+
   }
 
   /**
@@ -401,13 +411,13 @@ export class Rater extends HTMLElement {
     var items = this.shadowRoot.querySelectorAll("div span");
     var i;
     if (this.disabled) {
-      for (i = 0; i < this.max; i++) {
+      for (i = 0; i < items.length; i++) {
         items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
         items[i].className += " disabled";
       }
     }
     else {
-      for (i = 0; i < this.max; i++) {
+      for (i = 0; i < items.length; i++) {
         items[i].className = items[i].className.replace(/\bdisabled\b/g, "");
       }
     }
@@ -553,7 +563,7 @@ export class Rater extends HTMLElement {
     case "max":
       if (!oldValue)
         oldValue = 5;
-      this.handleMax(oldValue, newValue);
+      this.handleMax();
       break;
     case "disabled":
       this.handleDisabled();

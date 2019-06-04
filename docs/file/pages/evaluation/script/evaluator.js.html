@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">pages/evaluation/script/evaluator.js | team7</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="team7"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html">Comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#evaluation-script">evaluation/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">pages/evaluation/script/evaluator.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// eslint-disable-next-line no-undef
+var db = firebase.firestore();
+var wrapper = document.getElementById(&quot;wrapper&quot;);
+var title = document.getElementById(&quot;title&quot;);
+var thing = document.getElementById(&quot;thing&quot;);
+var des = document.getElementById(&quot;des&quot;);
+
+var overalltags = document.getElementById(&quot;overall-tags&quot;);
+var overallrate = document.getElementById(&quot;overall-rate&quot;);
+/*var username = document.getElementById(&quot;username&quot;);
+var evals = document.getElementById(&quot;eval&quot;);
+var tags = document.getElementById(&quot;tags&quot;);
+var rate = document.getElementById(&quot;rate&quot;);
+var submitcomment = document.getElementById(&quot;submitcomment&quot;);
+var msgbox = document.getElementById(&quot;comment&quot;);
+
+var rater;
+*/
+
+// parse url funct
+function getURLParameter(sParam) {
+  var sPageURL = window.location.search.substring(1);
+  var sURLVariables = sPageURL.split(&quot;&amp;&quot;);
+  for (var i = 0; i &lt; sURLVariables.length; i++) {
+    var sParameterName = sURLVariables[i].split(&quot;=&quot;);
+    if (sParameterName[0] == sParam) {
+      return sParameterName[1];
+    }
+  }
+  return &quot;Parameter Not Found&quot;;
+}
+
+getURLParameter(&quot;temp&quot;);
+// test
+//console.log(&quot;Check Parse URL&quot;);
+//console.log(getURLParameter(&quot;name&quot;));
+//console.log(getURLParameter(&quot;id&quot;));
+
+var comment = document.querySelector(&quot;sds-comment&quot;);
+
+document.getElementById(&quot;submit&quot;).addEventListener(&quot;click&quot;, function () {
+  //display the comment
+  db.collection(`${title.value}`).doc(&quot;config&quot;).get().then(function (doc) {
+    if (doc.exists) { // TODO why the if statement doesn&apos;t apply to the bellow
+      thing.innerHTML = title.value;
+      des.innerHTML = doc.data().des;
+
+      var tagarray = `${doc.data().tags}`.split(&quot;,&quot;);
+
+      //comment.setAttribute(&quot;max-of-rate&quot;, rater.max);
+      //comment.setAttribute(&quot;topic-name&quot;, thing.textContent);
+      comment.allDisabled = false; // this will initialize the comment
+      comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
+      
+      // set up overall rating score, and the overall checked tags
+      overallrate.max = `${doc.data().stars}`;
+      overallrate.valueModel = &quot;4&quot;; //TODO oscar
+      var i;
+      for (i = 0; i &lt; tagarray.length; i++) {
+        /* adding this:
+          &lt;button type=&quot;button&quot; class=&quot;btn btn-primary&quot;&gt;Primary &lt;span class=&quot;badge&quot;&gt;7&lt;/span&gt;&lt;/button&gt;
+        */
+        var tag = document.createElement(&quot;button&quot;);
+        tag.type = &quot;button&quot;;
+        tag.className = &quot;btn btn-primary&quot;;
+        tag.innerHTML = tagarray[i] + &quot; &quot;;
+
+        var tagScore = document.createElement(&quot;span&quot;);
+        tagScore.className = &quot;badge badge-light&quot;;
+        tagScore.innerHTML = &quot;7&quot;; //TODO oscar
+
+        tag.appendChild(tagScore);
+        overalltags.appendChild(tag);
+      }
+
+      wrapper.style = &quot;display: block&quot;;
+      window.location.href = &quot;#wrapper&quot;;
+    }
+    else {
+      window.alert(&quot;No search hit!&quot;);
+      //wrapper.style = &quot;display: none&quot;;
+      //window.location.href = &quot;#title&quot;;
+    }
+
+  });
+
+
+});</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

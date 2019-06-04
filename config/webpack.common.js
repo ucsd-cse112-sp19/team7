@@ -1,6 +1,7 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
+// add your components here
 const components = ["Checkbox", "Comment", "Rater"];
 const componentsEntries = {};
 

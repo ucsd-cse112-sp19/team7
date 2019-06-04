@@ -29,12 +29,22 @@ before_script:
   - chmod +x ./cc-test-reporter
   - ./cc-test-reporter before-build
 deploy:
-  provider: pages
-  skip_cleanup: true
-  github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
-  keep_history: true
-  on:
-    branch: master
-script: ./bash_scripts/deploy.sh
+  - provider: pages
+    skip_cleanup: true
+    github_token: $GITHUB_TOKEN  # Set in the settings page of your repository, as a secure variable
+    keep_history: true
+    on:
+      branch: master
+  - provider: npm
+    skip_cleanup: true
+    email: "cvpage@ucsd.edu"
+    api_key:
+      secure: rACU8QjnC77U6axfuZX5H4Hh7LWaSOx8Z6JLwYjV9xOQETT9Th7/JtbLMtv08ww61Gd2M2h3fr5xjDXNe9G+ZZ+DhTyycokUlL5cVaT9ucMCiwQLF0VinwNbPE3bWF12ZOm5QSJ+LRnZWHu/c2paBCr38iAE0Z7lQtlKBpSGDbFqteC6GpZ+G9nDn0Y7cRUJOPyQHM/Rx29IMCXOrTKfPb1n7dYu6L9SAzYclLdbGNJ6iz5y850nG5BjVTBCKwZel0E5tzEd+S6gDbnwpTQJGvODcHEuuidjiTmDZCmO/c3ur4pAuLgba9RWp8GudSPVXHBdGdm1pmsfJXrWq8hTJbvCg7gPEp9vmI4R0vRzzKdtAR+W+lOg7afQr4Wx5JdJx2l8LwJFaaobmdc+gTEYyw7T8dvlvuqmuALdGctlIIzSiggAL6RY6lv/5vJ0ASyXbh9mdI+eTuGNzlxWPnNWgIZ2jUjd+Px0VffQdkCrERShkkN6sfWRiMVeiovn5lljEiSg0BCtO68PTb7GRN4lLEcQwhVEYx1/L6uOZKtBh1z5Yp0M0S/HKmsUgWiXa4uiIArVUNB2SVfTYhYY0GqThld7EwjDXqMYMpN1xGBA/u+2BiuDowxQ1aGL/tp0S98Hocc3guQ7OluRWt6Q0ccJTvueFOoI3e5yd/15MQiS55s=
+    on:
+      branch: master
+script: 
+  - ./bash_scripts/deploy.sh
+  - npm run snapshot
 after_script:
   - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
+

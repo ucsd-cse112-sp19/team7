@@ -1,3 +1,5 @@
+//import {storageRef} from "./init_firebase.js";
+
 // eslint-disable-next-line no-undef
 var db = firebase.firestore();
 

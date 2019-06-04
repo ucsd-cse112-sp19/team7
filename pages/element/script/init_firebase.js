@@ -1,3 +1,4 @@
+
 // Your web app's Firebase configuration
 var firebaseConfig = {
   apiKey: "AIzaSyAWQ3Vi-7CTKYVgS1yQ7WHA7S0vShJCgZs",
@@ -14,3 +15,4 @@ firebase.initializeApp(firebaseConfig);
 export const storageService = firebase.storage();
 export const storageRef = storageService.ref();
 export var db = firebase.firestore();
+export const databaseService = firebase.database();

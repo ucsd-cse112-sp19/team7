@@ -1,3 +1,6 @@
+import {databaseService} from "../../element/script/init_firebase.js";
+//import { isPropertyAccessExpression } from "typescript";
+
 // eslint-disable-next-line no-undef
 var db = firebase.firestore();
 var tags = [];
@@ -16,20 +19,32 @@ document.getElementById("add").addEventListener("click", function() {
 
 document.getElementById("submit").addEventListener("click", function() {
 
-  document.getElementById("submitted").innerHTML="Request Submitted!";
   var stars = document.getElementById("stars").value;
   if(stars == null) {
     stars = 5;
     //console.log("start not specified")
   }
-  db.collection(`${document.getElementById("title").value}`).doc("config").set({
+  var isPrivate = document.getElementById("ckb-isprivate").checked ? "1" : "0";
+  var titleText = document.getElementById("title").value;
+  var id = databaseService.ref(`${titleText}`).push().key;
+  db.collection(`${titleText}`).doc("config").set({
     stars: `${stars}`,
-    tags:`${tags}`,
-    des:`${document.getElementById("des").value}`,
+    tags: `${tags}`,
+    des: `${document.getElementById("des").value}`,
     // eslint-disable-next-line no-undef
-    sent: firebase.firestore.Timestamp.fromDate(new Date())
+    sent: firebase.firestore.Timestamp.fromDate(new Date()),
+    id: `${id}`,
+    isPrivate: `${isPrivate}`
+  }).then(result => {
+    // submission succeeded
+    document.getElementById("submitted").innerHTML="Request Submitted!";
+    window.location.href = "evaluator.html?lookup=" + titleText.replace(" ", "\\_") + "%" + id;
+  }).catch(err => {
+    console.log("Error: " + err);
   });
-});
+
+
+ });
 
 document.querySelector("sds-checkbox").addEventListener("click", function() {
 });

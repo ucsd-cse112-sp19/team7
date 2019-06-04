@@ -19,25 +19,15 @@
 
 <body background="../index/img/Canvas-background-1.jpg">
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  
   <!-- TODO: Add SDKs for Firebase products that you want to use
     https://firebase.google.com/docs/web/setup#config-web-app -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
 
-  <script>
-    // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyAWQ3Vi-7CTKYVgS1yQ7WHA7S0vShJCgZs",
-      authDomain: "team7-element.firebaseapp.com",
-      databaseURL: "https://team7-element.firebaseio.com",
-      projectId: "team7-element",
-      storageBucket: "team7-element.appspot.com",
-      messagingSenderId: "860166313157",
-      appId: "1:860166313157:web:59ab005177ad2f01"
-    };
-    // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-  </script>
+  <!-- Bootstrap -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -48,6 +38,7 @@
     integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
     crossorigin="anonymous"></script>
 
+  <script type="module" src="../element/script/init_firebase.js"></script>
   <script type="module" src="../element/script/Comment.js"></script>
   <script type="module" src="../element/script/Rater.js"></script>
   <script type="module" src="../element/script/Checkbox.js"></script>
@@ -91,7 +82,7 @@
             left:28%;
             z-index:1;
             color:white;
-            ">Team7 -- Evaluation Service</p>
+            ">Rateit</p>
     <p style="
             font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
             font-size: 60px;
@@ -100,7 +91,7 @@
             left:35%;
             z-index:1;
             color:white;
-            ">Evaluate Everything</p>
+            ">Evaluate everything</p>
   </div>
   <h1 style="text-align:center;">Evaluation Lookup System</h1>
   <p style="margin-left: 20px;font-size: 20px">Enter the thing you want to lookup</p>

@@ -25,6 +25,7 @@ function getURLParameter(sParam) {
   for (var i = 0; i < sURLVariables.length; i++) {
     var sParameterName = sURLVariables[i].split("=");
     if (sParameterName[0] == sParam) {
+      //console.log(sParameterName[1].replace("\\_", " "));
       return sParameterName[1];
     }
   }
@@ -34,26 +35,43 @@ function getURLParameter(sParam) {
 // check if get from url
 var lookup_value = getURLParameter("lookup");
 if (lookup_value != "Parameter Not Found") {
-  //console.log("found");
-  displayComment(lookup_value);
+  var params = lookup_value.split("%");
+  // check if the url param is a topic/id tuple
+  if (params.length >= 2) {
+    var topic = params[0].replace("\\_", " ")
+    var id = params[1];
+
+    // check if the id is correct
+    db.collection(`${topic}`).doc("config").get().then(function (doc) {
+      if (doc.exists && id === `${doc.data().id}`)
+        displayComment(topic);
+      else
+        window.alert("No search hit!");
+    });
+  }
 }
 //else{console.log("not found")}
 
 // onclick for submit button
 document.getElementById("submit").addEventListener("click", function () {
   //display the comment
-  displayComment(title.value);
+  displayComment(title.value, true);
 
 });
 
 //  --------------------- display function --------------------- //
-function displayComment(value) {
+function displayComment(value, throughSubmit = false) {
   //display the comment
   db.collection(`${value}`).doc("config").get().then(function (doc) {
     if (doc.exists) { // TODO why the if statement doesn't apply to the bellow
+      if (throughSubmit && doc.data().isPrivate === "1") {
+        window.alert("This post is not accessible through lookup");
+        return;
+      }
+    
       thing.innerHTML = value;
       des.innerHTML = doc.data().des;
-      avgRate(value);  
+      avgRate(value);
 
       var tagarray = `${doc.data().tags}`.split(",");
 
@@ -125,8 +143,7 @@ function avgRate(value) {
       overalltags.appendChild(tag);
     }
 
-  })
-    .catch(err => {
-      console.log("Error getting documents", err);
-    });
+  }).catch(err => {
+    console.log("Error getting documents", err);
+  });
 }

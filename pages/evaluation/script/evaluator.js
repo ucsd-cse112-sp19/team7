@@ -4,6 +4,9 @@ var wrapper = document.getElementById("wrapper");
 var title = document.getElementById("title");
 var thing = document.getElementById("thing");
 var des = document.getElementById("des");
+
+var overalltags = document.getElementById("overall-tags");
+var overallrate = document.getElementById("overall-rate");
 /*var username = document.getElementById("username");
 var evals = document.getElementById("eval");
 var tags = document.getElementById("tags");
@@ -46,6 +49,27 @@ function displayComment(value){
       comment.showRating = true;
       comment.showTags = true;
       
+      // set up overall rating score, and the overall checked tags
+      overallrate.max = `${doc.data().stars}`;
+      overallrate.valueModel = "4"; //TODO oscar
+      var i;
+      for (i = 0; i < tagarray.length; i++) {
+        /* adding this:
+          <button type="button" class="btn btn-primary">Primary <span class="badge">7</span></button>
+        */
+        var tag = document.createElement("button");
+        tag.type = "button";
+        tag.className = "btn btn-primary";
+        tag.innerHTML = tagarray[i] + " ";
+
+        var tagScore = document.createElement("span");
+        tagScore.className = "badge badge-light";
+        tagScore.innerHTML = "7"; //TODO oscar
+
+        tag.appendChild(tagScore);
+        overalltags.appendChild(tag);
+      }
+
       wrapper.style = "display: block";
       window.location.href = "#wrapper";
     }

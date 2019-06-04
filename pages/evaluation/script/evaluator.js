@@ -32,7 +32,7 @@ function getURLParameter(sParam) {
 
 var comment = document.querySelector("sds-comment");
 
-// display function
+//  --------------------- display function --------------------- //
 function displayComment(value){
   //display the comment
   db.collection(`${value}`).doc("config").get().then(function (doc) {
@@ -45,30 +45,9 @@ function displayComment(value){
       //comment.setAttribute("max-of-rate", rater.max);
       //comment.setAttribute("topic-name", thing.textContent);
       comment.allDisabled = false; // this will initialize the comment
-      comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
       comment.showRating = true;
       comment.showTags = true;
-      
-      // set up overall rating score, and the overall checked tags
-      overallrate.max = `${doc.data().stars}`;
-      overallrate.valueModel = "4"; //TODO oscar
-      var i;
-      for (i = 0; i < tagarray.length; i++) {
-        /* adding this:
-          <button type="button" class="btn btn-primary">Primary <span class="badge">7</span></button>
-        */
-        var tag = document.createElement("button");
-        tag.type = "button";
-        tag.className = "btn btn-primary";
-        tag.innerHTML = tagarray[i] + " ";
-
-        var tagScore = document.createElement("span");
-        tagScore.className = "badge badge-light";
-        tagScore.innerHTML = "7"; //TODO oscar
-
-        tag.appendChild(tagScore);
-        overalltags.appendChild(tag);
-      }
+      comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
 
       wrapper.style = "display: block";
       window.location.href = "#wrapper";
@@ -81,12 +60,72 @@ function displayComment(value){
   });
 }
 
+
+//  ------------------- function that get avg rating ----------------------- //
+function avgRate(value){
+
+  var ref = db.collection(`${value}`);
+  let stars = [];
+  let tags = {}
+
+  // get all comment doc from the collection
+  ref.get().then(snapshot => {
+
+      // go over each doc
+      snapshot.forEach(doc => {
+        if (doc.id != "config"){
+          // stars
+          //console.log(doc.id, '=>', doc.data().checked[0]);
+          stars.push(Number(doc.data().star));
+          // tags
+          let tgs = doc.data().checked;
+          for (let i=0; i<tgs.length; i++){
+            if (tgs[i] in tags){
+              tags[tgs[i]] += 1
+            }
+            else{
+              tags[tgs[i]] = 1
+            }
+          }
+        }
+      });
+
+      // after gor from each doc, process
+      console.log(stars);
+      let sum = stars.reduce((previous, current) => current += previous);
+      console.log();
+      // set up overall rating score
+      overallrate.max = 10;
+      overallrate.valueModel = Math.round(sum/stars.length).toString(); //DONE oscar   
+      // the overall checked tags
+      for (let tagName in tags){
+        var tag = document.createElement("button");
+        tag.type = "button";
+        tag.className = "btn btn-primary";
+        tag.innerHTML = tagName + " ";
+        var tagScore = document.createElement("span");
+        tagScore.className = "badge badge-light";
+        tagScore.innerHTML = tags[tagName].toString(); 
+        tag.appendChild(tagScore);
+        overalltags.appendChild(tag);
+      }
+
+    })
+    .catch(err => {
+      console.log('Error getting documents', err);
+    });
+}
+
+
 // check if get from url
 var lookup_value = getURLParameter("lookup");
 if ( lookup_value != "Parameter Not Found"){
+  //console.log("found");
   displayComment(lookup_value)
 }
+//else{console.log("not found")}
 
+avgRate(lookup_value);
 
 // onclick for submit button
 document.getElementById("submit").addEventListener("click", function () {

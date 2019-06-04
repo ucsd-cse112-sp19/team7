@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">pages/element/script/Comment.js | team7</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="team7"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Comment.js~Commenter.html">Commenter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">pages/element/script/Comment.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">// eslint-disable-next-line no-undef
+var db = firebase.firestore();
+
+const template = document.createElement(&quot;template&quot;);
+template.innerHTML = `
+  &lt;style&gt;
+    :host {
+    }
+    #title {
+      font-family: &quot;Comic Sans MS&quot;, cursive, sans-serif;
+      font-size: 40px;
+    }
+    #box {
+      display: block;
+      width: 50%;
+    }
+    #name {
+      display: block;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    #ratetext {
+      display: block;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    #rating {
+      display: block;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    #comment {
+      display: block;
+      margin-top: 20px;
+      margin-left: 20px;
+      height: 100px;
+      width: 40%;
+    }
+    #submit {
+      display: block;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+
+    #entry {
+      display: block;
+      background: #27f9f6;
+    }
+    #entry-name {
+      display: block;
+      height: auto; 
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+    #entry-body {
+      display: block;
+      height: auto; 
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+`;
+
+export class Commenter extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({mode: &quot;open&quot;});
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+  connectedCallback() {
+    const shadow = this.shadowRoot;
+
+    var title = document.createElement(&quot;span&quot;);
+    title.id = &quot;title&quot;;
+    title.textContent=&quot;Reviews: &quot;;
+
+    var msgbox = document.createElement(&quot;span&quot;);
+    msgbox.id = &quot;box&quot;;
+
+    var username = document.createElement(&quot;input&quot;);
+    username.id=&quot;name&quot;;
+    username.placeholder=&quot;Name Here&quot;;
+
+    var ratetext = document.createElement(&quot;span&quot;);
+    ratetext.id=&quot;ratetext&quot;;
+    ratetext.textContent=&quot;Your Rate: &quot;;
+    var rating = document.createElement(&quot;sds-rate&quot;);
+    rating.id=&quot;rating&quot;;
+
+    var comment = document.createElement(&quot;textarea&quot;);
+    comment.id=&quot;comment&quot;;
+    comment.placeholder=&quot;Your Thoughtful Comments Here...&quot;;
+
+    var submit = document.createElement(&quot;button&quot;);
+    submit.id=&quot;submit&quot;;
+    submit.textContent=&quot;Submit&quot;;
+
+    var entry = this.getAttribute(&quot;entry&quot;);
+
+    var counter = 0;
+
+    db.collection(`${entry}`).orderBy(&quot;sent&quot;).onSnapshot(function(snapshot) {
+      snapshot.docChanges().forEach(function(change) {
+        counter += 1;
+        var wrapper = document.createElement(&quot;span&quot;);
+        wrapper.id=&quot;entry&quot;;
+        var name = document.createElement(&quot;p&quot;);
+        var star = document.createElement(&quot;sds-rate&quot;);
+        var body = document.createElement(&quot;p&quot;);
+        name.id=&quot;entry-name&quot;;
+        body.id=&quot;entry-body&quot;;
+        name.innerHTML = `${change.doc.data().user} -- Posted on: `;
+        name.innerHTML += `${change.doc.data().sent.toDate()}` + &quot;&lt;br /&gt;&quot;;
+        star.valueModel = `${change.doc.data().star}`;
+        star.disabled = 1;
+        body.innerHTML = `&amp;emsp;&amp;emsp;${change.doc.data().comment}` + &quot;&lt;br /&gt;&quot;;
+
+        wrapper.appendChild(name);
+        wrapper.appendChild(star);
+        wrapper.appendChild(body);
+        msgbox.appendChild(wrapper);
+        title.innerHTML = &quot;Reviews: &quot;+ &quot;(&quot; + counter + &quot;)&quot;;
+      });
+    });
+
+    submit.addEventListener(&quot;click&quot;, function() {
+      db.collection(`${entry}`).add({
+        user: `${username.value}`,
+        comment: `${comment.value}`,
+        star: `${rating.valueModel}`,
+        // eslint-disable-next-line no-undef
+        sent: firebase.firestore.Timestamp.fromDate(new Date())
+      });
+      username.value = &quot;&quot;;
+      rating.valueModel = 0;
+      rating.ratertext = &quot;&quot;;
+      comment.value = &quot;&quot;;
+    });
+
+    shadow.appendChild(title);
+    shadow.appendChild(msgbox);
+    shadow.appendChild(username);
+    shadow.appendChild(ratetext);
+    shadow.appendChild(rating);
+    shadow.appendChild(comment);
+    shadow.appendChild(submit);
+  }
+}
+customElements.define(&quot;sds-commenter&quot;, Commenter);</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

@@ -40,7 +40,7 @@ if (lookup_value != "Parameter Not Found") {
   var params = lookup_value.split("%");
   // check if the url param is a topic/id tuple
   if (params.length >= 2) {
-    var topic = params[0].replace("\\_", " ")
+    var topic = params[0].replace("\\_", " ");
     var id = params[1];
 
     // check if the id is correct
@@ -77,9 +77,10 @@ function displayComment(value, throughSubmit = false) {
       // populate image
       let imageRef = storageRef.child(`images/${doc.data().image}`);
       imageRef.getDownloadURL().then(function(url) {
-        var img = document.getElementById('image');
+        var img = document.getElementById("image");
         img.setAttribute("src", url);
       }).catch(function(error) {
+        // eslint-disable-next-line no-console
         console.error(error);
       });
 
@@ -122,7 +123,6 @@ function calcOverallScore(value, rateMax, tagarray) {
   for (i = 0; i < tagarray.length; i++) {
     tags[tagarray[i]] = 0;
   }
-  console.log(tags);
 
   // get all comment doc from the collection
   ref.get().then(snapshot => {
@@ -131,7 +131,6 @@ function calcOverallScore(value, rateMax, tagarray) {
     snapshot.forEach(doc => {
       if (doc.id != "config") {
         // stars
-        //console.log(doc.id, '=>', doc.data().checked[0]);
         stars.push(Number(doc.data().star));
         // tags
         var tagData = `${doc.data().checked}`;
@@ -147,26 +146,24 @@ function calcOverallScore(value, rateMax, tagarray) {
     overallrate.max = (rateMax === "") ? "5" : rateMax;
     if (stars.length > 0) {
       // after gor from each doc, process
-      console.log(stars);
       let sum = stars.reduce((previous, current) => current += previous);
       // set up overall rating score
       overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
     }
-    console.log(tags);
     //if (tags.length > 0) {
-      // the overall checked tags
-      for (let tagName in tags) {
-        var tag = document.createElement("button");
-        tag.type = "button";
-        tag.className = "btn btn-primary";
-        tag.innerHTML = tagName + " ";
-        tag.disabled = "disabled";
-        var tagScore = document.createElement("span");
-        tagScore.className = "badge badge-light";
-        tagScore.innerHTML = tags[tagName].toString();
-        tag.appendChild(tagScore);
-        overalltags.appendChild(tag);
-      }
+    // the overall checked tags
+    for (let tagName in tags) {
+      var tag = document.createElement("button");
+      tag.type = "button";
+      tag.className = "btn btn-primary";
+      tag.innerHTML = tagName + " ";
+      tag.disabled = "disabled";
+      var tagScore = document.createElement("span");
+      tagScore.className = "badge badge-light";
+      tagScore.innerHTML = tags[tagName].toString();
+      tag.appendChild(tagScore);
+      overalltags.appendChild(tag);
+    }
     //}
     /*
     else {
@@ -188,6 +185,7 @@ function calcOverallScore(value, rateMax, tagarray) {
     }*/
 
   }).catch(err => {
+    // eslint-disable-next-line no-console
     console.log("Error getting documents", err);
   });
 }

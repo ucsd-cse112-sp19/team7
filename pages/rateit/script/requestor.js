@@ -53,12 +53,15 @@ document.getElementById("submit").addEventListener("click", function () {
     isPrivate: `${isPrivate}`,
     disableRateTag: `${disableRateTag}`,
     image: `${img}`
-  }).then(result => {
+  }).then(result => { 
     // submission succeeded
     document.getElementById("submitted").innerHTML = "Request Submitted!";
     window.location.href = "evaluator.html?lookup=" + titleText.replace(" ", "\\_") + "%" + id;
     window.alert("Share this link to let others rate it!");
+    // eslint-disable-next-line no-console
+    console.log(result);
   }).catch(err => {
+    // eslint-disable-next-line no-console
     console.log("Error: " + err);
   });
 

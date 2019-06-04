@@ -431,7 +431,7 @@ export class Checkbox extends HTMLElement {
         }
       }
       catch (e) {
-        console.log(e);
+        //console.log(e);
         break;
       }
     }

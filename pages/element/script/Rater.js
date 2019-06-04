@@ -465,9 +465,9 @@ export class Rater extends HTMLElement {
       case ".disabled .el-icon-star-off":
         rule.style.color = this.disabledVoidColor;
         break;
-    case "class":
-      this.insertOutsideClass();
-      break;
+      case "class":
+        this.insertOutsideClass();
+        break;
       }
     }
     /*

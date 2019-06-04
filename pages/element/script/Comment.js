@@ -318,7 +318,6 @@ export class Comment extends HTMLElement {
     });
     this.handleShowRating();
     this.handleShowTags();
-    console.log("hi");
   }
 
   /**
@@ -329,7 +328,6 @@ export class Comment extends HTMLElement {
     var value = this.color;
     var styleSheet = this.shadowRoot.querySelector("style").sheet;
     var i;
-    console.log(styleSheet);
     for (i = 0; i < styleSheet.cssRules.length; i++) {
       var rule = styleSheet.cssRules[i];
       if (rule.selectorText === "#entry")

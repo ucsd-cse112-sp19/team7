@@ -511,8 +511,6 @@ listTemplateThumbnail.innerHTML = `
   </li>
 `;*/
 
-let selectedFile;
-
 /**
  * Upload is a custom element that creates a web component.
  * It can be used by the tag <sds-upload>
@@ -566,7 +564,6 @@ export class Upload extends HTMLElement {
   }
 
   handleFileUpload(files) {
-    console.log(files);
     var upload = this;
     var selectedFile = files[0];
 
@@ -576,15 +573,17 @@ export class Upload extends HTMLElement {
     const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
     uploadTask.on("state_changed", (snapshot) => {
       // Observe state change events such as progress, pause, and resume
+      // eslint-disable-next-line no-console
+      console.log(snapshot);
     }, (error) => {
       // Handle unsuccessful uploads
+      // eslint-disable-next-line no-console
       console.log(error);
       window.alert("Upload failed, please try again");
     }, () => {
       // Do something once upload is complete
+      // eslint-disable-next-line no-console
       console.log("success");
-      console.log(selectedFile.name);
-      console.log(selectedFile);
       upload.addFileListItem(selectedFile);
     });
   }
@@ -618,8 +617,11 @@ export class Upload extends HTMLElement {
       var desertRef = storageRef.child(`images/${fileName}`); // create a reference to the file to delete
       desertRef.delete().then(function() {
         // File deleted successfully
+        // eslint-disable-next-line no-console
         console.log("deleted " + fileName);
       }).catch(function(error) {
+        // eslint-disable-next-line no-console
+        console.log(error);
         // Uh-oh, an error occurred!
       });
     });
@@ -644,7 +646,7 @@ export class Upload extends HTMLElement {
     event.stopPropagation();
 
     var upload = event.target.getRootNode().host;
-    var input = upload.shadowRoot.querySelector("input.el-upload__input");
+    //var input = upload.shadowRoot.querySelector("input.el-upload__input");
     upload.handleFileUpload(event.dataTransfer.files);
     
     var select = event.target.getRootNode().host;
@@ -798,6 +800,9 @@ export class Upload extends HTMLElement {
       break;
     case "class":
       this.insertOutsideClass();
+      break;
+    case "placeholder-to-avoid-linting-error":
+      oldValue = newValue;
       break;
     }
   }

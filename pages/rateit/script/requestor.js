@@ -12,8 +12,19 @@ if(stars == null) {
 }*/
 
 document.getElementById("add").addEventListener("click", function () {
-  tags.push(document.getElementById("tag").value);
-  document.getElementById("tagarray").innerHTML += document.getElementById("tag").value;
+  var tagValue = document.getElementById("tag").value;
+  if (tagValue.trim().length == 0)
+    return;
+  tags.push(tagValue);
+
+  // create the badge for tag
+  var tag = document.createElement("button");
+  tag.type = "button";
+  tag.className = "btn btn-primary";
+  tag.innerHTML = tagValue;
+  tag.disabled = "disabled";
+
+  document.getElementById("tagarray").appendChild(tag);
   document.getElementById("tag").value = "";
 });
 
@@ -24,13 +35,14 @@ document.getElementById("submit").addEventListener("click", function () {
     stars = 5;
     //console.log("start not specified")
   }
+
   var isPrivate = document.getElementById("ckb-isprivate").checked ? "1" : "0";
   var disableRateTag = document.getElementById("ckb").checked ? "1" : "0";
   var titleText = document.getElementById("title").value;
   var id = databaseService.ref(`${titleText}`).push().key;
   var img = document.getElementById("upload").shadowRoot.querySelector("a.el-upload-list__item-name").innerHTML;
   img = img.split("-->")[1].trim();
-  console.log(img);
+
   db.collection(`${titleText}`).doc("config").set({
     stars: `${stars}`,
     tags: `${tags}`,
@@ -42,10 +54,10 @@ document.getElementById("submit").addEventListener("click", function () {
     disableRateTag: `${disableRateTag}`,
     image: `${img}`
   }).then(result => {
-    console.log(img);
     // submission succeeded
     document.getElementById("submitted").innerHTML = "Request Submitted!";
-    //window.location.href = "evaluator.html?lookup=" + titleText.replace(" ", "\\_") + "%" + id;
+    window.location.href = "evaluator.html?lookup=" + titleText.replace(" ", "\\_") + "%" + id;
+    window.alert("Share this link to let others rate it!");
   }).catch(err => {
     console.log("Error: " + err);
   });

@@ -695,14 +695,82 @@ export class Upload extends HTMLElement {
     }
   }
 
+  /**
+   * `insertOutsideClass()` is called to insert css rules of the class names in
+   * `class` attribute into the shadowDOM's stylesheet
+   */
+  insertOutsideClass() {
+    var rootStyleSheet = this.getRootNode().styleSheets;
+    var classArray = this.className.match(/\S+/g);
+    if (!classArray || classArray.length == 0)
+      return;
 
+    var k;
+    var tagArray = []; // the index corresponds to the index of classArray
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var class_tag = classArray[k].split("@");
+      if (class_tag.length == 1) {
+        classArray.splice(k, 1);
+        k--;
+      }
+      else {
+        classArray[k] = class_tag[0];
+        tagArray.push(class_tag[1]);
+      }
+    }
+
+    var shadowStyleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i, j;
+    for (i = 0; i < rootStyleSheet.length; i++) {
+      try {
+        var rules = rootStyleSheet[i].cssRules;
+        
+        for (j = 0; j < rules.length; j++) {
+          for (k = 0; k < classArray.length; k++) {
+            if (rules[j].selectorText 
+                && rules[j].selectorText.includes("." + classArray[k])
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                    )
+                ) 
+            ){
+              //console.log(rules[j].selectorText);
+              shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
+            }
+          }
+        }
+      }
+      catch (e) {
+        //console.log(e);
+        break;
+      }
+    }
+ 
+    //var everything = this.shadowRoot.querySelectorAll("*:not(style)");
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var items = this.shadowRoot.querySelectorAll(tagArray[k]);
+      for (i = 0; i < items.length; i++) {
+        if (items[i].tagName == "STYLE")
+          continue;
+        items[i].className += " " + classArray[k];
+      }
+    }
+  }
+
+
+
+
+  
   /**
     * `observedAttributes()` returns an array of attributes whose changes will
     * be handled in `attributeChangedCallback()`
     * @return {string[]} array of attributes whose changes will be handled 
     */
   static get observedAttributes() {
-    return [ "hide-file-list", "drag", "display-thumbnail"
+    return [ "hide-file-list", "drag", "display-thumbnail", "class"
     ]; //TODO1
   }
   
@@ -727,6 +795,9 @@ export class Upload extends HTMLElement {
       break;
     case "display-thumbnail":
       //don't need anything for this
+      break;
+    case "class":
+      this.insertOutsideClass();
       break;
     }
   }
@@ -758,17 +829,7 @@ export class Upload extends HTMLElement {
   get drag() {
     return this.hasAttribute("drag");
   }
-
-  /** @type {string} */
-  set disabledVoidIcon(value) {
-    this.setAttribute("disabled-void-icon", value);
-  }
-
-  /** @type {string} */
-  get disabledVoidIcon() {
-    return this.getAttribute("disabled-void-icon") || "\\2605";
-  }
-
+  
   /** @type {boolean} */
   get displayThumbnail(){
     return this.hasAttribute("display-thumbnail");

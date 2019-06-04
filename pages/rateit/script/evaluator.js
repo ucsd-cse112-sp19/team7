@@ -82,12 +82,15 @@ function displayComment(value, throughSubmit = false) {
       }).catch(function(error) {
         console.error(error);
       });
-      // set the overall rating and tags score
-      calcOverallScore(value);
 
       var tagarray = `${doc.data().tags}`.split(",");
-      if (!tagarray || (tagarray.length <= 1 && tagarray[0].length) == 0 )
+      if (!tagarray || (tagarray.length <= 1 && tagarray[0].length == 0) )
         tagarray = [];
+
+      // set the overall rating and tags score
+      if (doc.data().disableRateTag === "0")
+        calcOverallScore(value, `${doc.data().stars}`, tagarray);
+
       //comment.setAttribute("max-of-rate", rater.max);
       //comment.setAttribute("topic-name", thing.textContent);
       comment.allDisabled = false; // this will initialize the comment
@@ -110,11 +113,16 @@ function displayComment(value, throughSubmit = false) {
 
 
 //  ------------------- function that get avg rating ----------------------- //
-function calcOverallScore(value) {
+function calcOverallScore(value, rateMax, tagarray) {
 
   var ref = db.collection(`${value}`);
   let stars = [];
   let tags = {};
+  var i;
+  for (i = 0; i < tagarray.length; i++) {
+    tags[tagarray[i]] = 0;
+  }
+  console.log(tags);
 
   // get all comment doc from the collection
   ref.get().then(snapshot => {
@@ -126,37 +134,58 @@ function calcOverallScore(value) {
         //console.log(doc.id, '=>', doc.data().checked[0]);
         stars.push(Number(doc.data().star));
         // tags
-        let tgs = doc.data().checked;
+        var tagData = `${doc.data().checked}`;
+        let tgs = tagData.split(",");
         for (let i = 0; i < tgs.length; i++) {
           if (tgs[i] in tags) {
             tags[tgs[i]] += 1;
-          }
-          else {
-            tags[tgs[i]] = 1;
           }
         }
       }
     });
 
-    // after gor from each doc, process
-    console.log(stars);
-    let sum = stars.reduce((previous, current) => current += previous);
-    console.log();
-    // set up overall rating score
-    overallrate.max = 10;
-    overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
-    // the overall checked tags
-    for (let tagName in tags) {
-      var tag = document.createElement("button");
-      tag.type = "button";
-      tag.className = "btn btn-primary";
-      tag.innerHTML = tagName + " ";
-      var tagScore = document.createElement("span");
-      tagScore.className = "badge badge-light";
-      tagScore.innerHTML = tags[tagName].toString();
-      tag.appendChild(tagScore);
-      overalltags.appendChild(tag);
+    overallrate.max = (rateMax === "") ? "5" : rateMax;
+    if (stars.length > 0) {
+      // after gor from each doc, process
+      console.log(stars);
+      let sum = stars.reduce((previous, current) => current += previous);
+      // set up overall rating score
+      overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
     }
+    console.log(tags);
+    //if (tags.length > 0) {
+      // the overall checked tags
+      for (let tagName in tags) {
+        var tag = document.createElement("button");
+        tag.type = "button";
+        tag.className = "btn btn-primary";
+        tag.innerHTML = tagName + " ";
+        tag.disabled = "disabled";
+        var tagScore = document.createElement("span");
+        tagScore.className = "badge badge-light";
+        tagScore.innerHTML = tags[tagName].toString();
+        tag.appendChild(tagScore);
+        overalltags.appendChild(tag);
+      }
+    //}
+    /*
+    else {
+      if (!tagarray || (tagarray.length <= 1 && tagarray[0].length == 0) )
+        return;
+      var i;
+      
+      for (i = 0; i < tagarray.length; i++) {
+        var tag = document.createElement("button");
+        tag.type = "button";
+        tag.className = "btn btn-primary";
+        tag.innerHTML = tagarray[i] + " ";
+        var tagScore = document.createElement("span");
+        tagScore.className = "badge badge-light";
+        tagScore.innerHTML = "0";
+        tag.appendChild(tagScore);
+        overalltags.appendChild(tag);
+      }
+    }*/
 
   }).catch(err => {
     console.log("Error getting documents", err);

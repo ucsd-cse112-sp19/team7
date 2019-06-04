@@ -465,6 +465,9 @@ export class Rater extends HTMLElement {
       case ".disabled .el-icon-star-off":
         rule.style.color = this.disabledVoidColor;
         break;
+    case "class":
+      this.insertOutsideClass();
+      break;
       }
     }
     /*
@@ -527,6 +530,71 @@ export class Rater extends HTMLElement {
       }
     }
   }
+  
+  /**
+   * `insertOutsideClass()` is called to insert css rules of the class names in
+   * `class` attribute into the shadowDOM's stylesheet
+   */
+  insertOutsideClass() {
+    var rootStyleSheet = this.getRootNode().styleSheets;
+    var classArray = this.className.match(/\S+/g);
+    if (!classArray || classArray.length == 0)
+      return;
+
+    var k;
+    var tagArray = []; // the index corresponds to the index of classArray
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var class_tag = classArray[k].split("@");
+      if (class_tag.length == 1) {
+        classArray.splice(k, 1);
+        k--;
+      }
+      else {
+        classArray[k] = class_tag[0];
+        tagArray.push(class_tag[1]);
+      }
+    }
+
+    var shadowStyleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i, j;
+    for (i = 0; i < rootStyleSheet.length; i++) {
+      try {
+        var rules = rootStyleSheet[i].cssRules;
+        
+        for (j = 0; j < rules.length; j++) {
+          for (k = 0; k < classArray.length; k++) {
+            if (rules[j].selectorText 
+                && rules[j].selectorText.includes("." + classArray[k])
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                    )
+                ) 
+            ){
+              //console.log(rules[j].selectorText);
+              shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
+            }
+          }
+        }
+      }
+      catch (e) {
+        //console.log(e);
+        break;
+      }
+    }
+ 
+    //var everything = this.shadowRoot.querySelectorAll("*:not(style)");
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var items = this.shadowRoot.querySelectorAll(tagArray[k]);
+      for (i = 0; i < items.length; i++) {
+        if (items[i].tagName == "STYLE")
+          continue;
+        items[i].className += " " + classArray[k];
+      }
+    }
+  }
 
 
 
@@ -542,7 +610,8 @@ export class Rater extends HTMLElement {
       "v-model", "max", "disabled", "show-score", "text-color",
       "show-text", "texts", "score-template", "low-threshold",
       "high-threshold", "colors", "void-color", "disabled-void-color",
-      "icons", "void-icon", "disabled-void-icon", "img", "author", "des"
+      "icons", "void-icon", "disabled-void-icon", "img", "author", "des", 
+      "class"
     ]; //TODO1
   }
 
@@ -635,6 +704,9 @@ export class Rater extends HTMLElement {
       else {
         info.style.display = "none";
       }
+      break;
+    case "class":
+      this.insertOutsideClass();
       break;
       //TODO3
     }

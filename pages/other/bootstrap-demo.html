@@ -1,53 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Team7</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="../index/img/devilbus1.jpg">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    
-    <script type="module" src="../element/script/Checkbox.js"></script>
+<head>
+  <title>Team7</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="../index/img/devilbus1.jpg">
 
-    <style>
-      .padding-container {
-        padding: 24px;
-      }
-      .small-padding {
-        padding: 4px;
-      }
-      .custom-expand {
-        transition: .3s;
-      }
-      .el-checkbox:hover .custom-expand  {
-        transform: scale(1.2);
-      }
-      :host([checked]) .custom-expand {
-        transform: scale(1.2);
-      }
-    </style>
-  </head>
-  <body>
-    <h1>Checkbox</h1>
-    <h3>Original Styling</h3>
-    <div class="padding-container">
-      <sds-checkbox></sds-checkbox>
-      <sds-checkbox border></sds-checkbox>
-    </div>
-    <h3>Bootstrap Styling</h3>
-    <div class="padding-container">
-      <sds-checkbox class="text-muted@* bg-warning@span.el-checkbox__label"></sds-checkbox>
-      <sds-checkbox class="p-2@label border@label border-primary@label rounded@label"></sds-checkbox>
-    </div>
-    <h3>Custom Styling</h3>
-    <div class="padding-container">
-      <sds-checkbox border class="custom-expand@span.el-checkbox__label"></sds-checkbox>
-    </div>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
 
-  </body>
+  <!-- CSS for icons from Element --> <!-- This cause custom not working -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link href="https://element.eleme.io/docs.463e2b2.css" rel="stylesheet">
+
+  <script type="module" src="../element/script/Checkbox.js"></script>
+  <script type="module" src="../element/script/Upload.js"></script>
+  <script type="module" src="../element/script/Comment.js"></script>
+  <script type="module" src="../element/script/Rater.js"></script>
+
+  <style>
+    * {
+      font-family: Helvetica;
+    }
+    .padding-container {
+      padding: 24px;
+    }
+
+    .small-padding {
+      padding: 4px;
+    }
+
+    .custom-expand {
+      transition: .3s;
+    }
+
+    .el-checkbox:hover .custom-expand {
+      transform: scale(1.2);
+    }
+
+    :host([checked]) .custom-expand {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+
+<body>
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js"></script>
+
+
+  <h3>Rate</h3>
+
+  <div class="padding-container">
+    <sds-rate></sds-rate><br>
+    <sds-rate icons="\25A2,\25A8,\25A9" void-icon="\25A1" score-template="super{value}!!" show-score v-model="2">
+    </sds-rate><br>
+    <sds-rate icons="\e797,\e797,\e797" disabled-void-icon="\e717" style="font-family: element-icons!important;" max="5"
+      disabled v-model="4" show-score></sds-rate><br>
+    <sds-rate max="10" show-text="1" text-color="blue" low-threshold="3" high-threshold="8" icons="\e901,\e902,\e903"
+      void-icon="\e900" style="font-family: icomoon!important;"
+      colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"
+      texts="Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></sds-rate><br>
+  </div>
+
+  <h3>Checkbox</h3>
+
+  <div class="padding-container">
+    <sds-checkbox>Default</sds-checkbox>
+    <br>
+    <sds-checkbox checked disabled>Disabled & Checked</sds-checkbox>
+    <br>
+    <sds-checkbox border>With Border</sds-checkbox>
+    <br>
+
+    <sds-checkbox border size="small">Small Border</sds-checkbox>
+    <br>
+    <sds-checkbox border size="mini">Mini Border</sds-checkbox>
+    <br>
+  </div>
+  <h3>Upload</h3>
+  <div class="padding-container">
+    <sds-upload></sds-upload>
+    <br>
+    <sds-upload display-thumbnail></sds-upload>
+    <br>
+    <sds-upload drag></sds-upload>  
+    <br>
+  </div>
+
+  <h3>Comment</h3>
+  <div class="padding-container">
+    <sds-comment init-with="game"></sds-comment>
+  </div>
+
+
+
+
+
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+
+
+  <h3>Original Styling</h3>
+  <div class="padding-container">
+    <sds-checkbox></sds-checkbox>
+    <sds-checkbox border></sds-checkbox>
+  </div>
+  <h3>Bootstrap Styling</h3>
+  <div class="padding-container">
+    <sds-checkbox class="text-muted@* bg-warning@span.el-checkbox__label"></sds-checkbox>
+    <sds-checkbox class="p-2@label border@label border-primary@label rounded@label"></sds-checkbox>
+  </div>
+  <h3>Custom Styling</h3>
+  <div class="padding-container">
+    <sds-checkbox border class="custom-expand@span.el-checkbox__label"></sds-checkbox>
+  </div>
+
+</body>
+
 </html>

@@ -8,17 +8,24 @@ template.innerHTML = `
   <style>
     :host {
     }
+    p {
+      font-size: 30px;
+    }
     #title {
-      font-family: "Comic Sans MS", cursive, sans-serif;
-      font-size: 40px;
+      //font-family: "Comic Sans MS", cursive, sans-serif;
+      font-size: 30px;
     }
     #box {
       display: block;
-      width: 50%;
+      min-width: 50%;
+      margin-top: 10px;
+    }
+    #box p {
+      font-size: 15px;
     }
     #name {
       display: block;
-      margin-top: 20px;
+      padding-left: 4px;
       margin-left: 20px;
       background-color: #fff;
       border-radius: 4px;
@@ -26,7 +33,7 @@ template.innerHTML = `
       box-sizing: border-box;
       color: #606fe6;
       outline: none;
-      fot-size: 14px;
+      font-size: 20px;
     }
     #ratetext {
       display: block;
@@ -57,7 +64,7 @@ template.innerHTML = `
     #submit {
       display: block;
       margin-top: 20px;
-      margin-left: 20px;
+      margin-left: 320px;
       margin-bottom: 20px;
       line-height: 1;
       white-space: nowrap;
@@ -71,7 +78,7 @@ template.innerHTML = `
       text-align: center;
       box-sizing: border-box;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 20px;
       padding: 12px 20px;
       outline: none;
     }
@@ -79,7 +86,10 @@ template.innerHTML = `
     #entry {
       display: block;
       background: #27f9f6;
-      //background: #fd8e83
+      padding: 5px 20px;
+      border-radius: 5px;
+      box-shadow: 5px 8px;
+      margin-bottom: 10px;
     }
     #entry-name {
       display: block;
@@ -87,6 +97,7 @@ template.innerHTML = `
       word-break: break-all;
       word-wrap: break-word;
       white-space: normal;
+      font-weight: bold;
     }
     #entry-body {
       display: block;
@@ -103,6 +114,21 @@ template.innerHTML = `
       style="font-size:30px;
       margin-left: 20px;
     }
+    #tagcontainer {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    #entry-tags {
+      margin-top: 10px;
+    }
+    .badge {
+      margin-right: 10px;
+      background-color: rgb(247, 186, 42);
+      color: white;
+      padding: 4px 8px;
+      font-size: 15px;
+      border-radius: .25rem;
+    }
     
   </style>
   <div>
@@ -111,19 +137,16 @@ template.innerHTML = `
       <!-- Other's comments go here -->
     </span>
     <div id="formcontainer">
-      <h2>Write your own review:</h2>
+      <p>Write your own review:</p>
       <input id="name" placeholder="Name Here"></input>
    
       <div id="tagcontainer">
-        <h3 id="tagtext">Tags:</h3>
         <div id="tags">
           <!-- checkboxes/tags will go here -->
         </div>
-        <br>
       </div>
     
       <div id="ratecontainer">
-        <span id="ratetext">Your Rate:</span>
         <sds-rate id="rating" show-score score-template="{value} Points"></sds-rate>
       </div>
       <textarea id="comment" placeholder="Your Thoughtful Comments Here..."></textarea>
@@ -146,6 +169,10 @@ export class Comment extends HTMLElement {
     this.handleShowRating();
     this.handleHideComment();
     this.handleShowTags();
+
+    if (this.initWith != "none") {
+      this.updateComment(this.initWith, 5);
+    }
   }
 
   updateComment(topicName, maxOfRate, tagarray = []) {
@@ -177,6 +204,7 @@ export class Comment extends HTMLElement {
     var i;
     for (i = 0; i < tagarray.length; i++) {
       var box = document.createElement("sds-checkbox");
+      box.border = true;
       box.innerHTML = tagarray[i];
       tags.appendChild(box);
     }
@@ -213,11 +241,13 @@ export class Comment extends HTMLElement {
       comment.value = "";*/
 
       window.alert("Evaluation Submitted!");
+      window.location.reload(true);
       //commentElement.populateComments();
     });
   }
 
   populateComments() {
+    var commenter = this;
     var msgbox = this.shadowRoot.querySelector("span#box");
     var title = this.shadowRoot.querySelector("span#title");
     if (msgbox.querySelector("span"))
@@ -242,15 +272,20 @@ export class Comment extends HTMLElement {
         star.showScore = true;
         //star.style.display = "none";
         var body = document.createElement("p");
-        var checkedtags = document.createElement("p");
+        var checkedtags = document.createElement("div");
         //checkedtags.style.display = "none";
 
         var i;
         var checked = `${change.doc.data().checked}`;
-        checkedtags.innerHTML = "This Evaluator thinks he is: ";
-        for (i = 0; i < checked.length; i++) {
-          checkedtags.innerHTML += checked[i];
-          //checkedtags.innerHTML += "  ";
+        var tagList = checked.split(",");
+        if (tagList.length > 1 || tagList[0] != "") {
+          for (i = 0; i < tagList.length; i++) {
+            var tag = document.createElement("span");
+            tag.className = "badge";
+            tag.innerHTML = tagList[i];
+            checkedtags.appendChild(tag);
+            //checkedtags.innerHTML += "  ";
+          }
         }
 
         //TODO id duplicates; should use class instead
@@ -265,10 +300,14 @@ export class Comment extends HTMLElement {
         star.valueModel = `${change.doc.data().star}`;
         star.disabled = true;
 
-        body.innerHTML = `&emsp;&emsp;${change.doc.data().comment}` + "<br />";
+        body.innerHTML = `${change.doc.data().comment}` + "<br />";
 
         wrapper.appendChild(name);
+        if (!commenter.showRating)
+          star.style.display = "none";
         wrapper.appendChild(star);
+        if (!commenter.showTags)
+          checkedtags.style.display = "none";
         wrapper.appendChild(checkedtags);
         wrapper.appendChild(body);
         msgbox.appendChild(wrapper);
@@ -277,6 +316,9 @@ export class Comment extends HTMLElement {
 
       });
     });
+    this.handleShowRating();
+    this.handleShowTags();
+    console.log("hi");
   }
 
   /**
@@ -376,6 +418,70 @@ export class Comment extends HTMLElement {
     }
   }
 
+  /**
+   * `insertOutsideClass()` is called to insert css rules of the class names in
+   * `class` attribute into the shadowDOM's stylesheet
+   */
+  insertOutsideClass() {
+    var rootStyleSheet = this.getRootNode().styleSheets;
+    var classArray = this.className.match(/\S+/g);
+    if (!classArray || classArray.length == 0)
+      return;
+
+    var k;
+    var tagArray = []; // the index corresponds to the index of classArray
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var class_tag = classArray[k].split("@");
+      if (class_tag.length == 1) {
+        classArray.splice(k, 1);
+        k--;
+      }
+      else {
+        classArray[k] = class_tag[0];
+        tagArray.push(class_tag[1]);
+      }
+    }
+
+    var shadowStyleSheet = this.shadowRoot.querySelector("style").sheet;
+    var i, j;
+    for (i = 0; i < rootStyleSheet.length; i++) {
+      try {
+        var rules = rootStyleSheet[i].cssRules;
+        
+        for (j = 0; j < rules.length; j++) {
+          for (k = 0; k < classArray.length; k++) {
+            if (rules[j].selectorText 
+                && rules[j].selectorText.includes("." + classArray[k])
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                    )
+                ) 
+            ){
+              //console.log(rules[j].selectorText);
+              shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
+            }
+          }
+        }
+      }
+      catch (e) {
+        //console.log(e);
+        break;
+      }
+    }
+ 
+    //var everything = this.shadowRoot.querySelectorAll("*:not(style)");
+    for (k = 0; k < classArray.length; k++) {
+      //console.log(everything[k]);
+      var items = this.shadowRoot.querySelectorAll(tagArray[k]);
+      for (i = 0; i < items.length; i++) {
+        if (items[i].tagName == "STYLE")
+          continue;
+        items[i].className += " " + classArray[k];
+      }
+    }
+  }
 
 
 
@@ -389,7 +495,8 @@ export class Comment extends HTMLElement {
   static get observedAttributes() {
     return [
       "color", "disabled", "show-rating", "hide-comment",
-      "show-tags", "all-disabled", "max-of-rate", "topic-Name"
+      "show-tags", "all-disabled", "max-of-rate", "topic-Name", 
+      "class", "init-with"
     ];
   }
 
@@ -430,6 +537,12 @@ export class Comment extends HTMLElement {
       break;
     case "no going to be called but just to avoid linting check":
       window.alert(oldValue + newValue);
+      break;
+    case "class":
+      this.insertOutsideClass();
+      break;
+    case "init-with":
+      // nothing
       break;
     }
   }
@@ -526,7 +639,6 @@ export class Comment extends HTMLElement {
     this.setAttribute("max-of-rate", value);
   }
 
-
   /** @type {string} */
   get topicName() {
     return this.getAttribute("topic-name");
@@ -535,6 +647,16 @@ export class Comment extends HTMLElement {
   /** @type {string} */
   set topicName(value) {
     this.setAttribute("topic-name", value);
+  }
+
+  /** @type {string} */
+  get initWith() {
+    return this.getAttribute("init-with") || "none";
+  }
+
+  /** @type {string} */
+  set initWith(value) {
+    this.setAttribute("init-with", value);
   }
 }
 customElements.define("sds-comment", Comment);

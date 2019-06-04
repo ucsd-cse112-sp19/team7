@@ -424,19 +424,18 @@ export class Checkbox extends HTMLElement {
                     )
                 ) 
             ){
-              //console.log(rules[j].selectorText);
+              console.log(rules[j].selectorText);
               shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
             }
           }
         }
       }
       catch (e) {
-        //console.log(e);
+        console.log(e);
         break;
       }
     }
-
-    
+ 
     //var everything = this.shadowRoot.querySelectorAll("*:not(style)");
     for (k = 0; k < classArray.length; k++) {
       //console.log(everything[k]);

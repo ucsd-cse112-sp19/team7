@@ -4298,7 +4298,7 @@
     "kind": "manual",
     "longname": "C:\\Users\\DanXa\\Documents\\cse112\\team7\\manual\\webcomponents.md",
     "name": "./manual/webcomponents.md",
-    "content": "# Web Components",
+    "content": "# Web Components\r\n\r\n## Checkbox",
     "static": true,
     "access": "public"
   },

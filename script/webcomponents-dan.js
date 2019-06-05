@@ -1,27 +1,27 @@
-import { LitElement, html } from 'lit-element';
+import { LitElement, html } from "lit-element";
 
 class WebcomponentsDan extends LitElement { 
-    render() {
-        var lang = this.getAttribute('language');
-        if (lang == 'eng'){
-            return html`
+  render() {
+    var lang = this.getAttribute("language");
+    if (lang == "eng"){
+      return html`
             <p>Hello World ${this.textContent}</p>
             `;
-        }
-        if (lang == 'spa'){
-            return html`
+    }
+    if (lang == "spa"){
+      return html`
             <p>Hola Mundo ${this.textContent}</p>
             `;
-        }
-        if (lang == 'ger'){
-            return html`
+    }
+    if (lang == "ger"){
+      return html`
             <p>Hallo Welt ${this.textContent}</p>
             `;
-        }
-        return html`
+    }
+    return html`
         <p>Hello World ${this.textContent}</p>
         `;
-    }
+  }
 }
 
-customElements.define('webcomponents-dan', WebcomponentsDan);
+customElements.define("webcomponents-dan", WebcomponentsDan);

@@ -4295,6 +4295,22 @@
     "access": "public"
   },
   {
+    "kind": "manual",
+    "longname": "C:\\Users\\DanXa\\Documents\\cse112\\team7\\manual\\webcomponents.md",
+    "name": "./manual/webcomponents.md",
+    "content": "# Web Components",
+    "static": true,
+    "access": "public"
+  },
+  {
+    "kind": "manual",
+    "longname": "C:\\Users\\DanXa\\Documents\\cse112\\team7\\manual\\checkbox.md",
+    "name": "./manual/checkbox.md",
+    "content": "## Checkbox",
+    "static": true,
+    "access": "public"
+  },
+  {
     "__docId__": 235,
     "kind": "testFile",
     "name": "test/checkbox.spec.js",

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">CECoreHello | rater-and-checkbox</title>
+  <title data-ice="title">pages/rateit/script/evaluator.js | rater-and-checkbox</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -69,218 +69,199 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CECoreHello} from &apos;<span><a href="file/pages/webcomponent/script/CECoreHello.js.html#lineNumber4">rater-and-checkbox/pages/webcomponent/script/CECoreHello.js</a></span>&apos;</code></pre></div>
-  <span data-ice="access">public</span>
-  <span data-ice="kind">class</span>
-  
-  
-  
-  <span data-ice="source">| <span><a href="file/pages/webcomponent/script/CECoreHello.js.html#lineNumber4">source</a></span></span>
-</div>
+<div class="content" data-ice="content"><h1 data-ice="title">pages/rateit/script/evaluator.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { storageRef } from &quot;../../element/script/init_firebase.js&quot;;
 
-<div class="self-detail detail">
-  <h1 data-ice="name">CECoreHello</h1>
+// eslint-disable-next-line no-undef
+var db = firebase.firestore();
+var wrapper = document.getElementById(&quot;wrapper&quot;);
+var title = document.getElementById(&quot;title&quot;);
+var thing = document.getElementById(&quot;thing&quot;);
+var des = document.getElementById(&quot;des&quot;);
 
-  
+var comment = document.querySelector(&quot;sds-comment&quot;);
+var overalltags = document.getElementById(&quot;overall-tags&quot;);
+var overallrate = document.getElementById(&quot;overall-rate&quot;);
+/*var username = document.getElementById(&quot;username&quot;);
+var evals = document.getElementById(&quot;eval&quot;);
+var tags = document.getElementById(&quot;tags&quot;);
+var rate = document.getElementById(&quot;rate&quot;);
+var submitcomment = document.getElementById(&quot;submitcomment&quot;);
+var msgbox = document.getElementById(&quot;comment&quot;);
 
-  
-  
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>HTMLElement</span> &#x2192; CECoreHello</div></div>
-  
-  
-  
-  
-  
-  
+var rater;
+*/
 
-  
-  
-  <div class="description" data-ice="description"><p>CECoreHello class @extends {HTMLElement}</p>
-</div>
-  
+// parse url funct
+function getURLParameter(sParam) {
+  var sPageURL = window.location.search.substring(1);
+  var sURLVariables = sPageURL.split(&quot;&amp;&quot;);
+  for (var i = 0; i &lt; sURLVariables.length; i++) {
+    var sParameterName = sURLVariables[i].split(&quot;=&quot;);
+    if (sParameterName[0] == sParam) {
+      //console.log(sParameterName[1].replace(&quot;\\_&quot;, &quot; &quot;));
+      return sParameterName[1];
+    }
+  }
+  return &quot;Parameter Not Found&quot;;
+}
 
-  
+// check if get from url
+var lookup_value = getURLParameter(&quot;lookup&quot;);
+if (lookup_value != &quot;Parameter Not Found&quot;) {
+  var params = lookup_value.split(&quot;%&quot;);
+  // check if the url param is a topic/id tuple
+  if (params.length &gt;= 2) {
+    var topic = params[0].replace(&quot;\\_&quot;, &quot; &quot;);
+    var id = params[1];
 
-  
+    // check if the id is correct
+    db.collection(`${topic}`).doc(&quot;config&quot;).get().then(function (doc) {
+      if (doc.exists &amp;&amp; id === `${doc.data().id}`)
+        displayComment(topic);
+      else
+        window.alert(&quot;No search hit!&quot;);
+    });
+  }
+}
+//else{console.log(&quot;not found&quot;)}
 
-  
+// onclick for submit button
+document.getElementById(&quot;submit&quot;).addEventListener(&quot;click&quot;, function () {
+  //display the comment
+  displayComment(title.value, true);
 
-  
-</div>
+});
+
+//  --------------------- display function --------------------- //
+function displayComment(value, throughSubmit = false) {
+  //display the comment
+  db.collection(`${value}`).doc(&quot;config&quot;).get().then(function (doc) {
+    if (doc.exists) { // TODO why the if statement doesn&apos;t apply to the bellow
+      if (throughSubmit &amp;&amp; doc.data().isPrivate === &quot;1&quot;) {
+        window.alert(&quot;This post is not accessible through lookup&quot;);
+        return;
+      }
+
+      // populate title and description
+      thing.innerHTML = value;
+      des.innerHTML = doc.data().des;
+      // populate image
+      let imageRef = storageRef.child(`images/${doc.data().image}`);
+      imageRef.getDownloadURL().then(function(url) {
+        var img = document.getElementById(&quot;image&quot;);
+        img.setAttribute(&quot;src&quot;, url);
+      }).catch(function(error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      });
+
+      var tagarray = `${doc.data().tags}`.split(&quot;,&quot;);
+      if (!tagarray || (tagarray.length &lt;= 1 &amp;&amp; tagarray[0].length == 0) )
+        tagarray = [];
+
+      // set the overall rating and tags score
+      if (doc.data().disableRateTag === &quot;0&quot;)
+        calcOverallScore(value, `${doc.data().stars}`, tagarray);
+
+      //comment.setAttribute(&quot;max-of-rate&quot;, rater.max);
+      //comment.setAttribute(&quot;topic-name&quot;, thing.textContent);
+      comment.allDisabled = false; // this will initialize the comment
+      if (doc.data().disableRateTag === &quot;0&quot;) {
+        comment.showRating = true;
+        comment.showTags = true;
+      }
+      comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
+
+      wrapper.style = &quot;display: block&quot;;
+      window.location.href = &quot;#wrapper&quot;;
+    }
+    else {
+      window.alert(&quot;No search hit!&quot;);
+      //wrapper.style = &quot;display: none&quot;;
+      //window.location.href = &quot;#title&quot;;
+    }
+  });
+}
 
 
+//  ------------------- function that get avg rating ----------------------- //
+function calcOverallScore(value, rateMax, tagarray) {
 
-<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
+  var ref = db.collection(`${value}`);
+  let stars = [];
+  let tags = {};
+  var i;
+  for (i = 0; i &lt; tagarray.length; i++) {
+    tags[tagarray[i]] = 0;
+  }
+
+  // get all comment doc from the collection
+  ref.get().then(snapshot =&gt; {
+
+    // go over each doc
+    snapshot.forEach(doc =&gt; {
+      if (doc.id != &quot;config&quot;) {
+        // stars
+        stars.push(Number(doc.data().star));
+        // tags
+        var tagData = `${doc.data().checked}`;
+        let tgs = tagData.split(&quot;,&quot;);
+        for (let i = 0; i &lt; tgs.length; i++) {
+          if (tgs[i] in tags) {
+            tags[tgs[i]] += 1;
+          }
+        }
+      }
+    });
+
+    overallrate.max = (rateMax === &quot;&quot;) ? &quot;5&quot; : rateMax;
+    if (stars.length &gt; 0) {
+      // after gor from each doc, process
+      let sum = stars.reduce((previous, current) =&gt; current += previous);
+      // set up overall rating score
+      overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
+    }
+    //if (tags.length &gt; 0) {
+    // the overall checked tags
+    for (let tagName in tags) {
+      var tag = document.createElement(&quot;button&quot;);
+      tag.type = &quot;button&quot;;
+      tag.className = &quot;btn btn-primary&quot;;
+      tag.innerHTML = tagName + &quot; &quot;;
+      tag.disabled = &quot;disabled&quot;;
+      var tagScore = document.createElement(&quot;span&quot;);
+      tagScore.className = &quot;badge badge-light&quot;;
+      tagScore.innerHTML = tags[tagName].toString();
+      tag.appendChild(tagScore);
+      overalltags.appendChild(tag);
+    }
+    //}
+    /*
+    else {
+      if (!tagarray || (tagarray.length &lt;= 1 &amp;&amp; tagarray[0].length == 0) )
+        return;
+      var i;
       
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>constructor that creates the CECoreHello component</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
-<div data-ice="memberSummary"><h2>Member Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">Public Members</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html#instance-member-innerHTML">innerHTML</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
+      for (i = 0; i &lt; tagarray.length; i++) {
+        var tag = document.createElement(&quot;button&quot;);
+        tag.type = &quot;button&quot;;
+        tag.className = &quot;btn btn-primary&quot;;
+        tag.innerHTML = tagarray[i] + &quot; &quot;;
+        var tagScore = document.createElement(&quot;span&quot;);
+        tagScore.className = &quot;badge badge-light&quot;;
+        tagScore.innerHTML = &quot;0&quot;;
+        tag.appendChild(tagScore);
+        overalltags.appendChild(tag);
+      }
+    }*/
 
-
-
-
-
-
-<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
-
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-constructor-constructor">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/pages/webcomponent/script/CECoreHello.js.html#lineNumber8">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>constructor that creates the CECoreHello component</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-</div>
-<div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
-
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-innerHTML">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">innerHTML</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/pages/webcomponent/script/CECoreHello.js.html#lineNumber23">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-</div>
+  }).catch(err =&gt; {
+    // eslint-disable-next-line no-console
+    console.log(&quot;Error getting documents&quot;, err);
+  });
+}
+</code></pre>
 
 </div>
 

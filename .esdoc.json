@@ -21,7 +21,9 @@
         "asset": "./manual/asset",
         "files": [
           "./manual/installation.md",
-          "./manual/changelog.md"
+          "./manual/changelog.md",
+          "./manual/webcomponents.md",
+          "./manual/checkbox.md"
         ]
 		  }
 	  }

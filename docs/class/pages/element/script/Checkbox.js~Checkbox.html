@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">Checkbox | team7</title>
+  <title data-ice="title">Checkbox | rater-and-checkbox</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="team7"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
   <a href="./">Home</a>
-  
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
-  
+  <a href="test.html" data-ice="testLink">Test</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -31,10 +31,35 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html">Comment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html">Upload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listTemplate">listTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-databaseService">databaseService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-firebaseConfig">firebaseConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageRef">storageRef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageService">storageService</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
@@ -45,7 +70,7 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Checkbox} from &apos;<span><a href="file/pages/element/script/Checkbox.js.html#lineNumber230">team7/pages/element/script/Checkbox.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Checkbox} from &apos;<span><a href="file/pages/element/script/Checkbox.js.html#lineNumber230">rater-and-checkbox/pages/element/script/Checkbox.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
@@ -172,7 +197,7 @@ be available yet.</p>
     <td>
       <span class="access" data-ice="access">public</span>
       
-      <span class="kind" data-ice="kind">get</span>
+      <span class="kind" data-ice="kind">set</span>
       
       <span class="override" data-ice="override"></span>
     </td>
@@ -182,7 +207,7 @@ be available yet.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html#instance-get-border">border</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html#instance-set-border">border</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -200,7 +225,7 @@ be available yet.</p>
     <td>
       <span class="access" data-ice="access">public</span>
       
-      <span class="kind" data-ice="kind">set</span>
+      <span class="kind" data-ice="kind">get</span>
       
       <span class="override" data-ice="override"></span>
     </td>
@@ -210,7 +235,7 @@ be available yet.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html#instance-set-border">border</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html#instance-get-border">border</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -788,6 +813,36 @@ update the size of the border</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html#instance-method-insertOutsideClass">insertOutsideClass</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p><code>insertOutsideClass()</code> is called to insert css rules of the class names in
+<code>class</code> attribute into the shadowDOM&apos;s stylesheet</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html#instance-method-onBoxClick">onBoxClick</a></span></span><span class="code" data-ice="signature">(event: <span>Event</span>)</span>
         </p>
       </div>
@@ -854,7 +909,7 @@ attributes are changed and will update <code>v-model</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber395">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber456">source</a></span></span>
     </span>
   </h3>
 
@@ -957,10 +1012,10 @@ be available yet.</p>
 <div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
 
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-border">
+  <h3 data-ice="anchor" id="instance-set-border">
     <span class="access" data-ice="access">public</span>
     
-    <span class="kind" data-ice="kind">get</span>
+    <span class="kind" data-ice="kind">set</span>
     
     
     
@@ -968,7 +1023,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber503">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber558">source</a></span></span>
     </span>
   </h3>
 
@@ -1000,10 +1055,10 @@ be available yet.</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-set-border">
+  <h3 data-ice="anchor" id="instance-get-border">
     <span class="access" data-ice="access">public</span>
     
-    <span class="kind" data-ice="kind">set</span>
+    <span class="kind" data-ice="kind">get</span>
     
     
     
@@ -1011,7 +1066,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber494">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber567">source</a></span></span>
     </span>
   </h3>
 
@@ -1054,7 +1109,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber470">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber534">source</a></span></span>
     </span>
   </h3>
 
@@ -1097,7 +1152,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber479">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber543">source</a></span></span>
     </span>
   </h3>
 
@@ -1140,7 +1195,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber456">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber520">source</a></span></span>
     </span>
   </h3>
 
@@ -1183,7 +1238,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber465">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber529">source</a></span></span>
     </span>
   </h3>
 
@@ -1226,7 +1281,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber446">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber510">source</a></span></span>
     </span>
   </h3>
 
@@ -1269,7 +1324,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber451">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber515">source</a></span></span>
     </span>
   </h3>
 
@@ -1312,7 +1367,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber484">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber548">source</a></span></span>
     </span>
   </h3>
 
@@ -1355,7 +1410,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber489">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber553">source</a></span></span>
     </span>
   </h3>
 
@@ -1398,7 +1453,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber508">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber572">source</a></span></span>
     </span>
   </h3>
 
@@ -1441,7 +1496,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber518">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber582">source</a></span></span>
     </span>
   </h3>
 
@@ -1484,7 +1539,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber436">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber500">source</a></span></span>
     </span>
   </h3>
 
@@ -1527,7 +1582,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber441">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber505">source</a></span></span>
     </span>
   </h3>
 
@@ -1616,7 +1671,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber407">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber468">source</a></span></span>
     </span>
   </h3>
 
@@ -1882,6 +1937,51 @@ checbox-r is changed</p>
   
   <div data-ice="description"><p><code>handleSize()</code> is called when the <code>size</code> changes and will
 update the size of the border</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-insertOutsideClass">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">insertOutsideClass</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/pages/element/script/Checkbox.js.html#lineNumber390">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p><code>insertOutsideClass()</code> is called to insert css rules of the class names in
+<code>class</code> attribute into the shadowDOM&apos;s stylesheet</p>
 </div>
 
   

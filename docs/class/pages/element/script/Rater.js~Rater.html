@@ -3,20 +3,20 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">Rater | team7</title>
+  <title data-ice="title">Rater | rater-and-checkbox</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="team7"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
   <a href="./">Home</a>
-  
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
   <a href="identifiers.html">Reference</a>
   <a href="source.html">Source</a>
-  
+  <a href="test.html" data-ice="testLink">Test</a>
   <div class="search-box">
   <span>
     <img src="./image/search.png">
@@ -31,10 +31,35 @@
     
   <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html">Comment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html">Upload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listTemplate">listTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-databaseService">databaseService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-firebaseConfig">firebaseConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageRef">storageRef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageService">storageService</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
@@ -45,7 +70,7 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Rater} from &apos;<span><a href="file/pages/element/script/Rater.js.html#lineNumber142">team7/pages/element/script/Rater.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Rater} from &apos;<span><a href="file/pages/element/script/Rater.js.html#lineNumber142">rater-and-checkbox/pages/element/script/Rater.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
@@ -396,34 +421,6 @@ be available yet.</p>
     <td>
       <span class="access" data-ice="access">public</span>
       
-      <span class="kind" data-ice="kind">get</span>
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-disabledVoidIcon">disabledVoidIcon</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
       <span class="kind" data-ice="kind">set</span>
       
       <span class="override" data-ice="override"></span>
@@ -462,7 +459,7 @@ be available yet.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-highThreshold">highThreshold</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-disabledVoidIcon">disabledVoidIcon</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -518,7 +515,7 @@ be available yet.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-icons">icons</a></span></span><span class="code" data-ice="signature">: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span><span>[]</span></span></span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-highThreshold">highThreshold</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
@@ -547,6 +544,34 @@ be available yet.</p>
           
           
           <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-set-icons">icons</a></span></span><span class="code" data-ice="signature">: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span><span>[]</span></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      <span class="kind" data-ice="kind">get</span>
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-icons">icons</a></span></span><span class="code" data-ice="signature">: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span><span>[]</span></span></span>
         </p>
       </div>
       <div>
@@ -788,34 +813,6 @@ be available yet.</p>
     <td>
       <span class="access" data-ice="access">public</span>
       
-      <span class="kind" data-ice="kind">get</span>
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-showText">showText</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
       <span class="kind" data-ice="kind">set</span>
       
       <span class="override" data-ice="override"></span>
@@ -844,7 +841,7 @@ be available yet.</p>
     <td>
       <span class="access" data-ice="access">public</span>
       
-      <span class="kind" data-ice="kind">set</span>
+      <span class="kind" data-ice="kind">get</span>
       
       <span class="override" data-ice="override"></span>
     </td>
@@ -854,7 +851,7 @@ be available yet.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-set-textColor">textColor</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-showText">showText</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
         </p>
       </div>
       <div>
@@ -883,6 +880,34 @@ be available yet.</p>
           
           
           <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-textColor">textColor</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      <span class="kind" data-ice="kind">set</span>
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-set-textColor">textColor</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -956,34 +981,6 @@ be available yet.</p>
     <td>
       <span class="access" data-ice="access">public</span>
       
-      <span class="kind" data-ice="kind">get</span>
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-valueModel">valueModel</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
       <span class="kind" data-ice="kind">set</span>
       
       <span class="override" data-ice="override"></span>
@@ -1022,7 +1019,7 @@ be available yet.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-voidColor">voidColor</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-valueModel">valueModel</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
         </p>
       </div>
       <div>
@@ -1051,6 +1048,34 @@ be available yet.</p>
           
           
           <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-set-voidColor">voidColor</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+        </p>
+      </div>
+      <div>
+        
+        
+        
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      <span class="kind" data-ice="kind">get</span>
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-get-voidColor">voidColor</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
         </p>
       </div>
       <div>
@@ -1230,7 +1255,7 @@ and will disable the rater accordingly</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-handleMax">handleMax</a></span></span><span class="code" data-ice="signature">(oldValue: <span>*</span>, newValue: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-handleMax">handleMax</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
       <div>
@@ -1260,7 +1285,7 @@ update the number of icons accordingly</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-handleShowScoreAndText">handleShowScoreAndText</a></span></span><span class="code" data-ice="signature">(scoreVal: <span>*</span>, textVal: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-handleShowScoreAndText">handleShowScoreAndText</a></span></span><span class="code" data-ice="signature">(scoreVal: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, textVal: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
         </p>
       </div>
       <div>
@@ -1290,7 +1315,7 @@ or <code>show-score</code> attribute is changed and will update the display of t
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-handleTextColor">handleTextColor</a></span></span><span class="code" data-ice="signature">(newValue: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-handleTextColor">handleTextColor</a></span></span><span class="code" data-ice="signature">(newValue: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
         </p>
       </div>
       <div>
@@ -1320,7 +1345,7 @@ and will update the text color</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-handleValueModel">handleValueModel</a></span></span><span class="code" data-ice="signature">(newValue: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-handleValueModel">handleValueModel</a></span></span><span class="code" data-ice="signature">(newValue: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
         </p>
       </div>
       <div>
@@ -1328,6 +1353,36 @@ and will update the text color</p>
         
         <div data-ice="description"><p><code>handleValueModel()</code> is called when the <code>v-model</code> attribute is changed
 and will update the number of selected icons accordingly</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html#instance-method-insertOutsideClass">insertOutsideClass</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p><code>insertOutsideClass()</code> is called to insert css rules of the class names in
+<code>class</code> attribute into the shadowDOM&apos;s stylesheet</p>
 </div>
       </div>
     </td>
@@ -1535,7 +1590,7 @@ attributes are changed and it will update the icons accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber515">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber608">source</a></span></span>
     </span>
   </h3>
 
@@ -1649,7 +1704,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber725">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber853">source</a></span></span>
     </span>
   </h3>
 
@@ -1692,7 +1747,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber730">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber858">source</a></span></span>
     </span>
   </h3>
 
@@ -1735,7 +1790,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber608">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber736">source</a></span></span>
     </span>
   </h3>
 
@@ -1778,7 +1833,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber613">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber741">source</a></span></span>
     </span>
   </h3>
 
@@ -1821,7 +1876,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber618">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber746">source</a></span></span>
     </span>
   </h3>
 
@@ -1864,7 +1919,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber627">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber755">source</a></span></span>
     </span>
   </h3>
 
@@ -1907,7 +1962,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber751">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber879">source</a></span></span>
     </span>
   </h3>
 
@@ -1950,50 +2005,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber756">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-disabledVoidIcon">
-    <span class="access" data-ice="access">public</span>
-    
-    <span class="kind" data-ice="kind">get</span>
-    
-    
-    
-    <span class="code" data-ice="name">disabledVoidIcon</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber790">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber884">source</a></span></span>
     </span>
   </h3>
 
@@ -2036,7 +2048,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber785">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber913">source</a></span></span>
     </span>
   </h3>
 
@@ -2068,18 +2080,18 @@ be available yet.</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-highThreshold">
+  <h3 data-ice="anchor" id="instance-get-disabledVoidIcon">
     <span class="access" data-ice="access">public</span>
     
     <span class="kind" data-ice="kind">get</span>
     
     
     
-    <span class="code" data-ice="name">highThreshold</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
+    <span class="code" data-ice="name">disabledVoidIcon</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber720">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber918">source</a></span></span>
     </span>
   </h3>
 
@@ -2122,7 +2134,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber715">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber843">source</a></span></span>
     </span>
   </h3>
 
@@ -2154,18 +2166,18 @@ be available yet.</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-icons">
+  <h3 data-ice="anchor" id="instance-get-highThreshold">
     <span class="access" data-ice="access">public</span>
     
     <span class="kind" data-ice="kind">get</span>
     
     
     
-    <span class="code" data-ice="name">icons</span><span class="code" data-ice="signature">: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span><span>[]</span></span></span>
+    <span class="code" data-ice="name">highThreshold</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber766">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber848">source</a></span></span>
     </span>
   </h3>
 
@@ -2208,7 +2220,50 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber761">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber889">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-get-icons">
+    <span class="access" data-ice="access">public</span>
+    
+    <span class="kind" data-ice="kind">get</span>
+    
+    
+    
+    <span class="code" data-ice="name">icons</span><span class="code" data-ice="signature">: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span><span>[]</span></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber894">source</a></span></span>
     </span>
   </h3>
 
@@ -2251,7 +2306,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber705">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber833">source</a></span></span>
     </span>
   </h3>
 
@@ -2294,7 +2349,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber710">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber838">source</a></span></span>
     </span>
   </h3>
 
@@ -2337,7 +2392,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber598">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber726">source</a></span></span>
     </span>
   </h3>
 
@@ -2380,7 +2435,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber603">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber731">source</a></span></span>
     </span>
   </h3>
 
@@ -2423,7 +2478,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber695">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber823">source</a></span></span>
     </span>
   </h3>
 
@@ -2466,7 +2521,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber700">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber828">source</a></span></span>
     </span>
   </h3>
 
@@ -2509,7 +2564,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber632">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber760">source</a></span></span>
     </span>
   </h3>
 
@@ -2552,50 +2607,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber641">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-showText">
-    <span class="access" data-ice="access">public</span>
-    
-    <span class="kind" data-ice="kind">get</span>
-    
-    
-    
-    <span class="code" data-ice="name">showText</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber665">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber769">source</a></span></span>
     </span>
   </h3>
 
@@ -2638,7 +2650,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber656">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber784">source</a></span></span>
     </span>
   </h3>
 
@@ -2670,18 +2682,18 @@ be available yet.</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-set-textColor">
+  <h3 data-ice="anchor" id="instance-get-showText">
     <span class="access" data-ice="access">public</span>
     
-    <span class="kind" data-ice="kind">set</span>
+    <span class="kind" data-ice="kind">get</span>
     
     
     
-    <span class="code" data-ice="name">textColor</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="code" data-ice="name">showText</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Boolean">boolean</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber651">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber793">source</a></span></span>
     </span>
   </h3>
 
@@ -2724,7 +2736,50 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber646">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber774">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-set-textColor">
+    <span class="access" data-ice="access">public</span>
+    
+    <span class="kind" data-ice="kind">set</span>
+    
+    
+    
+    <span class="code" data-ice="name">textColor</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber779">source</a></span></span>
     </span>
   </h3>
 
@@ -2767,7 +2822,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber670">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber798">source</a></span></span>
     </span>
   </h3>
 
@@ -2810,50 +2865,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber675">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-valueModel">
-    <span class="access" data-ice="access">public</span>
-    
-    <span class="kind" data-ice="kind">get</span>
-    
-    
-    
-    <span class="code" data-ice="name">valueModel</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber593">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber803">source</a></span></span>
     </span>
   </h3>
 
@@ -2896,7 +2908,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber588">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber716">source</a></span></span>
     </span>
   </h3>
 
@@ -2928,18 +2940,18 @@ be available yet.</p>
   
 </div>
 <div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-get-voidColor">
+  <h3 data-ice="anchor" id="instance-get-valueModel">
     <span class="access" data-ice="access">public</span>
     
     <span class="kind" data-ice="kind">get</span>
     
     
     
-    <span class="code" data-ice="name">voidColor</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="code" data-ice="name">valueModel</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber746">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber721">source</a></span></span>
     </span>
   </h3>
 
@@ -2982,7 +2994,50 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber741">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber869">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-get-voidColor">
+    <span class="access" data-ice="access">public</span>
+    
+    <span class="kind" data-ice="kind">get</span>
+    
+    
+    
+    <span class="code" data-ice="name">voidColor</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber874">source</a></span></span>
     </span>
   </h3>
 
@@ -3025,7 +3080,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber775">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber903">source</a></span></span>
     </span>
   </h3>
 
@@ -3068,7 +3123,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber780">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber908">source</a></span></span>
     </span>
   </h3>
 
@@ -3114,7 +3169,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber532">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber626">source</a></span></span>
     </span>
   </h3>
 
@@ -3236,7 +3291,7 @@ It&apos;s a good place to set the initial attribute values and install event lis
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber387">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber410">source</a></span></span>
     </span>
   </h3>
 
@@ -3277,11 +3332,11 @@ and will disable the rater accordingly</p>
     
     
     
-    <span class="code" data-ice="name">handleMax</span><span class="code" data-ice="signature">(oldValue: <span>*</span>, newValue: <span>*</span>)</span>
+    <span class="code" data-ice="name">handleMax</span><span class="code" data-ice="signature">()</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber354">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber372">source</a></span></span>
     </span>
   </h3>
 
@@ -3294,29 +3349,7 @@ update the number of icons accordingly</p>
 
   
 
-  <div data-ice="properties"><div data-ice="properties">
-  <h4 data-ice="title">Params:</h4>
-  <table class="params">
-    <thead>
-    <tr><td>Name</td><td>Type</td><td>Attribute</td><td>Description</td></tr>
-    </thead>
-    <tbody>
-    
-    <tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">oldValue</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-<tr data-ice="property" data-depth="0">
-      <td data-ice="name" class="code" data-depth="0">newValue</td>
-      <td data-ice="type" class="code"><span>*</span></td>
-      <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
-    </tr>
-</tbody>
-  </table>
-</div>
+  <div data-ice="properties">
 </div>
 
   
@@ -3344,11 +3377,11 @@ update the number of icons accordingly</p>
     
     
     
-    <span class="code" data-ice="name">handleShowScoreAndText</span><span class="code" data-ice="signature">(scoreVal: <span>*</span>, textVal: <span>*</span>)</span>
+    <span class="code" data-ice="name">handleShowScoreAndText</span><span class="code" data-ice="signature">(scoreVal: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, textVal: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber407">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber432">source</a></span></span>
     </span>
   </h3>
 
@@ -3371,15 +3404,17 @@ or <code>show-score</code> attribute is changed and will update the display of t
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">scoreVal</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the score value</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">textVal</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the text content</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -3411,7 +3446,7 @@ or <code>show-score</code> attribute is changed and will update the display of t
     
     
     
-    <span class="code" data-ice="name">handleTextColor</span><span class="code" data-ice="signature">(newValue: <span>*</span>)</span>
+    <span class="code" data-ice="name">handleTextColor</span><span class="code" data-ice="signature">(newValue: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>)</span>
     <span class="right-info">
       
       
@@ -3438,9 +3473,10 @@ and will update the text color</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">newValue</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>new color</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -3472,11 +3508,11 @@ and will update the text color</p>
     
     
     
-    <span class="code" data-ice="name">handleValueModel</span><span class="code" data-ice="signature">(newValue: <span>*</span>)</span>
+    <span class="code" data-ice="name">handleValueModel</span><span class="code" data-ice="signature">(newValue: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber329">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber330">source</a></span></span>
     </span>
   </h3>
 
@@ -3499,13 +3535,59 @@ and will update the number of selected icons accordingly</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">newValue</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>new value model number</p>
+</td>
     </tr>
 </tbody>
   </table>
 </div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-insertOutsideClass">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">insertOutsideClass</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber538">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p><code>insertOutsideClass()</code> is called to insert css rules of the class names in
+<code>class</code> attribute into the shadowDOM&apos;s stylesheet</p>
+</div>
+
+  
+
+  <div data-ice="properties">
 </div>
 
   
@@ -3537,7 +3619,7 @@ and will update the number of selected icons accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber233">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber231">source</a></span></span>
     </span>
   </h3>
 
@@ -3599,7 +3681,7 @@ set the current rate value, or the value model</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber245">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber243">source</a></span></span>
     </span>
   </h3>
 
@@ -3661,7 +3743,7 @@ the value back to current rate value</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber258">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber256">source</a></span></span>
     </span>
   </h3>
 
@@ -3723,7 +3805,7 @@ set the start img and text contents</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber422">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber447">source</a></span></span>
     </span>
   </h3>
 
@@ -3768,7 +3850,7 @@ attributes are changed and will update the color of the icons accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber460">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber488">source</a></span></span>
     </span>
   </h3>
 
@@ -3813,7 +3895,7 @@ attributes are changed and it will update the icons accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber275">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Rater.js.html#lineNumber273">source</a></span></span>
     </span>
   </h3>
 

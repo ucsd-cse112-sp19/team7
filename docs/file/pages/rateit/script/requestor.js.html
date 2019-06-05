@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">CECoreHello | rater-and-checkbox</title>
+  <title data-ice="title">pages/rateit/script/requestor.js | rater-and-checkbox</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
@@ -69,218 +69,77 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {CECoreHello} from &apos;<span><a href="file/pages/webcomponent/script/CECoreHello.js.html#lineNumber4">rater-and-checkbox/pages/webcomponent/script/CECoreHello.js</a></span>&apos;</code></pre></div>
-  <span data-ice="access">public</span>
-  <span data-ice="kind">class</span>
-  
-  
-  
-  <span data-ice="source">| <span><a href="file/pages/webcomponent/script/CECoreHello.js.html#lineNumber4">source</a></span></span>
-</div>
+<div class="content" data-ice="content"><h1 data-ice="title">pages/rateit/script/requestor.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { databaseService } from &quot;../../element/script/init_firebase.js&quot;;
+//import { isPropertyAccessExpression } from &quot;typescript&quot;;
 
-<div class="self-detail detail">
-  <h1 data-ice="name">CECoreHello</h1>
+// eslint-disable-next-line no-undef
+var db = firebase.firestore();
+var tags = [];
+/* This is the star bug
+var stars = document.getElementById(&quot;stars&quot;).value;
+if(stars == null) {
+  stars = 5;
+  console.log(&quot;start not specified&quot;)
+}*/
 
-  
+document.getElementById(&quot;add&quot;).addEventListener(&quot;click&quot;, function () {
+  var tagValue = document.getElementById(&quot;tag&quot;).value;
+  if (tagValue.trim().length == 0)
+    return;
+  tags.push(tagValue);
 
-  
-  
-  <div class="flat-list" data-ice="extendsChain"><h4>Extends:</h4><div><span>HTMLElement</span> &#x2192; CECoreHello</div></div>
-  
-  
-  
-  
-  
-  
+  // create the badge for tag
+  var tag = document.createElement(&quot;button&quot;);
+  tag.type = &quot;button&quot;;
+  tag.className = &quot;btn btn-primary&quot;;
+  tag.innerHTML = tagValue;
+  tag.disabled = &quot;disabled&quot;;
 
-  
-  
-  <div class="description" data-ice="description"><p>CECoreHello class @extends {HTMLElement}</p>
-</div>
-  
+  document.getElementById(&quot;tagarray&quot;).appendChild(tag);
+  document.getElementById(&quot;tag&quot;).value = &quot;&quot;;
+});
 
-  
+document.getElementById(&quot;submit&quot;).addEventListener(&quot;click&quot;, function () {
 
-  
+  var stars = document.getElementById(&quot;stars&quot;).value;
+  if (stars == null) {
+    stars = 5;
+    //console.log(&quot;start not specified&quot;)
+  }
 
-  
+  var isPrivate = document.getElementById(&quot;ckb-isprivate&quot;).checked ? &quot;1&quot; : &quot;0&quot;;
+  var disableRateTag = document.getElementById(&quot;ckb&quot;).checked ? &quot;1&quot; : &quot;0&quot;;
+  var titleText = document.getElementById(&quot;title&quot;).value;
+  var id = databaseService.ref(`${titleText}`).push().key;
+  var img = document.getElementById(&quot;upload&quot;).shadowRoot.querySelector(&quot;a.el-upload-list__item-name&quot;).innerHTML;
+  img = img.split(&quot;--&gt;&quot;)[1].trim();
 
-  
-</div>
-
-
-
-<div data-ice="constructorSummary"><h2>Constructor Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">Public Constructor</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html#instance-constructor-constructor">constructor</a></span></span><span class="code" data-ice="signature">()</span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>constructor that creates the CECoreHello component</p>
-</div>
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
-<div data-ice="memberSummary"><h2>Member Summary</h2><table class="summary" data-ice="summary">
-  <thead><tr><td data-ice="title" colspan="3">Public Members</td></tr></thead>
-  <tbody>
-  
-  <tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          
-          <span class="code" data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html#instance-member-innerHTML">innerHTML</a></span></span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-</tbody>
-</table>
-</div>
+  db.collection(`${titleText}`).doc(&quot;config&quot;).set({
+    stars: `${stars}`,
+    tags: `${tags}`,
+    des: `${document.getElementById(&quot;des&quot;).value}`,
+    // eslint-disable-next-line no-undef
+    sent: firebase.firestore.Timestamp.fromDate(new Date()),
+    id: `${id}`,
+    isPrivate: `${isPrivate}`,
+    disableRateTag: `${disableRateTag}`,
+    image: `${img}`
+  }).then(result =&gt; { 
+    // submission succeeded
+    document.getElementById(&quot;submitted&quot;).innerHTML = &quot;Request Submitted!&quot;;
+    window.location.href = &quot;evaluator.html?lookup=&quot; + titleText.replace(&quot; &quot;, &quot;\\_&quot;) + &quot;%&quot; + id;
+    window.alert(&quot;Share this link to let others rate it!&quot;);
+    // eslint-disable-next-line no-console
+    console.log(result);
+  }).catch(err =&gt; {
+    // eslint-disable-next-line no-console
+    console.log(&quot;Error: &quot; + err);
+  });
 
 
-
-
-
-
-<div data-ice="constructorDetails"><h2 data-ice="title">Public Constructors</h2>
-
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-constructor-constructor">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">constructor</span><span class="code" data-ice="signature">()</span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/pages/webcomponent/script/CECoreHello.js.html#lineNumber8">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>constructor that creates the CECoreHello component</p>
-</div>
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-</div>
-<div data-ice="memberDetails"><h2 data-ice="title">Public Members</h2>
-
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-innerHTML">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span class="code" data-ice="name">innerHTML</span><span class="code" data-ice="signature">: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/pages/webcomponent/script/CECoreHello.js.html#lineNumber23">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-</div>
+});
+</code></pre>
 
 </div>
 

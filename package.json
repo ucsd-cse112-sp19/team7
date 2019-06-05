@@ -70,6 +70,7 @@
   "dependencies": {
     "csslint": "^1.0.5",
     "element-ui": "^2.8.2",
+    "esdoc-inject-script-plugin": "^1.0.0",
     "esdoc-inject-style-plugin": "^1.0.0",
     "esdoc-integrate-manual-plugin": "^1.0.0",
     "vue": "^2.6.10"

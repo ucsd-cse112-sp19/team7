@@ -35,6 +35,15 @@
           "./manual/manualstyle.css"
         ]
       }
+    },
+    {
+      "name": "esdoc-inject-script-plugin", 
+      "option": {
+        "enable": true, "scripts": [
+          "./manual/manualscripts.js",
+          "./pages/element/script/Checkbox.js"
+        ]
+      }  
     }
   ]
 }

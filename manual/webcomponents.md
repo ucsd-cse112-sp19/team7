@@ -1,17 +1,19 @@
 # Web Components
 
+## Core Hello
+<core-hello>Jaz</core-hello>
 ## Checkbox
 
-### Attributes:
+### Attributes
 
 ## Rater
 
-### Attributes:
+### Attributes
 
 ## Comment
 
-### Attributes:
+### Attributes
 
 ## Upload
 
-### Attributes: 
+### Attributes

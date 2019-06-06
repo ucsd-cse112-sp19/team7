@@ -1,7 +1,9 @@
+<pre><code data-trim>
 <script>
 document.getElementsByTagName("p").style.color = "green";
 document.getElementById("test").style.color = "green"
 </script>
+</code></pre>
 <p id = "test">Hi Hello</p>
 # Web Components
 

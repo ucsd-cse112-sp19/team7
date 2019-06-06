@@ -1,5 +1,8 @@
-<script>document.getElementsByTagName("p").style.color = "green";</script>
-<p>Hi Hello</p>
+<script>
+document.getElementsByTagName("p").style.color = "green";
+document.getElementById("test").style.color = "green"
+</script>
+<p id = "test">Hi Hello</p>
 # Web Components
 
 ## Core Hello

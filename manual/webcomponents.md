@@ -1,3 +1,4 @@
+<script>document.getElementsByTagName("h2").style.color = "green";</script>
 # Web Components
 
 ## Core Hello

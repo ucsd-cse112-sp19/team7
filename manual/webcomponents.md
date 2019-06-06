@@ -1,6 +1,5 @@
 
-<p id = "test">Hi Hello</p>
-<pre><code data-trim>
+<p id = "test">Hi Hello</p><pre><code data-trim>
 <script>
 document.getElementsByTagName("p").style.color = "green";
 document.getElementById("test").style.color = "green"

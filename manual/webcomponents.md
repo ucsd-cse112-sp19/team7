@@ -5,6 +5,11 @@ document.getElementsByTagName("p").style.color = "green";
 document.getElementById("test").style.color = "green"
 </script>
 </code></pre>
+
+<script>
+document.getElementsByTagName("p").style.color = "green";
+document.getElementById("test").style.color = "green"
+</script>
 # Web Components
 
 ## Core Hello

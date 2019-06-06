@@ -4298,7 +4298,7 @@
     "kind": "manual",
     "longname": "C:\\Users\\DanXa\\Documents\\cse112\\team7\\manual\\webcomponents.md",
     "name": "./manual/webcomponents.md",
-    "content": "<script>\r\ndocument.getElementsByTagName(\"p\").style.color = \"green\";\r\ndocument.getElementById(\"test\").style.color = \"green\"\r\n</script>\r\n<p id = \"test\">Hi Hello</p>\r\n# Web Components\r\n\r\n## Core Hello\r\n\r\n<core-hello>Jaz</core-hello>\r\n## Checkbox\r\n\r\n<sds-checkbox></sds-checkbox>\r\n### Attributes\r\n\r\n## Rater\r\n\r\n### Attributes\r\n\r\n## Comment\r\n\r\n### Attributes\r\n\r\n## Upload\r\n\r\n### Attributes",
+    "content": "<pre><code data-trim>\r\n<script>\r\ndocument.getElementsByTagName(\"p\").style.color = \"green\";\r\ndocument.getElementById(\"test\").style.color = \"green\"\r\n</script>\r\n</code></pre>\r\n<p id = \"test\">Hi Hello</p>\r\n# Web Components\r\n\r\n## Core Hello\r\n\r\n<core-hello>Jaz</core-hello>\r\n## Checkbox\r\n\r\n<sds-checkbox></sds-checkbox>\r\n### Attributes\r\n\r\n## Rater\r\n\r\n### Attributes\r\n\r\n## Comment\r\n\r\n### Attributes\r\n\r\n## Upload\r\n\r\n### Attributes",
     "static": true,
     "access": "public"
   },

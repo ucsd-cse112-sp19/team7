@@ -86,5 +86,25 @@ describe("sds-rate unit", () => {
     " el-rate__icon    el-icon-star-off".should.equal(shadow.querySelector("#\\32").className);
    
   });
+
+  it("Unit test 7: check disabled attribute is correct", async () => {
+    rater.setAttribute("disabled", "");
+    var items = shadow.querySelectorAll("div span");
+    var i;
+    
+    for(i = 0; i < rater.max; i++) {
+      expect(items[i].className).to.include('disabled')
+    }
+  });
+
+  it("Unit test 8: check disabled attribute is correct", async () => {
+    rater.setAttribute("disabled", "");
+    var items = shadow.querySelectorAll("div span");
+    var i;
+    
+    for(i = 0; i < rater.max; i++) {
+      expect(items[i].className).to.include('disabled')
+    }
+  });
   
 });

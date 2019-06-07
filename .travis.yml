@@ -15,7 +15,7 @@ addons:
 
 env:
   global:
-    - CC_TEST_REPORTER_ID=9e134fa353cc4364d2b074b55ae5a97cfade6d928a09d12aa26b1250b1bac9ab
+    - CC_TEST_REPORTER_ID=7ca960f531c6ceb4582a73bed29e062aa2cbaa88350ddc99ee063dd1f79ad2ad
 rvm:
   - 2.2.0
 before_script:

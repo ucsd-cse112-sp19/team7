@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">pages/element/script/Comment.js | rater-and-checkbox</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html">Comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html">Upload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listTemplate">listTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-databaseService">databaseService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-firebaseConfig">firebaseConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageRef">storageRef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageService">storageService</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-rateandtags">rateandtags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">pages/element/script/Comment.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">//import {storageRef} from &quot;./init_firebase.js&quot;;
+import {db} from &quot;./init_firebase.js&quot;;
+
+// eslint-disable-next-line no-undef
+//var db = firebase.firestore();
+
+const template = document.createElement(&quot;template&quot;);
+template.innerHTML = `
+  &lt;style&gt;
+    :host {
+    }
+    p {
+      font-size: 30px;
+    }
+    #title {
+      //font-family: &quot;Comic Sans MS&quot;, cursive, sans-serif;
+      font-size: 30px;
+    }
+    #box {
+      display: block;
+      min-width: 50%;
+      margin-top: 10px;
+    }
+    #box p {
+      font-size: 15px;
+    }
+    #name {
+      display: block;
+      padding-left: 4px;
+      margin-left: 20px;
+      background-color: #fff;
+      border-radius: 4px;
+      border: 1px solid #dcdfe6;
+      box-sizing: border-box;
+      color: #606fe6;
+      outline: none;
+      font-size: 20px;
+    }
+    #ratetext {
+      display: block;
+      margin-top: 20px;
+      margin-left: 20px;
+      cursor: default;
+    }
+    #rating {
+      display: block;
+      margin-top: 20px;
+      margin-left: 20px;
+    }
+    #comment {
+      display: block;
+      margin-top: 20px;
+      margin-left: 20px;
+      height: 100px;
+      width: 45%;
+      font-size: 14px;
+      box-sizing: border-box;
+      color: #606266;
+      background-color: #fff;
+      background-image: none;
+      border: 1px solid #dcdfe6;
+      border-radius: 4px
+      transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+    }
+    #submit {
+      display: block;
+      margin-top: 20px;
+      margin-left: 320px;
+      margin-bottom: 20px;
+      line-height: 1;
+      white-space: nowrap;
+      cursor: pointer;
+      color: #fff;
+      background: #fff;
+      background-color: #409eff;
+      border: 1px solid #dcdfe6;
+      border-color: #409eff;
+      border-radius: 4px;
+      text-align: center;
+      box-sizing: border-box;
+      font-weight: 500;
+      font-size: 20px;
+      padding: 12px 20px;
+      outline: none;
+    }
+
+    #entry {
+      display: block;
+      background: #27f9f6;
+      padding: 5px 20px;
+      border-radius: 5px;
+      box-shadow: 5px 8px;
+      margin-bottom: 10px;
+    }
+    #entry-name {
+      display: block;
+      height: auto; 
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: normal;
+      font-weight: bold;
+    }
+    #entry-body {
+      display: block;
+      height: auto; 
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: normal;
+    }
+    #tagtext {
+      margin-left: 20px;
+      font-size: 20px;
+    }
+    #tags {
+      style=&quot;font-size:30px;
+      margin-left: 20px;
+    }
+    #tagcontainer {
+      margin-left: 20px;
+      margin-top: 20px;
+    }
+    #entry-tags {
+      margin-top: 10px;
+    }
+    .badge {
+      margin-right: 10px;
+      background-color: rgb(247, 186, 42);
+      color: white;
+      padding: 4px 8px;
+      font-size: 15px;
+      border-radius: .25rem;
+    }
+    
+  &lt;/style&gt;
+  &lt;div&gt;
+    &lt;span id=&quot;title&quot;&gt;Reviews:&lt;/span&gt;
+    &lt;span id=&quot;box&quot;&gt;
+      &lt;!-- Other&apos;s comments go here --&gt;
+    &lt;/span&gt;
+    &lt;div id=&quot;formcontainer&quot;&gt;
+      &lt;p&gt;Write your own review:&lt;/p&gt;
+      &lt;input id=&quot;name&quot; placeholder=&quot;Name Here&quot;&gt;&lt;/input&gt;
+   
+      &lt;div id=&quot;tagcontainer&quot;&gt;
+        &lt;div id=&quot;tags&quot;&gt;
+          &lt;!-- checkboxes/tags will go here --&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    
+      &lt;div id=&quot;ratecontainer&quot;&gt;
+        &lt;sds-rate id=&quot;rating&quot; show-score score-template=&quot;{value} Points&quot;&gt;&lt;/sds-rate&gt;
+      &lt;/div&gt;
+      &lt;textarea id=&quot;comment&quot; placeholder=&quot;Your Thoughtful Comments Here...&quot;&gt;&lt;/textarea&gt;
+      &lt;button id=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+`;
+
+export class Comment extends HTMLElement {
+  constructor() {
+    super();
+    this.attachShadow({ mode: &quot;open&quot; });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  connectedCallback() {
+    // Set up attributes
+    //this.handleColor();
+    this.handleDisabled();
+    this.handleShowRating();
+    this.handleHideComment();
+    this.handleShowTags();
+
+    if (this.initWith != &quot;none&quot;) {
+      this.updateComment(this.initWith, 5);
+    }
+  }
+
+  updateComment(topicName, maxOfRate, tagarray = []) {
+    if (!topicName) {
+      window.alert(&quot;error&quot;);
+      return;
+    }
+    this.topicName = topicName;
+    this.maxOfRate = maxOfRate;
+
+    const shadow = this.shadowRoot;
+
+    // Gather all html elements from the shadow root for later use
+    //var title = shadow.querySelector(&quot;span#title&quot;);
+    //var msgbox = shadow.querySelector(&quot;span#box&quot;);
+    var username = shadow.querySelector(&quot;input#name&quot;);
+    //var ratetext = shadow.querySelector(&quot;span#ratetext&quot;);
+    var tags = shadow.querySelector(&quot;div#tags&quot;);
+    var rating = shadow.querySelector(&quot;sds-rate#rating&quot;);
+    var comment = shadow.querySelector(&quot;textarea#comment&quot;);
+    var submit = shadow.querySelector(&quot;button#submit&quot;);
+    //var entry = this.getAttribute(&quot;entry&quot;);
+
+    // Set up the input fields for the comment
+    while (tags.firstChild) { //clear all tags
+      tags.removeChild(tags.firstChild);
+    }
+
+    var i;
+    for (i = 0; i &lt; tagarray.length; i++) {
+      var box = document.createElement(&quot;sds-checkbox&quot;);
+      box.border = true;
+      box.innerHTML = tagarray[i];
+      tags.appendChild(box);
+    }
+    rating.max = maxOfRate;
+    
+    // Display other&apos;s comments
+    this.populateComments();
+
+    var commentElement = this;
+    // Upon pushing submit, add comment data to firebase
+    submit.addEventListener(&quot;click&quot;, function () {
+      if (username.value.length == 0) {
+        username.value = &quot;Anonymous&quot;;
+      }
+      var i;
+      var checkedList = [];
+      for (i = 0; i &lt; tags.childNodes.length; i++) {
+        if (tags.childNodes[i].checked == true) {
+          checkedList.push(tags.childNodes[i].innerHTML);
+        }
+      }
+      db.collection(`${commentElement.topicName}`).add({
+        user: `${username.value}`,
+        comment: `${comment.value}`,
+        star: `${rating.valueModel}`,
+        checked: checkedList,
+        // eslint-disable-next-line no-undef
+        sent: firebase.firestore.Timestamp.fromDate(new Date())
+      });
+      /*
+      username.value = &quot;&quot;;
+      rating.valueModel = 0;
+      rating.ratertext = &quot;&quot;;
+      comment.value = &quot;&quot;;*/
+
+      window.alert(&quot;Evaluation Submitted!&quot;);
+      //window.location.reload(true);
+    });
+  }
+
+  populateComments() {
+    var commenter = this;
+    var msgbox = this.shadowRoot.querySelector(&quot;span#box&quot;);
+    var title = this.shadowRoot.querySelector(&quot;span#title&quot;);
+    if (msgbox.querySelector(&quot;span&quot;))
+      msgbox.removeChild(msgbox.querySelector(&quot;span&quot;));
+    
+    var maxOfRate = this.maxOfRate;
+    
+    var counter = 0;
+    db.collection(`${this.topicName}`).orderBy(&quot;sent&quot;).onSnapshot(function (snapshot) {
+      snapshot.docChanges().forEach(function (change) {
+        if (change.doc.data().user == null) {
+          return;
+        }
+
+        // Parse the database, adding reviews to the msgbox span element
+        counter += 1;
+
+        var wrapper = document.createElement(&quot;span&quot;);
+        wrapper.id = &quot;entry&quot;;
+        var name = document.createElement(&quot;p&quot;);
+        var star = document.createElement(&quot;sds-rate&quot;);
+        star.showScore = true;
+        //star.style.display = &quot;none&quot;;
+        var body = document.createElement(&quot;p&quot;);
+        var checkedtags = document.createElement(&quot;div&quot;);
+        //checkedtags.style.display = &quot;none&quot;;
+
+        var i;
+        var checked = `${change.doc.data().checked}`;
+        var tagList = checked.split(&quot;,&quot;);
+        if (tagList.length &gt; 1 || tagList[0] != &quot;&quot;) {
+          for (i = 0; i &lt; tagList.length; i++) {
+            var tag = document.createElement(&quot;span&quot;);
+            tag.className = &quot;badge&quot;;
+            tag.innerHTML = tagList[i];
+            checkedtags.appendChild(tag);
+            //checkedtags.innerHTML += &quot;  &quot;;
+          }
+        }
+
+        //TODO id duplicates; should use class instead
+        name.id = &quot;entry-name&quot;;
+        body.id = &quot;entry-body&quot;;
+        star.id = &quot;entry-rating&quot;;
+        checkedtags.id = &quot;entry-tags&quot;;
+        name.innerHTML = `${change.doc.data().user} -- Posted on: `;
+        name.innerHTML += `${change.doc.data().sent.toDate()}` + &quot;&lt;br /&gt;&quot;;
+
+        star.max = maxOfRate; //TODO
+        star.valueModel = `${change.doc.data().star}`;
+        star.disabled = true;
+
+        body.innerHTML = `${change.doc.data().comment}` + &quot;&lt;br /&gt;&quot;;
+
+        wrapper.appendChild(name);
+        if (!commenter.showRating)
+          star.style.display = &quot;none&quot;;
+        wrapper.appendChild(star);
+        if (!commenter.showTags)
+          checkedtags.style.display = &quot;none&quot;;
+        wrapper.appendChild(checkedtags);
+        wrapper.appendChild(body);
+        msgbox.appendChild(wrapper);
+        title.textContent = &quot;Reviews: &quot; + &quot;(&quot; + counter + &quot;)&quot;;
+
+
+      });
+    });
+    this.handleShowRating();
+    this.handleShowTags();
+  }
+
+  /**
+   * `handleColor()` is called when the `color` attribute is changed and will 
+   *  update the color of the response backgrounds
+   */
+  handleColor() {
+    var value = this.color;
+    var styleSheet = this.shadowRoot.querySelector(&quot;style&quot;).sheet;
+    var i;
+    for (i = 0; i &lt; styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      if (rule.selectorText === &quot;#entry&quot;)
+        rule.style.background = value;
+    }
+  }
+
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute is changed
+   * and will disable the comment element accordingly
+   */
+  handleDisabled() {
+    var form = this.shadowRoot.querySelector(&quot;div#formcontainer&quot;);
+
+    if (this.disabled) {
+      form.style.display = &quot;none&quot;;
+    }
+
+    else {
+      form.style.display = &quot;block&quot;;
+    }
+  }
+
+  /**
+   * `handleShowRating()` is called when the &apos;show-rating&apos; attribute is changed
+   * and will hide the rating element in displayed reviews accordingly
+   */
+  handleShowRating() {
+    var matches = this.shadowRoot.querySelectorAll(&quot;sds-rate#entry-rating&quot;);
+    var ratecontainer = this.shadowRoot.querySelector(&quot;div#ratecontainer&quot;);
+
+    if (this.showRating) {
+      matches.forEach(function (rating) {
+        rating.style.display = &quot;block&quot;;
+      });
+      ratecontainer.style.display = &quot;block&quot;;
+    }
+
+    else {
+      matches.forEach(function (rating) {
+        rating.style.display = &quot;none&quot;;
+      });
+      ratecontainer.style.display = &quot;none&quot;;
+    }
+  }
+
+  /**
+   * `handleHideComment()` is called when the &apos;hide-comment&apos; attribute is changed
+   * and will hide the rating element in displayed reviews accordingly
+   */
+  handleHideComment() {
+    var matches = this.shadowRoot.querySelectorAll(&quot;p#entry-body&quot;);
+
+    if (this.hideComment) {
+      matches.forEach(function (comment) {
+        comment.style.display = &quot;none&quot;;
+      });
+    }
+
+    else {
+      matches.forEach(function (comment) {
+        comment.style.display = &quot;block&quot;;
+      });
+    }
+  }
+
+  /**
+   * `handleShowTags()` is called when the &apos;show-tags&apos; attribute is changed
+   * and will hide the rating element in displayed reviews accordingly
+   */
+  handleShowTags() {
+    var matches = this.shadowRoot.querySelectorAll(&quot;p#entry-tags&quot;);
+    var tagcontainer = this.shadowRoot.querySelector(&quot;div#tagcontainer&quot;);
+    if (this.showTags) {
+      matches.forEach(function (tags) {
+        tags.style.display = &quot;block&quot;;
+      });
+      tagcontainer.style.display = &quot;block&quot;;
+    }
+
+    else {
+      matches.forEach(function (tags) {
+        tags.style.display = &quot;none&quot;;
+      });
+      tagcontainer.style.display = &quot;none&quot;;
+    }
+  }
+
+  /**
+   * `insertOutsideClass()` is called to insert css rules of the class names in
+   * `class` attribute into the shadowDOM&apos;s stylesheet
+   */
+  insertOutsideClass() {
+    var rootStyleSheet = this.getRootNode().styleSheets;
+    var classArray = this.className.match(/\S+/g);
+    if (!classArray || classArray.length == 0)
+      return;
+
+    var k;
+    var tagArray = []; // the index corresponds to the index of classArray
+    for (k = 0; k &lt; classArray.length; k++) {
+      //console.log(everything[k]);
+      var class_tag = classArray[k].split(&quot;@&quot;);
+      if (class_tag.length == 1) {
+        classArray.splice(k, 1);
+        k--;
+      }
+      else {
+        classArray[k] = class_tag[0];
+        tagArray.push(class_tag[1]);
+      }
+    }
+
+    var shadowStyleSheet = this.shadowRoot.querySelector(&quot;style&quot;).sheet;
+    var i, j;
+    for (i = 0; i &lt; rootStyleSheet.length; i++) {
+      try {
+        var rules = rootStyleSheet[i].cssRules;
+        
+        for (j = 0; j &lt; rules.length; j++) {
+          for (k = 0; k &lt; classArray.length; k++) {
+            if (rules[j].selectorText 
+                &amp;&amp; rules[j].selectorText.includes(&quot;.&quot; + classArray[k])
+                &amp;&amp; (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != &quot;-&quot;
+                        &amp;&amp; !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                    )
+                ) 
+            ){
+              //console.log(rules[j].selectorText);
+              shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
+            }
+          }
+        }
+      }
+      catch (e) {
+        //console.log(e);
+        break;
+      }
+    }
+ 
+    //var everything = this.shadowRoot.querySelectorAll(&quot;*:not(style)&quot;);
+    for (k = 0; k &lt; classArray.length; k++) {
+      //console.log(everything[k]);
+      var items = this.shadowRoot.querySelectorAll(tagArray[k]);
+      for (i = 0; i &lt; items.length; i++) {
+        if (items[i].tagName == &quot;STYLE&quot;)
+          continue;
+        items[i].className += &quot; &quot; + classArray[k];
+      }
+    }
+  }
+
+
+
+
+
+  /**
+   * `observedAttributes()` returns an array of attributes whose changes will
+   * be handled in `attributeChangedCallback()`
+   * @return {string[]} array of attributes whose changes will be handled 
+   */
+  static get observedAttributes() {
+    return [
+      &quot;color&quot;, &quot;disabled&quot;, &quot;show-rating&quot;, &quot;hide-comment&quot;,
+      &quot;show-tags&quot;, &quot;all-disabled&quot;, &quot;max-of-rate&quot;, &quot;topic-Name&quot;, 
+      &quot;class&quot;, &quot;init-with&quot;
+    ];
+  }
+
+  /**
+   * `attributeChangedCallback()` is called when any of the attributes in the
+   * returned array of `observedAttributes()` are changed. It&apos;s a good place to 
+   * handle side effects
+   * @param {string} name - the name of the changed attribute
+   * @param {string} oldValue - the old value of the attribute
+   * @param {string} newValue - the new value of the attribute
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    // this is called also when loading the page initially, based on the initial attributes
+    switch (name) {
+    case &quot;color&quot;:
+      this.handleColor();
+      break;
+    case &quot;disabled&quot;:
+      this.handleDisabled();
+      break;
+    case &quot;show-rating&quot;:
+      this.handleShowRating();
+      break;
+    case &quot;hide-comment&quot;:
+      this.handleHideComment();
+      break;
+    case &quot;show-tags&quot;:
+      this.handleShowTags();
+      break;
+    case &quot;all-disabled&quot;:
+      if (this.allDisabled) {
+        this.style.display = &quot;none&quot;;
+      }
+      else {
+        this.style.display = &quot;block&quot;;
+        //this.updateComment();
+      }
+      break;
+    case &quot;no going to be called but just to avoid linting check&quot;:
+      window.alert(oldValue + newValue);
+      break;
+    case &quot;class&quot;:
+      this.insertOutsideClass();
+      break;
+    case &quot;init-with&quot;:
+      // nothing
+      break;
+    }
+  }
+
+  /** @type {string} */
+  get color() {
+    return this.getAttribute(&quot;color&quot;) || &quot;#27f9f6&quot;;
+  }
+
+  /** @type {string} */
+  set color(value) {
+    // Default value subject to change
+    this.setAttribute(&quot;color&quot;, value);
+  }
+
+  /** @type {boolean} */
+  get disabled() {
+    return this.hasAttribute(&quot;disabled&quot;);
+  }
+
+  /** @type {boolean} */
+  set disabled(value) {
+    const isDisabled = Boolean(value);
+    if (isDisabled)
+      this.setAttribute(&quot;disabled&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;disabled&quot;);
+  }
+
+  /** @type {boolean} */
+  get showRating() {
+    return this.hasAttribute(&quot;show-rating&quot;);
+  }
+
+  /** @type {boolean} */
+  set showRating(value) {
+    const isShownRating = Boolean(value);
+    if (isShownRating)
+      this.setAttribute(&quot;show-rating&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;show-rating&quot;);
+  }
+
+  /** @type {boolean} */
+  get hideComment() {
+    return this.hasAttribute(&quot;hide-comment&quot;);
+  }
+
+  /** @type {boolean} */
+  set hideComment(value) {
+    const isHiddenComment = Boolean(value);
+    if (isHiddenComment)
+      this.setAttribute(&quot;hide-comment&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;hide-comment&quot;);
+  }
+
+  /** @type {boolean} */
+  get showTags() {
+    return this.hasAttribute(&quot;show-tags&quot;);
+  }
+
+  /** @type {boolean} */
+  set showTags(value) {
+    const isShownTags = Boolean(value);
+    if (isShownTags)
+      this.setAttribute(&quot;show-tags&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;show-tags&quot;);
+  }
+
+  /** @type {boolean} */
+  get allDisabled() {
+    return this.hasAttribute(&quot;all-disabled&quot;);
+  }
+
+  /** @type {boolean} */
+  set allDisabled(value) {
+    const isHiddenComment = Boolean(value);
+    if (isHiddenComment)
+      this.setAttribute(&quot;all-disabled&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;all-disabled&quot;);
+  }
+
+
+  /** @type {number} */
+  get maxOfRate() {
+    return this.getAttribute(&quot;max-of-rate&quot;) || 5;
+  }
+
+  /** @type {number} */
+  set maxOfRate(value) {
+    this.setAttribute(&quot;max-of-rate&quot;, value);
+  }
+
+  /** @type {string} */
+  get topicName() {
+    return this.getAttribute(&quot;topic-name&quot;);
+  }
+
+  /** @type {string} */
+  set topicName(value) {
+    this.setAttribute(&quot;topic-name&quot;, value);
+  }
+
+  /** @type {string} */
+  get initWith() {
+    return this.getAttribute(&quot;init-with&quot;) || &quot;none&quot;;
+  }
+
+  /** @type {string} */
+  set initWith(value) {
+    this.setAttribute(&quot;init-with&quot;, value);
+  }
+}
+customElements.define(&quot;sds-comment&quot;, Comment);
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

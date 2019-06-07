@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">pages/rateit/script/evaluator.js | rater-and-checkbox</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html">Comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html">Upload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listTemplate">listTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-databaseService">databaseService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-firebaseConfig">firebaseConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageRef">storageRef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageService">storageService</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-rateandtags">rateandtags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">pages/rateit/script/evaluator.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { storageRef } from &quot;../../element/script/init_firebase.js&quot;;
+import { db } from &quot;../../element/script/init_firebase.js&quot;;
+
+// eslint-disable-next-line no-undef
+//var db = firebase.firestore();
+var wrapper = document.getElementById(&quot;wrapper&quot;);
+var title = document.getElementById(&quot;title&quot;);
+var thing = document.getElementById(&quot;thing&quot;);
+var des = document.getElementById(&quot;des&quot;);
+
+var comment = document.querySelector(&quot;sds-comment&quot;);
+var overalltags = document.getElementById(&quot;overall-tags&quot;);
+var overallrate = document.getElementById(&quot;overall-rate&quot;);
+var rateandtags = document.getElementById(&quot;rate-and-tags&quot;);
+/*var username = document.getElementById(&quot;username&quot;);
+var evals = document.getElementById(&quot;eval&quot;);
+var tags = document.getElementById(&quot;tags&quot;);
+var rate = document.getElementById(&quot;rate&quot;);
+var submitcomment = document.getElementById(&quot;submitcomment&quot;);
+var msgbox = document.getElementById(&quot;comment&quot;);
+
+var rater;
+*/
+
+// parse url funct
+function getURLParameter(sParam) {
+  var sPageURL = window.location.search.substring(1);
+  var sURLVariables = sPageURL.split(&quot;&amp;&quot;);
+  for (var i = 0; i &lt; sURLVariables.length; i++) {
+    var sParameterName = sURLVariables[i].split(&quot;=&quot;);
+    if (sParameterName[0] == sParam) {
+      //console.log(sParameterName[1].replace(&quot;\\_&quot;, &quot; &quot;));
+      return sParameterName[1];
+    }
+  }
+  return &quot;Parameter Not Found&quot;;
+}
+
+// check if get from url
+var lookup_value = getURLParameter(&quot;lookup&quot;);
+if (lookup_value != &quot;Parameter Not Found&quot;) {
+  var params = lookup_value.split(&quot;%&quot;);
+  // check if the url param is a topic/id tuple
+  if (params.length &gt;= 2) {
+    var topic = params[0].replace(&quot;\\_&quot;, &quot; &quot;);
+    var id = params[1];
+
+    // check if the id is correct
+    db.collection(`${topic}`).doc(&quot;config&quot;).get().then(function (doc) {
+      if (doc.exists &amp;&amp; id === `${doc.data().id}`)
+        displayComment(topic);
+      else
+        window.alert(&quot;No search hit!&quot;);
+    });
+  }
+}
+//else{console.log(&quot;not found&quot;)}
+
+// onclick for submit button
+document.getElementById(&quot;submit&quot;).addEventListener(&quot;click&quot;, function () {
+  if (!title.value) 
+    return;
+  db.collection(`${title.value}`).doc(&quot;config&quot;).get().then(function (doc) {
+    if (doc.exists) { // TODO why the if statement doesn&apos;t apply to the bellow
+      if (doc.data().isPrivate === &quot;1&quot;) {
+        window.alert(&quot;This post is not accessible through lookup&quot;);
+        return;
+      }
+      else {
+        window.location.href = &quot;evaluator.html?lookup=&quot; + title.value.replace(&quot; &quot;, &quot;\\_&quot;) + &quot;%&quot; +  `${doc.data().id}`;
+      }
+    }
+  });
+  //display the comment
+  //displayComment(title.value, true);
+
+});
+
+//  --------------------- display function --------------------- //
+function displayComment(value, throughSubmit = false) {
+  //display the comment
+  db.collection(`${value}`).doc(&quot;config&quot;).get().then(function (doc) {
+    if (doc.exists) { // TODO why the if statement doesn&apos;t apply to the bellow
+      if (throughSubmit &amp;&amp; doc.data().isPrivate === &quot;1&quot;) {
+        window.alert(&quot;This post is not accessible through lookup&quot;);
+        return;
+      }
+
+      // populate title and description
+      thing.innerHTML = value;
+      des.innerHTML = doc.data().des;
+      // populate image
+      let imageRef = storageRef.child(`images/${doc.data().image}`);
+      imageRef.getDownloadURL().then(function(url) {
+        var img = document.getElementById(&quot;image&quot;);
+        img.setAttribute(&quot;src&quot;, url);
+      }).catch(function(error) {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      });
+
+      var tagarray = `${doc.data().tags}`.split(&quot;,&quot;);
+      if (!tagarray || (tagarray.length &lt;= 1 &amp;&amp; tagarray[0].length == 0) )
+        tagarray = [];
+
+      // set the overall rating and tags score
+      if (doc.data().disableRateTag === &quot;0&quot;) {
+        calcOverallScore(value, `${doc.data().stars}`, tagarray);
+        //rateandtags.style.display = &quot;block&quot;;
+      }
+      else {
+        rateandtags.style.display = &quot;none&quot;;
+      }
+
+      comment.allDisabled = false; // this will initialize the comment
+      if (doc.data().disableRateTag === &quot;0&quot;) {
+        comment.showRating = true;
+        comment.showTags = true;
+      }
+      comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
+      
+      if (doc.data().disableRateTag === &quot;0&quot;) {
+        comment.shadowRoot.querySelector(&quot;#submit&quot;).addEventListener(&quot;click&quot;, function () {
+          calcOverallScore(value, `${doc.data().stars}`, tagarray);
+        });
+      }
+
+      wrapper.style = &quot;display: block&quot;;
+      window.location.href = &quot;#wrapper&quot;;
+    }
+    else {
+      window.alert(&quot;No search hit!&quot;);
+      //wrapper.style = &quot;display: none&quot;;
+      //window.location.href = &quot;#title&quot;;
+    }
+  });
+}
+
+
+//  ------------------- function that get avg rating ----------------------- //
+function calcOverallScore(value, rateMax, tagarray) {
+
+  var ref = db.collection(`${value}`);
+  let stars = [];
+  let tags = {};
+  var i;
+  for (i = 0; i &lt; tagarray.length; i++) {
+    tags[tagarray[i]] = 0;
+  }
+
+  // get all comment doc from the collection
+  ref.get().then(snapshot =&gt; {
+
+    // loop through each comment
+    snapshot.forEach(doc =&gt; {
+      if (doc.id != &quot;config&quot;) {
+        // stars
+        stars.push(Number(doc.data().star));
+        // tags
+        var tagData = `${doc.data().checked}`;
+        let tgs = tagData.split(&quot;,&quot;);
+        for (let i = 0; i &lt; tgs.length; i++) {
+          if (tgs[i] in tags) {
+            tags[tgs[i]] += 1;
+          }
+        }
+      }
+    });
+
+    overallrate.max = (rateMax === &quot;&quot;) ? &quot;5&quot; : rateMax;
+    if (stars.length &gt; 0) {
+      // after gor from each doc, process
+      let sum = stars.reduce((previous, current) =&gt; current += previous);
+      // set up overall rating score
+      overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
+    }
+
+    // the overall checked tags
+    // clear overalltags first
+    while (overalltags.firstChild) 
+      overalltags.removeChild(overalltags.firstChild);
+    for (let tagName in tags) {
+      var tag = document.createElement(&quot;button&quot;);
+      tag.type = &quot;button&quot;;
+      tag.className = &quot;btn btn-primary&quot;;
+      tag.innerHTML = tagName + &quot; &quot;;
+      tag.disabled = &quot;disabled&quot;;
+      var tagScore = document.createElement(&quot;span&quot;);
+      tagScore.className = &quot;badge badge-light&quot;;
+      tagScore.innerHTML = tags[tagName].toString();
+      tag.appendChild(tagScore);
+      overalltags.appendChild(tag);
+    }
+
+  }).catch(err =&gt; {
+    // eslint-disable-next-line no-console
+    console.log(&quot;Error getting documents&quot;, err);
+  });
+}
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

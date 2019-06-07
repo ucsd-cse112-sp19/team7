@@ -44,6 +44,9 @@
           "./pages/element/script/Checkbox.js"
         ]
       }  
+    },
+    {
+      "name": "esdoc-publish-html-plugin"
     }
   ]
 }

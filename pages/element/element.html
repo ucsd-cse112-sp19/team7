@@ -10,15 +10,36 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <!-- CSS for icons from Element -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-    <link href="https://element.eleme.io/docs.b8e65c4.css" rel="stylesheet">
+    <link href="https://element.eleme.io/docs.463e2b2.css" rel="stylesheet">
   </head>
   <body>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+    https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+      apiKey: "AIzaSyAWQ3Vi-7CTKYVgS1yQ7WHA7S0vShJCgZs",
+      authDomain: "team7-element.firebaseapp.com",
+      databaseURL: "https://team7-element.firebaseio.com",
+      projectId: "team7-element",
+      storageBucket: "team7-element.appspot.com",
+      messagingSenderId: "860166313157",
+      appId: "1:860166313157:web:59ab005177ad2f01"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <script type="module" src="script/Rater.js"></script>
     <script type="module" src="script/Checkbox.js"></script>
     <script type="module" src="../webcomponent/script/CECoreHello.js"></script>
+    <script type="module" src="script/Comment.js"></script>
     <!--Custom Element Templates-->
     <template id="CECoreHelloT">
       <style>
@@ -56,6 +77,12 @@
             <li class="nav-item">
               <a class="nav-link" href="element.html">Element-Sprint1</a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../evaluation/requestor.html">Requestor</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="../evaluation/evaluator.html">Evaluator</a>
+            </li>
           </ul>
         </div>
       </nav>
@@ -77,9 +104,9 @@
                   <h2><br>Rate & Checkbox Demo 1</h2>
                     <div class="card">
                         <div class="card-body">
-                            <sds-checkbox class="card-text" border>Did you rate it?</sds-checkbox>
+                            <sds-checkbox class="card-text text-primary@label" border>Did you rate it?</sds-checkbox>
                             <br>
-                            <sds-checkbox class="card-text" border>Did you notice the texts and color?</sds-checkbox>
+                            <sds-checkbox class="card-text text-warning@*" border>Did you notice the texts and color?</sds-checkbox>
                             <br>
                             <sds-checkbox class="card-text" border>Did you notice that the rate value is "saved"</sds-checkbox>
                         </div>
@@ -168,5 +195,6 @@
           <span class="sr-only">Next</span>
         </a>
       </div>
+      <sds-commenter entry="CSE112"></sds-commenter>
   </body>
 </html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Team7</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="../index/img/devilbus1.jpg">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- CSS for icons from Element -->
+  <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+  <link href="https://element.eleme.io/docs.463e2b2.css" rel="stylesheet">
+
+  <!-- Scripts -->
+  <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js"></script>
+  <script type="module" src="script/Upload.js"></script>
+</head>
+
+<body>
+    <script type="module" src="../webcomponent/script/CECoreHello.js"></script>
+    
+    <script type="module" src="script/Upload.js"></script>
+    <!--Custom Element Templates-->
+    <template id="CECoreHelloT">
+      <style>
+        :host {
+          all: initial;
+          display: block;
+          contain: content;
+          text-align:center;
+        }
+  
+        p {
+          display: inline !important;
+          font-weight: bold;
+          font-size: 34px;
+          font-family: "Comic Sans MS", "Arial";
+        }
+      </style>
+      <p></p>
+    </template>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">
+          <img src="../index/img/devilbus_blue.jpg" width="30" height="30" alt="">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="../../index.html">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="../webcomponent/webcomponent.html">Webcomponents</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="../core-hello/core-hello.html">CoreHello</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="element.html">Element-Sprint1</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    <div id="header">
+    <br>
+      <img src="../index/img/devilbus_blue.jpg" class="center" style="display: block; margin-left: auto; margin-right: auto; width: 10%;">
+      <ce-core-hello lang="en" rainbow>Rate & Checkbox -- in Bootstrap Carousel</ce-core-hello>
+      <ce-core-hello lang="en" rainbow>Team 7 Present</ce-core-hello>
+      <br>
+    </div>
+
+    <sds-upload></sds-upload>
+    <sds-upload drag></sds-upload>
+    <sds-upload display-thumbnail></sds-upload>
+
+  <!--
+  <sds-upload></sds-upload>
+  <form enctype="multipart/form-data" action="/upload/image" method="post">
+    <input id="image-file" type="file" />
+    <input type="submit">
+  </form>
+  -->
+  <!--
+  <div id="filesubmit">
+    <input type="file" class="file-select" accept="image/*" />
+    <button class="file-submit">SUBMIT</button>
+  </div>
+  -->
+</body>
+</html>

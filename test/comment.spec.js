@@ -5,12 +5,12 @@ var should = require("chai").should();
 
 /* please use "" instead of '' */
 
-describe("sds-rate unit", () => {
+describe("sds-comment unit", () => {
   let comment;
   let shadow;
 
   beforeEach( async () => {
-    comment = document.createElement("sds-commenter");
+    comment = document.createElement("sds-comment");
     shadow = comment.shadowRoot;
     document.body.appendChild(comment);
   });
@@ -20,7 +20,19 @@ describe("sds-rate unit", () => {
   });
 
   it("Unit test 1: check color attribute is correct", async () => {
-    rater.setAttribute("color", "#012345");
-   
-    "#012345".should.equal(shadow.querySelectorAll("span#entry").background);
+    // change the color
+    comment.setAttribute("color", "rgb(1, 35, 69)");
+    
+    var styleSheet = shadow.querySelector("style").sheet;
+    var i;
+    var flag = false;
+    for (i = 0; i < styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      if (rule.selectorText === "#entry") {
+        "rgb(1, 35, 69)".should.equal(rule.style.background);
+        flag = true;
+      }
+    }
+    assert(flag); // always false
   });
+});

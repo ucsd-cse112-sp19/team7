@@ -18,7 +18,7 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
   <!-- scripts -->
-  <script type="module" src="../element/script/init_firebase.js"></script>
+  <!--<script type="module" src="../element/script/init_firebase.js"></script>-->
   <script type="module" src="../element/script/Comment.js"></script>
   <script type="module" src="../element/script/Rater.js"></script>
   <script type="module" src="../element/script/Checkbox.js"></script>
@@ -111,11 +111,13 @@
       <h3 style="display: inline;margin-left: 20px;">Avergae Rating Score: </h3>
       <h3 id="avgStar" style="display: inline"></h3><br><br>
       -->
-      <sds-rate id="overall-rate" disabled-void-color="#9a9da5"
-       class="custom-rate-enlarge@*" disabled show-score score-template="{value} Points"></sds-rate>
-      <br>
-      <br>
-       <div id="overall-tags"></div>
+      <div id="rate-and-tags">
+        <sds-rate id="overall-rate" disabled-void-color="#9a9da5"
+        class="custom-rate-enlarge@*" disabled show-score score-template="{value} Points"></sds-rate>
+        <br>
+        <br>
+        <div id="overall-tags"></div>
+      </div>
       
     </div>
 

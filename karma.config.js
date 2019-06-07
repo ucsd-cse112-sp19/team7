@@ -71,5 +71,5 @@ module.exports = function (config) {
     concurrency: Infinity,
 
     webpack: require("./config/webpack.dev"),
-  })
-}
+  });
+};

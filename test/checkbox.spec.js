@@ -20,29 +20,29 @@ describe("sds-rate unit", () => {
   });
 
   it("Unit test 1: check the getters and setters for True labels", async () => {
-    checkbox.trueLabel = "Some Label"
-    "Some Label".should.equal(checkbox.trueLabel)
+    checkbox.trueLabel = "Some Label";
+    "Some Label".should.equal(checkbox.trueLabel);
     // attribute should be changed as well
-    checkbox.getAttribute("true-label").should.equal("Some Label")
+    checkbox.getAttribute("true-label").should.equal("Some Label");
   });
 
   it("Unit test 2: check the getters and setters for False labels", async () => {
-    checkbox.falseLabel = "Some False Label"
-    "Some False Label".should.equal(checkbox.falseLabel)
+    checkbox.falseLabel = "Some False Label";
+    "Some False Label".should.equal(checkbox.falseLabel);
     // attribute should be changed as well
-    checkbox.getAttribute("false-label").should.equal("Some False Label")
+    checkbox.getAttribute("false-label").should.equal("Some False Label");
   });
 
   it("Unit test 3: check the functionality disable", async () => {
-    checkbox.disabled = true
-    let t = true
-    t.should.equal(checkbox.disabled)
+    checkbox.disabled = true;
+    let t = true;
+    t.should.equal(checkbox.disabled);
     // attribute should be removed correctly
-    checkbox.hasAttribute("disabled")
+    checkbox.hasAttribute("disabled");
   });
 
   it("Unit test 4: check the default label class name", async () => {
-    let lb = shadow.querySelector("label")
+    let lb = shadow.querySelector("label");
     "el-checkbox".should.equal(lb.className);
   });
 

@@ -21,9 +21,32 @@
         "asset": "./manual/asset",
         "files": [
           "./manual/installation.md",
-          "./manual/changelog.md"
+          "./manual/changelog.md",
+          "./manual/webcomponents.md",
+          "./manual/checkbox.md"
         ]
 		  }
-	  }
+    },
+    {
+      "name": "esdoc-inject-style-plugin", 
+      "option": {
+        "enable": true, 
+        "styles": [
+          "./manual/manualstyle.css"
+        ]
+      }
+    },
+    {
+      "name": "esdoc-inject-script-plugin", 
+      "option": {
+        "enable": true, "scripts": [
+          "./manual/manualscripts.js",
+          "./pages/element/script/Checkbox.js"
+        ]
+      }  
+    },
+    {
+      "name": "esdoc-publish-html-plugin"
+    }
   ]
 }

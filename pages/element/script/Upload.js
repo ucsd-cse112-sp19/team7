@@ -558,14 +558,25 @@ export class Upload extends HTMLElement {
 
   }
 
+  /**
+   * `onClickUpload(event)` gets called when the user clicks upload. It calls `handleFileUpload(files)` 
+   * to deal with the files that got uploaded. That file is in event.tartget.files. Note: it's an array of files
+   * @param {event} event - the click event
+   */
   onClickUpload(event) {
     var upload = event.target.getRootNode().host;
     upload.handleFileUpload(event.target.files);
   }
 
+  /**
+   * `handleFileUpload(files)` gets called by `onClickUpload(event)`. It's responsible for uploading the file to firebase.
+   * it calls `addFileListItem(file)` to show the user that the file got uploaded in a list directly below the upload button
+   * @param {files} files - files that got uploaded
+   * @throws {error} -throws error if uploading to firebase goes wrong
+   */
   handleFileUpload(files) {
     var upload = this;
-    var selectedFile = files[0];
+    var selectedFile = files[0]; //take the first file
 
     if (!selectedFile)
       return;
@@ -588,6 +599,12 @@ export class Upload extends HTMLElement {
     });
   }
 
+  /**
+   * `addFileListItem(file)` This function adds this file to the list and is called by `handleFileUpload(files)`.
+   * It appends the file to the end of the list and adds the appropriate template (if we display the thumbnail or not) to the shadow DOM
+   * It adds the click listener to the cancel upload (the "x") icon
+   * @param {file} file - the file that the user has uploaded.
+   */
   addFileListItem(file) {
     var fileName = file.name;
     var upload = this;

@@ -1,5 +1,5 @@
 # Web Components
-
+These are the web components that come out of pandoras-box
 ## Hello World
 ### About
 Writes out "Hello World" + whatever is in the slot
@@ -24,11 +24,11 @@ It's a checkbox! It lets you check and uncheck things.
 - **`v-model`** (string): A value represented by the checkbox. It will not appear on the frontend unless used by other html tags
 - **`true-label`** (string): The v-model value when checked
 - **`false-label`** (string): The v-model value when unchecked
-- `**disabled**` (boolean): If true, then the checkbox is not clickable and not modifiable
+- **`disabled`** (boolean): If true, then the checkbox is not clickable and not modifiable
 - **`border`** (boolean): If true, border will be added around the checkbox
 - **`size`** ("medium," "small," or "mini"): The size of the border. Only these three string value is acceptable; otherwise, the default value which is "medium" will be used
-- `**checked**` (boolean): Corresponds to whether the checkbox is checked or not
-- `**name**` (string): The "name" attribute used by the original checkbox
+- **`checked`** (boolean): Corresponds to whether the checkbox is checked or not
+- **`name`** (string): The "name" attribute used by the original checkbox
 
 ## Rater
 A component that let's you rate things! You can choose how many stars (or an icon of your choosing) to have as the max number. Default values:
@@ -51,11 +51,16 @@ A component that let's you rate things! You can choose how many stars (or an ico
 - **`texts`** (array of string): The array of displayed text whose entries will correspond to each rating score
 - **`score-template`** (string): The template format for the displayed score. If score-template="{value} Points", then "2 Points" will be displayed
 ## Comment
+
 `<sds-comment></sds-commment>`
+
 ### Attributes
 
 ## Upload
-`<sds-upload></sds-upload>`
+
 Lets you load an image to display. When images are uploaded, a list forms underneath to show you what images you've just uploaded. Images are uploaded to firbase. You can also cancel an upload by clicking the "x" that shows up next to each upload on the right hand side.
+
+`<sds-upload></sds-upload>`
+
 ### Attributes
 - **`display-thumbnail`** (boolean): If true, then each uploaded image in the list underneath is accompanied by its thumbnail image so that users can see what they queued to upload.

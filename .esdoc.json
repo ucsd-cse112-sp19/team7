@@ -22,8 +22,7 @@
         "files": [
           "./manual/installation.md",
           "./manual/changelog.md",
-          "./manual/webcomponents.md",
-          "./manual/checkbox.md"
+          "./manual/webcomponents.md"
         ]
 		  }
     },

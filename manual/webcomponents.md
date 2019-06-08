@@ -5,6 +5,7 @@ These are the web components that come out of pandoras-box
 Writes out "Hello World" + whatever is in the slot
 
 `<core-hello>Peter</core-hello>`
+
 ### Attributes
 - **`rainbow`**: does an animated ranbow effect with CSS 
 
@@ -20,6 +21,7 @@ There's a bonus language too! If you set this attribute to "team7", "Hello World
 It's a checkbox! It lets you check and uncheck things.
 
 `<sds-checkbox></sds-checkbox>`
+
 ### Attributes
 - **`v-model`** (string): A value represented by the checkbox. It will not appear on the frontend unless used by other html tags
 - **`true-label`** (string): The v-model value when checked
@@ -31,8 +33,10 @@ It's a checkbox! It lets you check and uncheck things.
 - **`name`** (string): The "name" attribute used by the original checkbox
 
 ## Rater
+### About
 A component that let's you rate things! You can choose how many stars (or an icon of your choosing) to have as the max number. Default values:
 `<sds-rate></sds-rate>`
+
 ### Attributes
 - **`v-model`** (number): The value of the starts, or the number of stars selected
 - **`max`** (number): The number of stars in the rating bar
@@ -50,14 +54,15 @@ A component that let's you rate things! You can choose how many stars (or an ico
 - **`text-color`** (string): The color of the text
 - **`texts`** (array of string): The array of displayed text whose entries will correspond to each rating score
 - **`score-template`** (string): The template format for the displayed score. If score-template="{value} Points", then "2 Points" will be displayed
-## Comment
 
+## Comment
+### About
 `<sds-comment></sds-commment>`
 
 ### Attributes
 
 ## Upload
-
+### About
 Lets you load an image to display. When images are uploaded, a list forms underneath to show you what images you've just uploaded. Images are uploaded to firbase. You can also cancel an upload by clicking the "x" that shows up next to each upload on the right hand side.
 
 `<sds-upload></sds-upload>`

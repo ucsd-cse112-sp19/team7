@@ -1,0 +1,52 @@
+{
+  "source": "./pages/",
+  "destination": "./docs",
+  "plugins": [
+    {
+      "name": "esdoc-standard-plugin",
+      "option": {
+        "unexportedIdentifier": {"enable": true},
+        "test": {
+          "source": "./test/",
+          "interfaces": ["describe", "it", "context", "suite", "test"],
+          "includes": ["(spec|Spec|test|Test)\\.js$"],
+          "excludes": ["\\.config\\.js$"]
+        }
+      }
+    },
+    {
+      "name": "esdoc-integrate-manual-plugin",
+		  "option": {
+        "index": "./manual/index.md",
+        "asset": "./manual/asset",
+        "files": [
+          "./manual/installation.md",
+          "./manual/changelog.md",
+          "./manual/webcomponents.md",
+          "./manual/checkbox.md"
+        ]
+		  }
+    },
+    {
+      "name": "esdoc-inject-style-plugin", 
+      "option": {
+        "enable": true, 
+        "styles": [
+          "./manual/manualstyle.css"
+        ]
+      }
+    },
+    {
+      "name": "esdoc-inject-script-plugin", 
+      "option": {
+        "enable": true, "scripts": [
+          "./manual/manualscripts.js",
+          "./pages/element/script/Checkbox.js"
+        ]
+      }  
+    },
+    {
+      "name": "esdoc-publish-html-plugin"
+    }
+  ]
+}

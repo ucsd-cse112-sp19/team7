@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../">
+  <title data-ice="title">test/rater.spec.js | rater-and-checkbox</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html">Comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html">Upload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listTemplate">listTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-databaseService">databaseService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-firebaseConfig">firebaseConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageRef">storageRef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageService">storageService</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-rateandtags">rateandtags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">test/rater.spec.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Rater} from &quot;../pages/element/script/Rater.js&quot;;
+
+var expect = require(&quot;chai&quot;).expect;
+var should = require(&quot;chai&quot;).should();
+
+/* please use &quot;&quot; instead of &apos;&apos; */
+
+describe(&quot;sds-rate unit&quot;, () =&gt; {
+  let rater;
+  let shadow;
+
+  beforeEach( async () =&gt; {
+    rater = document.createElement(&quot;sds-rate&quot;);
+    shadow = rater.shadowRoot;
+    document.body.appendChild(rater);
+  });
+
+  afterEach(() =&gt; {
+    document.body.removeChild(rater);
+  });
+
+  it(&quot;Unit test 1: check author attribute is correct&quot;, async () =&gt; {
+    rater.setAttribute(&quot;author&quot;, &quot;Etsu&quot;);
+   
+    &quot;Author: Etsu&quot;.should.equal(shadow.querySelector(&quot;p#author&quot;).textContent);
+  });
+
+  it(&quot;Unit test 2: check decription atrribute correct&quot;, async () =&gt; {
+    rater.setAttribute(&quot;des&quot;, &quot;Oscar is a fucking nice dude&quot;);
+    
+    &quot;Description: Oscar is a fucking nice dude&quot;.should.equal(shadow.querySelector(&quot;p#des&quot;).textContent);
+  });
+
+  it(&quot;Unit test 3: check default rater has img not displayed&quot;, async () =&gt; {
+    
+    &quot;none&quot;.should.equal(shadow.querySelector(&quot;img&quot;).style.display);
+  });
+
+  it(&quot;Unit test 4: check img can be set via attribute&quot;, async () =&gt; {
+    rater.setAttribute(&quot;img&quot;, &quot;lol.png&quot;);
+    
+    &quot;lol.png&quot;.should.equal(rater.getAttribute(&quot;img&quot;));
+  });
+
+  it(&quot;Unit test 5: check if max is creating more stars&quot;, async () =&gt; {
+    rater.setAttribute(&quot;max&quot;, &quot;6&quot;);
+    &quot;6&quot;.should.equal(shadow.querySelector(&quot;#\\36&quot;).id + &quot;&quot;);
+    
+    rater.setAttribute(&quot;max&quot;, &quot;9&quot;);
+    &quot;9&quot;.should.equal(shadow.querySelector(&quot;#\\39&quot;).id + &quot;&quot;);
+    &quot;9&quot;.should.equal(shadow.querySelectorAll(&quot;div i&quot;).length + &quot;&quot;);
+  });
+
+  it(&quot;Unit test 6: check the default class of stars&quot;, async () =&gt; {
+    //first check for original class of star
+    rater.setAttribute(&quot;max&quot;, &quot;6&quot;);
+    const star2 = shadow.querySelector(&quot;#\\32&quot;);
+    assert(star2.className.includes(&quot;el-rate__icon&quot;));
+    assert(star2.className.includes(&quot;el-icon-star-off&quot;));
+  });
+
+  it(&quot;Unit test 7: checking if clicking on stars changes class&quot;, async () =&gt; {
+    const star2 = shadow.querySelector(&quot;#\\32&quot;);
+    const star4 = shadow.querySelector(&quot;#\\34&quot;);
+    //click a star further on
+    star4.click();
+   
+    //check to make sure it has changed class
+    assert(star2.className.includes(&quot;el-rate__icon&quot;));
+    assert(star2.className.includes(&quot;el-icon-star-on&quot;));
+
+    //check to see if the clicked star changed class as well
+    assert(star4.className.includes(&quot;el-rate__icon&quot;));
+    assert(star4.className.includes(&quot;el-icon-star-on&quot;));
+  });
+
+  it(&quot;Unit test 8: checking if clicking on stars changes text&quot;, async () =&gt; {
+    //check that further along star didn&apos;t change at all
+    const star4 = shadow.querySelector(&quot;#\\34&quot;);
+    const star5 = shadow.querySelector(&quot;#\\35&quot;);
+    assert(star5.className.includes(&quot;el-rate__icon&quot;));
+    assert(star5.className.includes(&quot;el-icon-star-off&quot;));
+
+    //check to make sure that the after message is set correctly
+    &quot;&quot;.should.equal(shadow.querySelector(&quot;div p&quot;).textContent);
+    star4.click();
+    &quot;Glad&quot;.should.equal(shadow.querySelector(&quot;div p&quot;).textContent);
+  });
+
+  it(&quot;Unit test 9: checking if v-model correctly sets the stars&quot;, async () =&gt; {
+    const star2 = shadow.querySelector(&quot;#\\32&quot;);
+    rater.setAttribute(&quot;v-model&quot;, &quot;2&quot;);
+    assert(star2.className.includes(&quot;el-rate__icon&quot;));
+    assert(star2.className.includes(&quot;el-icon-star-on&quot;));
+  
+    //move v-model back and check to see that the star isn&apos;t set anymore 
+    rater.setAttribute(&quot;v-model&quot;, &quot;1&quot;);
+    assert(star2.className.includes(&quot;el-icon-star-off&quot;));   
+  });
+  
+});</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

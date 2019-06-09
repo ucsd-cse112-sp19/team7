@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+  <title>Team 7</title>
+  <link rel="icon" href="../index/img/devilbus1.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <script src="script/webcomponents_leon.js" defer></script>
+  <script src="script/webcomponents_er.js" defer></script>
+  <script src="script/webcomponents_christianetsu.js" defer></script>
+    <!--
+    <link rel="shortcut icon" href="path to logo" />
+    -->
+    <script type="module" src="script/CECoreHello.js"></script>
+  <script type="module" src="script/webcomponents-dan.js"></script>
+  <link rel="stylesheet" type="text/css" href="webcomponents-dan.css">
+</head>
+
+<body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">
+        <img src="../index/img/devilbus_blue.jpg" width="30" height="30" alt="">
+      </a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../../index.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="webcomponent.html">Webcomponents</a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link" href="../core-hello/core-hello.html">CoreHello</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../element/element.html">Element-Sprint1</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../evaluation/requestor.html">Requestor</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../evaluation/evaluator.html">Evaluator</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  <!--Put your shitty first draft web component below here along with your names:-->
+
+  <h2>Cortez and Ethan</h2>
+  <ce-core-hello>Thomas</ce-core-hello>
+  <ce-core-hello rainbow>Gary</ce-core-hello>
+  <ce-core-hello lang="en" rainbow>1234567890</ce-core-hello>
+  <ce-core-hello lang="es">Gary</ce-core-hello>
+  <ce-core-hello lang="pt" rainbow><b>Cortez</b> Page</ce-core-hello>
+
+  <!--Custom Element Templates-->
+  <template id="CECoreHelloT">
+    <style>
+			:host {
+				all: initial;
+				display: block;
+				contain: content;
+			}
+
+      p {
+        font-size: 24px;
+        font-family: "Comic Sans MS", "Arial";
+      }
+    </style>
+    <p></p>
+  </template>
+  
+  <h2>Leon & Oscar</h2>
+  <shitty-draft-leon></shitty-draft-leon>
+
+  <h2>Eric & Ryan</h2>
+  <test-er> </test-er>
+
+  <h2>Christian & Etsu</h2>
+  <template id="major-template">
+   <style></style>
+   <p></p>
+  </template>
+  <test-major>Music</test-major>
+  <test-major></test-major>
+
+  <h2>Dan/Francis</h2>
+  <webcomponents-dan rainbow2 language = "spa">David Villa</webcomponents-dan>
+</body>
+</html>

@@ -1,0 +1,132 @@
+{
+  "coverage": "73.8%",
+  "expectCount": 168,
+  "actualCount": 124,
+  "files": {
+    "pages/core-hello/script/core-hello.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "pages/element/script/Checkbox.js": {
+      "expectCount": 28,
+      "actualCount": 27,
+      "undocumentLines": [
+        352
+      ]
+    },
+    "pages/element/script/Comment.js": {
+      "expectCount": 32,
+      "actualCount": 26,
+      "undocumentLines": [
+        7,
+        159,
+        160,
+        166,
+        179,
+        249
+      ]
+    },
+    "pages/element/script/init_firebase.js": {
+      "expectCount": 5,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        16,
+        17,
+        19,
+        21
+      ]
+    },
+    "pages/element/script/Rater.js": {
+      "expectCount": 52,
+      "actualCount": 52,
+      "undocumentLines": []
+    },
+    "pages/element/script/Upload.js": {
+      "expectCount": 22,
+      "actualCount": 13,
+      "undocumentLines": [
+        21,
+        481,
+        561,
+        566,
+        591,
+        630,
+        637,
+        644,
+        842
+      ]
+    },
+    "pages/index/script/namecard.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        7
+      ]
+    },
+    "pages/rateit/script/evaluator.js": {
+      "expectCount": 12,
+      "actualCount": 0,
+      "undocumentLines": [
+        6,
+        7,
+        8,
+        9,
+        11,
+        12,
+        13,
+        14,
+        26,
+        40,
+        80,
+        141
+      ]
+    },
+    "pages/rateit/script/requestor.js": {
+      "expectCount": 1,
+      "actualCount": 0,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "pages/webcomponent/script/CECoreHello.js": {
+      "expectCount": 3,
+      "actualCount": 2,
+      "undocumentLines": [
+        23
+      ]
+    },
+    "pages/webcomponent/script/webcomponents-dan.js": {
+      "expectCount": 2,
+      "actualCount": 2,
+      "undocumentLines": []
+    },
+    "pages/webcomponent/script/webcomponents_christianetsu.js": {
+      "expectCount": 3,
+      "actualCount": 0,
+      "undocumentLines": [
+        16,
+        17,
+        20
+      ]
+    },
+    "pages/webcomponent/script/webcomponents_er.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        1,
+        2
+      ]
+    },
+    "pages/webcomponent/script/webcomponents_leon.js": {
+      "expectCount": 2,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3
+      ]
+    }
+  }
+}

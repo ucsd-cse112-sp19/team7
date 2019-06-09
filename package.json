@@ -6,7 +6,7 @@
   "scripts": {
     "utest": "npx karma start karma.config.js",
     "b2test": "testcafe \"saucelabs:Firefox\" ./testcafe/sds-rater.testcafe.js",
-    "b1test": "testcafe \"saucelabs:Chrome@beta:Windows 10,saucelabs:Safari\" ./testcafe/sds-rater.testcafe.js",
+    "b1test": "testcafe \"saucelabs:Chrome@beta:Windows 10,saucelabs:Safari\" ./testcafe/tests/",
     "btest": "npm run b1test && npm run b2test",
     "test": "npm run utest && npm run btest",
     "start": "owc-dev-server -o",

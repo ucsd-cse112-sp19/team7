@@ -1,4 +1,4 @@
-# Team7 <a href="https://docs.google.com/presentation/d/1fXDuaQTFJ4bg_YPg_7X8dFeDI59nn6NiXu4h0UlOCjc/edit#slide=id.g56768d2de0_0_17">The Seven Deadly Sins
+# Team7 - <a href="https://docs.google.com/presentation/d/1fXDuaQTFJ4bg_YPg_7X8dFeDI59nn6NiXu4h0UlOCjc/edit#slide=id.g56768d2de0_0_17">The Seven Deadly Sins
 </a>
 
 [![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&branch=dev)](https://travis-ci.com/ucsd-cse112/team7)
@@ -8,15 +8,14 @@
 
 
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
+Team Process: 
+<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 2 </a> <br>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 3 </a> <br>
 <br>
 
-## Team Process 
-<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Sprint 0 </a>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Sprint 1 </a>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Sprint 2 </a>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Sprint 3 </a>
-
-Let's see our team process in the whole quarter, which includes 3 sprints:
+## TEAM PROCESS
 ## Sprint 0: Setup & Pipeline Creation & Web Compenent
 What we did in sprint 0 are:
 * Create To-do list for members
@@ -61,6 +60,44 @@ In this sprint, we ported some awesome web components:
 
 #### Our pipeline in sprint 1:</br>
 <img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/sprint2_pipeline.png" alt="sprint1_pipeline" width="900"/>
+
+
+
+## Sprint 2: More web components, npm package, and web service!
+* In this sprint, we ported more fantastic Web Components: input, rating, checkbox, pagination 
+* We also combined our web components into a website! The ides of our website:  
+  1. course reviews forum (or a general one) 
+  2. Smth similar to roten tomato
+  3. Smth similar to ratemyprofessor
+  4. Smth similar to the meme creater done in CSE134B
+  5. smth similar to when2meet
+  6. smth similar to reddit + rating
+* For the backend of this service, we used the real time database of firebase. 
+* What's more, we even published our web components to npm !
+  1. <a href="https://www.npmjs.com/package/pandoras-box">Current Package</a>
+  2. Try to install our packages with
+  
+          npm install pandoras-box
+      
+      and import it using
+    
+          import "pandoras-box"
+  3. Now you can use the web components we builded! For example, you can create a html file and try out our RATER:
+     
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <script type="module" src="index.js"></script>
+          </head>
+          <body>
+            <sds-rate class= "card-text" author = "Team7" des="Max 10 stars with blue colored custom texts" img="img/1.jpg" 
+                                    max = "10" show-text="1" text-color="blue" low-threshold="3" high-threshold="8"
+                                    icons="\e901,\e902,\e903" void-icon="\e900" 
+                                    style="font-family: icomoon!important;"
+                                    colors="rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)"
+                                    texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></sds-rate>
+          </body>
+          </html>
 
 # Team Members:
 Name | Role

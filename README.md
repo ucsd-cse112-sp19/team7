@@ -12,7 +12,7 @@
 ### Team Process: 
 <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br>
 <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 2 </a> <br>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-2-more-web-components-npm-package-and-web-service"> Sprint 2 </a> <br>
 
 
 ### Technologies:

@@ -10,11 +10,14 @@
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
 <br>
 
-<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Team Process </a>
+## Team Process 
+<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Sprint 0 </a>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Sprint 1 </a>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Sprint 2 </a>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Sprint 3 </a>
 
-# ~ Team Process ~
 Let's see our team process in the whole quarter, which includes 3 sprints:
-## ~ Sprint 0 ~ : Setup & Pipeline Creation & Web Compenent
+## Sprint 0: Setup & Pipeline Creation & Web Compenent
 What we did in sprint 0 are:
 * Create To-do list for members
 * Find the instructions for the first tools we decided to use
@@ -24,7 +27,7 @@ What we did in sprint 0 are:
 #### Our pipeline in sprint 0: </br>
 <img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/sprint1_pipeline.png" alt="sprint0_pipeline" width="700"/>
 
-## ~ Sprint 1 ~ : Porting Web Component
+## Sprint 1 : Porting Web Component
 In this sprint, we ported some awesome web components:
 ### Component 1: Rating
 ##### Attributes

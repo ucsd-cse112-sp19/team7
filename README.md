@@ -14,17 +14,17 @@
 
 # ~ Team Process ~
 Let's see our team process in the whole quarter, which includes 3 sprints:
-## Sprint 0: Setup & Pipeline Creation & Web Compenent
+## ~ Sprint 0 ~ : Setup & Pipeline Creation & Web Compenent
 What we did in sprint 0 are:
 * Create To-do list for members
 * Find the instructions for the first tools we decided to use
 * We created our first development pipeline! Check out our pipeline <a href="https://docs.google.com/presentation/d/1g0a8AYT_qCtn9QqohVH0l6wIGkoRYUuJsH-dkygo4wY/edit#slide=id.p">HERE!</a>
 * We also have our first attempt of web component, <a href="https://www.notion.so/Hello-World-8687d7dc16db4c48ad78daa76a97e80b">core-hello</a>
 
-Our pipeline in sprint 0:
-<img src="readmeImg/sprint1_pipeline.jpg" alt="drawing" width="500"/>
+#### Our pipeline in sprint 0: </br>
+<img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/sprint1_pipeline.png" alt="sprint0_pipeline" width="700"/>
 
-## Sprint 1: Porting Web Component
+## ~ Sprint 1 ~ : Porting Web Component
 In this sprint, we ported some awesome web components:
 ### Component 1: Rating
 ##### Attributes
@@ -56,11 +56,10 @@ In this sprint, we ported some awesome web components:
 - `**checked**` (boolean): Corresponds to whether the checkbox is checked or not
 - `**name**` (string): The "name" attribute used by the original checkbox
 
-Our pipeline in sprint 1:
-<img src="readmeImg/sprint2_pipeline.jpg" alt="drawing" width="500"/>
+#### Our pipeline in sprint 1:</br>
+<img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/sprint2_pipeline.png" alt="sprint1_pipeline" width="900"/>
 
-
-# All Members:
+# Team Members:
 Name | Role
 ---- | ---
 Etsu Nakahara   | Lead/Comms  |

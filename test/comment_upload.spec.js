@@ -1,4 +1,5 @@
 import {Comment} from "../pages/element/script/Comment.js";
+import {Upload} from "../pages/element/script/Upload.js";
 
 var expect = require("chai").expect;
 var should = require("chai").should();
@@ -7,11 +8,11 @@ var should = require("chai").should();
 
 describe("sds-comment unit", () => {
   let comment;
-  let shadow;
+  let commentShadow;
 
   beforeEach( async () => {
     comment = document.createElement("sds-comment");
-    shadow = comment.shadowRoot;
+    commentShadow = comment.shadowRoot;
     document.body.appendChild(comment);
   });
 
@@ -23,7 +24,7 @@ describe("sds-comment unit", () => {
     // change the color
     comment.setAttribute("color", "rgb(1, 35, 69)");
     
-    var styleSheet = shadow.querySelector("style").sheet;
+    var styleSheet = commentShadow.querySelector("style").sheet;
     var i;
     var flag = false;
     for (i = 0; i < styleSheet.cssRules.length; i++) {
@@ -84,6 +85,56 @@ describe("sds-comment unit", () => {
     comment.hasAttribute("all-disabled").should.equal(true);
     comment.allDisabled = false;
     comment.hasAttribute("all-disabled").should.equal(false);
+  });
+
+});
+
+describe("sds-upload unit", () => {
+  let upload;
+  let uploadShadow;
+
+
+  beforeEach( async () => {
+
+    upload = document.createElement("sds-upload");
+    uploadShadow = upload.shadowRoot;
+    document.body.appendChild(upload);
+  });
+
+  afterEach(() => {
+    document.body.removeChild(upload);
+  });
+
+  it("Unit test 1: check the getters and setters for drag label", async () => {
+
+    upload.setAttribute("drag", "");
+    "".should.equal(upload.shadowRoot.querySelector("div.el-upload-dragger").style.display);
+    
+  });
+
+  it("Unit test 2: check the getters and setters for hide-file-list", async () => {
+    upload.setAttribute("hide-file-list", "");
+    "none".should.equal(uploadShadow.querySelector("ul.el-upload-list").style.display);
+    let t = true;
+    t.should.equal(upload.hasAttribute("hide-file-list"));
+
+    upload.removeAttribute("hide-file-list");
+    "".should.equal(uploadShadow.querySelector("ul.el-upload-list").style.display);
+    t = false;
+    t.should.equal(upload.hasAttribute("hide-file-list"));
+  });
+
+
+  it("Unit test 3: check the getters and setters for display-thumbnail", async () => {
+    upload.setAttribute("disabled-void-icon", "")
+    "".should.equal(uploadShadow.querySelector("ul.el-upload-list").style.display)
+    let t = true
+    t.should.equal(upload.hasAttribute("display-thumbnail"))
+
+    upload.removeAttribute("disabled-void-icon")
+    "none".should.equal(uploadShadow.querySelector("ul.el-upload-list").style.display)
+    t = false
+    t.should.equal(upload.hasAttribute("display-thumbnail"))
   });
 
 });

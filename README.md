@@ -1,5 +1,5 @@
 # Team7 <a href="https://docs.google.com/presentation/d/1fXDuaQTFJ4bg_YPg_7X8dFeDI59nn6NiXu4h0UlOCjc/edit#slide=id.g56768d2de0_0_17">The Seven Deadly Sins
-</a>: 
+</a>
 
 [![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&branch=dev)](https://travis-ci.com/ucsd-cse112/team7)
 [![This project is using Percy.io for visual regression testing.](https://percy.io/static/images/percy-badge.svg)](https://percy.io/7-Deadly-Sins/Team7)
@@ -10,7 +10,9 @@
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
 <br>
 
-# Team Process
+<a href="https://github.com/ucsd-cse112/team7/tree/master#team-process"> Team Process </a>
+
+# ~ Team Process ~
 Let's see our team process in the whole quarter, which includes 3 sprints:
 ## Sprint 0: Setup & Pipeline Creation & Web Compenent
 What we did in sprint 0 are:

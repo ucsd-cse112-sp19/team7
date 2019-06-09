@@ -8,11 +8,29 @@
 
 
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
-Team Process: 
+
+#### Technologies:
+<img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/tools.png" alt="tools" width="700"/>
+
+<a href="https://github.com/typicode/husky"> Husky: </a>  <br>
+Style Enforcement: this can enforce our code to be consistent and readable, so that all teammates or the users read the code smoothly.<br>
+<a href="https://eslint.org/"> Linting: </a>  <br>
+Linting is used to enforce code styling rules to create cleaner and easier to read code. <br>
+<a href="https://esdoc.org/"> ESDoc: </a> <br>
+Use as part of the pipeline! Husky will go through the folder we specify (the scripts folder as of now), go through our comments in the code, and generate documentation in the docs folder <br>
+<a href="https://travis-ci.com/"> Travis CI: </a> <br>
+<a href="https://mochajs.org/"> Mocha & Chai: </a> <br>
+Mocha is a feature-rich JavaScript test framework we chose that runs on Node.js and in the browser.  <br>
+<a href="https://www.notion.so/e146255dd95148a7abdfb41cd8bff459?v=4502d4859c154af988a896f890256c93&p=be37e0ef71174c389ad12d0b0a033b62"> Karma: </a> <br>
+Karma is a tool that enables the running of source code (i.e. JavaScript) against real browsers via the CLI. <br>
+<a href="https://docs.codeclimate.com/docs/configuring-test-coverage"> Code Climate </a> <br>
+Code Climate provides meaningful and actionable engineering insights for the entire engineering organization. <br>
+
+#### Team Process: 
 <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br>
 <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br>
 <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 2 </a> <br>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 3 </a> <br>
+
 <br>
 
 ## TEAM PROCESS
@@ -65,7 +83,7 @@ In this sprint, we ported some awesome web components:
 
 ## Sprint 2: More web components, npm package, and web service!
 * In this sprint, we ported more fantastic Web Components: input, rating, checkbox, pagination 
-* We also combined our web components into a website! The ides of our website:  
+* We also combined our web components into a website! The ideas of our website:  
   1. course reviews forum (or a general one) 
   2. Smth similar to roten tomato
   3. Smth similar to ratemyprofessor
@@ -98,6 +116,9 @@ In this sprint, we ported some awesome web components:
                                     texts = "Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You're the BEST"></sds-rate>
           </body>
           </html>
+       index.js
+       
+          import "pandoras-box"; // runs the code in index.js of our package, which imports the web components
 
 # Team Members:
 Name | Role

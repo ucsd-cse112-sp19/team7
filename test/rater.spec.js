@@ -49,42 +49,53 @@ describe("sds-rate unit", () => {
     rater.setAttribute("max", "9");
     "9".should.equal(shadow.querySelector("#\\39").id + "");
     "9".should.equal(shadow.querySelectorAll("div i").length + "");
-    
   });
 
-  it("Unit test 6: check if clicking on stars is working", async () => {
+  it("Unit test 6: check the default class of stars", async () => {
     //first check for original class of star
     rater.setAttribute("max", "6");
     const star2 = shadow.querySelector("#\\32");
-    " el-rate__icon  el-icon-star-off".should.equal(star2.className);
+    assert(star2.className.includes("el-rate__icon"));
+    assert(star2.className.includes("el-icon-star-off"));
+  });
 
-    //click a star further on
+  it("Unit test 7: checking if clicking on stars changes class", async () => {
+    const star2 = shadow.querySelector("#\\32");
     const star4 = shadow.querySelector("#\\34");
+    //click a star further on
     star4.click();
    
     //check to make sure it has changed class
-    " el-rate__icon   el-icon-star-on".should.equal(star2.className);
+    assert(star2.className.includes("el-rate__icon"));
+    assert(star2.className.includes("el-icon-star-on"));
 
     //check to see if the clicked star changed class as well
-    " el-rate__icon   el-icon-star-on".should.equal(star4.className);
-
-    //check that further along star didn't change at all
-    const star5 = shadow.querySelector("#\\35");
-    " el-rate__icon   el-icon-star-off".should.equal(star5.className);
-
-    //check to make sure that the after message is set correctly
-    "Glad".should.equal(shadow.querySelector("div p").textContent);
-  
+    assert(star4.className.includes("el-rate__icon"));
+    assert(star4.className.includes("el-icon-star-on"));
   });
 
-  it("Unit test 7: checking if v-model correctly sets the stars", async () => {
+  it("Unit test 8: checking if clicking on stars changes text", async () => {
+    //check that further along star didn't change at all
+    const star4 = shadow.querySelector("#\\34");
+    const star5 = shadow.querySelector("#\\35");
+    assert(star5.className.includes("el-rate__icon"));
+    assert(star5.className.includes("el-icon-star-off"));
+
+    //check to make sure that the after message is set correctly
+    "".should.equal(shadow.querySelector("div p").textContent);
+    star4.click();
+    "Glad".should.equal(shadow.querySelector("div p").textContent);
+  });
+
+  it("Unit test 9: checking if v-model correctly sets the stars", async () => {
+    const star2 = shadow.querySelector("#\\32");
     rater.setAttribute("v-model", "2");
-    " el-rate__icon   el-icon-star-on".should.equal(shadow.querySelector("#\\32").className);
+    assert(star2.className.includes("el-rate__icon"));
+    assert(star2.className.includes("el-icon-star-on"));
   
     //move v-model back and check to see that the star isn't set anymore 
     rater.setAttribute("v-model", "1");
-    " el-rate__icon    el-icon-star-off".should.equal(shadow.querySelector("#\\32").className);
-   
+    assert(star2.className.includes("el-icon-star-off"));   
   });
   
 });

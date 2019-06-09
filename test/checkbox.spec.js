@@ -41,6 +41,7 @@ describe("sds-rate unit", () => {
     checkbox.hasAttribute("disabled").should.equal(true);
     checkbox.disabled = false;
     checkbox.hasAttribute("disabled").should.equal(false);
+
   });
 
   it("Unit test 4: check the default label class name", async () => {

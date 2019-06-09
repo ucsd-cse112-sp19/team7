@@ -435,8 +435,7 @@ export class Checkbox extends HTMLElement {
         break;
       }
     }
-
-    
+ 
     //var everything = this.shadowRoot.querySelectorAll("*:not(style)");
     for (k = 0; k < classArray.length; k++) {
       //console.log(everything[k]);

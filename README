@@ -1,4 +1,4 @@
 A rater and a checkbox component
 
 To import these web components, simply call `import "rater-and-checkbox";` from a JavaScript module.
-[Insert full documentation or link to it here.]
+See full docs at: https://ucsd-cse112.github.io/team7/docs

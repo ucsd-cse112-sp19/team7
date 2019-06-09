@@ -10,7 +10,7 @@
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
 <br>
 
-<a href="https://github.com/ucsd-cse112/team7/tree/master#team-process"> Team Process </a>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#-team-process-"> Team Process </a>
 
 # ~ Team Process ~
 Let's see our team process in the whole quarter, which includes 3 sprints:
@@ -20,6 +20,9 @@ What we did in sprint 0 are:
 * Find the instructions for the first tools we decided to use
 * We created our first development pipeline! Check out our pipeline <a href="https://docs.google.com/presentation/d/1g0a8AYT_qCtn9QqohVH0l6wIGkoRYUuJsH-dkygo4wY/edit#slide=id.p">HERE!</a>
 * We also have our first attempt of web component, <a href="https://www.notion.so/Hello-World-8687d7dc16db4c48ad78daa76a97e80b">core-hello</a>
+
+Our pipeline in sprint 0:
+<img src="readmeImg/sprint1_pipeline.jpg" alt="drawing" width="500"/>
 
 ## Sprint 1: Porting Web Component
 In this sprint, we ported some awesome web components:
@@ -53,6 +56,8 @@ In this sprint, we ported some awesome web components:
 - `**checked**` (boolean): Corresponds to whether the checkbox is checked or not
 - `**name**` (string): The "name" attribute used by the original checkbox
 
+Our pipeline in sprint 1:
+<img src="readmeImg/sprint2_pipeline.jpg" alt="drawing" width="500"/>
 
 
 # All Members:

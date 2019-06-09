@@ -1,8 +1,9 @@
 import { databaseService } from "../../element/script/init_firebase.js";
+import { db } from "../../element/script/init_firebase.js";
 //import { isPropertyAccessExpression } from "typescript";
 
 // eslint-disable-next-line no-undef
-var db = firebase.firestore();
+//var db = firebase.firestore();
 var tags = [];
 /* This is the star bug
 var stars = document.getElementById("stars").value;
@@ -57,7 +58,7 @@ document.getElementById("submit").addEventListener("click", function () {
     // submission succeeded
     document.getElementById("submitted").innerHTML = "Request Submitted!";
     window.location.href = "evaluator.html?lookup=" + titleText.replace(" ", "\\_") + "%" + id;
-    window.alert("Share this link to let others rate it!");
+    window.alert("Share this link to let others rate it! " + window.location.href);
     // eslint-disable-next-line no-console
     console.log(result);
   }).catch(err => {

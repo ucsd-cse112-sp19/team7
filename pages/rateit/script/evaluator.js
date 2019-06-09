@@ -1,7 +1,8 @@
 import { storageRef } from "../../element/script/init_firebase.js";
+import { db } from "../../element/script/init_firebase.js";
 
 // eslint-disable-next-line no-undef
-var db = firebase.firestore();
+//var db = firebase.firestore();
 var wrapper = document.getElementById("wrapper");
 var title = document.getElementById("title");
 var thing = document.getElementById("thing");
@@ -10,6 +11,7 @@ var des = document.getElementById("des");
 var comment = document.querySelector("sds-comment");
 var overalltags = document.getElementById("overall-tags");
 var overallrate = document.getElementById("overall-rate");
+var rateandtags = document.getElementById("rate-and-tags");
 /*var username = document.getElementById("username");
 var evals = document.getElementById("eval");
 var tags = document.getElementById("tags");
@@ -56,8 +58,21 @@ if (lookup_value != "Parameter Not Found") {
 
 // onclick for submit button
 document.getElementById("submit").addEventListener("click", function () {
+  if (!title.value) 
+    return;
+  db.collection(`${title.value}`).doc("config").get().then(function (doc) {
+    if (doc.exists) { // TODO why the if statement doesn't apply to the bellow
+      if (doc.data().isPrivate === "1") {
+        window.alert("This post is not accessible through lookup");
+        return;
+      }
+      else {
+        window.location.href = "evaluator.html?lookup=" + title.value.replace(" ", "\\_") + "%" +  `${doc.data().id}`;
+      }
+    }
+  });
   //display the comment
-  displayComment(title.value, true);
+  //displayComment(title.value, true);
 
 });
 
@@ -89,17 +104,26 @@ function displayComment(value, throughSubmit = false) {
         tagarray = [];
 
       // set the overall rating and tags score
-      if (doc.data().disableRateTag === "0")
+      if (doc.data().disableRateTag === "0") {
         calcOverallScore(value, `${doc.data().stars}`, tagarray);
+        //rateandtags.style.display = "block";
+      }
+      else {
+        rateandtags.style.display = "none";
+      }
 
-      //comment.setAttribute("max-of-rate", rater.max);
-      //comment.setAttribute("topic-name", thing.textContent);
       comment.allDisabled = false; // this will initialize the comment
       if (doc.data().disableRateTag === "0") {
         comment.showRating = true;
         comment.showTags = true;
       }
       comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
+      
+      if (doc.data().disableRateTag === "0") {
+        comment.shadowRoot.querySelector("#submit").addEventListener("click", function () {
+          calcOverallScore(value, `${doc.data().stars}`, tagarray);
+        });
+      }
 
       wrapper.style = "display: block";
       window.location.href = "#wrapper";
@@ -127,7 +151,7 @@ function calcOverallScore(value, rateMax, tagarray) {
   // get all comment doc from the collection
   ref.get().then(snapshot => {
 
-    // go over each doc
+    // loop through each comment
     snapshot.forEach(doc => {
       if (doc.id != "config") {
         // stars
@@ -150,8 +174,11 @@ function calcOverallScore(value, rateMax, tagarray) {
       // set up overall rating score
       overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
     }
-    //if (tags.length > 0) {
+
     // the overall checked tags
+    // clear overalltags first
+    while (overalltags.firstChild) 
+      overalltags.removeChild(overalltags.firstChild);
     for (let tagName in tags) {
       var tag = document.createElement("button");
       tag.type = "button";
@@ -164,25 +191,6 @@ function calcOverallScore(value, rateMax, tagarray) {
       tag.appendChild(tagScore);
       overalltags.appendChild(tag);
     }
-    //}
-    /*
-    else {
-      if (!tagarray || (tagarray.length <= 1 && tagarray[0].length == 0) )
-        return;
-      var i;
-      
-      for (i = 0; i < tagarray.length; i++) {
-        var tag = document.createElement("button");
-        tag.type = "button";
-        tag.className = "btn btn-primary";
-        tag.innerHTML = tagarray[i] + " ";
-        var tagScore = document.createElement("span");
-        tagScore.className = "badge badge-light";
-        tagScore.innerHTML = "0";
-        tag.appendChild(tagScore);
-        overalltags.appendChild(tag);
-      }
-    }*/
 
   }).catch(err => {
     // eslint-disable-next-line no-console

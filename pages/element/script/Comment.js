@@ -1,7 +1,8 @@
 //import {storageRef} from "./init_firebase.js";
+import {db} from "./init_firebase.js";
 
 // eslint-disable-next-line no-undef
-var db = firebase.firestore();
+//var db = firebase.firestore();
 
 const template = document.createElement("template");
 template.innerHTML = `
@@ -241,8 +242,7 @@ export class Comment extends HTMLElement {
       comment.value = "";*/
 
       window.alert("Evaluation Submitted!");
-      window.location.reload(true);
-      //commentElement.populateComments();
+      //window.location.reload(true);
     });
   }
 

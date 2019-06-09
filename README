@@ -1,3 +1,4 @@
 A rater, checkbox, upload, and comment components
 
 To import these web components, call `import "pandoras-box";` from a JavaScript module.
+See full docs at https://ucsd-cse112.github.io/team7/docs

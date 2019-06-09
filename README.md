@@ -9,7 +9,13 @@
 
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
 
-#### Technologies:
+### Team Process: 
+<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br>
+<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 2 </a> <br>
+
+
+### Technologies:
 <img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/tools.png" alt="tools" width="700"/>
 
 <a href="https://github.com/typicode/husky"> Husky: </a>  <br>
@@ -19,6 +25,7 @@ Linting is used to enforce code styling rules to create cleaner and easier to re
 <a href="https://esdoc.org/"> ESDoc: </a> <br>
 Use as part of the pipeline! Husky will go through the folder we specify (the scripts folder as of now), go through our comments in the code, and generate documentation in the docs folder <br>
 <a href="https://travis-ci.com/"> Travis CI: </a> <br>
+Atuo triggered tool integrated with github. <br>
 <a href="https://mochajs.org/"> Mocha & Chai: </a> <br>
 Mocha is a feature-rich JavaScript test framework we chose that runs on Node.js and in the browser.  <br>
 <a href="https://www.notion.so/e146255dd95148a7abdfb41cd8bff459?v=4502d4859c154af988a896f890256c93&p=be37e0ef71174c389ad12d0b0a033b62"> Karma: </a> <br>
@@ -26,10 +33,9 @@ Karma is a tool that enables the running of source code (i.e. JavaScript) agains
 <a href="https://docs.codeclimate.com/docs/configuring-test-coverage"> Code Climate </a> <br>
 Code Climate provides meaningful and actionable engineering insights for the entire engineering organization. <br>
 
-#### Team Process: 
-<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 2 </a> <br>
+### Important Links:
+<a href="https://www.notion.so/Seven-Deadly-Sins-c27870141b8343caaf2c4414337df549">Notion</a> <br>
+<a href="https://ucsd-cse112.github.io/team7/">Team Website</a> <br>
 
 <br>
 

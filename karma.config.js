@@ -1,23 +1,23 @@
 module.exports = function (config) {
   config.set({
 
-    basePath: '',
+    basePath: "",
 
-    frameworks: ['mocha', 'chai'],
+    frameworks: ["mocha", "chai"],
     //frameworks: ['jasmine'], 
     crossOriginAttribute: false,
     files: [
-      { pattern: 'https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js', included: true, watched: true, served: false },
-      { pattern: 'https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js', included: true, watched: true, served: false },
-      { pattern: 'https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js', included: true, watched: true, served: false },
-      { pattern: 'https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js', included: true, watched: true, served: false },
-      'test/*.spec.js'
+      { pattern: "https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js", included: true, watched: true, served: false },
+      { pattern: "https://www.gstatic.com/firebasejs/6.0.2/firebase-firestore.js", included: true, watched: true, served: false },
+      { pattern: "https://www.gstatic.com/firebasejs/6.0.2/firebase-storage.js", included: true, watched: true, served: false },
+      { pattern: "https://www.gstatic.com/firebasejs/6.0.2/firebase-database.js", included: true, watched: true, served: false },
+      "test/*.spec.js"
     ],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'pages/**/script/*.js': ['webpack', 'sourcemap'],
-      'test/*.spec.js': ['webpack', 'sourcemap'],
+      "pages/**/script/*.js": ["webpack", "sourcemap"],
+      "test/*.spec.js": ["webpack", "sourcemap"],
       
     },
     webpack: {
@@ -26,23 +26,23 @@ module.exports = function (config) {
       // webpack watches dependencies
 
       // webpack configuration
-      mode: 'production'
+      mode: "production"
     },
     // list of files to exclude
     exclude: [
     ],
 
-    reporters: ['progress', 'coverage-istanbul'],
+    reporters: ["progress", "coverage-istanbul"],
 
     coverageIstanbulReporter: {
-      reports: ['html', 'lcovonly', 'text-summary'],
+      reports: ["html", "lcovonly", "text-summary"],
       fixWebpackSourcePaths: true
     },
 
     port: 9876,  // karma web server port
     colors: true,
     logLevel: config.LOG_INFO,
-    browsers: ['HeadlessChrome'], // just for now; eventually: 'ChromeHeadless', Firefox', 'FirefoxDeveloper', 'FirefoxNightly', 'IE'],
+    browsers: ["HeadlessChrome"], // just for now; eventually: 'ChromeHeadless', Firefox', 'FirefoxDeveloper', 'FirefoxNightly', 'IE'],
     // enable / disable watching file and executing tests whenever any file changes
     /* just for now:
     customLaunchers: {

@@ -11,7 +11,7 @@ var des = document.getElementById("des");
 var comment = document.querySelector("sds-comment");
 var overalltags = document.getElementById("overall-tags");
 var overallrate = document.getElementById("overall-rate");
-var rateandtags = document.getElementById("rate-and-tags");
+var ratediv = document.getElementById("rate-div");
 /*var username = document.getElementById("username");
 var evals = document.getElementById("eval");
 var tags = document.getElementById("tags");
@@ -104,27 +104,28 @@ function displayComment(value, throughSubmit = false) {
         tagarray = [];
 
       // set the overall rating and tags score
-      if (doc.data().disableRateTag === "0") {
-        calcOverallScore(value, `${doc.data().stars}`, tagarray);
-        //rateandtags.style.display = "block";
-      }
-      else {
-        rateandtags.style.display = "none";
-      }
-
-      comment.allDisabled = false; // this will initialize the comment
-      if (doc.data().disableRateTag === "0") {
-        comment.showRating = true;
-        comment.showTags = true;
-      }
-      comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
-      
-      if (doc.data().disableRateTag === "0") {
+      if (doc.data().disableRate == "0" || doc.data().disableTag == "0") {
+        calcOverallScore(value, `${doc.data().stars}`, tagarray, doc.data().disableRate == "1" , doc.data().disableTag  == "1" );
         comment.shadowRoot.querySelector("#submit").addEventListener("click", function () {
-          calcOverallScore(value, `${doc.data().stars}`, tagarray);
+          calcOverallScore(value, `${doc.data().stars}`, tagarray, doc.data().disableRate == "1" , doc.data().disableTag == "1" );
         });
       }
 
+      comment.allDisabled = false; // this will initialize the comment
+      if (doc.data().disableRate === "0") {
+        comment.showRating = true;
+      }
+      else {
+        ratediv.style.display = "none";
+      }
+      if (doc.data().disableTag === "0") {
+        comment.showTags = true;
+      }
+      else {
+        overalltags.style.display = "none";
+      }
+      comment.updateComment(thing.textContent, `${doc.data().stars}`, tagarray);
+      
       wrapper.style = "display: block";
       window.location.href = "#wrapper";
     }
@@ -138,14 +139,15 @@ function displayComment(value, throughSubmit = false) {
 
 
 //  ------------------- function that get avg rating ----------------------- //
-function calcOverallScore(value, rateMax, tagarray) {
-
+function calcOverallScore(value, rateMax, tagarray, disableRate, disableTag) {
   var ref = db.collection(`${value}`);
   let stars = [];
   let tags = {};
   var i;
-  for (i = 0; i < tagarray.length; i++) {
-    tags[tagarray[i]] = 0;
+  if (!disableTag) {
+    for (i = 0; i < tagarray.length; i++) {
+      tags[tagarray[i]] = 0;
+    }
   }
 
   // get all comment doc from the collection
@@ -155,41 +157,50 @@ function calcOverallScore(value, rateMax, tagarray) {
     snapshot.forEach(doc => {
       if (doc.id != "config") {
         // stars
-        stars.push(Number(doc.data().star));
+        if (!disableRate)
+          stars.push(Number(doc.data().star));
         // tags
-        var tagData = `${doc.data().checked}`;
-        let tgs = tagData.split(",");
-        for (let i = 0; i < tgs.length; i++) {
-          if (tgs[i] in tags) {
-            tags[tgs[i]] += 1;
+        if (!disableTag) {
+          var tagData = `${doc.data().checked}`;
+          let tgs = tagData.split(",");
+          for (let i = 0; i < tgs.length; i++) {
+            if (tgs[i] in tags) {
+              tags[tgs[i]] += 1;
+            }
           }
         }
       }
     });
-
-    overallrate.max = (rateMax === "") ? "5" : rateMax;
-    if (stars.length > 0) {
-      // after gor from each doc, process
-      let sum = stars.reduce((previous, current) => current += previous);
-      // set up overall rating score
-      overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
+  
+    if (!disableRate) {
+      overallrate.max = (rateMax === "") ? "5" : rateMax;
+      if (stars.length > 0) {
+        // after gor from each doc, process
+        let sum = stars.reduce((previous, current) => current += previous);
+        // set up overall rating score
+        overallrate.valueModel = Math.round(sum / stars.length).toString(); //DONE oscar   
+      }
     }
 
     // the overall checked tags
     // clear overalltags first
-    while (overalltags.firstChild) 
-      overalltags.removeChild(overalltags.firstChild);
-    for (let tagName in tags) {
-      var tag = document.createElement("button");
-      tag.type = "button";
-      tag.className = "btn btn-primary";
-      tag.innerHTML = tagName + " ";
-      tag.disabled = "disabled";
-      var tagScore = document.createElement("span");
-      tagScore.className = "badge badge-light";
-      tagScore.innerHTML = tags[tagName].toString();
-      tag.appendChild(tagScore);
-      overalltags.appendChild(tag);
+
+    if (!disableTag) {
+      while (overalltags.firstChild) 
+        overalltags.removeChild(overalltags.firstChild);
+
+      for (let tagName in tags) {
+        var tag = document.createElement("button");
+        tag.type = "button";
+        tag.className = "btn btn-primary";
+        tag.innerHTML = tagName + " ";
+        tag.disabled = "disabled";
+        var tagScore = document.createElement("span");
+        tagScore.className = "badge badge-light";
+        tagScore.innerHTML = tags[tagName].toString();
+        tag.appendChild(tagScore);
+        overalltags.appendChild(tag);
+      }
     }
 
   }).catch(err => {

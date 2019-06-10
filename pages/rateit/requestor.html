@@ -107,11 +107,17 @@
 
     <p style="margin-top: 20px;">Configuration:</p>
     <div>
-      <sds-checkbox id="ckb" 
+      <sds-checkbox id="ckb-norate" 
           class="ckb-custom-border@label ckb-custom-border@.el-checkbox__inner" 
           border style="
             display: inline-block;
-            margin-bottom: 10px;">Disable Comments and Rates</sds-checkbox>
+            margin-bottom: 10px;">Disable Rates</sds-checkbox>
+      <sds-checkbox id="ckb-notag" 
+          class="ckb-custom-border@label ckb-custom-border@.el-checkbox__inner" 
+          border style="
+            display: inline-block;
+            margin-left: 10px;
+            margin-bottom: 10px;">Disable Tags</sds-checkbox>
       <sds-checkbox id="ckb-isprivate" 
           class="ckb-custom-border@label ckb-custom-border@.el-checkbox__inner" 
           border style="
@@ -121,8 +127,8 @@
     </div>
 
     <p>Add some tags you want people to give you</p>
-    <div>
-    <input id="tag" placeholder="Tag" style="
+    <div id="tags-div">
+      <input id="tag" placeholder="Tag" style="
         margin-bottom: 20px;">
       <button id="add" style="
           margin-bottom: 20px;">Add Tag</button>

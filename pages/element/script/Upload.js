@@ -536,6 +536,19 @@ export class Upload extends HTMLElement {
      */
   connectedCallback() {
     const shadow = this.shadowRoot;
+
+    // this following is a hack to make the font appear which is not really a good practice
+    var newStyle = document.createElement("style");
+    newStyle.appendChild(document.createTextNode(`
+    @font-face{
+      font-family:element-icons;
+      src:url(https://unpkg.com/element-ui@2.9.1/lib/theme-chalk/fonts/element-icons.woff) format("woff"), url(https://unpkg.com/element-ui@2.9.1/lib/theme-chalk/fonts/element-icons.ttf) format("truetype");
+      font-weight:400;
+      font-style:normal
+    }
+    `));
+    document.head.appendChild(newStyle);
+    
     //TODO4
     var wrapper = shadow.querySelector("div");
     shadow.appendChild(wrapper);
@@ -732,9 +745,9 @@ export class Upload extends HTMLElement {
           for (k = 0; k < classArray.length; k++) {
             if (rules[j].selectorText 
                 && rules[j].selectorText.includes("." + classArray[k])
-                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
-                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
-                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length].match(/[a-z]/i)
                     )
                 ) 
             ){

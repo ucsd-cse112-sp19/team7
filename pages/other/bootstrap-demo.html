@@ -50,6 +50,17 @@
     :host([checked]) .custom-expand {
       transform: scale(1.2);
     }
+
+    
+    .custom-upload {
+      transition: .3s;
+    }
+    .custom-upload:hover {
+      transform: scale(1.2) !important;
+      background: yellowgreen !important;
+      border-color: yellowgreen !important;
+      color: white;
+    }
   </style>
 </head>
 
@@ -135,6 +146,40 @@
   <div class="padding-container">
     <sds-checkbox border class="custom-expand@span.el-checkbox__label"></sds-checkbox>
   </div>
+
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
+
+  <h3>Original Styling</h3>
+  <div class="padding-container">
+    <sds-upload></sds-upload>
+    <br>
+  </div>
+  <h3>Bootstrap Styling</h3>
+  <div class="padding-container">
+    <sds-upload class="btn-warning@button"></sds-upload>
+    <br>
+  </div>
+  <h3>Custom Styling</h3>
+  <div class="padding-container">
+    <sds-upload class="btn-warning@button custom-upload@button"></sds-upload>
+    <br>
+  </div>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
 
 </body>
 

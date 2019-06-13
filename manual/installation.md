@@ -1,6 +1,8 @@
 # Installation
 
-To import these web components, call `import "pandoras-box";` from a JavaScript module.
+To import the npm package, run `npm i pandoras-box` (if you have not initialized npm yet, run `npm init`).
+
+To import these web components in your code, call `import "pandoras-box";` from a JavaScript module.
 
 For example, you could have a Javascript module **index.js** which contains `import "pandoras-box";`, and an HTML file with `<script type="module" src="index.js"></script>` in the **head** section.
 

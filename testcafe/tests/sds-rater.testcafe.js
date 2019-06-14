@@ -1,14 +1,16 @@
 import { Selector } from "testcafe";
 
-const author = Selector(() => document.querySelector("#def").shadowRoot.querySelector("p#author"));
-const description = Selector(() => document.querySelector("#def").shadowRoot.querySelector("p#des"));
-const secStar = Selector(() => document.querySelector("#def").shadowRoot.querySelector("#\\32"));
-const midStar = Selector(() => document.querySelector("#def").shadowRoot.querySelector("#\\33"));
-const maxStar = Selector(() => document.querySelector("#def").shadowRoot.querySelector("#\\36"));
-const afterText = Selector(() => document.querySelector("#def").shadowRoot.querySelector("div p"));
+const def = Selector(() => document.querySelector("#def"));
+const dis = Selector(() => document.querySelector("#diff"));
+const author = Selector(() => def.shadowRoot.querySelector("p#author"));
+const description = Selector(() => def.shadowRoot.querySelector("p#des"));
+const secStar = Selector(() => def.shadowRoot.querySelector("#\\32"));
+const midStar = Selector(() => def.shadowRoot.querySelector("#\\33"));
+const maxStar = Selector(() => def.shadowRoot.querySelector("#\\36"));
+const afterText = Selector(() => def.shadowRoot.querySelector("div p"));
 
 fixture `Sds Rater Test`
-  .page `./test.html`;
+  .page `../rater.html`;
 
 test("Test 1: Check if author is set", async t => {
   await t
@@ -38,3 +40,7 @@ test("Test 5: Test max and texts attributes", async t => {
     .expect(afterText.textContent).eql("Amazing");
 });
 
+test("Test 6: Check that rater is disabled", async t => {
+  await t
+    .expect(dis.hasAttribute("disabled")).eql(true);
+});

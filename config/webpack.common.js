@@ -2,7 +2,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const path = require("path");
 
 // add your components here
-const components = ["Checkbox", "Comment", "Rater"];
+const components = ["Checkbox", "Comment", "Rater", "Upload"];
 const componentsEntries = {};
 
 componentsEntries["pages/core-hello/script/core-hello"] = "./pages/core-hello/script/core-hello.js";

@@ -156,13 +156,29 @@ template.innerHTML = `
   </div>
 `;
 
+/**
+ * Comment is a custom element that creates a web component.
+ * It can be used by the tag <sds-comment>
+ */
 export class Comment extends HTMLElement {
+  /**
+   * The element's constructor is run anytime a new instance is created.
+   * Instances are created by parsing HTML, or calling
+   * document.createElement("7ds-rate")
+   * The construtor is a good place to create shadow DOM, though you should
+   * avoid touching any attributes or light DOM children as they may not
+   * be available yet.
+   */
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
     this.shadowRoot.appendChild(template.content.cloneNode(true));
   }
 
+  /**
+   * `connectedCallback()` is called when the element is inserted into the DOM.
+   * It will initialize the comment block only if `init-with` attribute is set.
+   */
   connectedCallback() {
     // Set up attributes
     //this.handleColor();
@@ -176,6 +192,13 @@ export class Comment extends HTMLElement {
     }
   }
 
+  /**
+   * `updateComment()` is called to generate the comment block if not initialized
+   * yet, or to update the comments if already initialized.
+   * @param {string} topicName - the subject name of the comments are made
+   * @param {number} maxOfRate - max number of rate if rate is enabled
+   * @param {string[]} tagarray - array of tags if tag is enabled
+   */
   updateComment(topicName, maxOfRate, tagarray = []) {
     if (!topicName) {
       window.alert("error");
@@ -246,6 +269,10 @@ export class Comment extends HTMLElement {
     });
   }
 
+  /**
+   * `populateComment()` is called to populate the comments made
+   * by others.
+   */
   populateComments() {
     var commenter = this;
     var msgbox = this.shadowRoot.querySelector("span#box");
@@ -451,9 +478,9 @@ export class Comment extends HTMLElement {
           for (k = 0; k < classArray.length; k++) {
             if (rules[j].selectorText 
                 && rules[j].selectorText.includes("." + classArray[k])
-                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
-                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
-                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length].match(/[a-z]/i)
                     )
                 ) 
             ){

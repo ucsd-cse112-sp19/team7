@@ -1,16 +1,9 @@
 import { databaseService } from "../../element/script/init_firebase.js";
 import { db } from "../../element/script/init_firebase.js";
-//import { isPropertyAccessExpression } from "typescript";
 
-// eslint-disable-next-line no-undef
-//var db = firebase.firestore();
 var tags = [];
-/* This is the star bug
-var stars = document.getElementById("stars").value;
-if(stars == null) {
-  stars = 5;
-  console.log("start not specified")
-}*/
+var norate_ckb = document.getElementById("ckb-norate");
+var notag_ckb = document.getElementById("ckb-notag");
 
 document.getElementById("add").addEventListener("click", function () {
   var tagValue = document.getElementById("tag").value;
@@ -29,6 +22,39 @@ document.getElementById("add").addEventListener("click", function () {
   document.getElementById("tag").value = "";
 });
 
+window.onload = function() { // wait for the shadow root to be ready so that listener can be added
+  norate_ckb.shadowRoot.querySelector("input").addEventListener("click", function () {
+    if (norate_ckb.checked) {
+      document.getElementById("stars").setAttribute("disabled", "");
+    }
+    else {
+      document.getElementById("stars").removeAttribute("disabled");
+    }
+  });
+
+  notag_ckb.shadowRoot.querySelector("input").addEventListener("click", function () {
+    var tagdiv;
+    var i;
+    if (notag_ckb.checked) {
+      tagdiv = document.getElementById("tags-div").children;
+      for (i = 0; i < tagdiv.length; i++) {
+        tagdiv[i].setAttribute("disabled", "");
+      }
+      var tagarray = document.getElementById("tagarray");
+      while (tagarray.firstChild) { //clear all tags
+        tagarray.removeChild(tagarray.firstChild);
+      }
+    }
+    else {
+      tagdiv = document.getElementById("tags-div").children;
+      for (i = 0; i < tagdiv.length; i++) {
+        tagdiv[i].removeAttribute("disabled");
+      }
+    }
+  });
+  
+};
+
 document.getElementById("submit").addEventListener("click", function () {
 
   var stars = document.getElementById("stars").value;
@@ -38,7 +64,8 @@ document.getElementById("submit").addEventListener("click", function () {
   }
 
   var isPrivate = document.getElementById("ckb-isprivate").checked ? "1" : "0";
-  var disableRateTag = document.getElementById("ckb").checked ? "1" : "0";
+  var disableRate = norate_ckb.checked ? "1" : "0";
+  var disableTag = notag_ckb.checked ? "1" : "0";
   var titleText = document.getElementById("title").value;
   var id = databaseService.ref(`${titleText}`).push().key;
   var img = document.getElementById("upload").shadowRoot.querySelector("a.el-upload-list__item-name").innerHTML;
@@ -52,15 +79,16 @@ document.getElementById("submit").addEventListener("click", function () {
     sent: firebase.firestore.Timestamp.fromDate(new Date()),
     id: `${id}`,
     isPrivate: `${isPrivate}`,
-    disableRateTag: `${disableRateTag}`,
+    disableRate: `${disableRate}`,
+    disableTag: `${disableTag}`,
     image: `${img}`
   }).then(result => { 
     // submission succeeded
     document.getElementById("submitted").innerHTML = "Request Submitted!";
     window.location.href = "evaluator.html?lookup=" + titleText.replace(" ", "\\_") + "%" + id;
-    window.alert("Share this link to let others rate it! " + window.location.href);
+    window.alert("Share the link of the evaluation form to let others rate it!");
     // eslint-disable-next-line no-console
-    console.log(result);
+    console.log("This is to avoid linting check for unused var=>result: " + result);
   }).catch(err => {
     // eslint-disable-next-line no-console
     console.log("Error: " + err);

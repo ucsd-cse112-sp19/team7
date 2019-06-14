@@ -470,15 +470,6 @@ export class Rater extends HTMLElement {
         break;
       }
     }
-    /*
-    styleSheet.deleteRule(".el-icon-star-on.low-level", 0);
-    styleSheet.deleteRule(".el-icon-star-on.medium-level", 0);
-    styleSheet.deleteRule(".el-icon-star-on.high-level", 0);
-    //use insertRule(".eg{}", index) instead if less browser is supporting
-    styleSheet.addRule(".el-icon-star-on.low-level", "color: " + this.colors[0] + ";", 0);
-    styleSheet.addRule(".el-icon-star-on.medium-level",  "color: " + this.colors[1] + ";", 0);
-    styleSheet.addRule(".el-icon-star-on.high-level", "color: " + this.colors[2] + ";", 0);
-  */
   }
 
   /**
@@ -566,9 +557,9 @@ export class Rater extends HTMLElement {
           for (k = 0; k < classArray.length; k++) {
             if (rules[j].selectorText 
                 && rules[j].selectorText.includes("." + classArray[k])
-                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
-                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
-                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length].match(/[a-z]/i)
                     )
                 ) 
             ){

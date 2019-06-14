@@ -536,6 +536,19 @@ export class Upload extends HTMLElement {
      */
   connectedCallback() {
     const shadow = this.shadowRoot;
+
+    // this following is a hack to make the font appear which is not really a good practice
+    var newStyle = document.createElement("style");
+    newStyle.appendChild(document.createTextNode(`
+    @font-face{
+      font-family:element-icons;
+      src:url(https://unpkg.com/element-ui@2.9.1/lib/theme-chalk/fonts/element-icons.woff) format("woff"), url(https://unpkg.com/element-ui@2.9.1/lib/theme-chalk/fonts/element-icons.ttf) format("truetype");
+      font-weight:400;
+      font-style:normal
+    }
+    `));
+    document.head.appendChild(newStyle);
+    
     //TODO4
     var wrapper = shadow.querySelector("div");
     shadow.appendChild(wrapper);
@@ -558,14 +571,25 @@ export class Upload extends HTMLElement {
 
   }
 
+  /**
+   * `onClickUpload(event)` gets called when the user clicks upload. It calls `handleFileUpload(files)` 
+   * to deal with the files that got uploaded. That file is in event.tartget.files. Note: it's an array of files
+   * @param {event} event - the click event
+   */
   onClickUpload(event) {
     var upload = event.target.getRootNode().host;
     upload.handleFileUpload(event.target.files);
   }
 
+  /**
+   * `handleFileUpload(files)` gets called by `onClickUpload(event)`. It's responsible for uploading the file to firebase.
+   * it calls `addFileListItem(file)` to show the user that the file got uploaded in a list directly below the upload button
+   * @param {files} files - files that got uploaded
+   * @throws {error} -throws error if uploading to firebase goes wrong
+   */
   handleFileUpload(files) {
     var upload = this;
-    var selectedFile = files[0];
+    var selectedFile = files[0]; //take the first file
 
     if (!selectedFile)
       return;
@@ -588,6 +612,12 @@ export class Upload extends HTMLElement {
     });
   }
 
+  /**
+   * `addFileListItem(file)` This function adds this file to the list and is called by `handleFileUpload(files)`.
+   * It appends the file to the end of the list and adds the appropriate template (if we display the thumbnail or not) to the shadow DOM
+   * It adds the click listener to the cancel upload (the "x") icon
+   * @param {file} file - the file that the user has uploaded.
+   */
   addFileListItem(file) {
     var fileName = file.name;
     var upload = this;
@@ -600,13 +630,8 @@ export class Upload extends HTMLElement {
     lastItem.querySelector("a.el-upload-list__item-name").innerHTML += fileName;
     
     //check if we have the display-thumbnail attribute on
-    if(this.displayThumbnail){
-      lastItem.querySelector("img").src = URL.createObjectURL(file);
-      lastItem.querySelector("img").style.display = "block";
-      //list.className = "el-upload-list--picture";
-      list.classList.add("el-upload-list--picture");
-    }
-
+    lastItem.querySelector("img").src = URL.createObjectURL(file);
+    this.handleDisplayThumbnail();
 
     // add click listener to the cancel icon
     lastItem.querySelector("i.el-icon-close").addEventListener("click", function() {
@@ -627,6 +652,10 @@ export class Upload extends HTMLElement {
     });
   }
 
+  /**
+   * `onDragOver()` is called when the dragging cursor enters the drag area
+   * @param {Event} event - the drag enter event
+   */
   onDragOver(event){
     event.preventDefault();
     event.stopPropagation();
@@ -634,6 +663,11 @@ export class Upload extends HTMLElement {
     var dragger = select.shadowRoot.querySelector("div.el-upload-dragger");
     dragger.className = "el-upload-dragger is-dragover";
   }
+
+  /**
+   * `onDragLeave()` is called when the dragging cursor leaves the drag area
+   * @param {Event} event - the drag leave event
+   */
   onDragLeave(event){
     event.preventDefault();
     event.stopPropagation();
@@ -641,6 +675,11 @@ export class Upload extends HTMLElement {
     var dragger = select.shadowRoot.querySelector("div.el-upload-dragger");
     dragger.className = "el-upload-dragger";
   }
+
+  /**
+   * `onDrop()` is called when file is dropped into the drag area
+   * @param {Event} event - the drop event
+   */
   onDrop(event){
     event.preventDefault();
     event.stopPropagation();
@@ -663,24 +702,9 @@ export class Upload extends HTMLElement {
     // cannot use this as the this in event listener is the target
     var button = event.target.getRootNode().host;
     var input = button.shadowRoot.querySelector("input.el-upload__input");
-    input.click();
-
-    /*selectedFile = input.value;//event.target.files[0];
-    console.log(selectedFile);
-    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
-    uploadTask.on("state_changed", (snapshot) => {
-      // Observe state change events such as progress, pause, and resume
-    }, (error) => {
-      // Handle unsuccessful uploads
-      console.log(error);
-    }, () => {
-      // Do something once upload is complete
-      console.log("success");
-    });*/
-    
+    input.click();    
   }
   
-
   /**
    * `handleDragger()` is called when the `dragger` attribute changes and will
    * update the class of the checkbox
@@ -697,6 +721,31 @@ export class Upload extends HTMLElement {
     }
   }
 
+  /**
+   * `handleDragger()` is called when the `dragger` attribute changes and will
+   * update the class of the checkbox
+   */
+  handleDisplayThumbnail () {
+    var list = this.shadowRoot.querySelector("ul.el-upload-list");
+    var listItems = this.shadowRoot.querySelectorAll("ul.el-upload-list li");
+    var i;
+    //check if we have the display-thumbnail attribute on
+    if(this.displayThumbnail){
+      for (i = 0; i < listItems.length; i++) {
+        listItems[i].querySelector("img").style.display = "block";
+        //list.className = "el-upload-list--picture";
+      }
+      list.classList.add("el-upload-list--picture");
+    }
+    else {
+      for (i = 0; i < listItems.length; i++) {
+        listItems[i].querySelector("img").style.display = "none";
+        //list.className = "el-upload-list--picture";
+      }
+      list.classList.remove("el-upload-list--picture");
+    }
+  }
+  
   /**
    * `insertOutsideClass()` is called to insert css rules of the class names in
    * `class` attribute into the shadowDOM's stylesheet
@@ -732,9 +781,9 @@ export class Upload extends HTMLElement {
           for (k = 0; k < classArray.length; k++) {
             if (rules[j].selectorText 
                 && rules[j].selectorText.includes("." + classArray[k])
-                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
-                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != "-"
-                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                && (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length] != "-"
+                        && !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length].match(/[a-z]/i)
                     )
                 ) 
             ){
@@ -796,7 +845,7 @@ export class Upload extends HTMLElement {
       this.handleDrag();
       break;
     case "display-thumbnail":
-      //don't need anything for this
+      this.handleDisplayThumbnail();
       break;
     case "class":
       this.insertOutsideClass();

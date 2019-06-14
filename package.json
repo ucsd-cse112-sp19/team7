@@ -1,12 +1,12 @@
 {
-  "name": "rater-and-checkbox",
-  "version": "1.0.5",
+  "name": "pandoras-box",
+  "version": "1.0.1",
   "description": "[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&branch=dev)](https://travis-ci.com/ucsd-cse112/team7)",
   "main": "index.js",
   "scripts": {
     "utest": "npx karma start karma.config.js",
-    "b2test": "testcafe \"saucelabs:Firefox\" ./testcafe/sds-rater.testcafe.js",
-    "b1test": "testcafe \"saucelabs:Chrome@beta:Windows 10,saucelabs:Safari\" ./testcafe/sds-rater.testcafe.js",
+    "b2test": "testcafe \"saucelabs:Firefox\" ./testcafe/",
+    "b1test": "testcafe \"saucelabs:Chrome@beta:Windows 10,saucelabs:Safari\" ./testcafe/tests/",
     "btest": "npm run b1test && npm run b2test",
     "test": "npm run utest && npm run btest",
     "start": "owc-dev-server -o",

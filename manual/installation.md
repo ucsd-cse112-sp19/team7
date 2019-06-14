@@ -1,4 +1,4 @@
-# Installation
+# NPM Installation
 
 To import the npm package, run `npm i pandoras-box` (if you have not initialized npm yet, run `npm init`).
 

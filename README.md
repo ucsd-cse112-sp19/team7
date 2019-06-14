@@ -8,17 +8,17 @@
 
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
 
-# Common IssuesTODO
-
 # Our Products:
 - NPM package of our custom web components (rate, checkbox, upload, comment): **pandoras-box**
   - <a href="https://www.npmjs.com/package/pandoras-box">Follow this link to install</a>
-  - Please followhere
+  - Please follow the instruction <a href="https://ucsd-cse112.github.io/team7/docs/manual/installation.html">here</a> to install
+  - To learn about the web components, refer to the <a href="https://ucsd-cse112.github.io/team7/docs/manual/webcomponents.html">overview</a> of the compoenents and the <a href="https://ucsd-cse112.github.io/team7/docs/index.html">API doc</a>
 - Extensible evaluation web service: **Rateit**
   - <a href="https://ucsd-cse112.github.io/team7/pages/rateit/requestor.html">Try out making a evaluation requestor</a>
   - <a href="https://ucsd-cse112.github.io/team7/pages/rateit/evaluator.html">Try out rating on a subject</a>
-  - User guide for Rateit is here
+  - User guide for Rateit is <a href="https://ucsd-cse112.github.io/team7/docs/manual/rateit.html">here</a>
 
+![Image](https://ucsd-cse112.github.io/team7/pages/index/img/rateit.png)
 
 # Repo Overview: 
 - **bash_scripts**: The script files run by bash are in this folder, e.g. linting script
@@ -32,11 +32,17 @@ Docs: The API docs are auto-generated into this folder (which only exist in mast
 - **testcafe**: The browser-testing files for testcafe and saucelab are in this folder
 - **stories**: The test files for pixel testing are in this folder
 
+Also check <a href="https://www.notion.so/Repository-Information-e8b104a6476041348adfce88a9c756ef">here</a> for repo info
 
-# Our Build Pipeline
+# Documentation:
+On-boarding members: <a href="https://www.notion.so/Onboarding-1439623be26a4d4eb6609f479d5d1cdd">Go to this link!</a>
+In general: <a href="https://www.notion.so/Seven-Deadly-Sins-c27870141b8343caaf2c4414337df549">Go to this link!</a>
+API doc: <a href="https://ucsd-cse112.github.io/team7/docs/index.html">Go to this link!</a>
 
+# Our Build Pipeline:
+<img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/final_pipeline.png" alt="final_pipeline" width="900"/>
 
-# Development Process Introduction
+# Development Process Introduction:
 We followed the agile lifecycle to develop our products and the build pipeline in the following three sprints: 
 1. <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br>
 2. <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br>

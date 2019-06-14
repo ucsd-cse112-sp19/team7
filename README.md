@@ -170,6 +170,9 @@ In this sprint, we ported some awesome web components:
 - **`show-tags`** (boolean): If true, checkbox will be integrated into the comment web components so that users can add tags to the comments
 - **`init-with`** (string): The subject, or the database entry name, which will be fetched when the comment component is initialized
 
+### Our Final Pipeline Diagram:
+<img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/final_pipeline.png" alt="final_pipeline" width="900"/>
+
 # Team Members:
 Name | Role
 ---- | ---

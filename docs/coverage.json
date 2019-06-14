@@ -1,7 +1,7 @@
 {
-  "coverage": "73.8%",
-  "expectCount": 168,
-  "actualCount": 124,
+  "coverage": "79.06%",
+  "expectCount": 172,
+  "actualCount": 136,
   "files": {
     "pages/core-hello/script/core-hello.js": {
       "expectCount": 2,
@@ -17,14 +17,9 @@
     },
     "pages/element/script/Comment.js": {
       "expectCount": 32,
-      "actualCount": 26,
+      "actualCount": 31,
       "undocumentLines": [
-        7,
-        159,
-        160,
-        166,
-        179,
-        249
+        7
       ]
     },
     "pages/element/script/init_firebase.js": {
@@ -44,18 +39,12 @@
       "undocumentLines": []
     },
     "pages/element/script/Upload.js": {
-      "expectCount": 22,
-      "actualCount": 13,
+      "expectCount": 23,
+      "actualCount": 20,
       "undocumentLines": [
         21,
         481,
-        561,
-        566,
-        591,
-        630,
-        637,
-        644,
-        842
+        891
       ]
     },
     "pages/index/script/namecard.js": {
@@ -81,14 +70,17 @@
         26,
         40,
         80,
-        141
+        142
       ]
     },
     "pages/rateit/script/requestor.js": {
-      "expectCount": 1,
+      "expectCount": 4,
       "actualCount": 0,
       "undocumentLines": [
-        7
+        4,
+        5,
+        6,
+        25
       ]
     },
     "pages/webcomponent/script/CECoreHello.js": {

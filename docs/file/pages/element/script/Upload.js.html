@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">pages/element/script/Upload.js | rater-and-checkbox</title>
+  <title data-ice="title">pages/element/script/Upload.js | pandoras-box</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="pandoras-box"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -48,15 +48,18 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-onload">onload</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-rateandtags">rateandtags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ratediv">ratediv</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-norate_ckb">norate_ckb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notag_ckb">notag_ckb</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
@@ -606,6 +609,19 @@ export class Upload extends HTMLElement {
      */
   connectedCallback() {
     const shadow = this.shadowRoot;
+
+    // this following is a hack to make the font appear which is not really a good practice
+    var newStyle = document.createElement(&quot;style&quot;);
+    newStyle.appendChild(document.createTextNode(`
+    @font-face{
+      font-family:element-icons;
+      src:url(https://unpkg.com/element-ui@2.9.1/lib/theme-chalk/fonts/element-icons.woff) format(&quot;woff&quot;), url(https://unpkg.com/element-ui@2.9.1/lib/theme-chalk/fonts/element-icons.ttf) format(&quot;truetype&quot;);
+      font-weight:400;
+      font-style:normal
+    }
+    `));
+    document.head.appendChild(newStyle);
+    
     //TODO4
     var wrapper = shadow.querySelector(&quot;div&quot;);
     shadow.appendChild(wrapper);
@@ -628,14 +644,25 @@ export class Upload extends HTMLElement {
 
   }
 
+  /**
+   * `onClickUpload(event)` gets called when the user clicks upload. It calls `handleFileUpload(files)` 
+   * to deal with the files that got uploaded. That file is in event.tartget.files. Note: it&apos;s an array of files
+   * @param {event} event - the click event
+   */
   onClickUpload(event) {
     var upload = event.target.getRootNode().host;
     upload.handleFileUpload(event.target.files);
   }
 
+  /**
+   * `handleFileUpload(files)` gets called by `onClickUpload(event)`. It&apos;s responsible for uploading the file to firebase.
+   * it calls `addFileListItem(file)` to show the user that the file got uploaded in a list directly below the upload button
+   * @param {files} files - files that got uploaded
+   * @throws {error} -throws error if uploading to firebase goes wrong
+   */
   handleFileUpload(files) {
     var upload = this;
-    var selectedFile = files[0];
+    var selectedFile = files[0]; //take the first file
 
     if (!selectedFile)
       return;
@@ -658,6 +685,12 @@ export class Upload extends HTMLElement {
     });
   }
 
+  /**
+   * `addFileListItem(file)` This function adds this file to the list and is called by `handleFileUpload(files)`.
+   * It appends the file to the end of the list and adds the appropriate template (if we display the thumbnail or not) to the shadow DOM
+   * It adds the click listener to the cancel upload (the &quot;x&quot;) icon
+   * @param {file} file - the file that the user has uploaded.
+   */
   addFileListItem(file) {
     var fileName = file.name;
     var upload = this;
@@ -670,13 +703,8 @@ export class Upload extends HTMLElement {
     lastItem.querySelector(&quot;a.el-upload-list__item-name&quot;).innerHTML += fileName;
     
     //check if we have the display-thumbnail attribute on
-    if(this.displayThumbnail){
-      lastItem.querySelector(&quot;img&quot;).src = URL.createObjectURL(file);
-      lastItem.querySelector(&quot;img&quot;).style.display = &quot;block&quot;;
-      //list.className = &quot;el-upload-list--picture&quot;;
-      list.classList.add(&quot;el-upload-list--picture&quot;);
-    }
-
+    lastItem.querySelector(&quot;img&quot;).src = URL.createObjectURL(file);
+    this.handleDisplayThumbnail();
 
     // add click listener to the cancel icon
     lastItem.querySelector(&quot;i.el-icon-close&quot;).addEventListener(&quot;click&quot;, function() {
@@ -697,6 +725,10 @@ export class Upload extends HTMLElement {
     });
   }
 
+  /**
+   * `onDragOver()` is called when the dragging cursor enters the drag area
+   * @param {Event} event - the drag enter event
+   */
   onDragOver(event){
     event.preventDefault();
     event.stopPropagation();
@@ -704,6 +736,11 @@ export class Upload extends HTMLElement {
     var dragger = select.shadowRoot.querySelector(&quot;div.el-upload-dragger&quot;);
     dragger.className = &quot;el-upload-dragger is-dragover&quot;;
   }
+
+  /**
+   * `onDragLeave()` is called when the dragging cursor leaves the drag area
+   * @param {Event} event - the drag leave event
+   */
   onDragLeave(event){
     event.preventDefault();
     event.stopPropagation();
@@ -711,6 +748,11 @@ export class Upload extends HTMLElement {
     var dragger = select.shadowRoot.querySelector(&quot;div.el-upload-dragger&quot;);
     dragger.className = &quot;el-upload-dragger&quot;;
   }
+
+  /**
+   * `onDrop()` is called when file is dropped into the drag area
+   * @param {Event} event - the drop event
+   */
   onDrop(event){
     event.preventDefault();
     event.stopPropagation();
@@ -733,24 +775,9 @@ export class Upload extends HTMLElement {
     // cannot use this as the this in event listener is the target
     var button = event.target.getRootNode().host;
     var input = button.shadowRoot.querySelector(&quot;input.el-upload__input&quot;);
-    input.click();
-
-    /*selectedFile = input.value;//event.target.files[0];
-    console.log(selectedFile);
-    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
-    uploadTask.on(&quot;state_changed&quot;, (snapshot) =&gt; {
-      // Observe state change events such as progress, pause, and resume
-    }, (error) =&gt; {
-      // Handle unsuccessful uploads
-      console.log(error);
-    }, () =&gt; {
-      // Do something once upload is complete
-      console.log(&quot;success&quot;);
-    });*/
-    
+    input.click();    
   }
   
-
   /**
    * `handleDragger()` is called when the `dragger` attribute changes and will
    * update the class of the checkbox
@@ -767,6 +794,31 @@ export class Upload extends HTMLElement {
     }
   }
 
+  /**
+   * `handleDragger()` is called when the `dragger` attribute changes and will
+   * update the class of the checkbox
+   */
+  handleDisplayThumbnail () {
+    var list = this.shadowRoot.querySelector(&quot;ul.el-upload-list&quot;);
+    var listItems = this.shadowRoot.querySelectorAll(&quot;ul.el-upload-list li&quot;);
+    var i;
+    //check if we have the display-thumbnail attribute on
+    if(this.displayThumbnail){
+      for (i = 0; i &lt; listItems.length; i++) {
+        listItems[i].querySelector(&quot;img&quot;).style.display = &quot;block&quot;;
+        //list.className = &quot;el-upload-list--picture&quot;;
+      }
+      list.classList.add(&quot;el-upload-list--picture&quot;);
+    }
+    else {
+      for (i = 0; i &lt; listItems.length; i++) {
+        listItems[i].querySelector(&quot;img&quot;).style.display = &quot;none&quot;;
+        //list.className = &quot;el-upload-list--picture&quot;;
+      }
+      list.classList.remove(&quot;el-upload-list--picture&quot;);
+    }
+  }
+  
   /**
    * `insertOutsideClass()` is called to insert css rules of the class names in
    * `class` attribute into the shadowDOM&apos;s stylesheet
@@ -802,9 +854,9 @@ export class Upload extends HTMLElement {
           for (k = 0; k &lt; classArray.length; k++) {
             if (rules[j].selectorText 
                 &amp;&amp; rules[j].selectorText.includes(&quot;.&quot; + classArray[k])
-                &amp;&amp; (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1]
-                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1] != &quot;-&quot;
-                        &amp;&amp; !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length + 1].match(/[a-z]/i)
+                &amp;&amp; (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length] != &quot;-&quot;
+                        &amp;&amp; !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length].match(/[a-z]/i)
                     )
                 ) 
             ){
@@ -866,7 +918,7 @@ export class Upload extends HTMLElement {
       this.handleDrag();
       break;
     case &quot;display-thumbnail&quot;:
-      //don&apos;t need anything for this
+      this.handleDisplayThumbnail();
       break;
     case &quot;class&quot;:
       this.insertOutsideClass();

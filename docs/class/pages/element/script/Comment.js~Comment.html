@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">Comment | rater-and-checkbox</title>
+  <title data-ice="title">Comment | pandoras-box</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="pandoras-box"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -48,15 +48,18 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-onload">onload</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-rateandtags">rateandtags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ratediv">ratediv</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-norate_ckb">norate_ckb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notag_ckb">notag_ckb</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
@@ -68,13 +71,13 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Comment} from &apos;<span><a href="file/pages/element/script/Comment.js.html#lineNumber159">rater-and-checkbox/pages/element/script/Comment.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Comment} from &apos;<span><a href="file/pages/element/script/Comment.js.html#lineNumber163">pandoras-box/pages/element/script/Comment.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
   
   
-  <span data-ice="source">| <span><a href="file/pages/element/script/Comment.js.html#lineNumber159">source</a></span></span>
+  <span data-ice="source">| <span><a href="file/pages/element/script/Comment.js.html#lineNumber163">source</a></span></span>
 </div>
 
 <div class="self-detail detail">
@@ -94,7 +97,9 @@
 
   
   
-  
+  <div class="description" data-ice="description"><p>Comment is a custom element that creates a web component.
+It can be used by the tag &lt;sds-comment&gt;</p>
+</div>
   
 
   
@@ -168,7 +173,13 @@ be handled in <code>attributeChangedCallback()</code></p>
       <div>
         
         
-        
+        <div data-ice="description"><p>The element&apos;s constructor is run anytime a new instance is created.
+Instances are created by parsing HTML, or calling
+document.createElement(&quot;7ds-rate&quot;)
+The construtor is a good place to create shadow DOM, though you should
+avoid touching any attributes or light DOM children as they may not
+be available yet.</p>
+</div>
       </div>
     </td>
     <td>
@@ -744,7 +755,8 @@ returned array of <code>observedAttributes()</code> are changed.</p>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>connectedCallback()</code> is called when the element is inserted into the DOM.</p>
+</div>
       </div>
     </td>
     <td>
@@ -952,7 +964,9 @@ and will hide the rating element in displayed reviews accordingly</p>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>populateComment()</code> is called to populate the comments made
+by others.</p>
+</div>
       </div>
     </td>
     <td>
@@ -974,13 +988,15 @@ and will hide the rating element in displayed reviews accordingly</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html#instance-method-updateComment">updateComment</a></span></span><span class="code" data-ice="signature">(topicName: <span>*</span>, maxOfRate: <span>*</span>, tagarray: <span><span>*</span><span>[]</span></span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html#instance-method-updateComment">updateComment</a></span></span><span class="code" data-ice="signature">(topicName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, maxOfRate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, tagarray: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span><span>[]</span></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>updateComment()</code> is called to generate the comment block if not initialized
+yet, or to update the comments if already initialized.</p>
+</div>
       </div>
     </td>
     <td>
@@ -1008,7 +1024,7 @@ and will hide the rating element in displayed reviews accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber493">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber520">source</a></span></span>
     </span>
   </h3>
 
@@ -1070,14 +1086,20 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber160">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber172">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>The element&apos;s constructor is run anytime a new instance is created.
+Instances are created by parsing HTML, or calling
+document.createElement(&quot;7ds-rate&quot;)
+The construtor is a good place to create shadow DOM, though you should
+avoid touching any attributes or light DOM children as they may not
+be available yet.</p>
+</div>
 
   
 
@@ -1116,7 +1138,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber621">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber648">source</a></span></span>
     </span>
   </h3>
 
@@ -1159,7 +1181,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber616">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber643">source</a></span></span>
     </span>
   </h3>
 
@@ -1202,7 +1224,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber549">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber576">source</a></span></span>
     </span>
   </h3>
 
@@ -1245,7 +1267,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber554">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber581">source</a></span></span>
     </span>
   </h3>
 
@@ -1288,7 +1310,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber560">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber587">source</a></span></span>
     </span>
   </h3>
 
@@ -1331,7 +1353,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber565">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber592">source</a></span></span>
     </span>
   </h3>
 
@@ -1374,7 +1396,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber588">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber615">source</a></span></span>
     </span>
   </h3>
 
@@ -1417,7 +1439,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber593">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber620">source</a></span></span>
     </span>
   </h3>
 
@@ -1460,7 +1482,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber651">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber678">source</a></span></span>
     </span>
   </h3>
 
@@ -1503,7 +1525,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber656">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber683">source</a></span></span>
     </span>
   </h3>
 
@@ -1546,7 +1568,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber631">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber658">source</a></span></span>
     </span>
   </h3>
 
@@ -1589,7 +1611,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber636">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber663">source</a></span></span>
     </span>
   </h3>
 
@@ -1632,7 +1654,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber579">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber606">source</a></span></span>
     </span>
   </h3>
 
@@ -1675,7 +1697,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber574">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber601">source</a></span></span>
     </span>
   </h3>
 
@@ -1718,7 +1740,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber602">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber629">source</a></span></span>
     </span>
   </h3>
 
@@ -1761,7 +1783,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber607">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber634">source</a></span></span>
     </span>
   </h3>
 
@@ -1804,7 +1826,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber641">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber668">source</a></span></span>
     </span>
   </h3>
 
@@ -1847,7 +1869,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber646">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber673">source</a></span></span>
     </span>
   </h3>
 
@@ -1893,7 +1915,7 @@ be handled in <code>attributeChangedCallback()</code></p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber509">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber536">source</a></span></span>
     </span>
   </h3>
 
@@ -1970,14 +1992,16 @@ handle side effects</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber166">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber182">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>connectedCallback()</code> is called when the element is inserted into the DOM.
+It will initialize the comment block only if <code>init-with</code> attribute is set.</p>
+</div>
 
   
 
@@ -2013,7 +2037,7 @@ handle side effects</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber327">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber354">source</a></span></span>
     </span>
   </h3>
 
@@ -2058,7 +2082,7 @@ handle side effects</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber342">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber369">source</a></span></span>
     </span>
   </h3>
 
@@ -2103,7 +2127,7 @@ and will disable the comment element accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber381">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber408">source</a></span></span>
     </span>
   </h3>
 
@@ -2148,7 +2172,7 @@ and will hide the rating element in displayed reviews accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber358">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber385">source</a></span></span>
     </span>
   </h3>
 
@@ -2193,7 +2217,7 @@ and will hide the rating element in displayed reviews accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber401">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber428">source</a></span></span>
     </span>
   </h3>
 
@@ -2238,7 +2262,7 @@ and will hide the rating element in displayed reviews accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber423">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber450">source</a></span></span>
     </span>
   </h3>
 
@@ -2283,14 +2307,16 @@ and will hide the rating element in displayed reviews accordingly</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber249">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber276">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>populateComment()</code> is called to populate the comments made
+by others.</p>
+</div>
 
   
 
@@ -2322,18 +2348,20 @@ and will hide the rating element in displayed reviews accordingly</p>
     
     
     
-    <span class="code" data-ice="name">updateComment</span><span class="code" data-ice="signature">(topicName: <span>*</span>, maxOfRate: <span>*</span>, tagarray: <span><span>*</span><span>[]</span></span>)</span>
+    <span class="code" data-ice="name">updateComment</span><span class="code" data-ice="signature">(topicName: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span>, maxOfRate: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span>, tagarray: <span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span><span>[]</span></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber179">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Comment.js.html#lineNumber202">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>updateComment()</code> is called to generate the comment block if not initialized
+yet, or to update the comments if already initialized.</p>
+</div>
 
   
 
@@ -2347,22 +2375,24 @@ and will hide the rating element in displayed reviews accordingly</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">topicName</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the subject name of the comments are made</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">maxOfRate</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number">number</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>max number of rate if rate is enabled</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">tagarray</td>
-      <td data-ice="type" class="code"><span><span>*</span><span>[]</span></span></td>
-      <td data-ice="appendix"><ul><li>optional</li>
-<li>default: []</li></ul></td>
-      <td data-ice="description"></td>
+      <td data-ice="type" class="code"><span><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String">string</a></span><span>[]</span></span></td>
+      <td data-ice="appendix"></td>
+      <td data-ice="description"><p>array of tags if tag is enabled</p>
+</td>
     </tr>
 </tbody>
   </table>

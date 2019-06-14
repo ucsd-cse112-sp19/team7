@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl">
-  <title data-ice="title">Home | rater-and-checkbox</title>
+  <title data-ice="title">Home | pandoras-box</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="pandoras-box"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -48,15 +48,18 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-onload">onload</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-rateandtags">rateandtags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ratediv">ratediv</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-norate_ckb">norate_ckb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notag_ckb">notag_ckb</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
@@ -67,13 +70,165 @@
 </div>
 </nav>
 
-<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="team7--the-seven-deadly-sins">Team7: The Seven Deadly Sins</h1><p><a href="https://travis-ci.com/ucsd-cse112/team7"><img src="https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev" alt="Build Status"></a>
+<div class="content" data-ice="content"><div data-ice="index" class="github-markdown"><h1 id="team7----a-href--https---docs-google-com-presentation-d-1fxduaqtfj4bg-ypg-7x8dfedi59nn6nixu4h0ulocjc-edit-slide-id-g56768d2de0-0-17--the-seven-deadly-sins">Team7 - <a href="https://docs.google.com/presentation/d/1fXDuaQTFJ4bg_YPg_7X8dFeDI59nn6NiXu4h0UlOCjc/edit#slide=id.g56768d2de0_0_17">The Seven Deadly Sins</a></h1><p></p>
+<p><a href="https://travis-ci.com/ucsd-cse112/team7"><img src="https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev" alt="Build Status"></a>
 <a href="https://percy.io/7-Deadly-Sins/Team7"><img src="https://percy.io/static/images/percy-badge.svg" alt="This project is using Percy.io for visual regression testing."></a>
 <a href="https://codeclimate.com/repos/5cda76f15edc6166400005f9/maintainability"><img src="https://api.codeclimate.com/v1/badges/2c5eb5cea98f2e51d1c2/maintainability" alt="Maintainability"></a>
 <a href="https://codeclimate.com/repos/5cda76f15edc6166400005f9/test_coverage"><img src="https://api.codeclimate.com/v1/badges/2c5eb5cea98f2e51d1c2/test_coverage" alt="Test Coverage"></a></p>
-<p><img src="pages/index/img/devilbus1.jpg" width="500">
-<br></p>
-<h1 id="all-members-">All Members:</h1><table>
+<p><img src="pages/index/img/devilbus1.jpg" width="500"></p>
+<h1 id="our-products-">Our Products:</h1><ul>
+<li>NPM package of our custom web components (rate, checkbox, upload, comment): <strong>pandoras-box</strong><ul>
+<li><a href="https://www.npmjs.com/package/pandoras-box">Follow this link to install</a></li>
+<li>Please follow the instruction <a href="https://ucsd-cse112.github.io/team7/docs/manual/installation.html">here</a> to install</li>
+<li>To learn about the web components, refer to the <a href="https://ucsd-cse112.github.io/team7/docs/manual/webcomponents.html">overview</a> of the compoenents and the <a href="https://ucsd-cse112.github.io/team7/docs/index.html">API doc</a></li>
+</ul>
+</li>
+<li>Extensible evaluation web service: <strong>Rateit</strong><ul>
+<li><a href="https://ucsd-cse112.github.io/team7/pages/rateit/requestor.html">Try out making a evaluation requestor</a></li>
+<li><a href="https://ucsd-cse112.github.io/team7/pages/rateit/evaluator.html">Try out rating on a subject</a></li>
+<li>User guide for Rateit is <a href="https://ucsd-cse112.github.io/team7/docs/manual/rateit.html">here</a></li>
+</ul>
+</li>
+</ul>
+<p><img src="https://ucsd-cse112.github.io/team7/pages/index/img/rateit.png" alt="Image"></p>
+<h1 id="repo-overview-">Repo Overview:</h1><ul>
+<li><strong>bash_scripts</strong>: The script files run by bash are in this folder, e.g. linting script
+Config: Configuration files for wepack are in this folder; no need to touch this folder unless </li>
+<li><strong>coverage</strong>: The test coverage are auto-generated into this folder
+Docs: The API docs are auto-generated into this folder (which only exist in master branch)</li>
+<li><strong>manual</strong>: The files to generate the manual documentation are in this folder</li>
+<li><strong>pages</strong>: All files that have a web page to be displayed goes into this folder; js files are stored in &#x201C;script&#x201D; subfolders<ul>
+<li><strong>element</strong>: Stores all of our web components related files</li>
+</ul>
+</li>
+<li><strong>test</strong>: The unit tests run by Karma are in this folder</li>
+<li><strong>testcafe</strong>: The browser-testing files for testcafe and saucelab are in this folder</li>
+<li><strong>stories</strong>: The test files for pixel testing are in this folder</li>
+</ul>
+<p>Also check <a href="https://www.notion.so/Repository-Information-e8b104a6476041348adfce88a9c756ef">here</a> for repo info</p>
+<h1 id="documentation-">Documentation:</h1><p>On-boarding members: <a href="https://www.notion.so/Onboarding-1439623be26a4d4eb6609f479d5d1cdd">Go to this link!</a>
+In general: <a href="https://www.notion.so/Seven-Deadly-Sins-c27870141b8343caaf2c4414337df549">Go to this link!</a>
+API doc: <a href="https://ucsd-cse112.github.io/team7/docs/index.html">Go to this link!</a></p>
+<h1 id="our-build-pipeline-">Our Build Pipeline:</h1><p><img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/final_pipeline.png" width="900"></p>
+<h1 id="development-process-introduction-">Development Process Introduction:</h1><p>We followed the agile lifecycle to develop our products and the build pipeline in the following three sprints: </p>
+<ol>
+<li><a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br></li>
+<li><a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br></li>
+<li><a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-2-more-web-components-npm-package-and-web-service"> Sprint 2 </a> <br></li>
+</ol>
+<h3 id="technologies-used-">Technologies Used:</h3><p><img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/tools.png" width="700"></p>
+<p><a href="https://github.com/typicode/husky"> Husky: </a>  <br>
+Style Enforcement: this can enforce our code to be consistent and readable, so that all teammates or the users read the code smoothly.<br>
+<a href="https://eslint.org/"> Linting: </a>  <br>
+Linting is used to enforce code styling rules to create cleaner and easier to read code. <br>
+<a href="https://esdoc.org/"> ESDoc: </a> <br>
+Use as part of the pipeline! Husky will go through the folder we specify (the scripts folder as of now), go through our comments in the code, and generate documentation in the docs folder <br>
+<a href="https://travis-ci.com/"> Travis CI: </a> <br>
+Atuo triggered tool integrated with github. <br>
+<a href="https://mochajs.org/"> Mocha &amp; Chai: </a> <br>
+Mocha is a feature-rich JavaScript test framework we chose that runs on Node.js and in the browser.  <br>
+<a href="https://www.notion.so/e146255dd95148a7abdfb41cd8bff459?v=4502d4859c154af988a896f890256c93&amp;p=be37e0ef71174c389ad12d0b0a033b62"> Karma: </a> <br>
+Karma is a tool that enables the running of source code (i.e. JavaScript) against real browsers via the CLI. <br>
+<a href="https://docs.codeclimate.com/docs/configuring-test-coverage"> Code Climate </a> <br>
+Code Climate provides meaningful and actionable engineering insights for the entire engineering organization. <br></p>
+<h3 id="important-links-">Important Links:</h3><p><a href="https://www.notion.so/Seven-Deadly-Sins-c27870141b8343caaf2c4414337df549">Notion</a> <br>
+<a href="https://ucsd-cse112.github.io/team7/">Team Website</a> <br></p>
+<p><br></p>
+<h2 id="team-process">TEAM PROCESS</h2><h2 id="sprint-0--setup--amp--pipeline-creation--amp--web-compenent">Sprint 0: Setup &amp; Pipeline Creation &amp; Web Compenent</h2><p>What we did in sprint 0 are:</p>
+<ul>
+<li>Create To-do list for members</li>
+<li>Find the instructions for the first tools we decided to use</li>
+<li>We created our first development pipeline! Check out our pipeline <a href="https://docs.google.com/presentation/d/1g0a8AYT_qCtn9QqohVH0l6wIGkoRYUuJsH-dkygo4wY/edit#slide=id.p">HERE!</a></li>
+<li>We also have our first attempt of web component, <a href="https://www.notion.so/Hello-World-8687d7dc16db4c48ad78daa76a97e80b">core-hello</a></li>
+</ul>
+<h4 id="our-pipeline-in-sprint-0----br-">Our pipeline in sprint 0: <br></h4><p><img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/sprint1_pipeline.png" width="700"></p>
+<h2 id="sprint-1---porting-web-component">Sprint 1 : Porting Web Component</h2><p>In this sprint, we ported some awesome web components:</p>
+<h3 id="component-1--rating">Component 1: Rating</h3><h5 id="attributes">Attributes</h5><ul>
+<li><strong><code>v-model</code></strong> (number): The value of the starts, or the number of stars selected</li>
+<li><strong><code>max</code></strong> (number): The number of stars in the rating bar</li>
+<li><strong><code>disabled</code></strong> (boolean): If true, then the rating bar is not clickable and not modifiable</li>
+<li><strong><code>low-threshold</code></strong> (number): The threshold value between low and medium level. This value is included in the low level</li>
+<li><strong><code>high-threshold</code></strong> (number): The threshold value between medium and high level. This value is included in the high level</li>
+<li><strong><code>colors</code></strong> (string, or array of string) : The color of the icons. If it is an array (has to be array size of 3), each entry corresponds to each level determined by low-threshold and high-threshold</li>
+<li><strong><code>void-color</code></strong> (string): The color of the unselected icons</li>
+<li><strong><code>disabled-void-color</code></strong> (string): The color of the unselected icons when disabled</li>
+<li><strong><code>icons</code></strong> (string, or array of string): The icon type used for the rating, specifically the CSS code of the icon in the format of &quot;\XXXX&quot;. If it is an array (has to be array size of 3), each entry corresponds to each level determined by low-threshold and high-threshold. This is modified from the original icon-classes which uses class name instead</li>
+<li><strong><code>void-icon</code></strong> (string): The icon type of the unselected rating item. This is modified from the original void-icon-class from Element</li>
+<li><strong><code>disabled-void-icon</code></strong> (string): The icon type of the unselected rating item when disabled. This is modified from the original disabled-void-icon-class from Element</li>
+<li><strong><code>show-text</code></strong> (boolean): If true, display the text next to the rating bar</li>
+<li><strong><code>show-score</code></strong> (boolean): If true, display the current rating score. This attribute is prioritized over show-text, so score will be displayed instead of text</li>
+<li><strong><code>text-color</code></strong> (string): The color of the text</li>
+<li><strong><code>texts</code></strong> (array of string): The array of displayed text whose entries will correspond to each rating score</li>
+<li><strong><code>score-template</code></strong> (string): The template format for the displayed score. If score-template=&quot;{value} Points&quot;, then &quot;2 Points&quot; will be displayed</li>
+</ul>
+<h3 id="component-2--checkbox">Component 2: Checkbox</h3><h5 id="attributes">Attributes</h5><ul>
+<li><strong><code>v-model</code></strong> (string): A value represented by the checkbox. It will not appear on the frontend unless used by other html tags</li>
+<li><strong><code>true-label</code></strong> (string): The v-model value when checked</li>
+<li><strong><code>false-label</code></strong> (string): The v-model value when unchecked</li>
+<li><strong><code>disabled</code></strong> (boolean): If true, then the checkbox is not clickable and not modifiable</li>
+<li><strong><code>border</code></strong> (boolean): If true, border will be added around the checkbox</li>
+<li><strong><code>size</code></strong> (&quot;medium,&quot; &quot;small,&quot; or &quot;mini&quot;): The size of the border. Only these three string value is acceptable; otherwise, the default value which is &quot;medium&quot; will be used</li>
+<li><strong><code>checked</code></strong> (boolean): Corresponds to whether the checkbox is checked or not</li>
+<li><strong><code>name</code></strong> (string): The &quot;name&quot; attribute used by the original checkbox</li>
+</ul>
+<h4 id="our-pipeline-in-sprint-1---br-">Our pipeline in sprint 1:<br></h4><p><img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/sprint2_pipeline.png" width="900"></p>
+<h2 id="sprint-2--more-web-components--npm-package--and-web-service-">Sprint 2: More web components, npm package, and web service!</h2><ul>
+<li>In this sprint, we ported more fantastic Web Components: upload and comment</li>
+<li>We also combined our web components into a website! The ideas of our website:  <ol>
+<li>course reviews forum (or a general one) </li>
+<li>Smth similar to roten tomato</li>
+<li>Smth similar to ratemyprofessor</li>
+<li>Smth similar to the meme creater done in CSE134B</li>
+<li>smth similar to when2meet</li>
+<li>smth similar to reddit + rating</li>
+</ol>
+</li>
+<li>For the backend of this service, we used the real time database of firebase. </li>
+<li>Check out our web service for evaluation <a href="https://ucsd-cse112.github.io/team7/pages/rateit/requestor.html">Rateit</a>!!*</li>
+<li><p>What&apos;s more, we even published our web components to npm !</p>
+<ol>
+<li><a href="https://www.npmjs.com/package/pandoras-box">Current Package</a></li>
+<li><p>Try to install our packages with</p>
+<pre><code><code class="source-code prettyprint"> npm install pandoras-box</code>
+</code></pre><p> and import it using</p>
+<pre><code><code class="source-code prettyprint"> import &quot;pandoras-box&quot;</code>
+</code></pre></li>
+<li><p>Now you can use the web components we builded! For example, you can create a html file and try out our RATER:</p>
+<pre><code><code class="source-code prettyprint"> &lt;!DOCTYPE html&gt;
+ &lt;html lang=&quot;en&quot;&gt;
+ &lt;head&gt;
+   &lt;script type=&quot;module&quot; src=&quot;index.js&quot;&gt;&lt;/script&gt;
+ &lt;/head&gt;
+ &lt;body&gt;
+   &lt;sds-rate class= &quot;card-text&quot; author = &quot;Team7&quot; des=&quot;Max 10 stars with blue colored custom texts&quot; img=&quot;img/1.jpg&quot; 
+                           max = &quot;10&quot; show-text=&quot;1&quot; text-color=&quot;blue&quot; low-threshold=&quot;3&quot; high-threshold=&quot;8&quot;
+                           icons=&quot;\e901,\e902,\e903&quot; void-icon=&quot;\e900&quot; 
+                           style=&quot;font-family: icomoon!important;&quot;
+                           colors=&quot;rgb(153, 169, 191); rgb(247, 186, 42); rgb(255, 153, 0)&quot;
+                           texts = &quot;Get Out!,Seriously?,Nah,Hmm,OK,Good,Nice,Wow,Bang,You&apos;re the BEST&quot;&gt;&lt;/sds-rate&gt;
+ &lt;/body&gt;
+ &lt;/html&gt;</code>
+</code></pre><p>  index.js</p>
+<pre><code><code class="source-code prettyprint"> import &quot;pandoras-box&quot;; // runs the code in index.js of our package, which imports the web components</code>
+</code></pre></li>
+</ol>
+</li>
+</ul>
+<h3 id="component-3--upload">Component 3: Upload</h3><h5 id="attributes">Attributes</h5><ul>
+<li><strong><code>hide-file-list</code></strong> (boolean): If true, the list of files that are uploaded will not be shown</li>
+<li><strong><code>drag</code></strong> (boolean): If true, the upload will enable upload through drag and drop files</li>
+<li><strong><code>display-thumbnail</code></strong> (boolean): If true, the file list will be displayed along with a thumbnail</li>
+</ul>
+<h3 id="component-4--comment">Component 4: Comment</h3><h5 id="attributes">Attributes</h5><ul>
+<li><strong><code>color</code></strong> (string): The color of the comment box</li>
+<li><strong><code>Disabled</code></strong> (boolean): If true, the user cannot make any comments but only view other&#x2019;s comment</li>
+<li><strong><code>hide-comment</code></strong> (boolean): If true, the user cannot view other&#x2019;s comments</li>
+<li><strong><code>show-rating</code></strong> (boolean): If true, rate bar will be integrated into the comment web components so that users can add rating to the comments</li>
+<li><strong><code>show-tags</code></strong> (boolean): If true, checkbox will be integrated into the comment web components so that users can add tags to the comments</li>
+<li><strong><code>init-with</code></strong> (string): The subject, or the database entry name, which will be fetched when the comment component is initialized</li>
+</ul>
+<h3 id="our-final-pipeline-diagram-">Our Final Pipeline Diagram:</h3><p><img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/final_pipeline.png" width="900"></p>
+<h1 id="team-members-">Team Members:</h1><table>
 <thead>
 <tr>
 <th>Name</th>

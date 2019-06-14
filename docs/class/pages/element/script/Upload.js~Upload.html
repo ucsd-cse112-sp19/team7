@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <base data-ice="baseUrl" href="../../../../">
-  <title data-ice="title">Upload | rater-and-checkbox</title>
+  <title data-ice="title">Upload | pandoras-box</title>
   <link type="text/css" rel="stylesheet" href="css/style.css">
   <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
   <script src="script/prettify/prettify.js"></script>
   <script src="script/manual.js"></script>
-<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="rater-and-checkbox"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="pandoras-box"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
 <body class="layout-container" data-ice="rootContainer">
 
 <header>
@@ -48,15 +48,18 @@
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-onload">onload</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
-<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-rateandtags">rateandtags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ratediv">ratediv</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-norate_ckb">norate_ckb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notag_ckb">notag_ckb</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
 <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
@@ -68,7 +71,7 @@
 </nav>
 
 <div class="content" data-ice="content"><div class="header-notice">
-  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Upload} from &apos;<span><a href="file/pages/element/script/Upload.js.html#lineNumber518">rater-and-checkbox/pages/element/script/Upload.js</a></span>&apos;</code></pre></div>
+  <div data-ice="importPath" class="import-path"><pre class="prettyprint"><code data-ice="importPathCode">import {Upload} from &apos;<span><a href="file/pages/element/script/Upload.js.html#lineNumber518">pandoras-box/pages/element/script/Upload.js</a></span>&apos;</code></pre></div>
   <span data-ice="access">public</span>
   <span data-ice="kind">class</span>
   
@@ -380,13 +383,14 @@ be available yet.</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-addFileListItem">addFileListItem</a></span></span><span class="code" data-ice="signature">(file: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-addFileListItem">addFileListItem</a></span></span><span class="code" data-ice="signature">(file: <span>file</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>addFileListItem(file)</code> This function adds this file to the list and is called by <code>handleFileUpload(files)</code>.</p>
+</div>
       </div>
     </td>
     <td>
@@ -467,6 +471,36 @@ returned array of <code>observedAttributes()</code> are changed.</p>
           
           
           
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-handleDisplayThumbnail">handleDisplayThumbnail</a></span></span><span class="code" data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p><code>handleDragger()</code> is called when the <code>dragger</code> attribute changes and will
+update the class of the checkbox</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          
           <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-handleDrag">handleDrag</a></span></span><span class="code" data-ice="signature">()</span>
         </p>
       </div>
@@ -497,13 +531,14 @@ update the class of the checkbox</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-handleFileUpload">handleFileUpload</a></span></span><span class="code" data-ice="signature">(files: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-handleFileUpload">handleFileUpload</a></span></span><span class="code" data-ice="signature">(files: <span>files</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>handleFileUpload(files)</code> gets called by <code>onClickUpload(event)</code>.</p>
+</div>
       </div>
     </td>
     <td>
@@ -585,13 +620,14 @@ It will correctly trigger the upload action</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-onClickUpload">onClickUpload</a></span></span><span class="code" data-ice="signature">(event: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-onClickUpload">onClickUpload</a></span></span><span class="code" data-ice="signature">(event: <span>event</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>onClickUpload(event)</code> gets called when the user clicks upload.</p>
+</div>
       </div>
     </td>
     <td>
@@ -613,13 +649,14 @@ It will correctly trigger the upload action</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-onDragLeave">onDragLeave</a></span></span><span class="code" data-ice="signature">(event: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-onDragLeave">onDragLeave</a></span></span><span class="code" data-ice="signature">(event: <span>Event</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>onDragLeave()</code> is called when the dragging cursor leaves the drag area</p>
+</div>
       </div>
     </td>
     <td>
@@ -641,13 +678,14 @@ It will correctly trigger the upload action</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-onDragOver">onDragOver</a></span></span><span class="code" data-ice="signature">(event: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-onDragOver">onDragOver</a></span></span><span class="code" data-ice="signature">(event: <span>Event</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>onDragOver()</code> is called when the dragging cursor enters the drag area</p>
+</div>
       </div>
     </td>
     <td>
@@ -669,13 +707,14 @@ It will correctly trigger the upload action</p>
           
           
           
-          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-onDrop">onDrop</a></span></span><span class="code" data-ice="signature">(event: <span>*</span>)</span>
+          <span class="code" data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html#instance-method-onDrop">onDrop</a></span></span><span class="code" data-ice="signature">(event: <span>Event</span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p><code>onDrop()</code> is called when file is dropped into the drag area</p>
+</div>
       </div>
     </td>
     <td>
@@ -703,7 +742,7 @@ It will correctly trigger the upload action</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber774">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber823">source</a></span></span>
     </span>
   </h3>
 
@@ -817,7 +856,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber839">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber888">source</a></span></span>
     </span>
   </h3>
 
@@ -860,7 +899,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber842">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber891">source</a></span></span>
     </span>
   </h3>
 
@@ -903,7 +942,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber825">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber874">source</a></span></span>
     </span>
   </h3>
 
@@ -946,7 +985,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber834">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber883">source</a></span></span>
     </span>
   </h3>
 
@@ -989,7 +1028,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber811">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber860">source</a></span></span>
     </span>
   </h3>
 
@@ -1032,7 +1071,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber820">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber869">source</a></span></span>
     </span>
   </h3>
 
@@ -1074,18 +1113,21 @@ be available yet.</p>
     
     
     
-    <span class="code" data-ice="name">addFileListItem</span><span class="code" data-ice="signature">(file: <span>*</span>)</span>
+    <span class="code" data-ice="name">addFileListItem</span><span class="code" data-ice="signature">(file: <span>file</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber591">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber621">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>addFileListItem(file)</code> This function adds this file to the list and is called by <code>handleFileUpload(files)</code>.
+It appends the file to the end of the list and adds the appropriate template (if we display the thumbnail or not) to the shadow DOM
+It adds the click listener to the cancel upload (the &quot;x&quot;) icon</p>
+</div>
 
   
 
@@ -1099,9 +1141,10 @@ be available yet.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">file</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>file</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the file that the user has uploaded.</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1137,7 +1180,7 @@ be available yet.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber788">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber837">source</a></span></span>
     </span>
   </h3>
 
@@ -1248,6 +1291,51 @@ It&apos;s a good place to set the initial attribute values and install event lis
   
 </div>
 <div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-handleDisplayThumbnail">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span class="code" data-ice="name">handleDisplayThumbnail</span><span class="code" data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber728">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p><code>handleDragger()</code> is called when the <code>dragger</code> attribute changes and will
+update the class of the checkbox</p>
+</div>
+
+  
+
+  <div data-ice="properties">
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
   <h3 data-ice="anchor" id="instance-method-handleDrag">
     <span class="access" data-ice="access">public</span>
     
@@ -1259,7 +1347,7 @@ It&apos;s a good place to set the initial attribute values and install event lis
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber688">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber712">source</a></span></span>
     </span>
   </h3>
 
@@ -1300,18 +1388,20 @@ update the class of the checkbox</p>
     
     
     
-    <span class="code" data-ice="name">handleFileUpload</span><span class="code" data-ice="signature">(files: <span>*</span>)</span>
+    <span class="code" data-ice="name">handleFileUpload</span><span class="code" data-ice="signature">(files: <span>files</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber566">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber590">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>handleFileUpload(files)</code> gets called by <code>onClickUpload(event)</code>. It&apos;s responsible for uploading the file to firebase.
+it calls <code>addFileListItem(file)</code> to show the user that the file got uploaded in a list directly below the upload button</p>
+</div>
 
   
 
@@ -1325,9 +1415,10 @@ update the class of the checkbox</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">files</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>files</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>files that got uploaded</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1340,7 +1431,19 @@ update the class of the checkbox</p>
 
   
 
-  
+  <div data-ice="throwWrap">
+    <h4>Throw:</h4>
+    <table>
+      <tbody>
+      
+      <tr class="throw" data-ice="throw">
+        <td><p data-ice="throwName"><span>error</span></p></td>
+        <td data-ice="throwDesc"><p>throws error if uploading to firebase goes wrong</p>
+</td>
+      </tr>
+</tbody>
+    </table>
+  </div>
 
   
 
@@ -1363,7 +1466,7 @@ update the class of the checkbox</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber704">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber753">source</a></span></span>
     </span>
   </h3>
 
@@ -1408,7 +1511,7 @@ update the class of the checkbox</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber662">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber701">source</a></span></span>
     </span>
   </h3>
 
@@ -1466,18 +1569,20 @@ It will correctly trigger the upload action</p>
     
     
     
-    <span class="code" data-ice="name">onClickUpload</span><span class="code" data-ice="signature">(event: <span>*</span>)</span>
+    <span class="code" data-ice="name">onClickUpload</span><span class="code" data-ice="signature">(event: <span>event</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber561">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber579">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>onClickUpload(event)</code> gets called when the user clicks upload. It calls <code>handleFileUpload(files)</code> 
+to deal with the files that got uploaded. That file is in event.tartget.files. Note: it&apos;s an array of files</p>
+</div>
 
   
 
@@ -1491,9 +1596,10 @@ It will correctly trigger the upload action</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">event</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>event</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the click event</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1525,18 +1631,19 @@ It will correctly trigger the upload action</p>
     
     
     
-    <span class="code" data-ice="name">onDragLeave</span><span class="code" data-ice="signature">(event: <span>*</span>)</span>
+    <span class="code" data-ice="name">onDragLeave</span><span class="code" data-ice="signature">(event: <span>Event</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber637">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber671">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>onDragLeave()</code> is called when the dragging cursor leaves the drag area</p>
+</div>
 
   
 
@@ -1550,9 +1657,10 @@ It will correctly trigger the upload action</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">event</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>Event</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the drag leave event</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1584,18 +1692,19 @@ It will correctly trigger the upload action</p>
     
     
     
-    <span class="code" data-ice="name">onDragOver</span><span class="code" data-ice="signature">(event: <span>*</span>)</span>
+    <span class="code" data-ice="name">onDragOver</span><span class="code" data-ice="signature">(event: <span>Event</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber630">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber659">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>onDragOver()</code> is called when the dragging cursor enters the drag area</p>
+</div>
 
   
 
@@ -1609,9 +1718,10 @@ It will correctly trigger the upload action</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">event</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>Event</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the drag enter event</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -1643,18 +1753,19 @@ It will correctly trigger the upload action</p>
     
     
     
-    <span class="code" data-ice="name">onDrop</span><span class="code" data-ice="signature">(event: <span>*</span>)</span>
+    <span class="code" data-ice="name">onDrop</span><span class="code" data-ice="signature">(event: <span>Event</span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber644">source</a></span></span>
+      <span data-ice="source"><span><a href="file/pages/element/script/Upload.js.html#lineNumber683">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p><code>onDrop()</code> is called when file is dropped into the drag area</p>
+</div>
 
   
 
@@ -1668,9 +1779,10 @@ It will correctly trigger the upload action</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" class="code" data-depth="0">event</td>
-      <td data-ice="type" class="code"><span>*</span></td>
+      <td data-ice="type" class="code"><span>Event</span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>the drop event</p>
+</td>
     </tr>
 </tbody>
   </table>

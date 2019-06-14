@@ -1,206 +1,224 @@
 window.esdocSearchIndex = [
   [
-    "rater-and-checkbox/pages/webcomponent/script/webcomponents_christianetsu.js~addmajorelement",
+    "pandoras-box/pages/webcomponent/script/webcomponents_christianetsu.js~addmajorelement",
     "class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html",
-    "<span>AddMajorElement</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/webcomponent/script/webcomponents_christianetsu.js</span>",
+    "<span>AddMajorElement</span> <span class=\"search-result-import-path\">pandoras-box/pages/webcomponent/script/webcomponents_christianetsu.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/webcomponent/script/cecorehello.js~cecorehello",
+    "pandoras-box/pages/webcomponent/script/cecorehello.js~cecorehello",
     "class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html",
-    "<span>CECoreHello</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/webcomponent/script/CECoreHello.js</span>",
+    "<span>CECoreHello</span> <span class=\"search-result-import-path\">pandoras-box/pages/webcomponent/script/CECoreHello.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/element/script/checkbox.js~checkbox",
+    "pandoras-box/pages/element/script/checkbox.js~checkbox",
     "class/pages/element/script/Checkbox.js~Checkbox.html",
-    "<span>Checkbox</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Checkbox.js</span>",
+    "<span>Checkbox</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Checkbox.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/element/script/comment.js~comment",
+    "pandoras-box/pages/element/script/comment.js~comment",
     "class/pages/element/script/Comment.js~Comment.html",
-    "<span>Comment</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Comment.js</span>",
+    "<span>Comment</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Comment.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/element/script/rater.js~rater",
+    "pandoras-box/pages/element/script/rater.js~rater",
     "class/pages/element/script/Rater.js~Rater.html",
-    "<span>Rater</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Rater.js</span>",
+    "<span>Rater</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Rater.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/webcomponent/script/webcomponents_leon.js~shittydraft",
+    "pandoras-box/pages/webcomponent/script/webcomponents_leon.js~shittydraft",
     "class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html",
-    "<span>ShittyDraft</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/webcomponent/script/webcomponents_leon.js</span>",
+    "<span>ShittyDraft</span> <span class=\"search-result-import-path\">pandoras-box/pages/webcomponent/script/webcomponents_leon.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/webcomponent/script/webcomponents_er.js~testwebcomponent",
+    "pandoras-box/pages/webcomponent/script/webcomponents_er.js~testwebcomponent",
     "class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html",
-    "<span>TestWebComponent</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/webcomponent/script/webcomponents_er.js</span>",
+    "<span>TestWebComponent</span> <span class=\"search-result-import-path\">pandoras-box/pages/webcomponent/script/webcomponents_er.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/element/script/upload.js~upload",
+    "pandoras-box/pages/element/script/upload.js~upload",
     "class/pages/element/script/Upload.js~Upload.html",
-    "<span>Upload</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Upload.js</span>",
+    "<span>Upload</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Upload.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/webcomponent/script/webcomponents-dan.js~webcomponentsdan",
+    "pandoras-box/pages/webcomponent/script/webcomponents-dan.js~webcomponentsdan",
     "class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html",
-    "<span>WebcomponentsDan</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/webcomponent/script/webcomponents-dan.js</span>",
+    "<span>WebcomponentsDan</span> <span class=\"search-result-import-path\">pandoras-box/pages/webcomponent/script/webcomponents-dan.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~calcoverallscore",
+    "pandoras-box/pages/rateit/script/evaluator.js~calcoverallscore",
     "function/index.html#static-function-calcOverallScore",
-    "<span>calcOverallScore</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>calcOverallScore</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "function"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~comment",
+    "pandoras-box/pages/rateit/script/evaluator.js~comment",
     "variable/index.html#static-variable-comment",
-    "<span>comment</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>comment</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/core-hello/script/core-hello.js~corehello",
+    "pandoras-box/pages/core-hello/script/core-hello.js~corehello",
     "class/pages/core-hello/script/core-hello.js~corehello.html",
-    "<span>corehello</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/core-hello/script/core-hello.js</span>",
+    "<span>corehello</span> <span class=\"search-result-import-path\">pandoras-box/pages/core-hello/script/core-hello.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/element/script/init_firebase.js~databaseservice",
+    "pandoras-box/pages/element/script/init_firebase.js~databaseservice",
     "variable/index.html#static-variable-databaseService",
-    "<span>databaseService</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/init_firebase.js</span>",
+    "<span>databaseService</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/init_firebase.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/element/script/init_firebase.js~db",
+    "pandoras-box/pages/element/script/init_firebase.js~db",
     "variable/index.html#static-variable-db",
-    "<span>db</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/init_firebase.js</span>",
+    "<span>db</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/init_firebase.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~des",
+    "pandoras-box/pages/rateit/script/evaluator.js~des",
     "variable/index.html#static-variable-des",
-    "<span>des</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>des</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~displaycomment",
+    "pandoras-box/pages/rateit/script/evaluator.js~displaycomment",
     "function/index.html#static-function-displayComment",
-    "<span>displayComment</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>displayComment</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "function"
   ],
   [
-    "rater-and-checkbox/pages/element/script/init_firebase.js~firebaseconfig",
+    "pandoras-box/pages/element/script/init_firebase.js~firebaseconfig",
     "variable/index.html#static-variable-firebaseConfig",
-    "<span>firebaseConfig</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/init_firebase.js</span>",
+    "<span>firebaseConfig</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/init_firebase.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~geturlparameter",
+    "pandoras-box/pages/rateit/script/evaluator.js~geturlparameter",
     "function/index.html#static-function-getURLParameter",
-    "<span>getURLParameter</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>getURLParameter</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "function"
   ],
   [
-    "rater-and-checkbox/pages/element/script/upload.js~listtemplate",
+    "pandoras-box/pages/element/script/upload.js~listtemplate",
     "variable/index.html#static-variable-listTemplate",
-    "<span>listTemplate</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Upload.js</span>",
+    "<span>listTemplate</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Upload.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~lookup_value",
+    "pandoras-box/pages/rateit/script/evaluator.js~lookup_value",
     "variable/index.html#static-variable-lookup_value",
-    "<span>lookup_value</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>lookup_value</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/index/script/namecard.js~namecard",
+    "pandoras-box/pages/index/script/namecard.js~namecard",
     "class/pages/index/script/namecard.js~nameCard.html",
-    "<span>nameCard</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/index/script/namecard.js</span>",
+    "<span>nameCard</span> <span class=\"search-result-import-path\">pandoras-box/pages/index/script/namecard.js</span>",
     "class"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~overallrate",
+    "pandoras-box/pages/rateit/script/requestor.js~norate_ckb",
+    "variable/index.html#static-variable-norate_ckb",
+    "<span>norate_ckb</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/requestor.js</span>",
+    "variable"
+  ],
+  [
+    "pandoras-box/pages/rateit/script/requestor.js~notag_ckb",
+    "variable/index.html#static-variable-notag_ckb",
+    "<span>notag_ckb</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/requestor.js</span>",
+    "variable"
+  ],
+  [
+    "pandoras-box/pages/rateit/script/requestor.js~onload",
+    "function/index.html#static-function-onload",
+    "<span>onload</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/requestor.js</span>",
+    "function"
+  ],
+  [
+    "pandoras-box/pages/rateit/script/evaluator.js~overallrate",
     "variable/index.html#static-variable-overallrate",
-    "<span>overallrate</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>overallrate</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~overalltags",
+    "pandoras-box/pages/rateit/script/evaluator.js~overalltags",
     "variable/index.html#static-variable-overalltags",
-    "<span>overalltags</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>overalltags</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~rateandtags",
-    "variable/index.html#static-variable-rateandtags",
-    "<span>rateandtags</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "pandoras-box/pages/rateit/script/evaluator.js~ratediv",
+    "variable/index.html#static-variable-ratediv",
+    "<span>ratediv</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/element/script/init_firebase.js~storageref",
+    "pandoras-box/pages/element/script/init_firebase.js~storageref",
     "variable/index.html#static-variable-storageRef",
-    "<span>storageRef</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/init_firebase.js</span>",
+    "<span>storageRef</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/init_firebase.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/element/script/init_firebase.js~storageservice",
+    "pandoras-box/pages/element/script/init_firebase.js~storageservice",
     "variable/index.html#static-variable-storageService",
-    "<span>storageService</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/init_firebase.js</span>",
+    "<span>storageService</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/init_firebase.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/requestor.js~tags",
+    "pandoras-box/pages/rateit/script/requestor.js~tags",
     "variable/index.html#static-variable-tags",
-    "<span>tags</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/requestor.js</span>",
+    "<span>tags</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/requestor.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/element/script/checkbox.js~template",
+    "pandoras-box/pages/element/script/checkbox.js~template",
     "variable/index.html#static-variable-template",
-    "<span>template</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Checkbox.js</span>",
+    "<span>template</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Checkbox.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/element/script/comment.js~template",
+    "pandoras-box/pages/element/script/comment.js~template",
     "variable/index.html#static-variable-template",
-    "<span>template</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Comment.js</span>",
+    "<span>template</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Comment.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/element/script/rater.js~template",
+    "pandoras-box/pages/element/script/rater.js~template",
     "variable/index.html#static-variable-template",
-    "<span>template</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Rater.js</span>",
+    "<span>template</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Rater.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/element/script/upload.js~template",
+    "pandoras-box/pages/element/script/upload.js~template",
     "variable/index.html#static-variable-template",
-    "<span>template</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/element/script/Upload.js</span>",
+    "<span>template</span> <span class=\"search-result-import-path\">pandoras-box/pages/element/script/Upload.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~thing",
+    "pandoras-box/pages/rateit/script/evaluator.js~thing",
     "variable/index.html#static-variable-thing",
-    "<span>thing</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>thing</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~title",
+    "pandoras-box/pages/rateit/script/evaluator.js~title",
     "variable/index.html#static-variable-title",
-    "<span>title</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>title</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
-    "rater-and-checkbox/pages/rateit/script/evaluator.js~wrapper",
+    "pandoras-box/pages/rateit/script/evaluator.js~wrapper",
     "variable/index.html#static-variable-wrapper",
-    "<span>wrapper</span> <span class=\"search-result-import-path\">rater-and-checkbox/pages/rateit/script/evaluator.js</span>",
+    "<span>wrapper</span> <span class=\"search-result-import-path\">pandoras-box/pages/rateit/script/evaluator.js</span>",
     "variable"
   ],
   [
@@ -601,13 +619,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/checkbox.js~checkbox#name",
-    "class/pages/element/script/Checkbox.js~Checkbox.html#instance-set-name",
+    "class/pages/element/script/Checkbox.js~Checkbox.html#instance-get-name",
     "pages/element/script/Checkbox.js~Checkbox#name",
     "member"
   ],
   [
     "pages/element/script/checkbox.js~checkbox#name",
-    "class/pages/element/script/Checkbox.js~Checkbox.html#instance-get-name",
+    "class/pages/element/script/Checkbox.js~Checkbox.html#instance-set-name",
     "pages/element/script/Checkbox.js~Checkbox#name",
     "member"
   ],
@@ -667,13 +685,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/comment.js~comment#alldisabled",
-    "class/pages/element/script/Comment.js~Comment.html#instance-set-allDisabled",
+    "class/pages/element/script/Comment.js~Comment.html#instance-get-allDisabled",
     "pages/element/script/Comment.js~Comment#allDisabled",
     "member"
   ],
   [
     "pages/element/script/comment.js~comment#alldisabled",
-    "class/pages/element/script/Comment.js~Comment.html#instance-get-allDisabled",
+    "class/pages/element/script/Comment.js~Comment.html#instance-set-allDisabled",
     "pages/element/script/Comment.js~Comment#allDisabled",
     "member"
   ],
@@ -751,13 +769,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/comment.js~comment#hidecomment",
-    "class/pages/element/script/Comment.js~Comment.html#instance-set-hideComment",
+    "class/pages/element/script/Comment.js~Comment.html#instance-get-hideComment",
     "pages/element/script/Comment.js~Comment#hideComment",
     "member"
   ],
   [
     "pages/element/script/comment.js~comment#hidecomment",
-    "class/pages/element/script/Comment.js~Comment.html#instance-get-hideComment",
+    "class/pages/element/script/Comment.js~Comment.html#instance-set-hideComment",
     "pages/element/script/Comment.js~Comment#hideComment",
     "member"
   ],
@@ -781,13 +799,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/comment.js~comment#maxofrate",
-    "class/pages/element/script/Comment.js~Comment.html#instance-set-maxOfRate",
+    "class/pages/element/script/Comment.js~Comment.html#instance-get-maxOfRate",
     "pages/element/script/Comment.js~Comment#maxOfRate",
     "member"
   ],
   [
     "pages/element/script/comment.js~comment#maxofrate",
-    "class/pages/element/script/Comment.js~Comment.html#instance-get-maxOfRate",
+    "class/pages/element/script/Comment.js~Comment.html#instance-set-maxOfRate",
     "pages/element/script/Comment.js~Comment#maxOfRate",
     "member"
   ],
@@ -823,13 +841,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/comment.js~comment#topicname",
-    "class/pages/element/script/Comment.js~Comment.html#instance-get-topicName",
+    "class/pages/element/script/Comment.js~Comment.html#instance-set-topicName",
     "pages/element/script/Comment.js~Comment#topicName",
     "member"
   ],
   [
     "pages/element/script/comment.js~comment#topicname",
-    "class/pages/element/script/Comment.js~Comment.html#instance-set-topicName",
+    "class/pages/element/script/Comment.js~Comment.html#instance-get-topicName",
     "pages/element/script/Comment.js~Comment#topicName",
     "member"
   ],
@@ -859,13 +877,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/rater.js~rater#colors",
-    "class/pages/element/script/Rater.js~Rater.html#instance-get-colors",
+    "class/pages/element/script/Rater.js~Rater.html#instance-set-colors",
     "pages/element/script/Rater.js~Rater#colors",
     "member"
   ],
   [
     "pages/element/script/rater.js~rater#colors",
-    "class/pages/element/script/Rater.js~Rater.html#instance-set-colors",
+    "class/pages/element/script/Rater.js~Rater.html#instance-get-colors",
     "pages/element/script/Rater.js~Rater#colors",
     "member"
   ],
@@ -895,25 +913,25 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/rater.js~rater#disabled",
-    "class/pages/element/script/Rater.js~Rater.html#instance-get-disabled",
-    "pages/element/script/Rater.js~Rater#disabled",
-    "member"
-  ],
-  [
-    "pages/element/script/rater.js~rater#disabled",
     "class/pages/element/script/Rater.js~Rater.html#instance-set-disabled",
     "pages/element/script/Rater.js~Rater#disabled",
     "member"
   ],
   [
-    "pages/element/script/rater.js~rater#disabledvoidcolor",
-    "class/pages/element/script/Rater.js~Rater.html#instance-get-disabledVoidColor",
-    "pages/element/script/Rater.js~Rater#disabledVoidColor",
+    "pages/element/script/rater.js~rater#disabled",
+    "class/pages/element/script/Rater.js~Rater.html#instance-get-disabled",
+    "pages/element/script/Rater.js~Rater#disabled",
     "member"
   ],
   [
     "pages/element/script/rater.js~rater#disabledvoidcolor",
     "class/pages/element/script/Rater.js~Rater.html#instance-set-disabledVoidColor",
+    "pages/element/script/Rater.js~Rater#disabledVoidColor",
+    "member"
+  ],
+  [
+    "pages/element/script/rater.js~rater#disabledvoidcolor",
+    "class/pages/element/script/Rater.js~Rater.html#instance-get-disabledVoidColor",
     "pages/element/script/Rater.js~Rater#disabledVoidColor",
     "member"
   ],
@@ -961,13 +979,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/rater.js~rater#highthreshold",
-    "class/pages/element/script/Rater.js~Rater.html#instance-get-highThreshold",
+    "class/pages/element/script/Rater.js~Rater.html#instance-set-highThreshold",
     "pages/element/script/Rater.js~Rater#highThreshold",
     "member"
   ],
   [
     "pages/element/script/rater.js~rater#highthreshold",
-    "class/pages/element/script/Rater.js~Rater.html#instance-set-highThreshold",
+    "class/pages/element/script/Rater.js~Rater.html#instance-get-highThreshold",
     "pages/element/script/Rater.js~Rater#highThreshold",
     "member"
   ],
@@ -1003,13 +1021,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/rater.js~rater#max",
-    "class/pages/element/script/Rater.js~Rater.html#instance-get-max",
+    "class/pages/element/script/Rater.js~Rater.html#instance-set-max",
     "pages/element/script/Rater.js~Rater#max",
     "member"
   ],
   [
     "pages/element/script/rater.js~rater#max",
-    "class/pages/element/script/Rater.js~Rater.html#instance-set-max",
+    "class/pages/element/script/Rater.js~Rater.html#instance-get-max",
     "pages/element/script/Rater.js~Rater#max",
     "member"
   ],
@@ -1033,13 +1051,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/rater.js~rater#scoretemplate",
-    "class/pages/element/script/Rater.js~Rater.html#instance-get-scoreTemplate",
+    "class/pages/element/script/Rater.js~Rater.html#instance-set-scoreTemplate",
     "pages/element/script/Rater.js~Rater#scoreTemplate",
     "member"
   ],
   [
     "pages/element/script/rater.js~rater#scoretemplate",
-    "class/pages/element/script/Rater.js~Rater.html#instance-set-scoreTemplate",
+    "class/pages/element/script/Rater.js~Rater.html#instance-get-scoreTemplate",
     "pages/element/script/Rater.js~Rater#scoreTemplate",
     "member"
   ],
@@ -1057,25 +1075,25 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/rater.js~rater#showtext",
-    "class/pages/element/script/Rater.js~Rater.html#instance-set-showText",
-    "pages/element/script/Rater.js~Rater#showText",
-    "member"
-  ],
-  [
-    "pages/element/script/rater.js~rater#showtext",
     "class/pages/element/script/Rater.js~Rater.html#instance-get-showText",
     "pages/element/script/Rater.js~Rater#showText",
     "member"
   ],
   [
-    "pages/element/script/rater.js~rater#textcolor",
-    "class/pages/element/script/Rater.js~Rater.html#instance-get-textColor",
-    "pages/element/script/Rater.js~Rater#textColor",
+    "pages/element/script/rater.js~rater#showtext",
+    "class/pages/element/script/Rater.js~Rater.html#instance-set-showText",
+    "pages/element/script/Rater.js~Rater#showText",
     "member"
   ],
   [
     "pages/element/script/rater.js~rater#textcolor",
     "class/pages/element/script/Rater.js~Rater.html#instance-set-textColor",
+    "pages/element/script/Rater.js~Rater#textColor",
+    "member"
+  ],
+  [
+    "pages/element/script/rater.js~rater#textcolor",
+    "class/pages/element/script/Rater.js~Rater.html#instance-get-textColor",
     "pages/element/script/Rater.js~Rater#textColor",
     "member"
   ],
@@ -1111,13 +1129,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/rater.js~rater#valuemodel",
-    "class/pages/element/script/Rater.js~Rater.html#instance-set-valueModel",
+    "class/pages/element/script/Rater.js~Rater.html#instance-get-valueModel",
     "pages/element/script/Rater.js~Rater#valueModel",
     "member"
   ],
   [
     "pages/element/script/rater.js~rater#valuemodel",
-    "class/pages/element/script/Rater.js~Rater.html#instance-get-valueModel",
+    "class/pages/element/script/Rater.js~Rater.html#instance-set-valueModel",
     "pages/element/script/Rater.js~Rater#valueModel",
     "member"
   ],
@@ -1183,14 +1201,20 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/upload.js~upload#displaythumbnail",
-    "class/pages/element/script/Upload.js~Upload.html#instance-get-displayThumbnail",
+    "class/pages/element/script/Upload.js~Upload.html#instance-set-displayThumbnail",
     "pages/element/script/Upload.js~Upload#displayThumbnail",
     "member"
   ],
   [
     "pages/element/script/upload.js~upload#displaythumbnail",
-    "class/pages/element/script/Upload.js~Upload.html#instance-set-displayThumbnail",
+    "class/pages/element/script/Upload.js~Upload.html#instance-get-displayThumbnail",
     "pages/element/script/Upload.js~Upload#displayThumbnail",
+    "member"
+  ],
+  [
+    "pages/element/script/upload.js~upload#drag",
+    "class/pages/element/script/Upload.js~Upload.html#instance-get-drag",
+    "pages/element/script/Upload.js~Upload#drag",
     "member"
   ],
   [
@@ -1200,10 +1224,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "pages/element/script/upload.js~upload#drag",
-    "class/pages/element/script/Upload.js~Upload.html#instance-get-drag",
-    "pages/element/script/Upload.js~Upload#drag",
-    "member"
+    "pages/element/script/upload.js~upload#handledisplaythumbnail",
+    "class/pages/element/script/Upload.js~Upload.html#instance-method-handleDisplayThumbnail",
+    "pages/element/script/Upload.js~Upload#handleDisplayThumbnail",
+    "method"
   ],
   [
     "pages/element/script/upload.js~upload#handledrag",
@@ -1219,13 +1243,13 @@ window.esdocSearchIndex = [
   ],
   [
     "pages/element/script/upload.js~upload#hidefilelist",
-    "class/pages/element/script/Upload.js~Upload.html#instance-get-hideFileList",
+    "class/pages/element/script/Upload.js~Upload.html#instance-set-hideFileList",
     "pages/element/script/Upload.js~Upload#hideFileList",
     "member"
   ],
   [
     "pages/element/script/upload.js~upload#hidefilelist",
-    "class/pages/element/script/Upload.js~Upload.html#instance-set-hideFileList",
+    "class/pages/element/script/Upload.js~Upload.html#instance-get-hideFileList",
     "pages/element/script/Upload.js~Upload#hideFileList",
     "member"
   ],
@@ -1375,14 +1399,44 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/comment.spec.js.html#lineNumber8",
+    "test-file/test/comment_upload.spec.js.html#lineNumber9",
     "sds-comment unit",
     "test"
   ],
   [
     "",
-    "test-file/test/comment.spec.js.html#lineNumber22",
+    "test-file/test/comment_upload.spec.js.html#lineNumber23",
     "sds-comment unit Unit test 1: check color attribute is correct",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber40",
+    "sds-comment unit Unit test 2: check the disable attribute",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber50",
+    "sds-comment unit Unit test 3: check the show-rating attribute",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber60",
+    "sds-comment unit Unit test 4: check the hide-comment attribute",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber70",
+    "sds-comment unit Unit test 5: check the show-tags attribute",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber80",
+    "sds-comment unit Unit test 6: check the all-disabled attribute",
     "test"
   ],
   [
@@ -1441,7 +1495,7 @@ window.esdocSearchIndex = [
   ],
   [
     "",
-    "test-file/test/checkbox.spec.js.html#lineNumber44",
+    "test-file/test/checkbox.spec.js.html#lineNumber47",
     "sds-rate unit Unit test 4: check the default label class name",
     "test"
   ],
@@ -1459,8 +1513,20 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/checkbox.spec.js.html#lineNumber68",
+    "sds-rate unit Unit test 7: check the getter for name attribute",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/rater.spec.js.html#lineNumber62",
     "sds-rate unit Unit test 7: checking if clicking on stars changes class",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/checkbox.spec.js.html#lineNumber73",
+    "sds-rate unit Unit test 8: check the getter for border attribute",
     "test"
   ],
   [
@@ -1471,8 +1537,38 @@ window.esdocSearchIndex = [
   ],
   [
     "",
+    "test-file/test/checkbox.spec.js.html#lineNumber80",
+    "sds-rate unit Unit test 9: check the getter for size attribute",
+    "test"
+  ],
+  [
+    "",
     "test-file/test/rater.spec.js.html#lineNumber90",
     "sds-rate unit Unit test 9: checking if v-model correctly sets the stars",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber92",
+    "sds-upload unit",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber108",
+    "sds-upload unit Unit test 1: check the getters and setters for drag label",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber115",
+    "sds-upload unit Unit test 2: check the getters and setters for hide-file-list",
+    "test"
+  ],
+  [
+    "",
+    "test-file/test/comment_upload.spec.js.html#lineNumber128",
+    "sds-upload unit Unit test 3: check the getters and setters for display-thumbnail",
     "test"
   ],
   [
@@ -1482,9 +1578,9 @@ window.esdocSearchIndex = [
     "testFile"
   ],
   [
-    "test/comment.spec.js",
-    "test-file/test/comment.spec.js.html",
-    "test/comment.spec.js",
+    "test/comment_upload.spec.js",
+    "test-file/test/comment_upload.spec.js.html",
+    "test/comment_upload.spec.js",
     "testFile"
   ],
   [

@@ -6,16 +6,44 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2c5eb5cea98f2e51d1c2/maintainability)](https://codeclimate.com/repos/5cda76f15edc6166400005f9/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2c5eb5cea98f2e51d1c2/test_coverage)](https://codeclimate.com/repos/5cda76f15edc6166400005f9/test_coverage)
 
-
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
 
-### Team Process: 
-<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br>
-<a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-2-more-web-components-npm-package-and-web-service"> Sprint 2 </a> <br>
+# Common IssuesTODO
+
+# Our Products:
+- NPM package of our custom web components (rate, checkbox, upload, comment): **pandoras-box**
+  - <a href="https://www.npmjs.com/package/pandoras-box">Follow this link to install</a>
+  - Please followhere
+- Extensible evaluation web service: **Rateit**
+  - <a href="https://ucsd-cse112.github.io/team7/pages/rateit/requestor.html">Try out making a evaluation requestor</a>
+  - <a href="https://ucsd-cse112.github.io/team7/pages/rateit/evaluator.html">Try out rating on a subject</a>
+  - User guide for Rateit is here
 
 
-### Technologies:
+# Repo Overview: 
+- **bash_scripts**: The script files run by bash are in this folder, e.g. linting script
+Config: Configuration files for wepack are in this folder; no need to touch this folder unless 
+- **coverage**: The test coverage are auto-generated into this folder
+Docs: The API docs are auto-generated into this folder (which only exist in master branch)
+- **manual**: The files to generate the manual documentation are in this folder
+- **pages**: All files that have a web page to be displayed goes into this folder; js files are stored in “script” subfolders
+  - **element**: Stores all of our web components related files
+- **test**: The unit tests run by Karma are in this folder
+- **testcafe**: The browser-testing files for testcafe and saucelab are in this folder
+- **stories**: The test files for pixel testing are in this folder
+
+
+# Our Build Pipeline
+
+
+# Development Process Introduction
+We followed the agile lifecycle to develop our products and the build pipeline in the following three sprints: 
+1. <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-0-setup--pipeline-creation--web-compenent"> Sprint 0 </a> <br>
+2. <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-1--porting-web-component"> Sprint 1 </a> <br>
+3. <a href="https://github.com/ucsd-cse112/team7/tree/master#sprint-2-more-web-components-npm-package-and-web-service"> Sprint 2 </a> <br>
+
+
+### Technologies Used:
 <img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/tools.png" alt="tools" width="700"/>
 
 <a href="https://github.com/typicode/husky"> Husky: </a>  <br>
@@ -60,8 +88,8 @@ In this sprint, we ported some awesome web components:
 - **`low-threshold`** (number): The threshold value between low and medium level. This value is included in the low level
 - **`high-threshold`** (number): The threshold value between medium and high level. This value is included in the high level
 - **`colors`** (string, or array of string) : The color of the icons. If it is an array (has to be array size of 3), each entry corresponds to each level determined by low-threshold and high-threshold
-- `**void-color**` (string): The color of the unselected icons
-- `**disabled-void-color**` (string): The color of the unselected icons when disabled
+- **`void-color`** (string): The color of the unselected icons
+- **`disabled-void-color`** (string): The color of the unselected icons when disabled
 - **`icons`** (string, or array of string): The icon type used for the rating, specifically the CSS code of the icon in the format of "\XXXX". If it is an array (has to be array size of 3), each entry corresponds to each level determined by low-threshold and high-threshold. This is modified from the original icon-classes which uses class name instead
 - **`void-icon`** (string): The icon type of the unselected rating item. This is modified from the original void-icon-class from Element
 - **`disabled-void-icon`** (string): The icon type of the unselected rating item when disabled. This is modified from the original disabled-void-icon-class from Element
@@ -76,11 +104,11 @@ In this sprint, we ported some awesome web components:
 - **`v-model`** (string): A value represented by the checkbox. It will not appear on the frontend unless used by other html tags
 - **`true-label`** (string): The v-model value when checked
 - **`false-label`** (string): The v-model value when unchecked
-- `**disabled**` (boolean): If true, then the checkbox is not clickable and not modifiable
+- **`disabled`** (boolean): If true, then the checkbox is not clickable and not modifiable
 - **`border`** (boolean): If true, border will be added around the checkbox
 - **`size`** ("medium," "small," or "mini"): The size of the border. Only these three string value is acceptable; otherwise, the default value which is "medium" will be used
-- `**checked**` (boolean): Corresponds to whether the checkbox is checked or not
-- `**name**` (string): The "name" attribute used by the original checkbox
+- **`checked`** (boolean): Corresponds to whether the checkbox is checked or not
+- **`name`** (string): The "name" attribute used by the original checkbox
 
 #### Our pipeline in sprint 1:</br>
 <img src="https://github.com/ucsd-cse112/team7/blob/master/readmeImg/sprint2_pipeline.png" alt="sprint1_pipeline" width="900"/>
@@ -88,7 +116,7 @@ In this sprint, we ported some awesome web components:
 
 
 ## Sprint 2: More web components, npm package, and web service!
-* In this sprint, we ported more fantastic Web Components: input, rating, checkbox, pagination 
+* In this sprint, we ported more fantastic Web Components: upload and comment
 * We also combined our web components into a website! The ideas of our website:  
   1. course reviews forum (or a general one) 
   2. Smth similar to roten tomato
@@ -97,6 +125,7 @@ In this sprint, we ported some awesome web components:
   5. smth similar to when2meet
   6. smth similar to reddit + rating
 * For the backend of this service, we used the real time database of firebase. 
+* Check out our web service for evaluation <a href="https://ucsd-cse112.github.io/team7/pages/rateit/requestor.html">Rateit</a>!!*
 * What's more, we even published our web components to npm !
   1. <a href="https://www.npmjs.com/package/pandoras-box">Current Package</a>
   2. Try to install our packages with
@@ -125,6 +154,21 @@ In this sprint, we ported some awesome web components:
        index.js
        
           import "pandoras-box"; // runs the code in index.js of our package, which imports the web components
+
+### Component 3: Upload
+##### Attributes
+- **`hide-file-list`** (boolean): If true, the list of files that are uploaded will not be shown
+- **`drag`** (boolean): If true, the upload will enable upload through drag and drop files
+- **`display-thumbnail`** (boolean): If true, the file list will be displayed along with a thumbnail
+
+### Component 4: Comment
+##### Attributes
+- **`color`** (string): The color of the comment box
+- **`Disabled`** (boolean): If true, the user cannot make any comments but only view other’s comment
+- **`hide-comment`** (boolean): If true, the user cannot view other’s comments
+- **`show-rating`** (boolean): If true, rate bar will be integrated into the comment web components so that users can add rating to the comments
+- **`show-tags`** (boolean): If true, checkbox will be integrated into the comment web components so that users can add tags to the comments
+- **`init-with`** (string): The subject, or the database entry name, which will be fetched when the comment component is initialized
 
 # Team Members:
 Name | Role

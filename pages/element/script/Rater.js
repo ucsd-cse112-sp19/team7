@@ -275,15 +275,15 @@ export class Rater extends HTMLElement {
 
     var level;
     // + sign is used to convert curr to int so that comparison is done correctly
-    if (+curr <= +this.lowThreshold) {
-      level = " low-level";
-    }
-    else if (+curr < +this.highThreshold) {
-      level = " medium-level";
-    }
-    else {
-      level = " high-level";
-    }
+    // if (+curr <= +this.lowThreshold) {
+    //   level = " low-level";
+    // }
+    // else if (+curr < +this.highThreshold) {
+    //   level = " medium-level";
+    // }
+    // else {
+    //   level = " high-level";
+    // }
 
     var i;
     for (i = 0; i < this.max; i++) {

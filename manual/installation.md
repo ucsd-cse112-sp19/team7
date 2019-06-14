@@ -1,9 +1,11 @@
 # NPM Installation
 
+### Installation Guide
 To import the npm package, run `npm i pandoras-box` (if you have not initialized npm yet, run `npm init`).
 
 To import these web components in your code, call `import "pandoras-box";` from a JavaScript module.
 
+### How to Use the Web Components
 For example, you could have a Javascript module **index.js** which contains `import "pandoras-box";`, and an HTML file with `<script type="module" src="index.js"></script>` in the **head** section.
 
 The upload and comment components also require the following code in the **head** section:
@@ -16,7 +18,6 @@ The upload and comment components also require the following code in the **head*
 ```
 
 ### Running Code with JS Modules
-
 If you aren't familiar with how to run code with JS modules, this is for you.
 
 One way of running code with JS modules is by using owc-dev-server. Run `npm i owc-dev-server`. 

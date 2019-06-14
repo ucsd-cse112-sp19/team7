@@ -1,5 +1,5 @@
 # Rateit
-![Image](/pages/index/img/rateit.png)
+![Image](../../pages/index/img/rateit.png)
 
 * _Do you use Reddit but want the capability to rate things rather than just upvoting or downvoting?_
 <br/><br/>

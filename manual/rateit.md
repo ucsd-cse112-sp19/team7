@@ -45,4 +45,3 @@ _**WE MIGHT JUST HAVE SOMETHING FOR YOU!**_
 
 # Copyright and Licensing
 **PLS contact our team lead Etsu via 911 for more details**
-

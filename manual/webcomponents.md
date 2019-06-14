@@ -57,9 +57,17 @@ A component that let's you rate things! You can choose how many stars (or an ico
 
 ## Comment
 ### About
-`<sds-comment></sds-commment>`
+Lets you create a comment block where you can write comments and view other's comments. In order to use this component, you have to hook to the Firebase by either 1. using **`init-with`** attirbute with the subject of the comment set to the subject name or 2. calling `updateComment(topicName, maxOfRate, tagarray)` in your js file with `topicName` set as the subject and the other parameters set optionally (or leave it as `""`).
+
+`<sds-comment init-with="car"></sds-commment>`
 
 ### Attributes
+- **`color`** (string): The color of the comment box
+- **`disabled`** (boolean): If true, the user cannot make any comments but only view other’s comment
+- **`hide-comment`** (boolean): If true, the user cannot view other’s comments
+- **`show-rating`** (boolean): If true, rate bar will be integrated into the comment web components so that users can add rating to the comments
+- **`show-tags`** (boolean): If true, checkbox will be integrated into the comment web components so that users can add tags to the comments
+- **`init-with`** (string): The subject, or the database entry name, which will be fetched when the comment component is initialized
 
 ## Upload
 ### About
@@ -69,3 +77,15 @@ Lets you load an image to display. When images are uploaded, a list forms undern
 
 ### Attributes
 - **`display-thumbnail`** (boolean): If true, then each uploaded image in the list underneath is accompanied by its thumbnail image so that users can see what they queued to upload.
+- **`hide-file-list`** (boolean): If true, the list of files that are uploaded will not be shown
+- **`drag`** (boolean): If true, the upload will enable upload through drag and drop files
+
+## Use of Bootstrap or custom CSS class
+For the developers out there that wish to use Bootstrap or use their own css class, all of our four components allow users to apply the Bootstrap classes and even their own custom css class to them.
+
+To insert your custom CSS class into the shadow DOM of our web components, use the standard **`class`**. To differentiate from normal class names, please use the following notation: `CLASS_NAME@SPECIFIER`. The class name will be inserted into the element in the shadow DOM based on the specifier (tag name, class name, id, etc.). You can use inspector or view our source code to learn where to insert the classes or you can just insert to all of the shadow DOM elements by `CLASS_NAME@*`. The following is one example of using Bootstrap button for our upload component.
+
+`<sds-upload class="btn-warning@button"></sds-upload>`
+
+Be careful with including any external CSS files from third part as some of them may cause the custom classes to not get detected. One solution is to include those CSS files within a `<div>` block so that it will not affect our web components detecting the custom classes. However, no worry for files from Boostrap as they will work normally.
+

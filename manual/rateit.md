@@ -9,20 +9,20 @@ _**Well...**_
 <br/><br/>
 _**WE MIGHT JUST HAVE SOMETHING FOR YOU!**_
 
-# How It Works
+## How It Works
 * First thing first, we provide **TWO** sites for two groups of people:
    * The **Requestors'** site is for people who want feedback, for _**LITERALLY ANYTHING**_
    * The **Evaluators'** site is for people who want to search for evaluations for _**LITERALLY ANYTHING**_<br>
     AS WELL AS evaluate it on their own!
 
 # Links - Take a Look while we demonstrate how to use it!
-## Requestors' Site 
+### Requestors' Site 
 * [link to Requestors' Site](https://ucsd-cse112.github.io/team7/pages/rateit/requestor.html)
 
-## Evaluators' Site 
+### Evaluators' Site 
 * [link to Evaluators' Site](https://ucsd-cse112.github.io/team7/pages/rateit/evaluator.html)
 
-# How to use it? (For Requestors)
+## How to use it? (For Requestors)
 **Just so that you know, it's REALLY simple**
 <br/>
 * Give it a title (could be yourself, could be anything you want others to evaluate)!
@@ -34,7 +34,7 @@ _**WE MIGHT JUST HAVE SOMETHING FOR YOU!**_
 * You want 100 stars? We've Got You Covered! (What a fag...)
 * Don't forget to Hit that 'Submit' HARD once you're done
 
-# How to use it? (For Requestors)
+## How to use it? (For Requestors)
 **Just so that you know, it's EVEN simpler**
 <br/>
 * We BELIEVE that all you need is an **pandora input box**!
@@ -43,5 +43,5 @@ _**WE MIGHT JUST HAVE SOMETHING FOR YOU!**_
     * See how other people like it
     * Give your own shot!
 
-# Copyright and Licensing
+## Copyright and Licensing
 **PLS contact our team lead Etsu via 911 for more details**

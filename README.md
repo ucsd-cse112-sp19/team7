@@ -6,9 +6,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/2c5eb5cea98f2e51d1c2/maintainability)](https://codeclimate.com/repos/5cda76f15edc6166400005f9/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/2c5eb5cea98f2e51d1c2/test_coverage)](https://codeclimate.com/repos/5cda76f15edc6166400005f9/test_coverage)
 
-# Common Issues
-
 <img src="pages/index/img/devilbus1.jpg" alt="drawing" width="500"/>
+
+# Common IssuesTODO
 
 # Our Products:
 - NPM package of our custom web components (rate, checkbox, upload, comment): **pandoras-box**

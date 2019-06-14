@@ -18,6 +18,7 @@
   - <a href="https://ucsd-cse112.github.io/team7/pages/rateit/evaluator.html">Try out rating on a subject</a>
   - User guide for Rateit is <a href="https://ucsd-cse112.github.io/team7/docs/manual/rateit.html">here</a>
 
+![Image](https://ucsd-cse112.github.io/team7/pages/index/img/rateit.png)
 
 # Repo Overview: 
 - **bash_scripts**: The script files run by bash are in this folder, e.g. linting script

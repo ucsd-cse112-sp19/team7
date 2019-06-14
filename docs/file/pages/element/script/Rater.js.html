@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../../">
+  <title data-ice="title">pages/element/script/Rater.js | pandoras-box</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  <script src="script/manual.js"></script>
+<link rel="stylesheet" href="./inject/css/0-manualstyle.css"><script src="./inject/script/0-manualscripts.js"></script><script src="./inject/script/0-Checkbox.js"></script><meta name="description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"><meta property="twitter:card" content="summary"><meta property="twitter:title" content="pandoras-box"><meta property="twitter:description" content="[![Build Status](https://travis-ci.com/ucsd-cse112/team7.svg?token=qBqr7uFuKBZWkbpLiMwe&amp;branch=dev)](https://travis-ci.com/ucsd-cse112/team7)"></head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  <a href="./manual/index.html" data-ice="manualHeaderLink">Manual</a>
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  <a href="test.html" data-ice="testLink">Test</a>
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+<a style="position:relative; top:3px;" href="https://github.com/ucsd-cse112/team7"><img width="20px" src="./image/github.png"></a></header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#core-hello-script">core-hello/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/core-hello/script/core-hello.js~corehello.html">corehello</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#element-script">element/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Checkbox.js~Checkbox.html">Checkbox</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Comment.js~Comment.html">Comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Rater.js~Rater.html">Rater</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/element/script/Upload.js~Upload.html">Upload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-listTemplate">listTemplate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-template">template</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-databaseService">databaseService</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-db">db</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-firebaseConfig">firebaseConfig</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageRef">storageRef</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-storageService">storageService</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#index-script">index/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/index/script/namecard.js~nameCard.html">nameCard</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#rateit-script">rateit/script</a><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-calcOverallScore">calcOverallScore</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-displayComment">displayComment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-getURLParameter">getURLParameter</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-function">F</span><span data-ice="name"><span><a href="function/index.html#static-function-onload">onload</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-comment">comment</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-des">des</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-lookup_value">lookup_value</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overallrate">overallrate</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-overalltags">overalltags</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-ratediv">ratediv</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-thing">thing</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-title">title</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-wrapper">wrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-norate_ckb">norate_ckb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-notag_ckb">notag_ckb</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-variable">V</span><span data-ice="name"><span><a href="variable/index.html#static-variable-tags">tags</a></span></span></li>
+<li data-ice="doc"><a data-ice="dirPath" class="nav-dir-path" href="identifiers.html#webcomponent-script">webcomponent/script</a><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/CECoreHello.js~CECoreHello.html">CECoreHello</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents-dan.js~WebcomponentsDan.html">WebcomponentsDan</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_christianetsu.js~AddMajorElement.html">AddMajorElement</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_er.js~TestWebComponent.html">TestWebComponent</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/pages/webcomponent/script/webcomponents_leon.js~ShittyDraft.html">ShittyDraft</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">pages/element/script/Rater.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * Author: Team7, CSE112 Spring 2019
+ * 
+ * Description: This is a ported version of rater originally from: 
+ * 
+ * https://element.eleme.io/#/en-US/component/rate
+ * 
+ * Orinal Code written in Vue.js:
+ * 
+ * https://github.com/ElemeFE/element/blob/dev/packages/rate/src/main.vue
+ * 
+ * Parts of comments copied and modified from:
+ * 
+ * https://github.com/GoogleChromeLabs/howto-components/blob/master/elements/howto-checkbox/howto-checkbox.js
+ */
+
+/**
+ * Cloning contents from a &amp;lt;template&amp;gt; element is more performant
+ * than using innerHTML because it avoids addtional HTML parse costs.
+ */
+const template = document.createElement(&quot;template&quot;);
+template.innerHTML = `
+  &lt;style&gt;
+    :host {
+    }
+    img {
+      height: 300px;
+    }
+    div p {
+      display: inline !important;
+      margin-left: 5px;
+      font: bold 20px &quot;Helvetica Neue&quot;, Helvetica, Arial, sans-serif;
+    }
+    div img {
+      height: 20px;
+      background-color: white;
+    }
+
+    .el-rate__icon {
+      font-size: 18px;
+      margin-right: 4px;
+      color: #c0c4cc;
+      transition: .3s;
+    }
+    .el-rate__icon, .el-rate__item {
+      display: inline-block;
+      position: relative;
+    }
+    [class*=&quot; el-icon-&quot;], [class^=el-icon-] {
+      //font-family: element-icons!important;
+      speak: none;
+      font-style: normal;
+      font-weight: 400;
+      font-variant: normal;
+      text-transform: none;
+      line-height: 1;
+      vertical-align: baseline;
+      display: inline-block;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    i {
+      font-style: italic;
+    }
+    .el-rate__item {
+        font-size: 0;
+        vertical-align: middle;
+        cursor: pointer;
+    }
+    .el-rate {
+        height: 20px;
+        line-height: 1;
+    }
+    .el-icon-star-on {
+      color: rgb(247, 186, 42);
+    }
+    .el-rate__item:not(.disabled) .el-rate__icon:hover {
+      transform: scale(1.2);
+    }
+    .el-rate__item.disabled {
+      cursor: default;
+    }
+    .el-rate__text {
+      font-size: 14px;
+      vertical-align: middle;
+    }
+    
+    .el-icon-star-on.low-level {
+    }
+    .el-icon-star-on.medium-level {
+    }
+    .el-icon-star-on.high-level {
+    }
+    .el-icon-star-off {
+    }
+    .disabled .el-icon-star-off {
+    }
+    
+    .el-icon-star-on.low-level::before {
+    }
+    .el-icon-star-on.medium-level::before { 
+    }
+    .el-icon-star-on.high-level::before {
+    }
+    .el-icon-star-off::before{
+    }
+    .disabled .el-icon-star-off::before {
+    }
+    
+  &lt;/style&gt;
+  &lt;span&gt;
+    &lt;img&gt;
+    &lt;p id=&quot;author&quot;&gt;&lt;/p&gt;
+    &lt;p id=&quot;des&quot;&gt;&lt;/p&gt;
+    &lt;div class=&quot;el-rate&quot;&gt;
+    
+    &lt;/div&gt;
+  &lt;/span&gt;
+`;
+
+/*
+The following can be used but might get sued by element since they will use elemet&apos;s icon,
+which can be downloaded through: https://unpkg.com/element-ui@2.8.2/lib/theme-chalk/fonts/
+    @font-face {
+      font-family: element-icons;
+      src: url(fonts/element-icons.woff) format(&quot;woff&quot;),
+           url(fonts/element-icons.ttf) format(&quot;truetype&quot;);
+      font-weight: 400;font-style:normal}
+      
+    .el-icon-star-off:before {
+      content: &quot;\\e717&quot;;
+    }
+    .el-icon-star-on:before {
+      content: &quot;\\e797&quot;;
+    }
+*/
+
+/**
+ * Rater is a custom element that creates a web component.
+ * It can be used by the tag &lt;sds-rate&gt;
+ */
+export class Rater extends HTMLElement {
+  /**
+   * The element&apos;s constructor is run anytime a new instance is created.
+   * Instances are created by parsing HTML, or calling
+   * document.createElement(&quot;7ds-rate&quot;)
+   * The construtor is a good place to create shadow DOM, though you should
+   * avoid touching any attributes or light DOM children as they may not
+   * be available yet.
+   */
+  constructor() {
+    super();
+    this.attachShadow({ mode: &quot;open&quot; });
+    this.shadowRoot.appendChild(template.content.cloneNode(true));
+  }
+
+  /**
+   * `connectedCallback()` is called when the element is inserted into the DOM.
+   * It&apos;s a good place to set the initial attribute values and install event listeners.
+   */
+  connectedCallback() {
+    const shadow = this.shadowRoot;
+
+    var author = shadow.querySelector(&quot;p#author&quot;);  //Author text
+    var info = shadow.querySelector(&quot;p#des&quot;); //Description text
+    //var span = shadow.querySelector(&quot;span&quot;);  
+    if (this.getAttribute(&quot;author&quot;)) {
+      author.textContent = &quot;Author: &quot; + this.getAttribute(&quot;author&quot;);
+    }
+    else {
+      author.style.display = &quot;none&quot;;
+    }
+    if (this.getAttribute(&quot;des&quot;)) {
+      info.textContent = &quot;Description: &quot; + this.getAttribute(&quot;des&quot;);
+    }
+    else {
+      info.style.display = &quot;none&quot;;
+    }
+    //Handle image
+    var imgUrl;
+    var img = shadow.querySelector(&quot;img&quot;);
+    if (this.hasAttribute(&quot;img&quot;)) {
+      img.style.display = &quot;block&quot;;
+      imgUrl = this.getAttribute(&quot;img&quot;);
+      img.src = imgUrl;
+    } else {
+      //imgUrl = &quot;background.jpg&quot;;
+      img.style.display = &quot;none&quot;;
+    }
+
+    //Wrapper for rater
+    const slider = shadow.querySelector(&quot;div&quot;);
+
+    // set up the rating bar
+    this.handleMax();
+
+    // append the text field for the rating bar
+    const ratertext = document.createElement(&quot;p&quot;);
+    ratertext.textContent = &quot;&quot;;
+    ratertext.className += &quot; el-rate__text&quot;;
+    slider.appendChild(ratertext);
+
+    // disable the rate buttons if necessary
+    this.handleDisabled();
+
+    this.handleTextColor(this.textColor);
+
+    // set up the text content, either number or the chinese characters
+    this.handleShowScoreAndText(this.showScore, this.showText);
+
+    // set the colors &amp; icons
+    this.updateColors();
+    this.updateIcons();
+
+    //initialize the star value
+    this.updateStars(this.valueModel);
+    //TODO4
+
+    //var event = new CustomEvent(&quot;onchange&quot;, { &quot;detail&quot;: this.valueModel });
+  }
+
+
+
+
+
+  /**
+   * `onStarClick()` is called when any rating star is clicked and will correctly
+   * set the current rate value, or the value model
+   * @param {Event} event - the click event
+   */
+  onStarClick(event) {
+    var rater = event.target.getRootNode().host;
+    if (!rater.disabled) {
+      rater.valueModel = event.target.id;
+    }
+  }
+
+  /**
+   * `onStarLeave()` is called when cursor moves away and will correctly set
+   * the value back to current rate value
+   * @param {Event} event - the leave event
+   */
+  onStarLeave(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+    if (!rater.disabled) {
+      rater.updateStars(rater.valueModel);
+    }
+  }
+
+  /**
+   * `onStarOver()` is called when any rating star is hovered and will correctly 
+   * set the start img and text contents
+   * @param {Event} event - the hover event
+   */
+  onStarOver(event) {
+    // cannot use this as the this in event listener is the target
+    var rater = event.target.getRootNode().host;
+    if (!rater.disabled) {
+      var id = event.target.id ? event.target.id : event.target.querySelector(&quot;.el-rate__icon&quot;).id;
+      rater.updateStars(id);
+    }
+  }
+
+
+
+
+
+  /**
+   * `updateStars()` is a helper method to update the stars based on the mouse action
+   * @param {CurrentStar} curr - this is the star that has been clicked or hovered
+   */
+  updateStars(curr) {
+    var stars = this.shadowRoot.querySelectorAll(&quot;div i&quot;);
+
+    var level;
+    // + sign is used to convert curr to int so that comparison is done correctly
+    if (+curr &lt;= +this.lowThreshold) {
+      level = &quot; low-level&quot;;
+    }
+    else if (+curr &lt; +this.highThreshold) {
+      level = &quot; medium-level&quot;;
+    }
+    else {
+      level = &quot; high-level&quot;;
+    }
+
+    var i;
+    for (i = 0; i &lt; this.max; i++) {
+      stars[i].className = stars[i].className.replace(/\blow-level\b/g, &quot;&quot;);
+      stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, &quot;&quot;);
+      stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, &quot;&quot;);
+
+      if (i &lt; curr) {
+        stars[i].className += level;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, &quot;&quot;);
+        stars[i].className += &quot; el-icon-star-on&quot;;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, &quot;&quot;);
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, &quot;&quot;);
+        stars[i].className += &quot; el-icon-star-off&quot;;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, &quot;&quot;);
+      }
+    }
+    if (curr - 1 &gt;= 0 &amp;&amp; this.texts[curr - 1])
+      this.shadowRoot.querySelector(&quot;div p&quot;).textContent = this.texts[curr - 1];
+    else if (this.shadowRoot.querySelector(&quot;div p&quot;))
+      this.shadowRoot.querySelector(&quot;div p&quot;).textContent = &quot;&quot;;
+  }
+
+  /**
+   * `handleTextColor()` is called when the `text-color` attribute is changed
+   * and will update the text color
+   * @param {string} newValue - new color 
+   */
+  handleTextColor(newValue) {
+    if (newValue == null) {
+      newValue = &quot;rgb(247, 186, 42)&quot;;
+    }
+    if (this.shadowRoot.querySelector(&quot;div p&quot;))
+      this.shadowRoot.querySelector(&quot;div p&quot;).style.color = newValue;
+  }
+
+  /**
+   * `handleValueModel()` is called when the `v-model` attribute is changed
+   * and will update the number of selected icons accordingly
+   * @param {number} newValue - new value model number 
+   */
+  handleValueModel(newValue) {
+    //this.updateStars(newValue);
+    // I don&apos;t know why but the above statement will return an error
+    
+    var level;
+    // + sign is used to convert curr to int so that comparison is done correctly
+    if (+newValue &lt;= +this.lowThreshold) {
+      level = &quot; low-level&quot;;
+    }
+    else if (+newValue &lt; +this.highThreshold) {
+      level = &quot; medium-level&quot;;
+    }
+    else {
+      level = &quot; high-level&quot;;
+    }
+    var stars = this.shadowRoot.querySelectorAll(&quot;div i&quot;);
+    var i;
+    for (i = 0; i &lt; stars.length; i++) {
+      stars[i].className = stars[i].className.replace(/\blow-level\b/g, &quot;&quot;);
+      stars[i].className = stars[i].className.replace(/\bmedium-level\b/g, &quot;&quot;);
+      stars[i].className = stars[i].className.replace(/\bhigh-level\b/g, &quot;&quot;);
+
+      if (i &lt; newValue) {
+        stars[i].className += level;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, &quot;&quot;);
+        stars[i].className += &quot; el-icon-star-on&quot;;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, &quot;&quot;);
+      }
+      else {
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-off\b/g, &quot;&quot;);
+        stars[i].className += &quot; el-icon-star-off&quot;;
+        stars[i].className = stars[i].className.replace(/\bel-icon-star-on\b/g, &quot;&quot;);
+      }
+    }
+    if (newValue - 1 &gt;= 0 &amp;&amp; this.texts[newValue - 1] &amp;&amp; this.shadowRoot.querySelector(&quot;div p&quot;))
+      this.shadowRoot.querySelector(&quot;div p&quot;).textContent = this.texts[newValue - 1];
+  }
+
+  /**
+   * `handleMax()` is called when the `max` attribute is changed and will
+   * update the number of icons accordingly
+   */
+  handleMax() {
+    const slider = this.shadowRoot.querySelector(&quot;div&quot;);
+    var items = this.shadowRoot.querySelectorAll(&quot;div span&quot;);
+
+    var i;
+    for (i = 0; i &lt; items.length; i++) {
+      slider.removeChild(items[i]);
+    }
+    for (i = 0; i &lt; this.max; i++) {
+      var newItem = document.createElement(&quot;span&quot;);
+      newItem.className += &quot; el-rate__item&quot;;
+      if (this.disabled)
+        newItem.className += &quot; disabled&quot;;
+
+      var newStar = document.createElement(&quot;i&quot;);
+      newStar.className += &quot; el-rate__icon&quot;;
+      newStar.className += &quot; el-icon-star-off&quot;;
+      newStar.id = i + 1;
+
+      newItem.addEventListener(&quot;mouseover&quot;, this.onStarOver);
+      newStar.addEventListener(&quot;click&quot;, this.onStarClick);
+      newStar.addEventListener(&quot;mouseleave&quot;, this.onStarLeave);
+
+      newItem.appendChild(newStar);
+      slider.appendChild(newItem);
+    }
+    var text = this.shadowRoot.querySelector(&quot;div p&quot;);
+    if (text) {
+      slider.removeChild(text); // to reorder the text
+      slider.appendChild(text);
+    }
+
+  }
+
+  /**
+   * `handleDisabled()` is called when the `disabled` attribute is changed
+   * and will disable the rater accordingly
+   */
+  handleDisabled() {
+    var items = this.shadowRoot.querySelectorAll(&quot;div span&quot;);
+    var i;
+    if (this.disabled) {
+      for (i = 0; i &lt; items.length; i++) {
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, &quot;&quot;);
+        items[i].className += &quot; disabled&quot;;
+      }
+    }
+    else {
+      for (i = 0; i &lt; items.length; i++) {
+        items[i].className = items[i].className.replace(/\bdisabled\b/g, &quot;&quot;);
+      }
+    }
+  }
+
+  /**
+   * `handleShowScoreAndText()` is called when the `show-text` attribute 
+   * or `show-score` attribute is changed and will update the display of the text
+   * @param {string} scoreVal - the score value 
+   * @param {string} textVal - the text content
+   */
+  handleShowScoreAndText(scoreVal, textVal) {
+    if (!this.shadowRoot.querySelector(&quot;div p&quot;))
+      return;
+    if (Boolean(scoreVal) || Boolean(textVal)) {
+      this.shadowRoot.querySelector(&quot;div p&quot;).style.display = &quot;block&quot;;
+    }
+    else {
+      this.shadowRoot.querySelector(&quot;div p&quot;).style.display = &quot;none&quot;;
+    }
+  }
+
+  /**
+   * `updateColors()` is called when the `colors` `void-color` `disabled-void-color`
+   * attributes are changed and will update the color of the icons accordingly
+   */
+  updateColors() {
+    var styleSheet = this.shadowRoot.querySelector(&quot;style&quot;).sheet;
+    var i;
+    for (i = 0; i &lt; styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      switch (rule.selectorText) {
+      case &quot;.el-icon-star-on.low-level&quot;:
+        rule.style.color = this.colors[0];
+        break;
+      case &quot;.el-icon-star-on.medium-level&quot;:
+        rule.style.color = this.colors[1];
+        break;
+      case &quot;.el-icon-star-on.high-level&quot;:
+        rule.style.color = this.colors[2];
+        break;
+      case &quot;.el-icon-star-off&quot;:
+        rule.style.color = this.voidColor;
+        break;
+      case &quot;.disabled .el-icon-star-off&quot;:
+        rule.style.color = this.disabledVoidColor;
+        break;
+      case &quot;class&quot;:
+        this.insertOutsideClass();
+        break;
+      }
+    }
+  }
+
+  /**
+   * `updateIcons()` is called when the `icons` `void-icon` `disabled-void-icon`
+   * attributes are changed and it will update the icons accordingly
+   */
+  updateIcons() {
+    var styleSheet = this.shadowRoot.querySelector(&quot;style&quot;).sheet;
+    var i;
+
+    for (i = 0; i &lt; styleSheet.cssRules.length; i++) {
+      var rule = styleSheet.cssRules[i];
+      switch (rule.selectorText) {
+      case &quot;.el-icon-star-on.low-level::before&quot;:
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.low-level::before {
+          content: &quot;` + this.icons[0] + `&quot;;
+        }`, i);
+        break;
+      case &quot;.el-icon-star-on.medium-level::before&quot;:
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.medium-level::before {
+          content: &quot;` + this.icons[1] + `&quot;;
+        }`, i);
+        break;
+      case &quot;.el-icon-star-on.high-level::before&quot;:
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-on.high-level::before {
+          content: &quot;` + this.icons[2] + `&quot;;
+        }`, i);
+        break;
+      case &quot;.el-icon-star-off::before&quot;:
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .el-icon-star-off::before {
+          content: &quot;` + this.voidIcon + `&quot;;
+        }`, i);
+        break;
+      case &quot;.disabled .el-icon-star-off::before&quot;:
+        styleSheet.deleteRule(i);
+        styleSheet.insertRule(`
+        .disabled .el-icon-star-off::before {
+          content: &quot;` + this.disabledVoidIcon + `&quot;;
+        }`, i);
+        break;
+      }
+    }
+  }
+  
+  /**
+   * `insertOutsideClass()` is called to insert css rules of the class names in
+   * `class` attribute into the shadowDOM&apos;s stylesheet
+   */
+  insertOutsideClass() {
+    var rootStyleSheet = this.getRootNode().styleSheets;
+    var classArray = this.className.match(/\S+/g);
+    if (!classArray || classArray.length == 0)
+      return;
+
+    var k;
+    var tagArray = []; // the index corresponds to the index of classArray
+    for (k = 0; k &lt; classArray.length; k++) {
+      //console.log(everything[k]);
+      var class_tag = classArray[k].split(&quot;@&quot;);
+      if (class_tag.length == 1) {
+        classArray.splice(k, 1);
+        k--;
+      }
+      else {
+        classArray[k] = class_tag[0];
+        tagArray.push(class_tag[1]);
+      }
+    }
+
+    var shadowStyleSheet = this.shadowRoot.querySelector(&quot;style&quot;).sheet;
+    var i, j;
+    for (i = 0; i &lt; rootStyleSheet.length; i++) {
+      try {
+        var rules = rootStyleSheet[i].cssRules;
+        
+        for (j = 0; j &lt; rules.length; j++) {
+          for (k = 0; k &lt; classArray.length; k++) {
+            if (rules[j].selectorText 
+                &amp;&amp; rules[j].selectorText.includes(&quot;.&quot; + classArray[k])
+                &amp;&amp; (!rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length]
+                    || (rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length] != &quot;-&quot;
+                        &amp;&amp; !rules[j].selectorText[rules[j].selectorText.indexOf(classArray[k]) + classArray[k].length].match(/[a-z]/i)
+                    )
+                ) 
+            ){
+              //console.log(rules[j].selectorText);
+              shadowStyleSheet.insertRule(rules[j].cssText, shadowStyleSheet.cssRules.length);
+            }
+          }
+        }
+      }
+      catch (e) {
+        //console.log(e);
+        break;
+      }
+    }
+ 
+    //var everything = this.shadowRoot.querySelectorAll(&quot;*:not(style)&quot;);
+    for (k = 0; k &lt; classArray.length; k++) {
+      //console.log(everything[k]);
+      var items = this.shadowRoot.querySelectorAll(tagArray[k]);
+      for (i = 0; i &lt; items.length; i++) {
+        if (items[i].tagName == &quot;STYLE&quot;)
+          continue;
+        items[i].className += &quot; &quot; + classArray[k];
+      }
+    }
+  }
+
+
+
+
+
+  /**
+   * `observedAttributes()` returns an array of attributes whose changes will
+   * be handled in `attributeChangedCallback()`
+   * @return {string[]} array of attributes whose changes will be handled 
+   */
+  static get observedAttributes() {
+    return [
+      &quot;v-model&quot;, &quot;max&quot;, &quot;disabled&quot;, &quot;show-score&quot;, &quot;text-color&quot;,
+      &quot;show-text&quot;, &quot;texts&quot;, &quot;score-template&quot;, &quot;low-threshold&quot;,
+      &quot;high-threshold&quot;, &quot;colors&quot;, &quot;void-color&quot;, &quot;disabled-void-color&quot;,
+      &quot;icons&quot;, &quot;void-icon&quot;, &quot;disabled-void-icon&quot;, &quot;img&quot;, &quot;author&quot;, &quot;des&quot;, 
+      &quot;class&quot;
+    ]; //TODO1
+  }
+
+  /**
+   * `attributeChangedCallback()` is called when any of the attributes in the
+   * returned array of `observedAttributes()` are changed. It&apos;s a good place to 
+   * handle side effects
+   * @param {string} name - the name of the changed attribute
+   * @param {string} oldValue - the old value of the attribute
+   * @param {string} newValue - the new value of the attribute
+   */
+  attributeChangedCallback(name, oldValue, newValue) {
+    // this is called also when loading the page initially, based on the initial attributes
+    switch (name) {
+    case &quot;v-model&quot;:
+      this.handleValueModel(newValue);
+      break;
+    case &quot;max&quot;:
+      if (!oldValue)
+        oldValue = 5;
+      this.handleMax();
+      break;
+    case &quot;disabled&quot;:
+      this.handleDisabled();
+      break;
+    case &quot;show-score&quot;:
+      this.handleShowScoreAndText(this.showScore, this.showText);
+      break;
+    case &quot;text-color&quot;:
+      this.handleTextColor(newValue);
+      break;
+    case &quot;show-text&quot;:
+      this.handleShowScoreAndText(this.showScore, this.showText);
+      break;
+    case &quot;texts&quot;:
+      // no need to handle since &quot;get texts&quot; is updated
+      break;
+    case &quot;score-template&quot;:
+      // no need to handle since &quot;get texts&quot; is updated
+      break;
+    case &quot;low-threshold&quot;:
+      this.updateStars(this.valueModel);
+      break;
+    case &quot;high-threshold&quot;:
+      this.updateStars(this.valueModel);
+      break;
+    case &quot;colors&quot;:
+      this.updateColors();
+      break;
+    case &quot;void-color&quot;:
+      this.updateColors();
+      break;
+    case &quot;disabled-void-color&quot;:
+      this.updateColors();
+      break;
+    case &quot;icons&quot;:
+      this.updateIcons();
+      break;
+    case &quot;void-icon&quot;:
+      this.updateIcons();
+      break;
+    case &quot;disabled-void-icon&quot;:
+      this.updateIcons();
+      break;
+    case &quot;img&quot;:
+      var img = this.shadowRoot.querySelector(&quot;img&quot;);
+      if (newValue) {
+        img.style.display = &quot;block&quot;;
+        img.src = newValue;
+      } else {
+        img.style.display = &quot;none&quot;;
+      }
+      break;
+    case &quot;author&quot;:
+      var author = this.shadowRoot.querySelector(&quot;p#author&quot;);  //Author text
+      if (newValue) {
+        author.style.display = &quot;block&quot;;
+        author.textContent = &quot;Author: &quot; + newValue;
+      }
+      else {
+        author.style.display = &quot;none&quot;;
+      }
+      break;
+    case &quot;des&quot;:
+      var info = this.shadowRoot.querySelector(&quot;p#des&quot;); //Description text
+      if (newValue) {
+        info.style.display = &quot;block&quot;;
+        info.textContent = &quot;Description: &quot; + newValue;
+      }
+      else {
+        info.style.display = &quot;none&quot;;
+      }
+      break;
+    case &quot;class&quot;:
+      this.insertOutsideClass();
+      break;
+      //TODO3
+    }
+  }
+
+  /** @type {number} */
+  set valueModel(value) {
+    this.setAttribute(&quot;v-model&quot;, value);
+  }
+
+  /** @type {number} */
+  get valueModel() {
+    return this.getAttribute(&quot;v-model&quot;) || 0;
+  }
+
+  /** @type {number} */
+  set max(value) {
+    this.setAttribute(&quot;max&quot;, value);
+  }
+
+  /** @type {number} */
+  get max() {
+    return this.getAttribute(&quot;max&quot;) || 5;
+  }
+
+  /** @type {number} */
+  get currentRate() {
+    return this.hasAttribute(&quot;currate&quot;) || 5;
+  }
+
+  /** @type {number} */
+  set currentRate(value) {
+    this.setAttribute(&quot;currate&quot;, value);
+  }
+
+  /** @type {boolean} */
+  set disabled(value) {
+    const isDisabled = Boolean(value);
+    if (isDisabled)
+      this.setAttribute(&quot;disabled&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;disabled&quot;);
+  }
+
+  /** @type {boolean} */
+  get disabled() {
+    return this.hasAttribute(&quot;disabled&quot;);
+  }
+
+  /** @type {boolean} */
+  set showScore(value) {
+    const scoreShown = Boolean(value);
+    if (scoreShown)
+      this.setAttribute(&quot;show-score&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;show-score&quot;);
+  }
+
+  /** @type {boolean} */
+  get showScore() {
+    return this.hasAttribute(&quot;show-score&quot;);
+  }
+
+  /** @type {string} */
+  get textColor() {
+    return this.getAttribute(&quot;text-color&quot;);
+  }
+
+  /** @type {string} */
+  set textColor(value) {
+    this.setAttribute(&quot;text-color&quot;, value);
+  }
+
+  /** @type {boolean} */
+  set showText(value) {
+    const testShown = Boolean(value);
+    if (testShown)
+      this.setAttribute(&quot;show-text&quot;, &quot;&quot;);
+    else
+      this.removeAttribute(&quot;show-text&quot;);
+  }
+
+  /** @type {boolean} */
+  get showText() {
+    return this.hasAttribute(&quot;show-text&quot;);
+  }
+
+  /** @type {string[]} */
+  set texts(value) {
+    this.setAttribute(&quot;texts&quot;, value);
+  }
+
+  /** @type {string[]} */
+  get texts() {
+    if (this.showScore) {
+      var textArray = [];
+      var correctTemplate = this.scoreTemplate.includes(&quot;{value}&quot;);
+      var i;
+      for (i = 1; i &lt;= this.max; i++) {
+        if (correctTemplate)
+          textArray.push(this.scoreTemplate.replace(&quot;{value}&quot;, i));
+        else
+          textArray.push(i);
+      }
+      return textArray;
+    }
+    else if (this.getAttribute(&quot;texts&quot;))
+      return this.getAttribute(&quot;texts&quot;).split(&quot;,&quot;);
+    else
+      return [&quot;Worst&quot;, &quot;Disappointing&quot;, &quot;So-So&quot;, &quot;Glad&quot;, &quot;Surprised&quot;];
+  }
+
+  /** @type {string} */
+  set scoreTemplate(value) {
+    this.setAttribute(&quot;score-template&quot;, value);
+  }
+
+  /** @type {string} */
+  get scoreTemplate() {
+    return this.getAttribute(&quot;score-template&quot;) || &quot;{value}&quot;;
+  }
+
+  /** @type {number} */
+  set lowThreshold(value) {
+    this.setAttribute(&quot;low-threshold&quot;, value);
+  }
+
+  /** @type {number} */
+  get lowThreshold() {
+    return this.getAttribute(&quot;low-threshold&quot;) || 2;
+  }
+
+  /** @type {number} */
+  set highThreshold(value) {
+    this.setAttribute(&quot;high-threshold&quot;, value);
+  }
+
+  /** @type {number} */
+  get highThreshold() {
+    return this.getAttribute(&quot;high-threshold&quot;) || 4;
+  }
+
+  /** @type {string[]} */
+  set colors(value) {
+    this.setAttribute(&quot;colors&quot;, value);
+  }
+
+  /** @type {string[]} */
+  get colors() {
+    if (this.getAttribute(&quot;colors&quot;)) {
+      if (this.getAttribute(&quot;colors&quot;).split(&quot;,&quot;).length &gt; 3)
+        return this.getAttribute(&quot;colors&quot;).split(&quot;;&quot;);
+      return this.getAttribute(&quot;colors&quot;).split(&quot;,&quot;);
+    }
+    else
+      return [&quot;#F7BA2A&quot;, &quot;#F7BA2A&quot;, &quot;#F7BA2A&quot;];
+  }
+
+  /** @type {string} */
+  set voidColor(value) {
+    this.setAttribute(&quot;void-color&quot;, value);
+  }
+
+  /** @type {string} */
+  get voidColor() {
+    return this.getAttribute(&quot;void-color&quot;) || &quot;#C6D1DE&quot;;
+  }
+
+  /** @type {string} */
+  set disabledVoidColor(value) {
+    this.setAttribute(&quot;disabled-void-color&quot;, value);
+  }
+
+  /** @type {string} */
+  get disabledVoidColor() {
+    return this.getAttribute(&quot;disabled-void-color&quot;) || &quot;#EFF2F7&quot;;
+  }
+
+  /** @type {string[]} */
+  set icons(value) {
+    this.setAttribute(&quot;icons&quot;, value);
+  }
+
+  /** @type {string[]} */
+  get icons() {
+    if (this.getAttribute(&quot;icons&quot;)) {
+      return this.getAttribute(&quot;icons&quot;).split(&quot;,&quot;);
+    }
+    else
+      return [&quot;\\2605&quot;, &quot;\\2605&quot;, &quot;\\2605&quot;];
+  }
+
+  /** @type {string} */
+  set voidIcon(value) {
+    this.setAttribute(&quot;void-icon&quot;, value);
+  }
+
+  /** @type {string} - void icon */
+  get voidIcon() {
+    return this.getAttribute(&quot;void-icon&quot;) || &quot;\\2606&quot;;
+  }
+
+  /** @type {string} */
+  set disabledVoidIcon(value) {
+    this.setAttribute(&quot;disabled-void-icon&quot;, value);
+  }
+
+  /** @type {string} */
+  get disabledVoidIcon() {
+    return this.getAttribute(&quot;disabled-void-icon&quot;) || &quot;\\2605&quot;;
+  }
+
+
+
+  // TODO2
+}
+
+customElements.define(&quot;sds-rate&quot;, Rater);
+</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(1.1.0)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

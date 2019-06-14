@@ -15,7 +15,7 @@ _**WE MIGHT JUST HAVE SOMETHING FOR YOU!**_
    * The **Evaluators'** site is for people who want to search for evaluations for _**LITERALLY ANYTHING**_<br>
     AS WELL AS evaluate it on their own!
 
-# Links - Take a Look while we demonstrate how to use it!
+## Links - Take a Look while we demonstrate how to use it!
 ### Requestors' Site 
 * [link to Requestors' Site](https://ucsd-cse112.github.io/team7/pages/rateit/requestor.html)
 

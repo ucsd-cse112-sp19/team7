@@ -630,13 +630,8 @@ export class Upload extends HTMLElement {
     lastItem.querySelector("a.el-upload-list__item-name").innerHTML += fileName;
     
     //check if we have the display-thumbnail attribute on
-    if(this.displayThumbnail){
-      lastItem.querySelector("img").src = URL.createObjectURL(file);
-      lastItem.querySelector("img").style.display = "block";
-      //list.className = "el-upload-list--picture";
-      list.classList.add("el-upload-list--picture");
-    }
-
+    lastItem.querySelector("img").src = URL.createObjectURL(file);
+    this.handleDisplayThumbnail();
 
     // add click listener to the cancel icon
     lastItem.querySelector("i.el-icon-close").addEventListener("click", function() {
@@ -657,6 +652,10 @@ export class Upload extends HTMLElement {
     });
   }
 
+  /**
+   * `onDragOver()` is called when the dragging cursor enters the drag area
+   * @param {Event} event - the drag enter event
+   */
   onDragOver(event){
     event.preventDefault();
     event.stopPropagation();
@@ -664,6 +663,11 @@ export class Upload extends HTMLElement {
     var dragger = select.shadowRoot.querySelector("div.el-upload-dragger");
     dragger.className = "el-upload-dragger is-dragover";
   }
+
+  /**
+   * `onDragLeave()` is called when the dragging cursor leaves the drag area
+   * @param {Event} event - the drag leave event
+   */
   onDragLeave(event){
     event.preventDefault();
     event.stopPropagation();
@@ -671,6 +675,11 @@ export class Upload extends HTMLElement {
     var dragger = select.shadowRoot.querySelector("div.el-upload-dragger");
     dragger.className = "el-upload-dragger";
   }
+
+  /**
+   * `onDrop()` is called when file is dropped into the drag area
+   * @param {Event} event - the drop event
+   */
   onDrop(event){
     event.preventDefault();
     event.stopPropagation();
@@ -693,24 +702,9 @@ export class Upload extends HTMLElement {
     // cannot use this as the this in event listener is the target
     var button = event.target.getRootNode().host;
     var input = button.shadowRoot.querySelector("input.el-upload__input");
-    input.click();
-
-    /*selectedFile = input.value;//event.target.files[0];
-    console.log(selectedFile);
-    const uploadTask = storageRef.child(`images/${selectedFile.name}`).put(selectedFile); //create a child directory called images, and place the file inside this directory
-    uploadTask.on("state_changed", (snapshot) => {
-      // Observe state change events such as progress, pause, and resume
-    }, (error) => {
-      // Handle unsuccessful uploads
-      console.log(error);
-    }, () => {
-      // Do something once upload is complete
-      console.log("success");
-    });*/
-    
+    input.click();    
   }
   
-
   /**
    * `handleDragger()` is called when the `dragger` attribute changes and will
    * update the class of the checkbox
@@ -727,6 +721,31 @@ export class Upload extends HTMLElement {
     }
   }
 
+  /**
+   * `handleDragger()` is called when the `dragger` attribute changes and will
+   * update the class of the checkbox
+   */
+  handleDisplayThumbnail () {
+    var list = this.shadowRoot.querySelector("ul.el-upload-list");
+    var listItems = this.shadowRoot.querySelectorAll("ul.el-upload-list li");
+    var i;
+    //check if we have the display-thumbnail attribute on
+    if(this.displayThumbnail){
+      for (i = 0; i < listItems.length; i++) {
+        listItems[i].querySelector("img").style.display = "block";
+        //list.className = "el-upload-list--picture";
+      }
+      list.classList.add("el-upload-list--picture");
+    }
+    else {
+      for (i = 0; i < listItems.length; i++) {
+        listItems[i].querySelector("img").style.display = "none";
+        //list.className = "el-upload-list--picture";
+      }
+      list.classList.remove("el-upload-list--picture");
+    }
+  }
+  
   /**
    * `insertOutsideClass()` is called to insert css rules of the class names in
    * `class` attribute into the shadowDOM's stylesheet
@@ -826,7 +845,7 @@ export class Upload extends HTMLElement {
       this.handleDrag();
       break;
     case "display-thumbnail":
-      //don't need anything for this
+      this.handleDisplayThumbnail();
       break;
     case "class":
       this.insertOutsideClass();

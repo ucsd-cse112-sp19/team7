@@ -126,15 +126,25 @@ describe("sds-upload unit", () => {
 
 
   it("Unit test 3: check the getters and setters for display-thumbnail", async () => {
-    upload.setAttribute("disabled-void-icon", "")
-    "".should.equal(uploadShadow.querySelector("ul.el-upload-list").style.display)
-    let t = true
-    t.should.equal(upload.hasAttribute("display-thumbnail"))
+    var list = uploadShadow.querySelector("ul.el-upload-list");
+    var item = document.createElement("li");
+    item.className += " el-upload-list__item";
+    var image = document.createElement("img");
+    image.className += " el-upload-list__item-thumbnail";
+    item.appendChild(image);
+    list.appendChild(item);
+    upload.setAttribute("display-thumbnail", "");
 
-    upload.removeAttribute("disabled-void-icon")
-    "none".should.equal(uploadShadow.querySelector("ul.el-upload-list").style.display)
-    t = false
-    t.should.equal(upload.hasAttribute("display-thumbnail"))
+    "block".should.equal(uploadShadow.querySelector("ul.el-upload-list li img").style.display);
+    let t = true;
+    t.should.equal(uploadShadow.querySelector("ul.el-upload-list").className.includes("el-upload-list--picture"));
+    t.should.equal(upload.hasAttribute("display-thumbnail"));
+
+    upload.removeAttribute("display-thumbnail");
+    "none".should.equal(uploadShadow.querySelector("ul.el-upload-list li img").style.display);
+    t = false;
+    t.should.equal(uploadShadow.querySelector("ul.el-upload-list").className.includes("el-upload-list--picture"));
+    t.should.equal(upload.hasAttribute("display-thumbnail"));
   });
 
 });

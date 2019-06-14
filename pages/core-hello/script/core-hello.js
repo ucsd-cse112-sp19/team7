@@ -1,5 +1,5 @@
 /**
- * A web component that adds "Hello World" to the content
+ * A web component that adds "Random Hello World" to the content
  */
 class corehello extends HTMLElement {
 
@@ -21,7 +21,7 @@ class corehello extends HTMLElement {
       
     //Language texts cases
     if(lan == "English") {
-      td.textContent = "Hello World - "+name;
+      td.textContent = "Random Hello - "+name;
     }
     else if(lan == "Spanish") {
       td.textContent = "Hola Mundo - "+name;
